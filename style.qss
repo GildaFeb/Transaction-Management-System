@@ -1,35 +1,28 @@
-/*= Style for mainwindow START
-  ==================================================== */
+/*=========== mainwindow START ============ */
 	#MainWindow {
-		background-color: #fff;
+		background-color: #ededef;
 	}
-/*= END
-  ==================================================== */
+/*======== END =============== */
 
-/*= Style for button to change menu style START
-  ==================================================== */
+/*= Style for button to change menu style START ==== */
 	#change_btn {
 		padding: 5px;
 		border: none;
 		width: 30px;
 		height: 30px;
 	}
-/*= END
-  ==================================================== */
+/*==== END =========== */
 
-/*= Style for header widget START
-  ==================================================== */
+/*= Style for header widget START ================== */
 	#widget{
 		background-color: #292929;
 	}
 	#widget QLabel{
 		color: white;
 	}
-/*= END
-  ==================================================== */
+/*======== END ================ */
 
-/*= Style for menu with icon only START
-  ==================================================== */
+/*= Style for menu with icon only START ========= */
   	/* style for widget */
 	#icon_only_widget {
 		background-color: #313a46;
@@ -57,11 +50,9 @@
 	#logo_label_1 {
 		padding: 5px
 	}
-/*= END
-  ==================================================== */
+/*==== END ============= */
 
-/*= Style for menu with icon and text START
-  ==================================================== */
+/*= Style for menu with icon and text START ======== */
 	/* style for widget */
 	#full_menu_widget {
 		background-color: #454545;
@@ -106,19 +97,15 @@
 		padding-right: 10px;
 		color: #fff;
 	}
-/*= END
-  ==================================================== */
+/*=== END ======================== */
 
-/*= Style for search button START
-  ==================================================== */
+/*= Style for search button START ============ */
 	#search_btn {
 		border: none;
 	}
-/*= END
-  ==================================================== */
+/*= END ============== */
 
-/*= Style for search input START
-  ==================================================== */
+/*= Style for search input START ============= */
 	#search_input {
 		border: none;
 		padding: 5px 10px;
@@ -127,13 +114,18 @@
 	#search_input:focus {
 		background-color: #70B9FE;
 	}
-/*= END
-  ==================================================== */
+/*= END ============== */
 
-/*= Style for user information button START
-  ==================================================== */
+/*= Style for user information button START ==== */
 	#user_btn {
 		border: none;
 	}
-/*= END
-  ==================================================== */
+/*= END ============ */
+
+/*====== PAGE 1: HOME ============ */
+
+#widget_2 QFrame {
+	box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+/*===== END ============ */

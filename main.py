@@ -41,10 +41,10 @@ class MainWindow(QMainWindow):
             
     ## functions for changing menu page
     def on_home_btn_1_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(1)
+        self.ui.stackedWidget.setCurrentIndex(0)
     
     def on_home_btn_2_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(1)
+        self.ui.stackedWidget.setCurrentIndex(0)
 
     def on_price_list_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(1)
