@@ -41,10 +41,10 @@ class MainWindow(QMainWindow):
             
     ## functions for changing menu page
     def on_home_btn_1_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.stackedWidget.setCurrentIndex(1)
     
     def on_home_btn_2_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.stackedWidget.setCurrentIndex(1)
 
     def on_price_list_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(1)
@@ -61,7 +61,7 @@ class MainWindow(QMainWindow):
     def on_transaction_record_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(3)
 
-    def on_transaction_record_btn_2_toggled(self, ):
+    def on_transaction_record_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(3)
 
     def on_daily_transaction_btn_1_toggled(self):
