@@ -719,7 +719,10 @@ color: #012668;
 #lower_box{
 background-color: #2459ae;
 border-radius: 10px;
-}</string>
+box-shadow: 50px 50px 50px #aaaaaa;
+}
+
+</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <property name="spacing">
@@ -846,7 +849,7 @@ border-radius: 10px;
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_10">
@@ -1343,20 +1346,149 @@ border-radius: 10px;
           </layout>
          </widget>
          <widget class="QWidget" name="page_2">
-          <layout class="QGridLayout" name="gridLayout_3">
-           <item row="0" column="0">
-            <widget class="QLabel" name="PriceList">
-             <property name="font">
-              <font>
-               <pointsize>20</pointsize>
-              </font>
+          <layout class="QVBoxLayout" name="verticalLayout_12">
+           <item>
+            <widget class="QWidget" name="widget_14" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
-             <property name="text">
-              <string>Price List</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <item alignment="Qt::AlignTop">
+               <widget class="QWidget" name="widget_13" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>300</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_10">
+                     <item>
+                      <widget class="QWidget" name="widget_20" native="true">
+                       <property name="minimumSize">
+                        <size>
+                         <width>200</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <widget class="QWidget" name="">
+                        <property name="geometry">
+                         <rect>
+                          <x>0</x>
+                          <y>0</y>
+                          <width>201</width>
+                          <height>71</height>
+                         </rect>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_11">
+                         <item>
+                          <widget class="QLabel" name="label_17">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>50</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>50</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>14</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>List of Prices</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="pushButton_2">
+                           <property name="text">
+                            <string>Add new item</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="widget_16" native="true">
+                       <property name="minimumSize">
+                        <size>
+                         <width>150</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton">
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resource.qrc">
+                       <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>30</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QTextEdit" name="textEdit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="list_prices" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
