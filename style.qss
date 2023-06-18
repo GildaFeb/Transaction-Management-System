@@ -83,7 +83,8 @@
 	}
 
 	#full_menu_widget QPushButton:checked {
-		background-color: rgba(192, 201, 209, 0.721);
+		background-color: #ededef;
+		color: black;
 	}
 
 	/* style for logo image */
