@@ -796,40 +796,34 @@
        <string notr="true">#box1{
 background-color: #15191f;
 border-radius: 10px;
-box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 #box2{
 background-color: #15191f;
 border-radius: 10px;
-box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 #box3{
 background-color: #f4e10a;
 border-radius: 10px;
-box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 
 }
 
 #total_payment{
 background-color: #012768;
 border-radius: 10px;
-box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 #business_name{
 background-color: #ffffff;
 border-radius: 10px;
 color: #012668;
-box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 
 }
 
 #lower_box{
 background-color: #2459ae;
 border-radius: 10px;
-box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 </string>
@@ -973,6 +967,32 @@ box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
        </item>
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>2</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#action_area, #table_area {
+	background-color:white;
+	border-radius: 10px;
+}
+
+#search{
+	border-color: black;
+}
+
+#separator {
+	background-color: #d6d9e1;
+}
+
+
+#search{
+	background-color: #f5f7f9;
+
+}</string>
+         </property>
          <property name="currentIndex">
           <number>3</number>
          </property>
@@ -2095,10 +2115,10 @@ border-radius: 15px;
             <widget class="QWidget" name="mainbody" native="true">
              <property name="styleSheet">
               <string notr="true">#mainbody{
- background-color: #f2f3f7;
+ background-color: #f4f5f7;
 }
 
-#transaction-code{
+#transaction_form{
  background-color: white;
 }
 
@@ -3132,18 +3152,370 @@ background-color: #f5f7f9;
          </widget>
          <widget class="QWidget" name="daily_transaction_2">
           <layout class="QGridLayout" name="gridLayout_7">
+           <item row="3" column="0">
+            <widget class="QWidget" name="table_area" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_24">
+              <item>
+               <widget class="QTableView" name="table"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QWidget" name="action_area" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>150</height>
+              </size>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_25">
+              <item>
+               <widget class="QWidget" name="widget_32" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>130</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>150</height>
+                 </size>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_26">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_32">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_30">
+                     <item>
+                      <widget class="QComboBox" name="comboBox_7">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>All transactions</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Successful Transactions</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Pending Transactions</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Failed Transactions</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_8">
+                       <property name="maximumSize">
+                        <size>
+                         <width>30</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="baseSize">
+                        <size>
+                         <width>30</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="resource.qrc">
+                         <normaloff>:/icon/icon/01lighticons-02full.png</normaloff>:/icon/icon/01lighticons-02full.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="autoDefault">
+                        <bool>true</bool>
+                       </property>
+                       <property name="default">
+                        <bool>true</bool>
+                       </property>
+                       <property name="flat">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item alignment="Qt::AlignRight">
+                      <widget class="QLabel" name="label_43">
+                       <property name="text">
+                        <string>Filter List </string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_11">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>318</width>
+                       <height>27</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="separator">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>1</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>1</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_34">
+                   <property name="spacing">
+                    <number>7</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>5</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="label_44">
+                     <property name="text">
+                      <string>0</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_45">
+                     <property name="text">
+                      <string>Transaction</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_2">
+                     <property name="maximumSize">
+                      <size>
+                       <width>35</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="baseSize">
+                      <size>
+                       <width>35</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resource.qrc">
+                       <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="search">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Search..</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_46">
+                     <property name="text">
+                      <string>Date From:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDateEdit" name="dateEdit_4"/>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_47">
+                     <property name="text">
+                      <string>Date To:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDateEdit" name="dateEdit_5"/>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_31">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <spacer name="horizontalSpacer_12">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_7">
+                       <property name="minimumSize">
+                        <size>
+                         <width>35</width>
+                         <height>35</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>35</width>
+                         <height>35</height>
+                        </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="resource.qrc">
+                         <normaloff>:/icon/icon/001lighticons-67full.png</normaloff>:/icon/icon/001lighticons-67full.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="flat">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_48">
+                       <property name="text">
+                        <string>Print Report</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
            <item row="0" column="0">
-            <widget class="QLabel" name="datewise_transaction">
+            <widget class="QLabel" name="label_42">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>60</height>
+              </size>
+             </property>
              <property name="font">
               <font>
-               <pointsize>20</pointsize>
+               <pointsize>13</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
               </font>
              </property>
              <property name="text">
-              <string>daily Transactions</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
+              <string>  Date-wise Transactions</string>
              </property>
             </widget>
            </item>
