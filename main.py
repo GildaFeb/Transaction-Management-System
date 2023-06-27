@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
+from PyQt5 import QtWidgets, QtGui, QtCore
 
 from BDPS_ui import Ui_MainWindow
 
@@ -16,6 +17,7 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.home_btn_2.setChecked(True)
 
+        
     ## Function for searching
     def on_search_btn_clicked(self):
         self.ui.stackedWidget.setCurrentIndex(5)
@@ -39,7 +41,7 @@ class MainWindow(QMainWindow):
             else:
                 btn.setAutoExclusive(True)
             
-    ## functions for changing menu page
+    ## ----------------------- functions for changing menu page ---------------------
     def on_home_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(0)
 
@@ -88,6 +90,12 @@ class MainWindow(QMainWindow):
     def on_daily_payment_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(7)
 
+     ## ----------------------- ADD SHADOW ---------------------
+
+    
+
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -103,11 +111,14 @@ if __name__ == "__main__":
     style_stream = QTextStream(style_file)
     app.setStyleSheet(style_stream.readAll())
 
+    
 
     window = MainWindow()
     window.show()
 
     sys.exit(app.exec())
 
+
+    
 
 
