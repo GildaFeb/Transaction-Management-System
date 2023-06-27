@@ -4,7 +4,7 @@
 	}
 /*======== END =============== */
 
-/*= Style for button to change menu style START ==== */
+/*------- CHANGE BUTTON: FULL TO ICON ONLY MENU --------------------- */
 	#change_btn {
 		padding: 5px;
 		border: none;
@@ -13,7 +13,7 @@
 	}
 /*==== END =========== */
 
-/*= Style for header widget START ================== */
+/*-----------------[ HEADER ]------------------------ */
 	#widget{
 		background-color: #292929;
 	}
@@ -52,7 +52,8 @@
 	}
 /*==== END ============= */
 
-/*= Style for menu with icon and text START ======== */
+/*--------- FULL MENU --------------- */
+
 	/* style for widget */
 	#full_menu_widget {
 		background-color: #454545;

@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icon/003lighticons-01white.png</file>
     <file>icon/10.png</file>
     <file>icon/001lighticons-04full-removebg-preview.png</file>
     <file>icon/001lighticons-01full.png</file>

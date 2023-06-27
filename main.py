@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):
                     + self.ui.full_menu_widget.findChildren(QPushButton)
         
         for btn in btn_list:
-            if index in [5, 6]:
+            if index in [7, 8]:
                 btn.setAutoExclusive(False)
                 btn.setChecked(False)
             else:
@@ -42,7 +42,7 @@ class MainWindow(QMainWindow):
     ## functions for changing menu page
     def on_home_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(0)
-    
+
     def on_home_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(0)
 
@@ -52,35 +52,41 @@ class MainWindow(QMainWindow):
     def on_price_list_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(1)
 
-    def on_new_transaction_btn_1_toggled(self):
+    def on_categories_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(2)
+
+    def on_categories_btn_2_toggled(self):
+        self.ui.stackedWidget.setCurrentIndex(2)
+
+    def on_new_transaction_btn_1_toggled(self):
+        self.ui.stackedWidget.setCurrentIndex(3)
 
     def on_new_transaction_btn_2_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(2)
+        self.ui.stackedWidget.setCurrentIndex(3)
 
     def on_transaction_record_btn_1_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(3)
+        self.ui.stackedWidget.setCurrentIndex(4)
 
     def on_transaction_record_btn_2_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(3)
+        self.ui.stackedWidget.setCurrentIndex(4)
 
     def on_daily_transaction_btn_1_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(4)
+        self.ui.stackedWidget.setCurrentIndex(5)
 
     def on_daily_transaction_btn_2_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(4)
+        self.ui.stackedWidget.setCurrentIndex(5)
 
     def on_daily_transaction_btn_1_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(5)
+        self.ui.stackedWidget.setCurrentIndex(6)
 
     def on_datewise_transaction_btn_2_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(5)
+        self.ui.stackedWidget.setCurrentIndex(6)
     
     def on_datewise_payment_btn_1_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(6)
+        self.ui.stackedWidget.setCurrentIndex(7)
 
     def on_daily_payment_btn_2_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(6)
+        self.ui.stackedWidget.setCurrentIndex(7)
 
 
 if __name__ == "__main__":
