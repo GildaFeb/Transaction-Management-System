@@ -4,6 +4,8 @@
 	}
 /*======== END =============== */
 
+
+
 /*------- CHANGE BUTTON: FULL TO ICON ONLY MENU --------------------- */
 	#change_btn {
 		padding: 5px;
@@ -75,7 +77,7 @@
 		text-align: left;
 		padding: 8px 0 8px 15px;
 		color: white;
-
+		
 	}
 
 	#full_menu_widget QPushButton:hover {
