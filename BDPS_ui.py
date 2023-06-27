@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1119, 809)
+        MainWindow.resize(1132, 817)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_22 = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -409,10 +409,10 @@ class Ui_MainWindow(object):
         self.label_8.setObjectName("label_8")
         self.verticalLayout_8.addWidget(self.label_8)
         self.lower_box = QtWidgets.QFrame(self.widget_9)
-        self.lower_box.setFrameShape(QtWidgets.QFrame.Panel)
+        self.lower_box.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.lower_box.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.lower_box.setLineWidth(20)
-        self.lower_box.setMidLineWidth(20)
+        self.lower_box.setLineWidth(3)
+        self.lower_box.setMidLineWidth(3)
         self.lower_box.setObjectName("lower_box")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.lower_box)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
@@ -729,9 +729,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.widget_17)
         self.horizontalLayout_13.setObjectName("horizontalLayout_13")
         self.pushButton_4 = QtWidgets.QPushButton(self.widget_17)
+        self.pushButton_4.setMinimumSize(QtCore.QSize(150, 0))
+        self.pushButton_4.setMaximumSize(QtCore.QSize(150, 16777215))
         self.pushButton_4.setObjectName("pushButton_4")
         self.horizontalLayout_13.addWidget(self.pushButton_4)
         self.pushButton_5 = QtWidgets.QPushButton(self.widget_17)
+        self.pushButton_5.setMinimumSize(QtCore.QSize(150, 0))
+        self.pushButton_5.setMaximumSize(QtCore.QSize(150, 16777215))
         self.pushButton_5.setObjectName("pushButton_5")
         self.horizontalLayout_13.addWidget(self.pushButton_5)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -1340,7 +1344,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
         self.new_transaction_btn_1.toggled['bool'].connect(self.new_transaction_btn_2.setChecked) # type: ignore
         self.datewise_transaction_btn_1.toggled['bool'].connect(self.datewise_transaction_btn_2.setChecked) # type: ignore
         self.daily_transaction_btn_1.toggled['bool'].connect(self.daily_transaction_btn_2.setChecked) # type: ignore
