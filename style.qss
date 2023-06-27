@@ -82,7 +82,7 @@
 
 	#full_menu_widget QPushButton:hover {
 		background-color: rgba(69, 125, 176, 0.5);
-		cursor: pointer;
+		
 	}
 
 	#full_menu_widget QPushButton:checked {
@@ -128,8 +128,5 @@
 
 /*====== PAGE 1: HOME ============ */
 
-#widget_2 QFrame {
-	box-shadow: 10px 10px 5px #aaaaaa;
-}
 
 /*===== END ============ */
