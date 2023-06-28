@@ -974,7 +974,7 @@ border-radius: 10px;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#action_area, #table_area {
+          <string notr="true">#action_area, #table_area, #action_area_payment, #table_area_payment {
 	background-color:white;
 	border-radius: 10px;
 }
@@ -994,7 +994,7 @@ border-radius: 10px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>7</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QGridLayout" name="gridLayout_10">
@@ -2184,16 +2184,13 @@ background-color: #f5f7f9;
                     <string notr="true">#add_item_2 {
 	color: white;
 	background-color: rgb(0, 38, 102);
-	opacity: .2;
 	border-radius: 5px;
-	box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 #add_discount {
 	color: white;
 	background-color: #313a46;
 	border-radius: 5px;
-	box-shadow: black 10px 10px;
 }
 
 #total {
@@ -3156,7 +3153,38 @@ background-color: #f5f7f9;
             <widget class="QWidget" name="table_area" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_24">
               <item>
-               <widget class="QTableView" name="table"/>
+               <widget class="QTableWidget" name="tableWidget_4">
+                <column>
+                 <property name="text">
+                  <string>#</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Date</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Transaction Code</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Client</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Total Amount</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Service Status</string>
+                 </property>
+                </column>
+               </widget>
               </item>
              </layout>
             </widget>
@@ -3300,6 +3328,54 @@ background-color: #f5f7f9;
                      </property>
                     </spacer>
                    </item>
+                   <item>
+                    <widget class="QLineEdit" name="search">
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Search..</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_2">
+                     <property name="maximumSize">
+                      <size>
+                       <width>35</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="baseSize">
+                      <size>
+                       <width>35</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resource.qrc">
+                       <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
+                     </property>
+                    </widget>
+                   </item>
                   </layout>
                  </item>
                  <item>
@@ -3342,6 +3418,16 @@ background-color: #f5f7f9;
                     <number>5</number>
                    </property>
                    <item>
+                    <widget class="QLabel" name="label_46">
+                     <property name="text">
+                      <string>Date:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDateEdit" name="dateEdit_4"/>
+                   </item>
+                   <item>
                     <widget class="QLabel" name="label_44">
                      <property name="text">
                       <string>0</string>
@@ -3354,74 +3440,6 @@ background-color: #f5f7f9;
                       <string>Transaction</string>
                      </property>
                     </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_2">
-                     <property name="maximumSize">
-                      <size>
-                       <width>35</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="baseSize">
-                      <size>
-                       <width>35</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="resource.qrc">
-                       <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="search">
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="frame">
-                      <bool>false</bool>
-                     </property>
-                     <property name="placeholderText">
-                      <string>Search..</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_46">
-                     <property name="text">
-                      <string>Date From:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QDateEdit" name="dateEdit_4"/>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_47">
-                     <property name="text">
-                      <string>Date To:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QDateEdit" name="dateEdit_5"/>
                    </item>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_31">
@@ -3515,7 +3533,7 @@ background-color: #f5f7f9;
               </font>
              </property>
              <property name="text">
-              <string>  Date-wise Transactions</string>
+              <string>  Daily Transactions</string>
              </property>
             </widget>
            </item>
@@ -3524,36 +3542,607 @@ background-color: #f5f7f9;
          <widget class="QWidget" name="datewise_transactions">
           <layout class="QGridLayout" name="gridLayout_8">
            <item row="0" column="0">
-            <widget class="QLabel" name="datewise_payments">
-             <property name="font">
-              <font>
-               <pointsize>20</pointsize>
-              </font>
+            <widget class="QWidget" name="widget_30" native="true">
+             <property name="styleSheet">
+              <string notr="true">#date_wise, #date_wise_table {
+	background-color:white;
+	border-radius: 10px;
+}
+
+#separator2 {
+	background-color: #d6d9e1;
+}
+#search1{
+	background-color: #f5f7f9;
+
+}
+</string>
              </property>
-             <property name="text">
-              <string>date-wise Transactions</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_27">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_47">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="baseSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>13</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>  Date-wise Transaction</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_31" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_29">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QWidget" name="date_wise" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>150</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>150</height>
+                    </size>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_28">
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_35">
+                      <property name="leftMargin">
+                       <number>7</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>7</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>7</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>7</number>
+                      </property>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_33">
+                        <item>
+                         <widget class="QComboBox" name="comboBox_8">
+                          <item>
+                           <property name="text">
+                            <string>All Transactions</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Succesful Transactions</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Pending Transactions</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Failed Transactions</string>
+                           </property>
+                          </item>
+                         </widget>
+                        </item>
+                        <item alignment="Qt::AlignRight">
+                         <widget class="QPushButton" name="pushButton_9">
+                          <property name="minimumSize">
+                           <size>
+                            <width>35</width>
+                            <height>35</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>30</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="baseSize">
+                           <size>
+                            <width>50</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icon/icon/01lighticons-02full.png</normaloff>:/icon/icon/01lighticons-02full.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>50</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="flat">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item alignment="Qt::AlignRight">
+                         <widget class="QLabel" name="label_49">
+                          <property name="text">
+                           <string>Filter List</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_13">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>318</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLineEdit" name="search1">
+                        <property name="minimumSize">
+                         <size>
+                          <width>300</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="frame">
+                         <bool>false</bool>
+                        </property>
+                        <property name="placeholderText">
+                         <string> Search..</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_10">
+                        <property name="minimumSize">
+                         <size>
+                          <width>35</width>
+                          <height>35</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>35</width>
+                          <height>35</height>
+                         </size>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="resource.qrc">
+                          <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="separator2">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>1</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>1</height>
+                       </size>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_38">
+                      <property name="leftMargin">
+                       <number>7</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>7</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>7</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>7</number>
+                      </property>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_36">
+                        <item>
+                         <widget class="QLabel" name="label_50">
+                          <property name="text">
+                           <string>Date From:</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QDateEdit" name="dateEdit_5"/>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_51">
+                          <property name="text">
+                           <string>Date To:</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QDateEdit" name="dateEdit_6"/>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_52">
+                        <property name="text">
+                         <string>0</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_53">
+                        <property name="text">
+                         <string>Transaction</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_14">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_37">
+                        <item>
+                         <widget class="QPushButton" name="pushButton_11">
+                          <property name="minimumSize">
+                           <size>
+                            <width>35</width>
+                            <height>35</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>35</width>
+                            <height>35</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icon/icon/001lighticons-67full.png</normaloff>:/icon/icon/001lighticons-67full.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>50</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="flat">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_54">
+                          <property name="text">
+                           <string>Print Report</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="date_wise_table" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_30">
+                    <item>
+                     <widget class="QTableWidget" name="tableWidget_3">
+                      <column>
+                       <property name="text">
+                        <string>#</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Date</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Transaction Code</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Client</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Total Amount</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Service Status</string>
+                       </property>
+                      </column>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
          </widget>
          <widget class="QWidget" name="datewise_payments_2">
-          <widget class="QLabel" name="label_25">
-           <property name="geometry">
-            <rect>
-             <x>280</x>
-             <y>270</y>
-             <width>301</width>
-             <height>211</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>date-wise payments</string>
-           </property>
-          </widget>
+          <layout class="QVBoxLayout" name="verticalLayout_31">
+           <item>
+            <widget class="QLabel" name="label_25">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>  Date-wise Payment</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="action_area_payment" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>100</height>
+              </size>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_14">
+              <item row="0" column="0">
+               <widget class="QComboBox" name="comboBox_9">
+                <item>
+                 <property name="text">
+                  <string>Fully Paid </string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Partially Paid</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Not Paid</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="1" colspan="2">
+               <spacer name="horizontalSpacer_15">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>602</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_56">
+                  <property name="text">
+                   <string>Date From:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_57">
+                  <property name="text">
+                   <string>Date To:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QDateEdit" name="dateEdit_7"/>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QDateEdit" name="dateEdit_8"/>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QPushButton" name="pushButton_12">
+                  <property name="text">
+                   <string>Filter</string>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>45</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="2">
+               <spacer name="horizontalSpacer_16">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>454</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="table_area_payment" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_32">
+              <item>
+               <widget class="QTableWidget" name="tableWidget_5">
+                <column>
+                 <property name="text">
+                  <string>#</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Date</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Transaction Code</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Client</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Total Amount</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Payment Status</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Paid Amount</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </widget>
        </item>
