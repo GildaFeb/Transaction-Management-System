@@ -1,7 +1,7 @@
 import mysql.connector
 from PyQt5.QtWidgets import QVBoxLayout, QApplication, QDialog, QLineEdit, QPushButton
 
-class Dialog(QDialog):
+class DBConnect(QDialog):
 
     def __init__(self):
         super().__init__()
@@ -43,6 +43,6 @@ class Dialog(QDialog):
         self.name.setText("")
 
 app = QApplication([])
-dialog = Dialog()
+dialog = DBConnect()
 dialog.show()
 app.exec()
