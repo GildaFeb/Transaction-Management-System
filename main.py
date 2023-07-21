@@ -4,7 +4,7 @@ from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from PyQt5 import QtWidgets, QtGui, QtCore
 
 from BDPS_ui import Ui_MainWindow
-from BDPS_dbconnect import DBConnect
+#from BDPS_dbconnect import DBConnect
 
 class MainWindow(QMainWindow):
     def __init__(self):

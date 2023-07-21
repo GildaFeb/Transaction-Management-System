@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1132</width>
-    <height>817</height>
+    <width>1584</width>
+    <height>857</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -996,532 +996,782 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
-          <layout class="QGridLayout" name="gridLayout_10">
-           <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_45">
+           <item>
             <widget class="QWidget" name="widget_2" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <property name="leftMargin">
+               <number>9</number>
+              </property>
+              <property name="topMargin">
+               <number>9</number>
+              </property>
+              <property name="rightMargin">
+               <number>9</number>
+              </property>
+              <property name="bottomMargin">
+               <number>9</number>
+              </property>
+              <property name="horizontalSpacing">
+               <number>9</number>
+              </property>
+              <item row="0" column="0">
                <widget class="QWidget" name="widget_4" native="true">
-                <layout class="QGridLayout" name="gridLayout_2">
-                 <item row="1" column="0">
-                  <widget class="QWidget" name="widget_6" native="true"/>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_7">
+                <property name="styleSheet">
+                 <string notr="true">
+*{
+	background-color:#2e3192;
+}
+
+#total_product_widget, #total_sales_widget, #total_revenue_widget{
+	background-color:#2e3192;
+	border-radius: 15px;
+    border: 1px solid #2459ae;
+
+}
+
+#label_sales, #label_revenue, #label_product, #label_summary, #total_sales, #total_revenue, #total_product, #peso_sign_3, #peso_sign, #peso_sign_2{
+
+	color:white;
+	text-align: left;
+}
+</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <item>
+                  <widget class="QLabel" name="label_summary">
                    <property name="text">
-                    <string>Date:</string>
+                    <string>Summary</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="1" rowspan="2">
-                  <widget class="QWidget" name="widget_9" native="true">
-                   <layout class="QVBoxLayout" name="verticalLayout_8">
+                 <item>
+                  <widget class="QWidget" name="total_revenue_widget" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_45">
                     <item>
-                     <widget class="QLabel" name="label_8">
-                      <property name="font">
-                       <font>
-                        <pointsize>10</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Transactions</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="lower_box">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <property name="lineWidth">
-                       <number>3</number>
-                      </property>
-                      <property name="midLineWidth">
-                       <number>3</number>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_9">
-                       <item>
-                        <widget class="QLabel" name="label_6">
-                         <property name="text">
-                          <string>TextLabel</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="0" column="0">
-                  <widget class="QWidget" name="widget_8" native="true">
-                   <layout class="QGridLayout" name="gridLayout_12">
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="label_3">
-                      <property name="font">
-                       <font>
-                        <pointsize>18</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Welcome</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget_5" native="true">
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_6">
-                   <item>
-                    <widget class="QFrame" name="total_payment">
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>1500</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="frameShape">
-                      <enum>QFrame::Panel</enum>
-                     </property>
-                     <property name="frameShadow">
-                      <enum>QFrame::Raised</enum>
-                     </property>
-                     <property name="lineWidth">
-                      <number>5</number>
-                     </property>
-                     <property name="midLineWidth">
-                      <number>2</number>
-                     </property>
-                     <widget class="QLabel" name="logo_label_4">
-                      <property name="geometry">
-                       <rect>
-                        <x>20</x>
-                        <y>30</y>
-                        <width>60</width>
-                        <height>60</height>
-                       </rect>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>60</width>
-                        <height>60</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>50</width>
-                        <height>50</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap resource="resource.qrc">:/icon/icon/2.png</pixmap>
-                      </property>
-                      <property name="scaledContents">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                     <widget class="QLabel" name="label_9">
-                      <property name="geometry">
-                       <rect>
-                        <x>100</x>
-                        <y>50</y>
-                        <width>55</width>
-                        <height>16</height>
-                       </rect>
-                      </property>
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                     <widget class="QLabel" name="label_11">
-                      <property name="geometry">
-                       <rect>
-                        <x>100</x>
-                        <y>50</y>
-                        <width>91</width>
-                        <height>81</height>
-                       </rect>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap resource="resource.qrc">:/icon/icon/003lighticons-07full.png</pixmap>
-                      </property>
-                     </widget>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="box2">
-                   <property name="frameShape">
-                    <enum>QFrame::Panel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>5</number>
-                   </property>
-                   <property name="midLineWidth">
-                    <number>2</number>
-                   </property>
-                   <widget class="QWidget" name="widget_11" native="true">
-                    <property name="geometry">
-                     <rect>
-                      <x>40</x>
-                      <y>20</y>
-                      <width>120</width>
-                      <height>80</height>
-                     </rect>
-                    </property>
-                    <widget class="QLabel" name="label_12">
-                     <property name="geometry">
-                      <rect>
-                       <x>0</x>
-                       <y>10</y>
-                       <width>55</width>
-                       <height>16</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="label_15">
-                     <property name="geometry">
-                      <rect>
-                       <x>60</x>
-                       <y>50</y>
-                       <width>55</width>
-                       <height>16</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="logo_label_6">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>30</y>
-                       <width>60</width>
-                       <height>60</height>
-                      </rect>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>60</width>
-                       <height>60</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>50</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="pixmap">
-                      <pixmap resource="resource.qrc">:/icon/icon/001lighticons-04full-removebg-preview.png</pixmap>
-                     </property>
-                     <property name="scaledContents">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="logo_label_7">
-                     <property name="geometry">
-                      <rect>
-                       <x>60</x>
-                       <y>70</y>
-                       <width>60</width>
-                       <height>60</height>
-                      </rect>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>60</width>
-                       <height>60</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>50</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="pixmap">
-                      <pixmap resource="resource.qrc">:/icon/icon/001lighticons-04full-removebg-preview.png</pixmap>
-                     </property>
-                     <property name="scaledContents">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </widget>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget_7" native="true">
-                <layout class="QHBoxLayout" name="horizontalLayout_8">
-                 <item>
-                  <widget class="QFrame" name="box1">
-                   <property name="maximumSize">
-                    <size>
-                     <width>400</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Panel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>5</number>
-                   </property>
-                   <property name="midLineWidth">
-                    <number>2</number>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_13">
-                    <item row="1" column="0">
-                     <widget class="QWidget" name="widget_10" native="true">
-                      <widget class="QLabel" name="label_14">
-                       <property name="geometry">
-                        <rect>
-                         <x>11</x>
-                         <y>11</y>
-                         <width>55</width>
-                         <height>16</height>
-                        </rect>
-                       </property>
-                       <property name="text">
-                        <string>Items</string>
-                       </property>
-                      </widget>
-                      <widget class="QLabel" name="logo_label_5">
-                       <property name="geometry">
-                        <rect>
-                         <x>50</x>
-                         <y>40</y>
-                         <width>60</width>
-                         <height>60</height>
-                        </rect>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="pixmap">
-                        <pixmap resource="resource.qrc">:/icon/icon/001lighticons-04full-removebg-preview.png</pixmap>
-                       </property>
-                       <property name="scaledContents">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="box3">
-                   <property name="frameShape">
-                    <enum>QFrame::Panel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>5</number>
-                   </property>
-                   <property name="midLineWidth">
-                    <number>2</number>
-                   </property>
-                   <widget class="QWidget" name="widget_12" native="true">
-                    <property name="geometry">
-                     <rect>
-                      <x>30</x>
-                      <y>30</y>
-                      <width>120</width>
-                      <height>80</height>
-                     </rect>
-                    </property>
-                    <widget class="QLabel" name="label_13">
-                     <property name="geometry">
-                      <rect>
-                       <x>0</x>
-                       <y>10</y>
-                       <width>55</width>
-                       <height>16</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="label_16">
-                     <property name="geometry">
-                      <rect>
-                       <x>40</x>
-                       <y>50</y>
-                       <width>55</width>
-                       <height>16</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="logo_label_8">
-                     <property name="geometry">
-                      <rect>
-                       <x>-20</x>
-                       <y>30</y>
-                       <width>60</width>
-                       <height>60</height>
-                      </rect>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>60</width>
-                       <height>60</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>50</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="pixmap">
-                      <pixmap resource="resource.qrc">:/icon/icon/001lighticons-04full-removebg-preview.png</pixmap>
-                     </property>
-                     <property name="scaledContents">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </widget>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="business_name">
-                   <property name="maximumSize">
-                    <size>
-                     <width>2000</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Panel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>5</number>
-                   </property>
-                   <property name="midLineWidth">
-                    <number>2</number>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_9">
-                    <item row="0" column="0">
-                     <layout class="QHBoxLayout" name="horizontalLayout_6">
+                     <layout class="QVBoxLayout" name="verticalLayout_44">
                       <item>
-                       <widget class="QLabel" name="logo_label_3">
-                        <property name="minimumSize">
-                         <size>
-                          <width>60</width>
-                          <height>60</height>
-                         </size>
+                       <layout class="QHBoxLayout" name="horizontalLayout_7">
+                        <property name="leftMargin">
+                         <number>10</number>
                         </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>120</width>
-                          <height>120</height>
-                         </size>
+                        <property name="topMargin">
+                         <number>30</number>
                         </property>
-                        <property name="text">
-                         <string/>
+                        <property name="rightMargin">
+                         <number>10</number>
                         </property>
-                        <property name="pixmap">
-                         <pixmap resource="resource.qrc">:/icon/icon/business-logo.png</pixmap>
+                        <property name="bottomMargin">
+                         <number>10</number>
                         </property>
-                        <property name="scaledContents">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
+                        <item>
+                         <widget class="QLabel" name="peso_sign">
+                          <property name="text">
+                           <string>₱</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="total_revenue">
+                          <property name="text">
+                           <string>2,000</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_19">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>118</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
                       </item>
                       <item>
-                       <widget class="QLabel" name="label_5">
-                        <property name="font">
-                         <font>
-                          <family>Yu Gothic UI Semilight</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
+                       <widget class="QLabel" name="label_revenue">
                         <property name="text">
-                         <string>Blue Dawn Printing Services</string>
+                         <string>Total Revenue</string>
                         </property>
                        </widget>
                       </item>
                      </layout>
                     </item>
+                    <item>
+                     <widget class="QLabel" name="label_7">
+                      <property name="text">
+                       <string>logo</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="total_sales_widget" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_46">
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_39">
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_8">
+                        <property name="leftMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>30</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>10</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="peso_sign_2">
+                          <property name="text">
+                           <string>₱</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="total_sales">
+                          <property name="text">
+                           <string>10,233</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_16">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>118</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_sales">
+                        <property name="text">
+                         <string>Total Sales</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_6">
+                      <property name="text">
+                       <string>logo</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="total_product_widget" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_47">
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_31">
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_44">
+                        <property name="leftMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>30</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>10</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="total_product">
+                          <property name="text">
+                           <string>3,432</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="peso_sign_3">
+                          <property name="text">
+                           <string>Products</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_15">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>118</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_product">
+                        <property name="text">
+                         <string>Total product</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_3">
+                      <property name="text">
+                       <string>logo</string>
+                      </property>
+                     </widget>
+                    </item>
                    </layout>
                   </widget>
                  </item>
                 </layout>
                </widget>
+              </item>
+              <item row="0" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <property name="spacing">
+                 <number>9</number>
+                </property>
+                <property name="leftMargin">
+                 <number>9</number>
+                </property>
+                <property name="topMargin">
+                 <number>9</number>
+                </property>
+                <property name="rightMargin">
+                 <number>9</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>9</number>
+                </property>
+                <item>
+                 <widget class="QWidget" name="widget_10" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#pendingT_widget, #totalT_widget, #successfulT_widget, #category_widget{
+
+	background-color: white;
+	border-radius: 15%;
+
+}</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <property name="leftMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>5</number>
+                   </property>
+                   <item>
+                    <layout class="QVBoxLayout" name="verticalLayout_6">
+                     <item>
+                      <widget class="QFrame" name="totalT_widget">
+                       <property name="frameShape">
+                        <enum>QFrame::Panel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Plain</enum>
+                       </property>
+                       <property name="lineWidth">
+                        <number>0</number>
+                       </property>
+                       <property name="midLineWidth">
+                        <number>0</number>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_52">
+                        <item>
+                         <layout class="QVBoxLayout" name="verticalLayout_51">
+                          <item>
+                           <widget class="QLabel" name="total_transactions">
+                            <property name="text">
+                             <string>230</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_13">
+                            <property name="text">
+                             <string>Total Transaction</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="logo_label_14">
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>50</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="pixmap">
+                           <pixmap resource="resource.qrc">:/icon/icon/001lighticons-04full-removebg-preview.png</pixmap>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="pendingT_widget">
+                       <property name="maximumSize">
+                        <size>
+                         <width>400</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Panel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <property name="lineWidth">
+                        <number>0</number>
+                       </property>
+                       <property name="midLineWidth">
+                        <number>0</number>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_57">
+                        <item>
+                         <layout class="QVBoxLayout" name="verticalLayout_50">
+                          <item>
+                           <widget class="QLabel" name="PendingTransactions">
+                            <property name="text">
+                             <string>7</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_23">
+                            <property name="text">
+                             <string>Pending Transactions</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="logo_label_13">
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>50</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="pixmap">
+                           <pixmap resource="resource.qrc">:/icon/icon/001lighticons-04full-removebg-preview.png</pixmap>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QVBoxLayout" name="verticalLayout_7">
+                     <item>
+                      <widget class="QFrame" name="successfulT_widget">
+                       <property name="frameShape">
+                        <enum>QFrame::Panel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <property name="lineWidth">
+                        <number>0</number>
+                       </property>
+                       <property name="midLineWidth">
+                        <number>0</number>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_56">
+                        <item>
+                         <layout class="QVBoxLayout" name="verticalLayout_54">
+                          <item>
+                           <widget class="QLabel" name="sucessful_transactions">
+                            <property name="text">
+                             <string>982</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_22">
+                            <property name="text">
+                             <string>Successful Transactions</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="logo_label_8">
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>50</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="pixmap">
+                           <pixmap resource="resource.qrc">:/icon/icon/001lighticons-04full-removebg-preview.png</pixmap>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="category_widget">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>1500</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Panel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <property name="lineWidth">
+                        <number>0</number>
+                       </property>
+                       <property name="midLineWidth">
+                        <number>0</number>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_55">
+                        <item>
+                         <layout class="QVBoxLayout" name="verticalLayout_53">
+                          <item>
+                           <widget class="QLabel" name="Total_Categories">
+                            <property name="text">
+                             <string>133</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_16">
+                            <property name="text">
+                             <string>Total Categories</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="logo_label_6">
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>50</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="pixmap">
+                           <pixmap resource="resource.qrc">:/icon/icon/001lighticons-04full-removebg-preview.png</pixmap>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="business_name">
+                  <property name="maximumSize">
+                   <size>
+                    <width>2000</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::Panel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <property name="lineWidth">
+                   <number>0</number>
+                  </property>
+                  <property name="midLineWidth">
+                   <number>0</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="0" column="2">
+               <layout class="QVBoxLayout" name="verticalLayout_48">
+                <property name="spacing">
+                 <number>9</number>
+                </property>
+                <property name="leftMargin">
+                 <number>9</number>
+                </property>
+                <property name="topMargin">
+                 <number>9</number>
+                </property>
+                <property name="rightMargin">
+                 <number>9</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>9</number>
+                </property>
+                <item>
+                 <widget class="QCalendarWidget" name="calendarWidget">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="widget_5" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#frame_facebook, #frame_messenger, #frame_cnumber{
+	
+	 border: 1px solid white;
+     background-color: white;
+	border-radius: 15px;
+}</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_49">
+                   <property name="spacing">
+                    <number>9</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>2</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>2</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>2</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>2</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_facebook">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="frame_messenger">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="frame_cnumber">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="banner" native="true">
+                  <property name="styleSheet">
+                   <string notr="true">#banner{
+
+	 background-color: white;
+	 border-radius: 15px;
+}</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_46">
+                   <property name="spacing">
+                    <number>10</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>22</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>22</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>22</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>22</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="label_5">
+                     <property name="font">
+                      <font>
+                       <family>Yu Gothic UI Semilight</family>
+                       <pointsize>12</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Blue Dawn Printing Services</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="logo_label_3">
+                     <property name="minimumSize">
+                      <size>
+                       <width>60</width>
+                       <height>60</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>120</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="resource.qrc">:/icon/icon/business-logo.png</pixmap>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
             </widget>
