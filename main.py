@@ -1,8 +1,7 @@
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from PyQt5 import QtWidgets, QtGui, QtCore
-
 from BDPS_ui import Ui_MainWindow
 #from BDPS_dbconnect import DBConnect
 
@@ -16,6 +15,8 @@ class MainWindow(QMainWindow):
         self.ui.icon_only_widget.hide()
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.home_btn_2.setChecked(True)
+        
+        self.ui.search_pricelist_btn.clicked.connect(self.show_info_messagebox)
 
         
     ## Function for searching
@@ -89,17 +90,31 @@ class MainWindow(QMainWindow):
 
     def on_daily_payment_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(7)
-
-     ## ----------------------- ADD SHADOW ---------------------
-
+ 
+    ## ---------------- Trial for search button in pricelist ------------------
     
+    def on_search_pricelist_clicked(self):
+        self.ui.label_10.setText("Button Clicked!")
+    
+    def show_info_messagebox(self):
+        self.msg = QMessageBox()
+        self.msg.setIcon(QMessageBox.Information)
+    
+        # setting message for Message Box
+        self.msg.setText("Information ")
+        
+        # setting Message box window title
+        self.msg.setWindowTitle("Information MessageBox")
+        
+        # declaring buttons on Message Box
+        self.msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        
+        retval = self.msg.exec_()  
 
-
-
+     ## ----------------------- ADD SHADOW --------------------- 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-
     ## loading style file
     # with open("style.qss", "r") as style_file:
     #     style_str = style_file.read()
@@ -110,8 +125,6 @@ if __name__ == "__main__":
     style_file.open(QFile.ReadOnly | QFile.Text)
     style_stream = QTextStream(style_file)
     app.setStyleSheet(style_stream.readAll())
-
-    
 
     window = MainWindow()
     window.show()
