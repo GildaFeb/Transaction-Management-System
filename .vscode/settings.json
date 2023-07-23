@@ -1,17 +1,10 @@
 {
     "sqltools.connections": [
         {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
             "previewLimit": 50,
-            "server": "localhost",
-            "port": 3306,
-            "driver": "MySQL",
-            "name": "MySQL_BDPS",
-            "database": "BDPS_db",
-            "username": "root"
+            "driver": "SQLite",
+            "database": "${workspaceFolder:Transaction-Management-System}/BDPS_dbconnect/BDPS.db",
+            "name": "BDPS_connection"
         }
     ]
 }

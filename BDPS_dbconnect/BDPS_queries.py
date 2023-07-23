@@ -1,5 +1,10 @@
-import mysql.connector
+import sqlite3
 from PyQt5.QtWidgets import QVBoxLayout, QApplication, QDialog, QLineEdit, QPushButton
+
+import os
+
+
+
 
 class DBConnect(QDialog):
 
@@ -20,27 +25,21 @@ class DBConnect(QDialog):
 
         self.setLayout(self.layout)
 
+        self.db_conn = sqlite3.connect("BDPS_dbconnect/BDPS.db")
+
     def add_customer(self):
         phone_number = self.phone_number.text()
         name = self.name.text()
 
-        db = mysql.connector.connect(
-            host = "localhost",
-            user = "root",
-            passwd = "password",
-            database = "BDPS_db"
-        )
-
-        cursor = db.cursor()
-        cursor.execute("INSERT INTO customer (CUST_NAME, CUST_CN) VALUES (%s, %s)", (phone_number, name))
-
-        db.commit()
-
-        cursor.close()
-        db.close()
+        cursor = self.db_conn.cursor()
+        cursor.execute("INSERT INTO customer(CUST_NAME, CUST_CN) VALUES (?, ?)", (phone_number, name))
+        self.db_conn.commit()
 
         self.phone_number.setText("")
         self.name.setText("")
+
+    def __del__(self):
+        self.db_conn.close()
 
 app = QApplication([])
 dialog = DBConnect()
