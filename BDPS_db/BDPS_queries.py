@@ -5,10 +5,10 @@ from sqlite3 import Error
 from PyQt5.QtWidgets import QTableWidgetItem
 
 
-class DBqueries:
+class DBQueries:
     
     def __init__(self, arg):
-        super(DBqueries, self).__init__()
+        super(DBQueries, self).__init__()
         self.arg = arg
 
     def dbconnect(db_file):
@@ -21,11 +21,11 @@ class DBqueries:
         return conn
 
     def main(dbFolder):
-        conn = DBqueries.dbconnect(dbFolder)
+        conn = DBQueries.dbconnect(dbFolder)
 
     #========================= CATEGORIES =============================#
     def getCategories(dbFolder):
-        conn = DBqueries.dbconnect(dbFolder)
+        conn = DBQueries.dbconnect(dbFolder)
 
         getCategories = "SELECT * FROM categories;"
         try:
@@ -36,7 +36,7 @@ class DBqueries:
             print(e)
     
     def addCategories(self, dbFolder):
-        conn = DBqueries.dbconnect(dbFolder)
+        conn = DBQueries.dbconnect(dbFolder)
 
         category_name = self.ui.product_name_category.text()
         category_desc = self.ui.category_description.text()

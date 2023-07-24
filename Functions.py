@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from PyQt5 import QtWidgets, QtGui, QtCore
 from BDPS_ui import Ui_MainWindow
-from BDPS_dbconnect.BDPS_queries import DBConnect
+from BDPS_db.BDPS_queries import DBQueries
 
 
 class BtnFunctions(QMainWindow):
