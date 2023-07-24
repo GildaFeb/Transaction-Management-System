@@ -996,7 +996,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -4093,7 +4093,7 @@ background-color: #f5f7f9;
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_8">
+                      <widget class="QPushButton" name="filter_daily_tnx_btn">
                        <property name="maximumSize">
                         <size>
                          <width>30</width>
@@ -4510,7 +4510,7 @@ background-color: #f5f7f9;
                          </widget>
                         </item>
                         <item alignment="Qt::AlignRight">
-                         <widget class="QPushButton" name="pushButton_9">
+                         <widget class="QPushButton" name="filter_dwt_btn">
                           <property name="minimumSize">
                            <size>
                             <width>35</width>
@@ -4889,7 +4889,7 @@ background-color: #f5f7f9;
                    </widget>
                   </item>
                   <item alignment="Qt::AlignRight">
-                   <widget class="QPushButton" name="pushButton_12">
+                   <widget class="QPushButton" name="filter_dwp_btn">
                     <property name="minimumSize">
                      <size>
                       <width>35</width>

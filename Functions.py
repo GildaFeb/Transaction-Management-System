@@ -18,9 +18,15 @@ class BtnFunctions(QMainWindow):
     
         self.ui.search_pricelist_btn.clicked.connect(self.pricelist_clicked)
         self.ui.search_category_btn.clicked.connect(self.category_clicked)
+        
         self.ui.search_daily_tnx_btn.clicked.connect(self.daily_tnx_clicked)
+        self.ui.filter_daily_tnx_btn.clicked.connect(self.filter_daily_tnx_clicked)
+        
         self.ui.search_dwt_btn.clicked.connect(self.date_wise_transactions_clicked)
+        self.ui.filter_dwt_btn.clicked.connect(self.filter_date_wise_transaction_clicked)
+        
         self.ui.search_dwt_btn_4.clicked.connect(self.date_wise_payment_clicked)
+        self.ui.filter_dwp_btn.clicked.connect(self.filter_date_wise_payment_clicked) 
         
     # Price list search button   
     def pricelist_clicked(self):
@@ -33,14 +39,27 @@ class BtnFunctions(QMainWindow):
     #Daily Transaction search button
     def daily_tnx_clicked(self):
         print("daily")
+        
+    #Daily Transaction filter button
+    def filter_daily_tnx_clicked(self):
+        print("filter daily")
     
     #Date-wise transactions search button
     def date_wise_transactions_clicked(self):
         print("date-wise transactions")
     
+    #Date-wise transaction filter button
+    def filter_date_wise_transaction_clicked(self):
+        print("date-wise transactions filter")
+    
     #Date-wise payments search button
     def date_wise_payment_clicked(self):
         print("date-wise payments")
+    
+    #Date-wise transaction filter button
+    def filter_date_wise_payment_clicked(self):
+        print("date-wise payment filter")
+        
         
     ## Function for searching
     def on_search_btn_clicked(self):
