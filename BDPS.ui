@@ -996,7 +996,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -1887,6 +1887,16 @@ background-color: #1a1c28;
                            <string>shdbcs</string>
                           </property>
                          </row>
+                         <row>
+                          <property name="text">
+                           <string>asfzx</string>
+                          </property>
+                         </row>
+                         <row>
+                          <property name="text">
+                           <string>zxcz</string>
+                          </property>
+                         </row>
                          <column>
                           <property name="text">
                            <string>ID</string>
@@ -1924,7 +1934,12 @@ background-color: #1a1c28;
                          </column>
                          <item row="0" column="0">
                           <property name="text">
-                           <string>ca a</string>
+                           <string>Shan</string>
+                          </property>
+                         </item>
+                         <item row="0" column="1">
+                          <property name="text">
+                           <string>sa</string>
                           </property>
                          </item>
                          <item row="0" column="2">
@@ -1932,9 +1947,29 @@ background-color: #1a1c28;
                            <string>wab dx</string>
                           </property>
                          </item>
+                         <item row="0" column="3">
+                          <property name="text">
+                           <string>asd</string>
+                          </property>
+                         </item>
+                         <item row="0" column="4">
+                          <property name="text">
+                           <string>sd</string>
+                          </property>
+                         </item>
+                         <item row="0" column="5">
+                          <property name="text">
+                           <string>efsd</string>
+                          </property>
+                         </item>
+                         <item row="0" column="6">
+                          <property name="text">
+                           <string>sd</string>
+                          </property>
+                         </item>
                          <item row="1" column="0">
                           <property name="text">
-                           <string>d aw</string>
+                           <string>Don</string>
                           </property>
                          </item>
                          <item row="1" column="1">
@@ -1942,9 +1977,14 @@ background-color: #1a1c28;
                            <string>adx a</string>
                           </property>
                          </item>
+                         <item row="1" column="2">
+                          <property name="text">
+                           <string>s</string>
+                          </property>
+                         </item>
                          <item row="1" column="3">
                           <property name="text">
-                           <string>dc </string>
+                           <string>s</string>
                           </property>
                          </item>
                          <item row="1" column="4">
@@ -1955,6 +1995,81 @@ background-color: #1a1c28;
                          <item row="1" column="5">
                           <property name="text">
                            <string>dw a</string>
+                          </property>
+                         </item>
+                         <item row="1" column="6">
+                          <property name="text">
+                           <string>ds</string>
+                          </property>
+                         </item>
+                         <item row="2" column="0">
+                          <property name="text">
+                           <string>Maangas</string>
+                          </property>
+                         </item>
+                         <item row="2" column="1">
+                          <property name="text">
+                           <string>wwweewes</string>
+                          </property>
+                         </item>
+                         <item row="2" column="2">
+                          <property name="text">
+                           <string>er</string>
+                          </property>
+                         </item>
+                         <item row="2" column="3">
+                          <property name="text">
+                           <string>s</string>
+                          </property>
+                         </item>
+                         <item row="2" column="4">
+                          <property name="text">
+                           <string>s</string>
+                          </property>
+                         </item>
+                         <item row="2" column="5">
+                          <property name="text">
+                           <string>dsf</string>
+                          </property>
+                         </item>
+                         <item row="2" column="6">
+                          <property name="text">
+                           <string>s</string>
+                          </property>
+                         </item>
+                         <item row="3" column="0">
+                          <property name="text">
+                           <string>Jiru</string>
+                          </property>
+                         </item>
+                         <item row="3" column="1">
+                          <property name="text">
+                           <string>we</string>
+                          </property>
+                         </item>
+                         <item row="3" column="2">
+                          <property name="text">
+                           <string>ererer</string>
+                          </property>
+                         </item>
+                         <item row="3" column="3">
+                          <property name="text">
+                           <string>c</string>
+                          </property>
+                         </item>
+                         <item row="3" column="4">
+                          <property name="text">
+                           <string>x</string>
+                          </property>
+                         </item>
+                         <item row="3" column="5">
+                          <property name="text">
+                           <string>sdf</string>
+                          </property>
+                         </item>
+                         <item row="3" column="6">
+                          <property name="text">
+                           <string>b</string>
                           </property>
                          </item>
                         </widget>
@@ -2580,6 +2695,16 @@ background-color: #1a1c28;
                             </row>
                             <row>
                              <property name="text">
+                              <string>sdfcbx</string>
+                             </property>
+                            </row>
+                            <row>
+                             <property name="text">
+                              <string>asdf</string>
+                             </property>
+                            </row>
+                            <row>
+                             <property name="text">
                               <string>shdbcs</string>
                              </property>
                             </row>
@@ -2605,7 +2730,12 @@ background-color: #1a1c28;
                             </column>
                             <item row="0" column="0">
                              <property name="text">
-                              <string>ca a</string>
+                              <string>Gris</string>
+                             </property>
+                            </item>
+                            <item row="0" column="1">
+                             <property name="text">
+                              <string>xc</string>
                              </property>
                             </item>
                             <item row="0" column="2">
@@ -2613,17 +2743,67 @@ background-color: #1a1c28;
                               <string>wab dx</string>
                              </property>
                             </item>
+                            <item row="0" column="3">
+                             <property name="text">
+                              <string>xcv</string>
+                             </property>
+                            </item>
                             <item row="1" column="0">
                              <property name="text">
-                              <string>d aw</string>
+                              <string>Maangas</string>
                              </property>
                             </item>
                             <item row="1" column="1">
                              <property name="text">
-                              <string>adx a</string>
+                              <string>ds</string>
+                             </property>
+                            </item>
+                            <item row="1" column="2">
+                             <property name="text">
+                              <string>zx</string>
                              </property>
                             </item>
                             <item row="1" column="3">
+                             <property name="text">
+                              <string>ds</string>
+                             </property>
+                            </item>
+                            <item row="2" column="0">
+                             <property name="text">
+                              <string>Shan</string>
+                             </property>
+                            </item>
+                            <item row="2" column="1">
+                             <property name="text">
+                              <string>xcv</string>
+                             </property>
+                            </item>
+                            <item row="2" column="2">
+                             <property name="text">
+                              <string>z</string>
+                             </property>
+                            </item>
+                            <item row="2" column="3">
+                             <property name="text">
+                              <string>ds</string>
+                             </property>
+                            </item>
+                            <item row="3" column="0">
+                             <property name="text">
+                              <string>Don</string>
+                             </property>
+                            </item>
+                            <item row="3" column="1">
+                             <property name="text">
+                              <string>adx a</string>
+                             </property>
+                            </item>
+                            <item row="3" column="2">
+                             <property name="text">
+                              <string>b</string>
+                             </property>
+                            </item>
+                            <item row="3" column="3">
                              <property name="text">
                               <string>dc </string>
                              </property>
