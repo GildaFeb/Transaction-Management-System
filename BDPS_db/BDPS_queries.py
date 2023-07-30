@@ -39,6 +39,7 @@ class DBQueries():
         if conn is not None:
             DBQueries.create_table(conn, create_category_table)
         else:
+            #PROMPT
             print("Error! Cannot connect.")
     
 
@@ -64,6 +65,7 @@ class DBQueries():
         category_sts = self.ui.status_category.currentText()
         
         if not category_name or not category_desc:
+            #PROMPT
             print("Missing fields.")
             return
 
@@ -72,6 +74,7 @@ class DBQueries():
                                     """
 
         if not conn.cursor().execute(insert_category_data_sql):
+            #PROMPT
             print("Could not insert")
         else:
             conn.commit()
@@ -111,6 +114,7 @@ class DBQueries():
 
         selected_row = self.ui.category_table.currentRow()
         if selected_row < 0:
+            #PROMPT
             print("No category selected.")
             return
 
@@ -127,7 +131,6 @@ class DBQueries():
         c.execute(get_category_data_sql)
         existing_data = c.fetchone()
 
-        # Update only the non-empty fields
         if not category_name:
             category_name = existing_data[0]
         if not category_desc:
@@ -158,29 +161,50 @@ class DBQueries():
     def deleteCategory(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        selected_row = self.ui.category_table.currentRow()
-        if selected_row < 0:
+        selected_rows = self.ui.category_table.selectionModel().selectedRows()
+        if not selected_rows:
             print("No category selected.")
             return
 
-        category_id = int(self.ui.category_table.item(selected_row, 0).text())
+        if len(selected_rows) == 1:
+            category_id = int(self.ui.category_table.item(selected_rows[0].row(), 0).text())
 
-        delete_category_sql = f"""
-                                DELETE FROM categories
-                                WHERE CAT_ID = {category_id};
-                            """
+            delete_category_sql = f"""
+                                    DELETE FROM categories
+                                    WHERE CAT_ID = {category_id};
+                                """
 
-        try:
-            c = conn.cursor()
-            c.execute(delete_category_sql)
-            conn.commit()
+            try:
+                c = conn.cursor()
+                c.execute(delete_category_sql)
+                conn.commit()
 
-            DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+                DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
 
-        except Error as e:
-            print(e)
+            except Error as e:
+                print(e)
 
-    #============================== CONSTRICTIONS ================================#
+        else:
+            response = input("You have selected multiple categories. Are you sure you want to delete them? (y/n): ").strip().lower()
+
+            if response == 'y':
+                category_ids = [int(self.ui.category_table.item(row.row(), 0).text()) for row in selected_rows]
+
+                delete_selected_categories_sql = f"""
+                                                DELETE FROM categories
+                                                WHERE CAT_ID IN ({', '.join(str(id) for id in category_ids)});
+                                            """
+
+                try:
+                    c = conn.cursor()
+                    c.execute(delete_selected_categories_sql)
+                    conn.commit()
+
+                    DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+
+                except Error as e:
+                    print(e)
+
     def on_category_selection_changed(self):
         selected_row = self.ui.category_table.currentRow()
         add_category_btn = self.ui.add_category_btn
@@ -198,3 +222,5 @@ class DBQueries():
             edit_category_btn.setEnabled(False)
         else:
             edit_category_btn.setEnabled(True)
+
+    #======================= PRICE LIST QUERIES =========================#

@@ -1141,13 +1141,14 @@ class Ui_MainWindow(object):
         self.No_search_found.setObjectName("No_search_found")
         self.verticalLayout_35.addWidget(self.No_search_found)
         self.category_table = QtWidgets.QTableWidget(self.table_item_2)
+        self.category_table.setMaximumSize(QtCore.QSize(794, 16777215))
         self.category_table.setStyleSheet("\n"
 "#tableWidget{\n"
 "    color: rgb(255, 255, 255);\n"
 "    gridline-color: rgb(255, 255, 255);\n"
 "background-color: #1a1c28;\n"
 "}")
-        self.category_table.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
+        self.category_table.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
         self.category_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.category_table.setObjectName("category_table")
         self.category_table.setColumnCount(4)
