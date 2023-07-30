@@ -63,20 +63,34 @@ class DBQueries():
         category_name = self.ui.product_name_category.text()
         category_desc = self.ui.category_description.toPlainText()
         category_sts = self.ui.status_category.currentText()
-        
+
         if not category_name or not category_desc:
             #PROMPT
             print("Missing fields.")
+            return
+
+        check_category_exists_sql = f"""
+                                    SELECT CAT_ID FROM categories
+                                    WHERE CAT_NAME = '{category_name}'
+                                    AND CAT_DESC = '{category_desc}'
+                                    AND CAT_STS = '{category_sts}';
+                                    """
+        c = conn.cursor()
+        c.execute(check_category_exists_sql)
+        existing_category = c.fetchone()
+
+        if existing_category:
+            #PROMPT
+            print("Category already exists.")
             return
 
         insert_category_data_sql = f""" 
                                         INSERT INTO categories (CAT_NAME, CAT_DESC, CAT_STS) VALUES ('{category_name}','{category_desc}', '{category_sts}'); 
                                     """
 
-        if not conn.cursor().execute(insert_category_data_sql):
-            #PROMPT
-            print("Could not insert")
-        else:
+        try:
+            c = conn.cursor()
+            c.execute(insert_category_data_sql)
             conn.commit()
 
             self.ui.product_name_category.setText("")
@@ -84,6 +98,9 @@ class DBQueries():
             self.ui.status_category.itemText(0)
 
             DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+
+        except Error as e:
+            print(e)
 
     def displayCategories(self, rows):
         self.ui.category_table.setRowCount(0)
@@ -122,7 +139,7 @@ class DBQueries():
         category_name = self.ui.product_name_category.text()
         category_desc = self.ui.category_description.toPlainText()
         category_sts = self.ui.status_category.itemText(0)
-        
+
         get_category_data_sql = f"""
                                 SELECT CAT_NAME, CAT_DESC, CAT_STS FROM categories
                                 WHERE CAT_ID = {category_id};
@@ -137,7 +154,27 @@ class DBQueries():
             category_desc = existing_data[1]
         if not category_sts:
             category_sts = existing_data[2]
-        
+
+        check_category_exists_sql = f"""
+                                    SELECT CAT_ID FROM categories
+                                    WHERE CAT_NAME = '{category_name}'
+                                    AND CAT_DESC = '{category_desc}'
+                                    AND CAT_STS = '{category_sts}'
+                                    AND CAT_ID != {category_id};
+                                    """
+        c.execute(check_category_exists_sql)
+        existing_category = c.fetchone()
+
+        if existing_category:
+            #PROMPT
+            print("Category with updated values already exists in another row.")
+            return
+
+        if category_name == existing_data[0] and category_desc == existing_data[1] and category_sts == existing_data[2]:
+            #PROMPT
+            print("No changes made to the category details.")
+            return
+
         update_category_data_sql = f""" 
                                         UPDATE categories 
                                         SET CAT_NAME = '{category_name}', CAT_DESC = '{category_desc}', CAT_STS = '{category_sts}'
@@ -157,6 +194,7 @@ class DBQueries():
 
         except Error as e:
             print(e)
+
 
     def deleteCategory(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
