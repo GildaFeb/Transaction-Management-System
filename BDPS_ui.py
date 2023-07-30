@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1584, 857)
+        MainWindow.resize(1531, 857)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_22 = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -382,7 +382,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#separator, #separator_dwp {\n"
-"    background-color: #d6d9e1;\n"
+"    background-color:#d6d9e1;\n"
 "}\n"
 "\n"
 "\n"
@@ -400,13 +400,15 @@ class Ui_MainWindow(object):
         self.widget_2 = QtWidgets.QWidget(self.home)
         self.widget_2.setObjectName("widget_2")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.widget_2)
-        self.gridLayout_2.setContentsMargins(9, 9, 9, 9)
-        self.gridLayout_2.setHorizontalSpacing(9)
+        self.gridLayout_2.setContentsMargins(20, 20, 20, 20)
+        self.gridLayout_2.setHorizontalSpacing(0)
+        self.gridLayout_2.setVerticalSpacing(20)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.widget_4 = QtWidgets.QWidget(self.widget_2)
         self.widget_4.setStyleSheet("\n"
 "*{\n"
 "    background-color:#2e3192;\n"
+"border-radius: 10px;\n"
 "}\n"
 "\n"
 "#total_product_widget, #total_sales_widget, #total_revenue_widget{\n"
@@ -424,6 +426,8 @@ class Ui_MainWindow(object):
 "")
         self.widget_4.setObjectName("widget_4")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.widget_4)
+        self.verticalLayout_9.setContentsMargins(25, 25, 25, 25)
+        self.verticalLayout_9.setSpacing(25)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.label_summary = QtWidgets.QLabel(self.widget_4)
         self.label_summary.setObjectName("label_summary")
@@ -436,6 +440,8 @@ class Ui_MainWindow(object):
         self.total_revenue_widget.setSizePolicy(sizePolicy)
         self.total_revenue_widget.setObjectName("total_revenue_widget")
         self.verticalLayout_45 = QtWidgets.QVBoxLayout(self.total_revenue_widget)
+        self.verticalLayout_45.setContentsMargins(13, 13, 13, 13)
+        self.verticalLayout_45.setSpacing(13)
         self.verticalLayout_45.setObjectName("verticalLayout_45")
         self.verticalLayout_44 = QtWidgets.QVBoxLayout()
         self.verticalLayout_44.setObjectName("verticalLayout_44")
@@ -445,15 +451,15 @@ class Ui_MainWindow(object):
         self.peso_sign = QtWidgets.QLabel(self.total_revenue_widget)
         self.peso_sign.setObjectName("peso_sign")
         self.horizontalLayout_7.addWidget(self.peso_sign)
-        self.total_revenue = QtWidgets.QLabel(self.total_revenue_widget)
-        self.total_revenue.setObjectName("total_revenue")
-        self.horizontalLayout_7.addWidget(self.total_revenue)
+        self.total_sales = QtWidgets.QLabel(self.total_revenue_widget)
+        self.total_sales.setObjectName("total_sales")
+        self.horizontalLayout_7.addWidget(self.total_sales)
         spacerItem3 = QtWidgets.QSpacerItem(118, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem3)
         self.verticalLayout_44.addLayout(self.horizontalLayout_7)
-        self.label_revenue = QtWidgets.QLabel(self.total_revenue_widget)
-        self.label_revenue.setObjectName("label_revenue")
-        self.verticalLayout_44.addWidget(self.label_revenue)
+        self.label_sales_2 = QtWidgets.QLabel(self.total_revenue_widget)
+        self.label_sales_2.setObjectName("label_sales_2")
+        self.verticalLayout_44.addWidget(self.label_sales_2)
         self.verticalLayout_45.addLayout(self.verticalLayout_44)
         self.label_7 = QtWidgets.QLabel(self.total_revenue_widget)
         self.label_7.setObjectName("label_7")
@@ -467,6 +473,8 @@ class Ui_MainWindow(object):
         self.total_sales_widget.setSizePolicy(sizePolicy)
         self.total_sales_widget.setObjectName("total_sales_widget")
         self.verticalLayout_46 = QtWidgets.QVBoxLayout(self.total_sales_widget)
+        self.verticalLayout_46.setContentsMargins(13, 13, 13, 13)
+        self.verticalLayout_46.setSpacing(13)
         self.verticalLayout_46.setObjectName("verticalLayout_46")
         self.verticalLayout_39 = QtWidgets.QVBoxLayout()
         self.verticalLayout_39.setObjectName("verticalLayout_39")
@@ -476,15 +484,15 @@ class Ui_MainWindow(object):
         self.peso_sign_2 = QtWidgets.QLabel(self.total_sales_widget)
         self.peso_sign_2.setObjectName("peso_sign_2")
         self.horizontalLayout_8.addWidget(self.peso_sign_2)
-        self.total_sales = QtWidgets.QLabel(self.total_sales_widget)
-        self.total_sales.setObjectName("total_sales")
-        self.horizontalLayout_8.addWidget(self.total_sales)
+        self.total_category = QtWidgets.QLabel(self.total_sales_widget)
+        self.total_category.setObjectName("total_category")
+        self.horizontalLayout_8.addWidget(self.total_category)
         spacerItem4 = QtWidgets.QSpacerItem(118, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem4)
         self.verticalLayout_39.addLayout(self.horizontalLayout_8)
-        self.label_sales = QtWidgets.QLabel(self.total_sales_widget)
-        self.label_sales.setObjectName("label_sales")
-        self.verticalLayout_39.addWidget(self.label_sales)
+        self.label_category = QtWidgets.QLabel(self.total_sales_widget)
+        self.label_category.setObjectName("label_category")
+        self.verticalLayout_39.addWidget(self.label_category)
         self.verticalLayout_46.addLayout(self.verticalLayout_39)
         self.label_6 = QtWidgets.QLabel(self.total_sales_widget)
         self.label_6.setObjectName("label_6")
@@ -498,6 +506,8 @@ class Ui_MainWindow(object):
         self.total_product_widget.setSizePolicy(sizePolicy)
         self.total_product_widget.setObjectName("total_product_widget")
         self.verticalLayout_47 = QtWidgets.QVBoxLayout(self.total_product_widget)
+        self.verticalLayout_47.setContentsMargins(13, 13, 13, 13)
+        self.verticalLayout_47.setSpacing(13)
         self.verticalLayout_47.setObjectName("verticalLayout_47")
         self.verticalLayout_31 = QtWidgets.QVBoxLayout()
         self.verticalLayout_31.setObjectName("verticalLayout_31")
@@ -521,11 +531,19 @@ class Ui_MainWindow(object):
         self.label_3.setObjectName("label_3")
         self.verticalLayout_47.addWidget(self.label_3)
         self.verticalLayout_9.addWidget(self.total_product_widget)
-        self.gridLayout_2.addWidget(self.widget_4, 0, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.widget_4, 1, 0, 1, 1)
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_4.setContentsMargins(9, 9, 9, 9)
-        self.verticalLayout_4.setSpacing(9)
+        self.verticalLayout_4.setContentsMargins(26, 0, 13, 0)
+        self.verticalLayout_4.setSpacing(13)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.label_9 = QtWidgets.QLabel(self.widget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_9.sizePolicy().hasHeightForWidth())
+        self.label_9.setSizePolicy(sizePolicy)
+        self.label_9.setObjectName("label_9")
+        self.verticalLayout_4.addWidget(self.label_9)
         self.widget_10 = QtWidgets.QWidget(self.widget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -535,14 +553,16 @@ class Ui_MainWindow(object):
         self.widget_10.setStyleSheet("#pendingT_widget, #totalT_widget, #successfulT_widget, #category_widget{\n"
 "\n"
 "    background-color: white;\n"
-"    border-radius: 15%;\n"
+"    border-radius: 10px;\n"
 "\n"
 "}")
         self.widget_10.setObjectName("widget_10")
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.widget_10)
-        self.horizontalLayout_6.setContentsMargins(5, 5, 5, 5)
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_6.setSpacing(20)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_6.setSpacing(13)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.totalT_widget = QtWidgets.QFrame(self.widget_10)
         self.totalT_widget.setFrameShape(QtWidgets.QFrame.Panel)
@@ -599,6 +619,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addWidget(self.pendingT_widget)
         self.horizontalLayout_6.addLayout(self.verticalLayout_6)
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_7.setSpacing(13)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.successfulT_widget = QtWidgets.QFrame(self.widget_10)
         self.successfulT_widget.setFrameShape(QtWidgets.QFrame.Panel)
@@ -664,10 +685,10 @@ class Ui_MainWindow(object):
         self.business_name.setMidLineWidth(0)
         self.business_name.setObjectName("business_name")
         self.verticalLayout_4.addWidget(self.business_name)
-        self.gridLayout_2.addLayout(self.verticalLayout_4, 0, 1, 1, 1)
+        self.gridLayout_2.addLayout(self.verticalLayout_4, 1, 1, 1, 1)
         self.verticalLayout_48 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_48.setContentsMargins(9, 9, 9, 9)
-        self.verticalLayout_48.setSpacing(9)
+        self.verticalLayout_48.setContentsMargins(13, 0, 13, 0)
+        self.verticalLayout_48.setSpacing(13)
         self.verticalLayout_48.setObjectName("verticalLayout_48")
         self.calendarWidget = QtWidgets.QCalendarWidget(self.widget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Maximum)
@@ -687,12 +708,12 @@ class Ui_MainWindow(object):
 "    \n"
 "     border: 1px solid white;\n"
 "     background-color: white;\n"
-"    border-radius: 15px;\n"
+"    border-radius: 10px;\n"
 "}")
         self.widget_5.setObjectName("widget_5")
         self.verticalLayout_49 = QtWidgets.QVBoxLayout(self.widget_5)
-        self.verticalLayout_49.setContentsMargins(2, 2, 2, 2)
-        self.verticalLayout_49.setSpacing(9)
+        self.verticalLayout_49.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_49.setSpacing(13)
         self.verticalLayout_49.setObjectName("verticalLayout_49")
         self.frame_facebook = QtWidgets.QFrame(self.widget_5)
         self.frame_facebook.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -714,7 +735,7 @@ class Ui_MainWindow(object):
         self.banner.setStyleSheet("#banner{\n"
 "\n"
 "     background-color: white;\n"
-"     border-radius: 15px;\n"
+"     border-radius: 10px;\n"
 "}")
         self.banner.setObjectName("banner")
         self.horizontalLayout_46 = QtWidgets.QHBoxLayout(self.banner)
@@ -737,7 +758,10 @@ class Ui_MainWindow(object):
         self.logo_label_3.setObjectName("logo_label_3")
         self.horizontalLayout_46.addWidget(self.logo_label_3)
         self.verticalLayout_48.addWidget(self.banner)
-        self.gridLayout_2.addLayout(self.verticalLayout_48, 0, 2, 1, 1)
+        self.gridLayout_2.addLayout(self.verticalLayout_48, 1, 2, 1, 1)
+        self.label_8 = QtWidgets.QLabel(self.widget_2)
+        self.label_8.setObjectName("label_8")
+        self.gridLayout_2.addWidget(self.label_8, 0, 0, 1, 1)
         self.horizontalLayout_45.addWidget(self.widget_2)
         self.stackedWidget.addWidget(self.home)
         self.list_price = QtWidgets.QWidget()
@@ -2217,7 +2241,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
         self.new_transaction_btn_1.toggled['bool'].connect(self.new_transaction_btn_2.setChecked) # type: ignore
         self.datewise_transaction_btn_1.toggled['bool'].connect(self.datewise_transaction_btn_2.setChecked) # type: ignore
         self.daily_transaction_btn_1.toggled['bool'].connect(self.daily_transaction_btn_2.setChecked) # type: ignore
@@ -2259,26 +2283,28 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "Administrator"))
         self.label_summary.setText(_translate("MainWindow", "Summary"))
         self.peso_sign.setText(_translate("MainWindow", "₱"))
-        self.total_revenue.setText(_translate("MainWindow", "2,000"))
-        self.label_revenue.setText(_translate("MainWindow", "Total Revenue"))
+        self.total_sales.setText(_translate("MainWindow", "2,000"))
+        self.label_sales_2.setText(_translate("MainWindow", "Total Sales"))
         self.label_7.setText(_translate("MainWindow", "logo"))
         self.peso_sign_2.setText(_translate("MainWindow", "₱"))
-        self.total_sales.setText(_translate("MainWindow", "10,233"))
-        self.label_sales.setText(_translate("MainWindow", "Total Sales"))
+        self.total_category.setText(_translate("MainWindow", "10,233"))
+        self.label_category.setText(_translate("MainWindow", "Total Category"))
         self.label_6.setText(_translate("MainWindow", "logo"))
         self.total_product.setText(_translate("MainWindow", "3,432"))
         self.peso_sign_3.setText(_translate("MainWindow", "Products"))
         self.label_product.setText(_translate("MainWindow", "Total product"))
         self.label_3.setText(_translate("MainWindow", "logo"))
+        self.label_9.setText(_translate("MainWindow", "Transactions"))
         self.total_transactions.setText(_translate("MainWindow", "230"))
-        self.label_13.setText(_translate("MainWindow", "Total Transaction"))
+        self.label_13.setText(_translate("MainWindow", "Total Transactions"))
         self.PendingTransactions.setText(_translate("MainWindow", "7"))
         self.label_23.setText(_translate("MainWindow", "Pending Transactions"))
         self.sucessful_transactions.setText(_translate("MainWindow", "982"))
         self.label_22.setText(_translate("MainWindow", "Successful Transactions"))
         self.Total_Categories.setText(_translate("MainWindow", "133"))
-        self.label_16.setText(_translate("MainWindow", "Total Categories"))
+        self.label_16.setText(_translate("MainWindow", "Cancelled Transactions"))
         self.label_5.setText(_translate("MainWindow", "Blue Dawn Printing Services"))
+        self.label_8.setText(_translate("MainWindow", "Dashboard"))
         item = self.pricelist_table.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "hsbchfs"))
         item = self.pricelist_table.verticalHeaderItem(1)
