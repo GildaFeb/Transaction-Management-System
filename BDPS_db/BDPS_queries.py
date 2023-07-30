@@ -63,7 +63,9 @@ class DBQueries():
         category_desc = self.ui.category_description.toPlainText()
         category_sts = self.ui.status_category.currentText()
 
-        insert_category_data_sql = f""" INSERT INTO categories (CAT_NAME, CAT_DESC, CAT_STS) VALUES ('{category_name}','{category_desc}', '{category_sts}'); """
+        insert_category_data_sql = f""" 
+                                        INSERT INTO categories (CAT_NAME, CAT_DESC, CAT_STS) VALUES ('{category_name}','{category_desc}', '{category_sts}'); 
+                                    """
 
         if not conn.cursor().execute(insert_category_data_sql):
             print("Could not insert")
@@ -72,11 +74,13 @@ class DBQueries():
 
             self.ui.product_name_category.setText("")
             self.ui.category_description.setText("")
-            self.ui.status_category.itemText(-1)
+            self.ui.status_category.itemText(0)
 
             DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
 
     def displayCategories(self, rows):
+        self.ui.category_table.setRowCount(0)
+
         for row in rows:
             rowPosition = self.ui.category_table.rowCount()
 
@@ -97,3 +101,36 @@ class DBQueries():
 
                 itemCount = itemCount+1
             rowPosition = rowPosition+1
+
+    def editCategory(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        selected_row = self.ui.category_table.currentRow()
+        if selected_row < 0:
+            print("No category selected.")
+            return
+
+        category_id = int(self.ui.category_table.item(selected_row, 0).text())
+        category_name = self.ui.product_name_category.text()
+        category_desc = self.ui.category_description.toPlainText()
+        category_sts = self.ui.status_category.itemText(0)
+
+        update_category_data_sql = f""" 
+                                        UPDATE categories 
+                                        SET CAT_NAME = '{category_name}', CAT_DESC = '{category_desc}', CAT_STS = '{category_sts}'
+                                        WHERE CAT_ID = {category_id};
+                                    """
+
+        try:
+            c = conn.cursor()
+            c.execute(update_category_data_sql)
+            conn.commit()
+
+            self.ui.product_name_category.setText("")
+            self.ui.category_description.setText("")
+            self.ui.status_category.setCurrentIndex(-1)
+
+            DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+
+        except Error as e:
+            print(e)
