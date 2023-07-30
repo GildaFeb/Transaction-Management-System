@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtCore import Qt
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1192,7 +1192,8 @@ class Ui_MainWindow(object):
         self.label_59 = QtWidgets.QLabel(self.add_item_3)
         self.label_59.setObjectName("label_59")
         self.verticalLayout_36.addWidget(self.label_59)
-        self.id_category = QtWidgets.QTextEdit(self.add_item_3)
+        self.id_category = QtWidgets.QTextBrowser(self.add_item_3)
+        self.id_category.setFocusPolicy(Qt.NoFocus)
         self.id_category.setMaximumSize(QtCore.QSize(16777215, 30))
         self.id_category.setObjectName("id_category")
         self.verticalLayout_36.addWidget(self.id_category)
@@ -2305,9 +2306,9 @@ class Ui_MainWindow(object):
         self.label_55.setText(_translate("MainWindow", "Categories"))
         self.show_category_form.setText(_translate("MainWindow", "Add category"))
         self.No_search_found.setText(_translate("MainWindow", "No  Category Found"))
-        item = self.category_table.horizontalHeaderItem(0)
         self.category_table.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
         self.category_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        item = self.category_table.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "ID"))
         item = self.category_table.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Category Name"))

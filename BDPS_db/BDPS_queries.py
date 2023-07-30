@@ -62,6 +62,10 @@ class DBQueries():
         category_name = self.ui.product_name_category.text()
         category_desc = self.ui.category_description.toPlainText()
         category_sts = self.ui.status_category.currentText()
+        
+        if not category_name or not category_desc:
+            print("Missing fields.")
+            return
 
         insert_category_data_sql = f""" 
                                         INSERT INTO categories (CAT_NAME, CAT_DESC, CAT_STS) VALUES ('{category_name}','{category_desc}', '{category_sts}'); 
@@ -114,7 +118,23 @@ class DBQueries():
         category_name = self.ui.product_name_category.text()
         category_desc = self.ui.category_description.toPlainText()
         category_sts = self.ui.status_category.itemText(0)
+        
+        get_category_data_sql = f"""
+                                SELECT CAT_NAME, CAT_DESC, CAT_STS FROM categories
+                                WHERE CAT_ID = {category_id};
+                                """
+        c = conn.cursor()
+        c.execute(get_category_data_sql)
+        existing_data = c.fetchone()
 
+        # Update only the non-empty fields
+        if not category_name:
+            category_name = existing_data[0]
+        if not category_desc:
+            category_desc = existing_data[1]
+        if not category_sts:
+            category_sts = existing_data[2]
+        
         update_category_data_sql = f""" 
                                         UPDATE categories 
                                         SET CAT_NAME = '{category_name}', CAT_DESC = '{category_desc}', CAT_STS = '{category_sts}'
@@ -128,7 +148,7 @@ class DBQueries():
 
             self.ui.product_name_category.setText("")
             self.ui.category_description.setText("")
-            self.ui.status_category.setCurrentIndex(-1)
+            self.ui.status_category.setCurrentIndex(0)
 
             DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
 
