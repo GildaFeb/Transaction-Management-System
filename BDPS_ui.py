@@ -1108,6 +1108,14 @@ class Ui_MainWindow(object):
         self.table_item_2.setObjectName("table_item_2")
         self.verticalLayout_35 = QtWidgets.QVBoxLayout(self.table_item_2)
         self.verticalLayout_35.setObjectName("verticalLayout_35")
+        self.No_search_found = QtWidgets.QLabel(self.table_item_2)
+        self.No_search_found.setEnabled(False)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.No_search_found.setFont(font)
+        self.No_search_found.setAlignment(QtCore.Qt.AlignCenter)
+        self.No_search_found.setObjectName("No_search_found")
+        self.verticalLayout_35.addWidget(self.No_search_found)
         self.category_table = QtWidgets.QTableWidget(self.table_item_2)
         self.category_table.setStyleSheet("\n"
 "#tableWidget{\n"
@@ -2364,6 +2372,7 @@ class Ui_MainWindow(object):
         self.show_pricelist_form.setText(_translate("MainWindow", "Add new item"))
         self.label_55.setText(_translate("MainWindow", "Categories"))
         self.show_category_form.setText(_translate("MainWindow", "Add category"))
+        self.No_search_found.setText(_translate("MainWindow", "No  Category Found"))
         item = self.category_table.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "hsbchfs"))
         item = self.category_table.verticalHeaderItem(1)

@@ -2679,6 +2679,24 @@ background-color: #1a1c28;
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_35">
                           <item>
+                           <widget class="QLabel" name="No_search_found">
+                            <property name="enabled">
+                             <bool>false</bool>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>No  Category Found</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
                            <widget class="QTableWidget" name="category_table">
                             <property name="styleSheet">
                              <string notr="true">

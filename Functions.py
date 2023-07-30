@@ -11,7 +11,8 @@ class BtnFunctions(QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
+        
+        self.ui.No_search_found.hide()
         self.ui.icon_only_widget.hide()
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.home_btn_2.setChecked(True)
@@ -19,7 +20,7 @@ class BtnFunctions(QMainWindow):
         self.ui.search_pricelist_btn.clicked.connect(self.pricelist_clicked)
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table_default)
         
-        self.ui.search_category_btn.clicked.connect(self.category_clicked)
+#        self.ui.search_category_btn.clicked.connect(self.category_clicked)
         self.ui.edit_search_category.textChanged.connect(self.category_table_default)
 
         self.ui.search_daily_tnx_btn.clicked.connect(self.daily_tnx_clicked)
@@ -30,18 +31,16 @@ class BtnFunctions(QMainWindow):
         
         self.ui.search_dwt_btn_4.clicked.connect(self.date_wise_payment_clicked)
         self.ui.filter_dwp_btn.clicked.connect(self.filter_date_wise_payment_clicked)
-    
+
     #Set the Price list table to default    
     def pricelist_table_default(self):
         search_price = self.ui.edit_search_pricelist.toPlainText()
-        
         # Check if the search field is empty
         if not search_price:
         # If the search field is empty, reset the QTableWidget to show all items
             for row in range(self.ui.pricelist_table.rowCount()):
-                self.ui.pricelist_table.setRowHidden(row, False)
-            return
-        
+                self.ui.pricelist_table.setRowHidden(row, False)        
+            #return        
         """
         for row in range(self.ui.pricelist_table.rowCount()):
             row_matches = False
@@ -52,53 +51,89 @@ class BtnFunctions(QMainWindow):
                     break
             self.ui.pricelist_table.setRowHidden(row, not row_matches)
         """
-        
+                
     # Price list search button   
     def pricelist_clicked(self):
         search_price = self.ui.edit_search_pricelist.toPlainText()
      #  self.ui.pricelist_table.clearContents()
         if not search_price:
             QMessageBox.warning(self, "Empty Text", "The text is empty. Please enter some text.")
+            return
             
+        row_matches = False
+
         for row in range(self.ui.pricelist_table.rowCount()):
-            row_matches = False
             for col in range(self.ui.pricelist_table.columnCount()):
                 item = self.ui.pricelist_table.item(row, col)
 
                 if item is not None and search_price.lower() in item.text().lower():
+                    self.ui.pricelist_table.setRowHidden(row, False)
                     row_matches = True
                     break
-            self.ui.pricelist_table.setRowHidden(row, not row_matches)
+                else:    
+                    self.ui.pricelist_table.setRowHidden(row, True)
+                    
+        if not row_matches:
+            QMessageBox.information(self, 'Search Result', f'Text "{search_price}" not found.')
+            self.ui.edit_search_pricelist.setText("")
 
-    #Set the Price list table to default    
+    #Set the Category list table to default    
     def category_table_default(self):
         search_category = self.ui.edit_search_category.toPlainText()
-        
+
         # Check if the search field is empty
         if not search_category:
         # If the search field is empty, reset the QTableWidget to show all items
             for row in range(self.ui.category_table.rowCount()):
                 self.ui.category_table.setRowHidden(row, False)
-            return
-
+                self.ui.category_table.show()
+                self.ui.No_search_found.hide()            
+        
+        row_matches = False
+            
+        for row in range(self.ui.category_table.rowCount()):
+            for col in range(self.ui.category_table.columnCount()):
+                item = self.ui.category_table.item(row, col)
+                
+                if item is not None and search_category.lower() in item.text().lower():
+                    self.ui.category_table.setRowHidden(row, False)
+                    row_matches = True
+                    self.ui.category_table.show()
+                    self.ui.No_search_found.hide()
+                    break
+                else:
+                    self.ui.category_table.setRowHidden(row, True)
+        
+        if not row_matches:
+            self.ui.category_table.hide()
+            self.ui.No_search_found.show()
+    """
     # Category search button 
     def category_clicked(self):
         search_category = self.ui.edit_search_category.toPlainText()
      #  self.ui.pricelist_table.clearContents()
         if not search_category:
             QMessageBox.warning(self, "Empty Text", "The text is empty. Please enter some text.")
+            return
+        
+        row_matches = False
             
         for row in range(self.ui.category_table.rowCount()):
-            row_matches = False
             for col in range(self.ui.category_table.columnCount()):
                 item = self.ui.category_table.item(row, col)
 
                 if item is not None and search_category.lower() in item.text().lower():
+                    self.ui.category_table.setRowHidden(row, False)
                     row_matches = True
                     break
-            self.ui.category_table.setRowHidden(row, not row_matches)
+                else:
+                    self.ui.category_table.setRowHidden(row, True)
     
-                
+        if not row_matches:
+            QMessageBox.information(self, 'Search Result', f'Text "{search_category}" not found.')
+            self.ui.edit_search_category.setText("")
+        """
+            
     #Daily Transaction search button
     def daily_tnx_clicked(self):
         print("daily")
