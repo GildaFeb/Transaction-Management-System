@@ -996,7 +996,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -4232,7 +4232,7 @@ background-color: #f5f7f9;
             <widget class="QWidget" name="table_area" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_24">
               <item>
-               <widget class="QTableWidget" name="daily_tnx_btn">
+               <widget class="QTableWidget" name="daily_tnx_table">
                 <column>
                  <property name="text">
                   <string>#</string>
@@ -5425,7 +5425,7 @@ background-color: #f5f7f9;
             <widget class="QWidget" name="table_area_payment" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_32">
               <item>
-               <widget class="QTableWidget" name="tableWidget_5">
+               <widget class="QTableWidget" name="datewise_payment_table">
                 <column>
                  <property name="text">
                   <string>#</string>
