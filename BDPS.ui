@@ -996,7 +996,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>7</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -1961,6 +1961,21 @@ border-radius: 10px;
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_10">
                        <item>
+                        <widget class="QLabel" name="no_pricelist_found">
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>No search results found</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
                         <widget class="QTableWidget" name="pricelist_table">
                          <property name="styleSheet">
                           <string notr="true">
@@ -2772,9 +2787,9 @@ background-color: #1a1c28;
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_35">
                           <item>
-                           <widget class="QLabel" name="No_search_found">
+                           <widget class="QLabel" name="no_category_found">
                             <property name="enabled">
-                             <bool>false</bool>
+                             <bool>true</bool>
                             </property>
                             <property name="font">
                              <font>
@@ -2782,7 +2797,7 @@ background-color: #1a1c28;
                              </font>
                             </property>
                             <property name="text">
-                             <string>No  Category Found</string>
+                             <string>No search results found</string>
                             </property>
                             <property name="alignment">
                              <set>Qt::AlignCenter</set>
@@ -4166,7 +4181,37 @@ background-color: #f5f7f9;
             <widget class="QWidget" name="table_area" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_24">
               <item>
+               <widget class="QLabel" name="no_dailytxn_found">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>No search results found</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QTableWidget" name="daily_tnx_table">
+                <row>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                </row>
                 <column>
                  <property name="text">
                   <string>#</string>
@@ -4197,6 +4242,96 @@ background-color: #f5f7f9;
                   <string>Service Status</string>
                  </property>
                 </column>
+                <item row="0" column="0">
+                 <property name="text">
+                  <string>23</string>
+                 </property>
+                </item>
+                <item row="0" column="1">
+                 <property name="text">
+                  <string>1/10/1000</string>
+                 </property>
+                </item>
+                <item row="0" column="2">
+                 <property name="text">
+                  <string>11</string>
+                 </property>
+                </item>
+                <item row="0" column="3">
+                 <property name="text">
+                  <string>jeru</string>
+                 </property>
+                </item>
+                <item row="0" column="4">
+                 <property name="text">
+                  <string>50</string>
+                 </property>
+                </item>
+                <item row="0" column="5">
+                 <property name="text">
+                  <string>Successful</string>
+                 </property>
+                </item>
+                <item row="1" column="0">
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                </item>
+                <item row="1" column="1">
+                 <property name="text">
+                  <string>2/20/2000</string>
+                 </property>
+                </item>
+                <item row="1" column="2">
+                 <property name="text">
+                  <string>12</string>
+                 </property>
+                </item>
+                <item row="1" column="3">
+                 <property name="text">
+                  <string>ewan</string>
+                 </property>
+                </item>
+                <item row="1" column="4">
+                 <property name="text">
+                  <string>100</string>
+                 </property>
+                </item>
+                <item row="1" column="5">
+                 <property name="text">
+                  <string>Failed</string>
+                 </property>
+                </item>
+                <item row="2" column="0">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+                <item row="2" column="1">
+                 <property name="text">
+                  <string>3/30/3000</string>
+                 </property>
+                </item>
+                <item row="2" column="2">
+                 <property name="text">
+                  <string>13</string>
+                 </property>
+                </item>
+                <item row="2" column="3">
+                 <property name="text">
+                  <string>basta</string>
+                 </property>
+                </item>
+                <item row="2" column="4">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+                <item row="2" column="5">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
                </widget>
               </item>
              </layout>
@@ -4795,7 +4930,7 @@ background-color: #f5f7f9;
                        </spacer>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="editSearch_dwt">
+                       <widget class="QLineEdit" name="edit_search_dwt">
                         <property name="minimumSize">
                          <size>
                           <width>300</width>
@@ -4980,7 +5115,37 @@ background-color: #f5f7f9;
                   <widget class="QWidget" name="date_wise_table" native="true">
                    <layout class="QVBoxLayout" name="verticalLayout_30">
                     <item>
+                     <widget class="QLabel" name="no_datewiseT_found">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>No search results found</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
                      <widget class="QTableWidget" name="datewise_transaction_table">
+                      <row>
+                       <property name="text">
+                        <string>1</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>2</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>3</string>
+                       </property>
+                      </row>
                       <column>
                        <property name="text">
                         <string>#</string>
@@ -5011,6 +5176,96 @@ background-color: #f5f7f9;
                         <string>Service Status</string>
                        </property>
                       </column>
+                      <item row="0" column="0">
+                       <property name="text">
+                        <string>51</string>
+                       </property>
+                      </item>
+                      <item row="0" column="1">
+                       <property name="text">
+                        <string>1/1/1000</string>
+                       </property>
+                      </item>
+                      <item row="0" column="2">
+                       <property name="text">
+                        <string>23</string>
+                       </property>
+                      </item>
+                      <item row="0" column="3">
+                       <property name="text">
+                        <string>grace</string>
+                       </property>
+                      </item>
+                      <item row="0" column="4">
+                       <property name="text">
+                        <string>100</string>
+                       </property>
+                      </item>
+                      <item row="0" column="5">
+                       <property name="text">
+                        <string>a</string>
+                       </property>
+                      </item>
+                      <item row="1" column="0">
+                       <property name="text">
+                        <string>22</string>
+                       </property>
+                      </item>
+                      <item row="1" column="1">
+                       <property name="text">
+                        <string>2/2/2000</string>
+                       </property>
+                      </item>
+                      <item row="1" column="2">
+                       <property name="text">
+                        <string>1</string>
+                       </property>
+                      </item>
+                      <item row="1" column="3">
+                       <property name="text">
+                        <string>sean</string>
+                       </property>
+                      </item>
+                      <item row="1" column="4">
+                       <property name="text">
+                        <string>22</string>
+                       </property>
+                      </item>
+                      <item row="1" column="5">
+                       <property name="text">
+                        <string>b</string>
+                       </property>
+                      </item>
+                      <item row="2" column="0">
+                       <property name="text">
+                        <string>12</string>
+                       </property>
+                      </item>
+                      <item row="2" column="1">
+                       <property name="text">
+                        <string>3/3/3000</string>
+                       </property>
+                      </item>
+                      <item row="2" column="2">
+                       <property name="text">
+                        <string>2</string>
+                       </property>
+                      </item>
+                      <item row="2" column="3">
+                       <property name="text">
+                        <string>ewan</string>
+                       </property>
+                      </item>
+                      <item row="2" column="4">
+                       <property name="text">
+                        <string>21</string>
+                       </property>
+                      </item>
+                      <item row="2" column="5">
+                       <property name="text">
+                        <string>c</string>
+                       </property>
+                      </item>
                      </widget>
                     </item>
                    </layout>
@@ -5174,7 +5429,7 @@ background-color: #f5f7f9;
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="editSearch_dwt_4">
+                 <widget class="QLineEdit" name="edit_search_dwp">
                   <property name="minimumSize">
                    <size>
                     <width>300</width>
@@ -5359,7 +5614,37 @@ background-color: #f5f7f9;
             <widget class="QWidget" name="table_area_payment" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_32">
               <item>
+               <widget class="QLabel" name="no_datewiseP_found">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>No search results found</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QTableWidget" name="datewise_payment_table">
+                <row>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                </row>
                 <column>
                  <property name="text">
                   <string>#</string>
@@ -5395,6 +5680,111 @@ background-color: #f5f7f9;
                   <string>Paid Amount</string>
                  </property>
                 </column>
+                <item row="0" column="0">
+                 <property name="text">
+                  <string>23</string>
+                 </property>
+                </item>
+                <item row="0" column="1">
+                 <property name="text">
+                  <string>1/1/2000</string>
+                 </property>
+                </item>
+                <item row="0" column="2">
+                 <property name="text">
+                  <string>sean</string>
+                 </property>
+                </item>
+                <item row="0" column="3">
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                </item>
+                <item row="0" column="4">
+                 <property name="text">
+                  <string>x</string>
+                 </property>
+                </item>
+                <item row="0" column="5">
+                 <property name="text">
+                  <string>Pending </string>
+                 </property>
+                </item>
+                <item row="0" column="6">
+                 <property name="text">
+                  <string>d</string>
+                 </property>
+                </item>
+                <item row="1" column="0">
+                 <property name="text">
+                  <string>22</string>
+                 </property>
+                </item>
+                <item row="1" column="1">
+                 <property name="text">
+                  <string>1/2/3000</string>
+                 </property>
+                </item>
+                <item row="1" column="2">
+                 <property name="text">
+                  <string>jeru</string>
+                 </property>
+                </item>
+                <item row="1" column="3">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+                <item row="1" column="4">
+                 <property name="text">
+                  <string>x</string>
+                 </property>
+                </item>
+                <item row="1" column="5">
+                 <property name="text">
+                  <string>Successful</string>
+                 </property>
+                </item>
+                <item row="1" column="6">
+                 <property name="text">
+                  <string>f</string>
+                 </property>
+                </item>
+                <item row="2" column="0">
+                 <property name="text">
+                  <string>25</string>
+                 </property>
+                </item>
+                <item row="2" column="1">
+                 <property name="text">
+                  <string>2/31/2010</string>
+                 </property>
+                </item>
+                <item row="2" column="2">
+                 <property name="text">
+                  <string>don</string>
+                 </property>
+                </item>
+                <item row="2" column="3">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+                <item row="2" column="4">
+                 <property name="text">
+                  <string>z</string>
+                 </property>
+                </item>
+                <item row="2" column="5">
+                 <property name="text">
+                  <string>Failed</string>
+                 </property>
+                </item>
+                <item row="2" column="6">
+                 <property name="text">
+                  <string>q</string>
+                 </property>
+                </item>
                </widget>
               </item>
              </layout>

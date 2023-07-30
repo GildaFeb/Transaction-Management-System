@@ -13,24 +13,27 @@ class BtnFunctions(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         
-        self.ui.No_search_found.hide()
+        self.ui.no_category_found.hide()
+        self.ui.no_pricelist_found.hide()
+        self.ui.no_dailytxn_found.hide()
+        self.ui.no_datewiseT_found.hide()
+        self.ui.no_datewiseP_found.hide()
+        
         self.ui.icon_only_widget.hide()
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.home_btn_2.setChecked(True)
     
-        self.ui.search_pricelist_btn.clicked.connect(self.pricelist_clicked)
-        self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table_default)
+        self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
         
-#        self.ui.search_category_btn.clicked.connect(self.category_clicked)
-        self.ui.edit_search_category.textChanged.connect(self.category_table_default)
+        self.ui.edit_search_category.textChanged.connect(self.category_table)
 
-        self.ui.search_daily_tnx_btn.clicked.connect(self.daily_tnx_clicked)
+        self.ui.edit_search_daily_tnx.textChanged.connect(self.daily_tnx_table)
         self.ui.filter_daily_tnx_btn.clicked.connect(self.filter_daily_tnx_clicked)
         
-        self.ui.search_dwt_btn.clicked.connect(self.date_wise_transactions_clicked)
+        self.ui.edit_search_dwt.textChanged.connect(self.datewise_txn_table)
         self.ui.filter_dwt_btn.clicked.connect(self.filter_date_wise_transaction_clicked)
         
-        self.ui.search_dwt_btn_4.clicked.connect(self.date_wise_payment_clicked)
+        self.ui.edit_search_dwp.textChanged.connect(self.datewise_payment_table)
         self.ui.filter_dwp_btn.clicked.connect(self.filter_date_wise_payment_clicked)
 
         #========================== DATABASE PATH =====================================#
@@ -47,53 +50,39 @@ class BtnFunctions(QMainWindow):
         self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_category_selection_changed(self))
         self.ui.category_table.selectionModel().selectionChanged.connect(lambda: DBQueries.on_selection_changed(self))
 
-    #Set the Price list table to default    
-    def pricelist_table_default(self):
-        search_price = self.ui.edit_search_pricelist.toPlainText()
+    #Price list search field    
+    def pricelist_table(self):
+        search_pricelist = self.ui.edit_search_pricelist.toPlainText()
+
         # Check if the search field is empty
-        if not search_price:
+        if not search_pricelist:
         # If the search field is empty, reset the QTableWidget to show all items
             for row in range(self.ui.pricelist_table.rowCount()):
-                self.ui.pricelist_table.setRowHidden(row, False)        
-            #return        
-        """
-        for row in range(self.ui.pricelist_table.rowCount()):
-            row_matches = False
-            for col in range(self.ui.pricelist_table.columnCount()):
-                item = self.ui.pricelist_table.item(row, col)
-                if item is not None and search_price.lower() in item.text().lower():
-                    row_matches = True
-                    break
-            self.ui.pricelist_table.setRowHidden(row, not row_matches)
-        """
-                
-    # Price list search button   
-    def pricelist_clicked(self):
-        search_price = self.ui.edit_search_pricelist.toPlainText()
-     #  self.ui.pricelist_table.clearContents()
-        if not search_price:
-            QMessageBox.warning(self, "Empty Text", "The text is empty. Please enter some text.")
-            return
-            
+                self.ui.pricelist_table.setRowHidden(row, False)
+                self.ui.pricelist_table.show()
+                self.ui.no_pricelist_found.hide()
+        
         row_matches = False
-
+            
         for row in range(self.ui.pricelist_table.rowCount()):
             for col in range(self.ui.pricelist_table.columnCount()):
                 item = self.ui.pricelist_table.item(row, col)
-
-                if item is not None and search_price.lower() in item.text().lower():
+                
+                if item is not None and search_pricelist.lower() in item.text().lower():
                     self.ui.pricelist_table.setRowHidden(row, False)
                     row_matches = True
+                    self.ui.pricelist_table.show()
+                    self.ui.no_pricelist_found.hide()
                     break
-                else:    
+                else:
                     self.ui.pricelist_table.setRowHidden(row, True)
-                    
+        
         if not row_matches:
-            QMessageBox.information(self, 'Search Result', f'Text "{search_price}" not found.')
-            self.ui.edit_search_pricelist.setText("")
+            self.ui.pricelist_table.hide()
+            self.ui.no_pricelist_found.show()
 
-    #Set the Category list table to default    
-    def category_table_default(self):
+    #Category search field   
+    def category_table(self):
         search_category = self.ui.edit_search_category.toPlainText()
 
         # Check if the search field is empty
@@ -102,7 +91,7 @@ class BtnFunctions(QMainWindow):
             for row in range(self.ui.category_table.rowCount()):
                 self.ui.category_table.setRowHidden(row, False)
                 self.ui.category_table.show()
-                self.ui.No_search_found.hide()            
+                self.ui.no_category_found.hide()            
         
         row_matches = False
             
@@ -114,62 +103,117 @@ class BtnFunctions(QMainWindow):
                     self.ui.category_table.setRowHidden(row, False)
                     row_matches = True
                     self.ui.category_table.show()
-                    self.ui.No_search_found.hide()
+                    self.ui.no_category_found.hide()
                     break
                 else:
                     self.ui.category_table.setRowHidden(row, True)
         
         if not row_matches:
             self.ui.category_table.hide()
-            self.ui.No_search_found.show()
-    """
-    # Category search button 
-    def category_clicked(self):
-        search_category = self.ui.edit_search_category.toPlainText()
-     #  self.ui.pricelist_table.clearContents()
-        if not search_category:
-            QMessageBox.warning(self, "Empty Text", "The text is empty. Please enter some text.")
-            return
+            self.ui.no_category_found.show()
+            
+    #Daily Transaction search field
+    def daily_tnx_table(self):
+        search_dailytxn = self.ui.edit_search_daily_tnx.text().strip()
+
+        # Check if the search field is empty
+        if not search_dailytxn:
+        # If the search field is empty, reset the QTableWidget to show all items
+            for row in range(self.ui.daily_tnx_table.rowCount()):
+                self.ui.daily_tnx_table.setRowHidden(row, False)
+                self.ui.daily_tnx_table.show()
+                self.ui.no_dailytxn_found.hide()
         
         row_matches = False
             
-        for row in range(self.ui.category_table.rowCount()):
-            for col in range(self.ui.category_table.columnCount()):
-                item = self.ui.category_table.item(row, col)
-
-                if item is not None and search_category.lower() in item.text().lower():
-                    self.ui.category_table.setRowHidden(row, False)
+        for row in range(self.ui.daily_tnx_table.rowCount()):
+            for col in range(self.ui.daily_tnx_table.columnCount()):
+                item = self.ui.daily_tnx_table.item(row, col)
+                
+                if item is not None and search_dailytxn.lower() in item.text().lower():
+                    self.ui.daily_tnx_table.setRowHidden(row, False)
                     row_matches = True
+                    self.ui.daily_tnx_table.show()
+                    self.ui.no_dailytxn_found.hide()
                     break
                 else:
-                    self.ui.category_table.setRowHidden(row, True)
-    
-        if not row_matches:
-            QMessageBox.information(self, 'Search Result', f'Text "{search_category}" not found.')
-            self.ui.edit_search_category.setText("")
-        """
-            
-    #Daily Transaction search button
-    def daily_tnx_clicked(self):
-        print("daily")
+                    self.ui.daily_tnx_table.setRowHidden(row, True)
         
+        if not row_matches:
+            self.ui.daily_tnx_table.hide()
+            self.ui.no_dailytxn_found.show()    
+                
     #Daily Transaction filter button
     def filter_daily_tnx_clicked(self):
         print("filter daily")
     
-    #Date-wise transactions search button
-    def date_wise_transactions_clicked(self):
-        print("date-wise transactions")
-    
+    #Date-wise transactions search field
+    def datewise_txn_table(self):
+        search_datewise_txn = self.ui.edit_search_dwt.text().strip()
+
+        # Check if the search field is empty
+        if not search_datewise_txn:
+        # If the search field is empty, reset the QTableWidget to show all items
+            for row in range(self.ui.datewise_transaction_table.rowCount()):
+                self.ui.datewise_transaction_table.setRowHidden(row, False)
+                self.ui.datewise_transaction_table.show()
+                self.ui.no_datewiseT_found.hide()
+        
+        row_matches = False
+            
+        for row in range(self.ui.datewise_transaction_table.rowCount()):
+            for col in range(self.ui.datewise_transaction_table.columnCount()):
+                item = self.ui.datewise_transaction_table.item(row, col)
+                
+                if item is not None and search_datewise_txn.lower() in item.text().lower():
+                    self.ui.datewise_transaction_table.setRowHidden(row, False)
+                    row_matches = True
+                    self.ui.datewise_transaction_table.show()
+                    self.ui.no_datewiseT_found.hide()
+                    break
+                else:
+                    self.ui.datewise_transaction_table.setRowHidden(row, True)
+        
+        if not row_matches:
+            self.ui.datewise_transaction_table.hide()
+            self.ui.no_datewiseT_found.show()      
+              
     #Date-wise transaction filter button
     def filter_date_wise_transaction_clicked(self):
         print("date-wise transactions filter")
     
-    #Date-wise payments search button
-    def date_wise_payment_clicked(self):
-        print("date-wise payments")
-    
-    #Date-wise transaction filter button
+    #Date-wise payments search field
+    def datewise_payment_table(self):
+        search_datewise_pay = self.ui.edit_search_dwp.text().strip()
+
+        # Check if the search field is empty
+        if not search_datewise_pay:
+        # If the search field is empty, reset the QTableWidget to show all items
+            for row in range(self.ui.datewise_payment_table.rowCount()):
+                self.ui.datewise_payment_table.setRowHidden(row, False)
+                self.ui.datewise_payment_table.show()
+                self.ui.no_datewiseP_found.hide()
+        
+        row_matches = False
+            
+        for row in range(self.ui.datewise_payment_table.rowCount()):
+            for col in range(self.ui.datewise_payment_table.columnCount()):
+                item = self.ui.datewise_payment_table.item(row, col)
+                
+                if item is not None and search_datewise_pay.lower() in item.text().lower():
+                    self.ui.datewise_payment_table.setRowHidden(row, False)
+                    row_matches = True
+                    self.ui.datewise_payment_table.show()
+                    self.ui.no_datewiseP_found.hide()
+                    break
+                else:
+                    self.ui.datewise_payment_table.setRowHidden(row, True)
+        
+        if not row_matches:
+            self.ui.datewise_payment_table.hide()
+            self.ui.no_datewiseP_found.show()  
+                    
+    #Date-wise payment filter button
     def filter_date_wise_payment_clicked(self):
         print("date-wise payment filter")
                 
