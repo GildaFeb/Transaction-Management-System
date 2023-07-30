@@ -44,6 +44,9 @@ class BtnFunctions(QMainWindow):
         self.ui.edit_category_btn.clicked.connect(lambda: DBQueries.editCategory(self, dbFolder))
         self.ui.delete_category_btn.clicked.connect(lambda: DBQueries.deleteCategory(self, dbFolder))
 
+        self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_category_selection_changed(self))
+        self.ui.category_table.selectionModel().selectionChanged.connect(lambda: DBQueries.on_selection_changed(self))
+
     #Set the Price list table to default    
     def pricelist_table_default(self):
         search_price = self.ui.edit_search_pricelist.toPlainText()
