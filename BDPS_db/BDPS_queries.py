@@ -134,3 +134,28 @@ class DBQueries():
 
         except Error as e:
             print(e)
+
+    def deleteCategory(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        selected_row = self.ui.category_table.currentRow()
+        if selected_row < 0:
+            print("No category selected.")
+            return
+
+        category_id = int(self.ui.category_table.item(selected_row, 0).text())
+
+        delete_category_sql = f"""
+                                DELETE FROM categories
+                                WHERE CAT_ID = {category_id};
+                            """
+
+        try:
+            c = conn.cursor()
+            c.execute(delete_category_sql)
+            conn.commit()
+
+            DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+
+        except Error as e:
+            print(e)

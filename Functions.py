@@ -37,11 +37,12 @@ class BtnFunctions(QMainWindow):
         dbFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'BDPS_db/BDPS.db'))
         DBQueries.main(dbFolder)
 
-        #======================== FETCHING CATEGORIES =================================#
+        #======================== FETCH and MOD CATEGORIES =================================#
         DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
-        self.ui.add_category_btn.clicked.connect(lambda: DBQueries.addCategory(self, dbFolder))
 
+        self.ui.add_category_btn.clicked.connect(lambda: DBQueries.addCategory(self, dbFolder))
         self.ui.edit_category_btn.clicked.connect(lambda: DBQueries.editCategory(self, dbFolder))
+        self.ui.delete_category_btn.clicked.connect(lambda: DBQueries.deleteCategory(self, dbFolder))
 
     #Set the Price list table to default    
     def pricelist_table_default(self):
