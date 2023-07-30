@@ -1,3 +1,4 @@
+import os
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox
 #from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 #from PyQt5 import QtWidgets, QtGui, QtCore
@@ -31,6 +32,15 @@ class BtnFunctions(QMainWindow):
         
         self.ui.search_dwt_btn_4.clicked.connect(self.date_wise_payment_clicked)
         self.ui.filter_dwp_btn.clicked.connect(self.filter_date_wise_payment_clicked)
+
+
+        #========================== DATABASE PATH =====================================#
+        dbFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'BDPS_db/BDPS.db'))
+        DBQueries.main(dbFolder)
+
+        #======================== FETCHING CATEGORIES =================================#
+        DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+        self.ui.add_category_btn.clicked.connect(lambda: DBQueries.addCategory(self, dbFolder))
 
     #Set the Price list table to default    
     def pricelist_table_default(self):

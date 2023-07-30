@@ -996,7 +996,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -2799,26 +2799,6 @@ background-color: #1a1c28;
 background-color: #1a1c28;
 }</string>
                             </property>
-                            <row>
-                             <property name="text">
-                              <string>hsbchfs</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>sdfcbx</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>asdf</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>shdbcs</string>
-                             </property>
-                            </row>
                             <column>
                              <property name="text">
                               <string>ID</string>
@@ -2839,86 +2819,6 @@ background-color: #1a1c28;
                               <string>Status</string>
                              </property>
                             </column>
-                            <item row="0" column="0">
-                             <property name="text">
-                              <string>Gris</string>
-                             </property>
-                            </item>
-                            <item row="0" column="1">
-                             <property name="text">
-                              <string>xc</string>
-                             </property>
-                            </item>
-                            <item row="0" column="2">
-                             <property name="text">
-                              <string>wab dx</string>
-                             </property>
-                            </item>
-                            <item row="0" column="3">
-                             <property name="text">
-                              <string>xcv</string>
-                             </property>
-                            </item>
-                            <item row="1" column="0">
-                             <property name="text">
-                              <string>Maangas</string>
-                             </property>
-                            </item>
-                            <item row="1" column="1">
-                             <property name="text">
-                              <string>ds</string>
-                             </property>
-                            </item>
-                            <item row="1" column="2">
-                             <property name="text">
-                              <string>zx</string>
-                             </property>
-                            </item>
-                            <item row="1" column="3">
-                             <property name="text">
-                              <string>ds</string>
-                             </property>
-                            </item>
-                            <item row="2" column="0">
-                             <property name="text">
-                              <string>Shan</string>
-                             </property>
-                            </item>
-                            <item row="2" column="1">
-                             <property name="text">
-                              <string>xcv</string>
-                             </property>
-                            </item>
-                            <item row="2" column="2">
-                             <property name="text">
-                              <string>z</string>
-                             </property>
-                            </item>
-                            <item row="2" column="3">
-                             <property name="text">
-                              <string>ds</string>
-                             </property>
-                            </item>
-                            <item row="3" column="0">
-                             <property name="text">
-                              <string>Don</string>
-                             </property>
-                            </item>
-                            <item row="3" column="1">
-                             <property name="text">
-                              <string>adx a</string>
-                             </property>
-                            </item>
-                            <item row="3" column="2">
-                             <property name="text">
-                              <string>b</string>
-                             </property>
-                            </item>
-                            <item row="3" column="3">
-                             <property name="text">
-                              <string>dc </string>
-                             </property>
-                            </item>
                            </widget>
                           </item>
                           <item>
