@@ -24,21 +24,20 @@ class BtnFunctions(QMainWindow):
         self.ui.icon_only_widget.hide()
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.home_btn_2.setChecked(True)
-    
-        self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
-        
-        self.ui.edit_search_category.textChanged.connect(self.category_table)
 
+        #========================== SEARCH FIELDS =====================================#
+        self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
+        self.ui.edit_search_category.textChanged.connect(self.category_table)
         self.ui.edit_search_daily_tnx.textChanged.connect(self.daily_tnx_table)
-        self.ui.filter_daily_tnx_btn.clicked.connect(self.filter_daily_tnx_clicked)
-        
         self.ui.edit_search_dwt.textChanged.connect(self.datewise_txn_table)
-        self.ui.filter_dwt_btn.clicked.connect(self.filter_date_wise_transaction_clicked)
-        
         self.ui.edit_search_dwp.textChanged.connect(self.datewise_payment_table)
+
+        #========================== FILTER BUTTONS =====================================#
+        self.ui.filter_daily_tnx_btn.clicked.connect(self.filter_daily_tnx_clicked) 
+        self.ui.filter_dwt_btn.clicked.connect(self.filter_date_wise_transaction_clicked)      
         self.ui.filter_dwp_btn.clicked.connect(self.filter_date_wise_payment_clicked)
         
-        #========================== Save as excel buttons =====================================#
+        #========================== EXCEL EXPORT BUTTONS =====================================#
         #self.ui.printreport_dwp_btn_4.clicked.connect(self.toExcel)
         #self.ui.printreport_daily_tnx_btn.clicked.connect(self.daily_transaction_toExcel)
         #self.ui.printreport_dwp_btn.clicked.connect(self.datewise_transaction_toExcel)
@@ -64,7 +63,7 @@ class BtnFunctions(QMainWindow):
 
     #Price list search field    
     def pricelist_table(self):
-        search_pricelist = self.ui.edit_search_pricelist.toPlainText()
+        search_pricelist = self.ui.edit_search_pricelist.text().strip()
 
         # Check if the search field is empty
         if not search_pricelist:
