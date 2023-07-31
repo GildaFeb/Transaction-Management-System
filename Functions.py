@@ -40,7 +40,7 @@ class BtnFunctions(QMainWindow):
         #========================== EXCEL EXPORT BUTTONS =====================================#
         self.ui.printreport_dwp_btn.clicked.connect(self.datewise_payment_toExcel)
         self.ui.printreport_daily_tnx_btn.clicked.connect(self.daily_transaction_toExcel)
-        #self.ui.printreport_dwt_btn.clicked.connect(self.datewise_transaction_toExcel)
+        self.ui.printreport_dwt_btn.clicked.connect(self.datewise_transaction_toExcel)
         
         #========================== DATABASE PATH =====================================#
         dbFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'BDPS_db/BDPS.db'))
@@ -255,7 +255,33 @@ class BtnFunctions(QMainWindow):
                     if items is not None:
                         data.cell(row=row + 2, column = col + 1, value = items.text())
                 
-            sample.save(path)         
+            sample.save(path)
+            
+    #Date-wise Transaction to Excel        
+    def datewise_transaction_toExcel(self):
+        path, _ = QFileDialog.getSaveFileName(self, "Save Excel File", "", "Excel Files (*.xlsx);;All Files (*)")
+
+        if path:
+            sample = None
+            try:
+                sample = load_workbook(path)
+            except FileNotFoundError:
+                sample = Workbook()
+                    
+            data = sample.active
+            
+            headers = [self.ui.datewise_transaction_table.horizontalHeaderItem(i).text() for i in range(self.ui.datewise_transaction_table.columnCount())]
+                
+            for column_index, header in enumerate(headers, start = 1):
+                data.cell(row=1, column = column_index, value = header)
+                    
+            for row in range(self.ui.datewise_transaction_table.rowCount()):
+                for col in range(self.ui.datewise_transaction_table.columnCount()):
+                    items = self.ui.datewise_transaction_table.item(row, col)
+                    if items is not None:
+                        data.cell(row=row + 2, column = col + 1, value = items.text())
+                
+            sample.save(path)                      
     
     #Date-wise Payment to Excel
     def datewise_payment_toExcel(self):
