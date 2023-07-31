@@ -1090,7 +1090,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -2800,7 +2800,7 @@ border-radius: 10px;
                           <bool>true</bool>
                          </property>
                          <attribute name="horizontalHeaderVisible">
-                          <bool>false</bool>
+                          <bool>true</bool>
                          </attribute>
                          <attribute name="horizontalHeaderCascadingSectionResizes">
                           <bool>true</bool>
@@ -3199,7 +3199,7 @@ border-radius: 10px;
                        <item>
                         <widget class="QWidget" name="table_item_2" native="true">
                          <property name="sizePolicy">
-                          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                            <horstretch>0</horstretch>
                            <verstretch>0</verstretch>
                           </sizepolicy>
@@ -4571,16 +4571,16 @@ background-color: #f5f7f9;
                <number>13</number>
               </property>
               <property name="leftMargin">
-               <number>26</number>
+               <number>13</number>
               </property>
               <property name="topMargin">
-               <number>26</number>
+               <number>13</number>
               </property>
               <property name="rightMargin">
-               <number>26</number>
+               <number>13</number>
               </property>
               <property name="bottomMargin">
-               <number>26</number>
+               <number>13</number>
               </property>
               <item>
                <widget class="QWidget" name="tr_actions_widget" native="true">
@@ -4655,6 +4655,9 @@ background-color: #f5f7f9;
                        <pointsize>10</pointsize>
                       </font>
                      </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton{
 	background-color: #012768;
@@ -4687,6 +4690,9 @@ background-color: #f5f7f9;
                        <pointsize>10</pointsize>
                       </font>
                      </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton{
 	background-color: #012768;
@@ -4718,6 +4724,9 @@ background-color: #f5f7f9;
                       <font>
                        <pointsize>10</pointsize>
                       </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton{
@@ -4788,6 +4797,9 @@ background-color: #f5f7f9;
                        <pointsize>10</pointsize>
                       </font>
                      </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
                      <property name="styleSheet">
                       <string notr="true">QComboBox{
 	background-color:#49505b;
@@ -4842,6 +4854,9 @@ background-color: #f5f7f9;
                        <pointsize>11</pointsize>
                       </font>
                      </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
                      <property name="styleSheet">
                       <string notr="true">QDateEdit{
 	background-color: white;
@@ -4882,6 +4897,9 @@ background-color: #f5f7f9;
                       <font>
                        <pointsize>11</pointsize>
                       </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QDateEdit{

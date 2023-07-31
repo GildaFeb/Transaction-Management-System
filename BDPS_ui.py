@@ -1255,7 +1255,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         item.setFont(font)
         self.pricelist_table.setHorizontalHeaderItem(3, item)
-        self.pricelist_table.horizontalHeader().setVisible(False)
+        self.pricelist_table.horizontalHeader().setVisible(True)
         self.pricelist_table.horizontalHeader().setCascadingSectionResizes(True)
         self.pricelist_table.horizontalHeader().setDefaultSectionSize(173)
         self.pricelist_table.horizontalHeader().setHighlightSections(True)
@@ -1388,7 +1388,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_42.setSpacing(0)
         self.horizontalLayout_42.setObjectName("horizontalLayout_42")
         self.table_item_2 = QtWidgets.QWidget(self.price_main_widget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.table_item_2.sizePolicy().hasHeightForWidth())
@@ -1998,7 +1998,7 @@ class Ui_MainWindow(object):
         self.Transaction_record_widget = QtWidgets.QWidget(self.transaction_record_2)
         self.Transaction_record_widget.setObjectName("Transaction_record_widget")
         self.verticalLayout_60 = QtWidgets.QVBoxLayout(self.Transaction_record_widget)
-        self.verticalLayout_60.setContentsMargins(26, 26, 26, 26)
+        self.verticalLayout_60.setContentsMargins(13, 13, 13, 13)
         self.verticalLayout_60.setSpacing(13)
         self.verticalLayout_60.setObjectName("verticalLayout_60")
         self.tr_actions_widget = QtWidgets.QWidget(self.Transaction_record_widget)
@@ -2030,6 +2030,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButton.setFont(font)
+        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton.setStyleSheet("QPushButton{\n"
 "    background-color: #012768;\n"
 "    color:white;\n"
@@ -2044,6 +2045,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButton_2.setFont(font)
+        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_2.setStyleSheet("QPushButton{\n"
 "    background-color: #012768;\n"
 "    color:white;\n"
@@ -2058,6 +2060,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButton_3.setFont(font)
+        self.pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_3.setStyleSheet("QPushButton{\n"
 "    background-color: #012768;\n"
 "    color:white;\n"
@@ -2091,6 +2094,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.transactionR_combobox.setFont(font)
+        self.transactionR_combobox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.transactionR_combobox.setStyleSheet("QComboBox{\n"
 "    background-color:#49505b;\n"
 "    color:white;\n"
@@ -2113,6 +2117,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.dateEdit.setFont(font)
+        self.dateEdit.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.dateEdit.setStyleSheet("QDateEdit{\n"
 "    background-color: white;\n"
 "    color:black;\n"
@@ -2134,6 +2139,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.dateEdit_2.setFont(font)
+        self.dateEdit_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.dateEdit_2.setStyleSheet("QDateEdit{\n"
 "    background-color: white;\n"
 "    color:black;\n"
@@ -2878,7 +2884,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(1)
         self.new_transaction_btn_1.toggled['bool'].connect(self.new_transaction_btn_2.setChecked) # type: ignore
         self.datewise_transaction_btn_1.toggled['bool'].connect(self.datewise_transaction_btn_2.setChecked) # type: ignore
         self.daily_transaction_btn_1.toggled['bool'].connect(self.daily_transaction_btn_2.setChecked) # type: ignore
