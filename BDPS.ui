@@ -464,6 +464,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -500,6 +505,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>Categories</string>
            </property>
@@ -529,6 +539,11 @@
              <width>250</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -570,6 +585,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -605,6 +625,11 @@
              <width>250</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -649,6 +674,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -684,6 +714,11 @@
              <width>250</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -723,6 +758,11 @@
              <width>250</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -932,6 +972,11 @@ border-radius: 10px;
                </property>
                <item>
                 <widget class="QLabel" name="label_4">
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>Administrator</string>
                  </property>
@@ -996,7 +1041,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>7</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -1010,7 +1055,7 @@ border-radius: 10px;
                <number>20</number>
               </property>
               <property name="rightMargin">
-               <number>20</number>
+               <number>10</number>
               </property>
               <property name="bottomMargin">
                <number>20</number>
@@ -1062,6 +1107,13 @@ border-radius: 10px;
                  </property>
                  <item>
                   <widget class="QLabel" name="label_summary">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>Summary</string>
                    </property>
@@ -1116,6 +1168,11 @@ border-radius: 10px;
                         </item>
                         <item>
                          <widget class="QLabel" name="total_sales">
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>2,000</string>
                           </property>
@@ -1138,6 +1195,13 @@ border-radius: 10px;
                       </item>
                       <item>
                        <widget class="QLabel" name="label_sales_2">
+                        <property name="font">
+                         <font>
+                          <pointsize>10</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>Total Sales</string>
                         </property>
@@ -1196,14 +1260,12 @@ border-radius: 10px;
                          <number>10</number>
                         </property>
                         <item>
-                         <widget class="QLabel" name="peso_sign_2">
-                          <property name="text">
-                           <string>₱</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
                          <widget class="QLabel" name="total_category">
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>10,233</string>
                           </property>
@@ -1226,6 +1288,13 @@ border-radius: 10px;
                       </item>
                       <item>
                        <widget class="QLabel" name="label_category">
+                        <property name="font">
+                         <font>
+                          <pointsize>10</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>Total Category</string>
                         </property>
@@ -1285,15 +1354,13 @@ border-radius: 10px;
                         </property>
                         <item>
                          <widget class="QLabel" name="total_product">
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>3,432</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="peso_sign_3">
-                          <property name="text">
-                           <string>Products</string>
                           </property>
                          </widget>
                         </item>
@@ -1314,6 +1381,13 @@ border-radius: 10px;
                       </item>
                       <item>
                        <widget class="QLabel" name="label_product">
+                        <property name="font">
+                         <font>
+                          <pointsize>10</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>Total product</string>
                         </property>
@@ -1358,6 +1432,13 @@ border-radius: 10px;
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
                   </property>
                   <property name="text">
                    <string>Transactions</string>
@@ -1420,6 +1501,11 @@ border-radius: 10px;
                          <layout class="QVBoxLayout" name="verticalLayout_51">
                           <item>
                            <widget class="QLabel" name="total_transactions">
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>230</string>
                             </property>
@@ -1427,6 +1513,13 @@ border-radius: 10px;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_13">
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Total Transactions</string>
                             </property>
@@ -1487,6 +1580,11 @@ border-radius: 10px;
                          <layout class="QVBoxLayout" name="verticalLayout_50">
                           <item>
                            <widget class="QLabel" name="PendingTransactions">
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>7</string>
                             </property>
@@ -1494,6 +1592,13 @@ border-radius: 10px;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_23">
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Pending Transactions</string>
                             </property>
@@ -1562,6 +1667,13 @@ border-radius: 10px;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_22">
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Successful Transactions</string>
                             </property>
@@ -1628,6 +1740,11 @@ border-radius: 10px;
                          <layout class="QVBoxLayout" name="verticalLayout_53">
                           <item>
                            <widget class="QLabel" name="Total_Categories">
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>133</string>
                             </property>
@@ -1635,6 +1752,13 @@ border-radius: 10px;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_16">
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Cancelled Transactions</string>
                             </property>
@@ -1683,6 +1807,12 @@ border-radius: 10px;
                     <height>16777215</height>
                    </size>
                   </property>
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Panel</enum>
                   </property>
@@ -1702,7 +1832,7 @@ border-radius: 10px;
               <item row="1" column="2">
                <layout class="QVBoxLayout" name="verticalLayout_48">
                 <property name="spacing">
-                 <number>13</number>
+                 <number>26</number>
                 </property>
                 <property name="leftMargin">
                  <number>13</number>
@@ -1861,6 +1991,13 @@ border-radius: 10px;
               </item>
               <item row="0" column="0">
                <widget class="QLabel" name="label_8">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Dashboard</string>
                 </property>
