@@ -1018,7 +1018,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -2677,7 +2677,7 @@ border-radius: 10px;
                           <bool>true</bool>
                          </property>
                          <attribute name="horizontalHeaderVisible">
-                          <bool>true</bool>
+                          <bool>false</bool>
                          </attribute>
                          <attribute name="horizontalHeaderCascadingSectionResizes">
                           <bool>true</bool>
@@ -5359,7 +5359,7 @@ background-color: #f5f7f9;
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_37">
                         <item>
-                         <widget class="QPushButton" name="printreport_dwp_btn">
+                         <widget class="QPushButton" name="printreport_dwt_btn">
                           <property name="minimumSize">
                            <size>
                             <width>35</width>
@@ -5371,6 +5371,9 @@ background-color: #f5f7f9;
                             <width>35</width>
                             <height>35</height>
                            </size>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
                           </property>
                           <property name="text">
                            <string/>
@@ -5858,7 +5861,7 @@ background-color: #f5f7f9;
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_58">
                   <item>
-                   <widget class="QPushButton" name="printreport_dwp_btn_4">
+                   <widget class="QPushButton" name="printreport_dwp_btn">
                     <property name="minimumSize">
                      <size>
                       <width>35</width>
@@ -5870,6 +5873,9 @@ background-color: #f5f7f9;
                       <width>35</width>
                       <height>35</height>
                      </size>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
                     </property>
                     <property name="text">
                      <string/>

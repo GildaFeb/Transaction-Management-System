@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox,
 #from PyQt5.QtGui import QStandardItemModel, QStandardItem
 #from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 #from PyQt5 import QtWidgets, QtGui, QtCore
-#from openpyxl import load_workbook, Workbook
+from openpyxl import load_workbook, Workbook
 from BDPS_ui import Ui_MainWindow
 from BDPS_db.BDPS_queries import DBQueries
 
@@ -38,9 +38,9 @@ class BtnFunctions(QMainWindow):
         self.ui.filter_dwp_btn.clicked.connect(self.filter_date_wise_payment_clicked)
         
         #========================== EXCEL EXPORT BUTTONS =====================================#
-        #self.ui.printreport_dwp_btn_4.clicked.connect(self.toExcel)
+        self.ui.printreport_dwp_btn.clicked.connect(self.datewise_payment_toExcel)
         #self.ui.printreport_daily_tnx_btn.clicked.connect(self.daily_transaction_toExcel)
-        #self.ui.printreport_dwp_btn.clicked.connect(self.datewise_transaction_toExcel)
+        #self.ui.printreport_dwt_btn.clicked.connect(self.datewise_transaction_toExcel)
         
         #========================== DATABASE PATH =====================================#
         dbFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'BDPS_db/BDPS.db'))
@@ -152,12 +152,8 @@ class BtnFunctions(QMainWindow):
         
         if not row_matches:
             self.ui.daily_tnx_table.hide()
-            self.ui.no_dailytxn_found.show()    
-                
-    #Daily Transaction filter button
-    def filter_daily_tnx_clicked(self):
-        print("filter daily")
-    
+            self.ui.no_dailytxn_found.show()
+            
     #Date-wise transactions search field
     def datewise_txn_table(self):
         search_datewise_txn = self.ui.edit_search_dwt.text().strip()
@@ -187,12 +183,8 @@ class BtnFunctions(QMainWindow):
         
         if not row_matches:
             self.ui.datewise_transaction_table.hide()
-            self.ui.no_datewiseT_found.show()      
-              
-    #Date-wise transaction filter button
-    def filter_date_wise_transaction_clicked(self):
-        print("date-wise transactions filter")
-    
+            self.ui.no_datewiseT_found.show() 
+            
     #Date-wise payments search field
     def datewise_payment_table(self):
         search_datewise_pay = self.ui.edit_search_dwp.text().strip()
@@ -222,11 +214,51 @@ class BtnFunctions(QMainWindow):
         
         if not row_matches:
             self.ui.datewise_payment_table.hide()
-            self.ui.no_datewiseP_found.show()  
+            self.ui.no_datewiseP_found.show()
+
+        #======================== END OF SEARCH FIELDS FUNCTIONS =================================#
+                
+    #Daily Transaction filter button
+    def filter_daily_tnx_clicked(self):
+        print("filter daily")
+              
+    #Date-wise transaction filter button
+    def filter_date_wise_transaction_clicked(self):
+        print("date-wise transactions filter")  
                     
     #Date-wise payment filter button
     def filter_date_wise_payment_clicked(self):
         print("date-wise payment filter")
+        
+        #======================== END OF FILTER FUNCTIONS =================================#
+
+    def datewise_payment_toExcel(self):
+        path, _ = QFileDialog.getSaveFileName(self, "Save Excel File", "", "Excel Files (*.xlsx);;All Files (*)")
+
+        if path:
+            sample = None
+            try:
+                sample = load_workbook(path)
+            except FileNotFoundError:
+                sample = Workbook()
+                    
+            data = sample.active
+            
+            headers = [self.ui.datewise_payment_table.horizontalHeaderItem(i).text() for i in range(self.ui.datewise_payment_table.columnCount())]
+                
+            for column_index, header in enumerate(headers, start = 1):
+                data.cell(row=1, column = column_index, value = header)
+                    
+            for row in range(self.ui.datewise_payment_table.rowCount()):
+                for col in range(self.ui.datewise_payment_table.columnCount()):
+                    items = self.ui.datewise_payment_table.item(row, col)
+                    if items is not None:
+                        data.cell(row=row + 2, column = col + 1, value = items.text())
+                
+            sample.save(path)  
+            
+        #======================== END OF EXPORT FUNCTIONS =================================#
+
                 
     #----------------------------------------------------------------------#
     
