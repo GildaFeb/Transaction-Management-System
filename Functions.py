@@ -1,8 +1,9 @@
 import os
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox, QComboBox
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox, QComboBox, QFileDialog
 #from PyQt5.QtGui import QStandardItemModel, QStandardItem
 #from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 #from PyQt5 import QtWidgets, QtGui, QtCore
+#from openpyxl import load_workbook, Workbook
 from BDPS_ui import Ui_MainWindow
 from BDPS_db.BDPS_queries import DBQueries
 
@@ -36,7 +37,12 @@ class BtnFunctions(QMainWindow):
         
         self.ui.edit_search_dwp.textChanged.connect(self.datewise_payment_table)
         self.ui.filter_dwp_btn.clicked.connect(self.filter_date_wise_payment_clicked)
-
+        
+        #========================== Save as excel buttons =====================================#
+        #self.ui.printreport_dwp_btn_4.clicked.connect(self.toExcel)
+        #self.ui.printreport_daily_tnx_btn.clicked.connect(self.daily_transaction_toExcel)
+        #self.ui.printreport_dwp_btn.clicked.connect(self.datewise_transaction_toExcel)
+        
         #========================== DATABASE PATH =====================================#
         dbFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'BDPS_db/BDPS.db'))
         DBQueries.main(dbFolder)
