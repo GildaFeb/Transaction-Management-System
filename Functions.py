@@ -1,5 +1,6 @@
 import os
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox, QComboBox
+#from PyQt5.QtGui import QStandardItemModel, QStandardItem
 #from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 #from PyQt5 import QtWidgets, QtGui, QtCore
 from BDPS_ui import Ui_MainWindow
@@ -49,6 +50,13 @@ class BtnFunctions(QMainWindow):
 
         self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_category_selection_changed(self))
         self.ui.category_table.selectionModel().selectionChanged.connect(lambda: DBQueries.on_selection_changed(self))
+        
+        #======================== FETCH and MOD PRICELIST =================================#
+        category_names = DBQueries.getCategoryNamesFromProducts(dbFolder)
+        self.ui.cat_name_pricelist.addItems(category_names)
+
+        """
+        DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))"""
 
     #Price list search field    
     def pricelist_table(self):

@@ -2417,7 +2417,7 @@ border-radius: 10px;
                         </widget>
                        </item>
                        <item>
-                        <widget class="QComboBox" name="prd_name_pricelist">
+                        <widget class="QComboBox" name="cat_name_pricelist">
                          <property name="minimumSize">
                           <size>
                            <width>0</width>

@@ -41,6 +41,22 @@ class DBQueries():
         else:
             #PROMPT
             print("Error! Cannot connect.")
+        
+        create_product_table = """ CREATE TABLE IF NOT EXISTS product (
+                                                `PROD_ID` INTEGER PRIMARY KEY,
+                                                `CAT_ID` INTEGER NOT NULL,
+                                                `PROD_SZ` VARCHAR(100) DEFAULT NULL,
+                                                `PROD_PRICE` INTEGER DEFAULT NULL,
+                                                FOREIGN KEY (`CAT_ID`) REFERENCES `categories` (`CAT_ID`)
+                                                );
+                                """
+        conn = DBQueries.create_connection(dbFolder)
+
+        if conn is not None:
+            DBQueries.create_table(conn, create_product_table)
+        else:
+            #PROMPT
+            print("Error! Cannot connect.")
     
 
     #============================= CATEGORY QUERIES =======================================#
@@ -262,3 +278,58 @@ class DBQueries():
             edit_category_btn.setEnabled(True)
 
     #======================= PRICE LIST QUERIES =========================#
+    def getCategoryNamesFromProducts(dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        get_category_names_sql = """SELECT categories.CAT_NAME
+                                    FROM categories;"""
+
+        try:
+            c = conn.cursor()
+            c.execute(get_category_names_sql)
+            category_names = [row[0] for row in c.fetchall()]
+
+            print(category_names)
+            return category_names
+        except Error as e:
+            print(e)
+            return []
+    
+    def getAllPrices(dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        get_all_prices = """ SELECT * FROM products; """
+
+        try:
+            c = conn.cursor()
+            c.execute(get_all_prices)
+
+            rows = c.fetchall()
+            return rows
+        except Error as e:
+            print(e)
+            return []
+    """
+    def displayPrices(self, rows):
+        self.ui.pricelist_table.setRowCount(0)
+
+        for row in rows:
+            rowPosition = self.ui.pricelist_table.rowCount()
+
+            if rowPosition > row[0]:
+                continue
+
+            itemCount = 0
+
+            self.ui.pricelist_table.setRowCount(rowPosition+1)
+            qtablewidgetitem = QTableWidgetItem()
+            self.ui.pricelist_table.setVerticalHeaderItem(rowPosition, qtablewidgetitem)
+
+            for item in row:
+                self.qtablewidgetitem = QTableWidgetItem()
+                self.ui.pricelist_table.setItem(rowPosition, itemCount, self.qtablewidgetitem)
+                self.qtablewidgetitem = self.ui.pricelist_table.item(rowPosition, itemCount)
+                self.qtablewidgetitem.setText(str(item))
+
+                itemCount = itemCount+1
+            rowPosition = rowPosition+1"""
