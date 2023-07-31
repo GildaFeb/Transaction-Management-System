@@ -22,6 +22,6 @@ if __name__ == "__main__":
     sys.exit(app.exec())
 
 
-    # fucking leg8t
+    # fucking leg8t 
 
 
