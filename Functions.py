@@ -60,8 +60,7 @@ class BtnFunctions(QMainWindow):
         category_names = DBQueries.getCategoryNamesFromProducts(dbFolder)
         self.ui.cat_name_pricelist.addItems(category_names)
 
-        """
-        DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))"""
+        DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 
     #Price list search field    
     def pricelist_table(self):

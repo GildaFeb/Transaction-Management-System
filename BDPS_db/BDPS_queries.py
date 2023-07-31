@@ -295,7 +295,7 @@ class DBQueries():
     def getAllPrices(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_all_prices = """ SELECT * FROM products; """
+        get_all_prices = """ SELECT * FROM product; """
 
         try:
             c = conn.cursor()
@@ -306,7 +306,7 @@ class DBQueries():
         except Error as e:
             print(e)
             return []
-    """
+    
     def displayPrices(self, rows):
         self.ui.pricelist_table.setRowCount(0)
 
@@ -319,14 +319,14 @@ class DBQueries():
             itemCount = 0
 
             self.ui.pricelist_table.setRowCount(rowPosition+1)
-            qtablewidgetitem = QTableWidgetItem()
-            self.ui.pricelist_table.setVerticalHeaderItem(rowPosition, qtablewidgetitem)
+            prices_tablewidgetitem = QTableWidgetItem()
+            self.ui.pricelist_table.setVerticalHeaderItem(rowPosition, prices_tablewidgetitem)
 
             for item in row:
-                self.qtablewidgetitem = QTableWidgetItem()
-                self.ui.pricelist_table.setItem(rowPosition, itemCount, self.qtablewidgetitem)
-                self.qtablewidgetitem = self.ui.pricelist_table.item(rowPosition, itemCount)
-                self.qtablewidgetitem.setText(str(item))
+                self.prices_tablewidgetitem = QTableWidgetItem()
+                self.ui.pricelist_table.setItem(rowPosition, itemCount, self.prices_tablewidgetitem)
+                self.prices_tablewidgetitem = self.ui.pricelist_table.item(rowPosition, itemCount)
+                self.prices_tablewidgetitem.setText(str(item))
 
                 itemCount = itemCount+1
-            rowPosition = rowPosition+1"""
+            rowPosition = rowPosition+1
