@@ -886,6 +886,21 @@ border-radius: 10px;
        </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <property name="spacing">
+          <number>13</number>
+         </property>
+         <property name="leftMargin">
+          <number>13</number>
+         </property>
+         <property name="topMargin">
+          <number>13</number>
+         </property>
+         <property name="rightMargin">
+          <number>13</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QPushButton" name="change_btn_2">
            <property name="cursor">
@@ -2022,12 +2037,12 @@ border-radius: 10px;
               <property name="bottomMargin">
                <number>0</number>
               </property>
-              <item>
+              <item alignment="Qt::AlignVCenter">
                <widget class="QWidget" name="widget_13" native="true">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>70</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -2149,35 +2164,44 @@ border-radius: 10px;
                  <number>10</number>
                 </property>
                 <item>
-                 <widget class="QLineEdit" name="edit_search_pricelist">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
+                 <widget class="QPushButton" name="show_pricelist_form">
                   <property name="minimumSize">
                    <size>
-                    <width>0</width>
+                    <width>200</width>
                     <height>35</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>16777215</width>
+                    <width>200</width>
                     <height>35</height>
                    </size>
                   </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
                   <property name="cursor">
-                   <cursorShape>IBeamCursor</cursorShape>
+                   <cursorShape>PointingHandCursor</cursorShape>
                   </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                  <property name="placeholderText">
-                   <string>  Search..</string>
-                  </property>
-                  <property name="clearButtonEnabled">
-                   <bool>false</bool>
+                  <property name="text">
+                   <string>Manage prices</string>
                   </property>
                  </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>194</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
                 </item>
                 <item>
                  <widget class="QPushButton" name="search_pricelist_btn">
@@ -2215,42 +2239,33 @@ border-radius: 10px;
                  </widget>
                 </item>
                 <item>
-                 <spacer name="horizontalSpacer">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                 <widget class="QLineEdit" name="edit_search_pricelist">
+                  <property name="enabled">
+                   <bool>true</bool>
                   </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>194</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="show_pricelist_form">
                   <property name="minimumSize">
                    <size>
-                    <width>200</width>
+                    <width>0</width>
                     <height>35</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>200</width>
+                    <width>16777215</width>
                     <height>35</height>
                    </size>
                   </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
                   <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
+                   <cursorShape>IBeamCursor</cursorShape>
                   </property>
-                  <property name="text">
-                   <string>ADD NEW PRODUCT</string>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>  Search..</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -2311,234 +2326,6 @@ border-radius: 10px;
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QWidget" name="table_item" native="true">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_10">
-                       <property name="leftMargin">
-                        <number>13</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>13</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>13</number>
-                       </property>
-                       <item>
-                        <widget class="QTableWidget" name="pricelist_table">
-                         <property name="enabled">
-                          <bool>true</bool>
-                         </property>
-                         <property name="cursor" stdset="0">
-                          <cursorShape>IBeamCursor</cursorShape>
-                         </property>
-                         <property name="autoFillBackground">
-                          <bool>false</bool>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">
-#tableWidget{
-	color: rgb(255, 255, 255);
-	gridline-color: rgb(255, 255, 255);
-	background-color: #1a1c28;
-	alternate-background-color: yellow;
-     	background-color: red;
-}</string>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::NoFrame</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <property name="lineWidth">
-                          <number>1</number>
-                         </property>
-                         <property name="sizeAdjustPolicy">
-                          <enum>QAbstractScrollArea::AdjustIgnored</enum>
-                         </property>
-                         <property name="editTriggers">
-                          <set>QAbstractItemView::NoEditTriggers</set>
-                         </property>
-                         <property name="alternatingRowColors">
-                          <bool>true</bool>
-                         </property>
-                         <property name="showGrid">
-                          <bool>true</bool>
-                         </property>
-                         <property name="gridStyle">
-                          <enum>Qt::NoPen</enum>
-                         </property>
-                         <property name="sortingEnabled">
-                          <bool>true</bool>
-                         </property>
-                         <property name="cornerButtonEnabled">
-                          <bool>true</bool>
-                         </property>
-                         <attribute name="horizontalHeaderVisible">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="horizontalHeaderCascadingSectionResizes">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="horizontalHeaderDefaultSectionSize">
-                          <number>200</number>
-                         </attribute>
-                         <attribute name="horizontalHeaderHighlightSections">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="horizontalHeaderStretchLastSection">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="verticalHeaderCascadingSectionResizes">
-                          <bool>true</bool>
-                         </attribute>
-                         <column>
-                          <property name="text">
-                           <string>ID</string>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Category Name</string>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Size</string>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Price</string>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                         </column>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="no_pricelist_found">
-                         <property name="font">
-                          <font>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>No search results found</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QWidget" name="widget_17" native="true">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>50</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>50</height>
-                          </size>
-                         </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_13">
-                          <property name="spacing">
-                           <number>0</number>
-                          </property>
-                          <property name="leftMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>0</number>
-                          </property>
-                          <item>
-                           <widget class="QPushButton" name="delete_pricelist_btn">
-                            <property name="minimumSize">
-                             <size>
-                              <width>150</width>
-                              <height>35</height>
-                             </size>
-                            </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>150</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <pointsize>10</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Delete</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <spacer name="horizontalSpacer_4">
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                             <size>
-                              <width>40</width>
-                              <height>20</height>
-                             </size>
-                            </property>
-                           </spacer>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
                      <widget class="QWidget" name="add_item" native="true">
                       <property name="minimumSize">
                        <size>
@@ -2557,13 +2344,13 @@ border-radius: 10px;
                         <number>13</number>
                        </property>
                        <property name="leftMargin">
-                        <number>13</number>
+                        <number>15</number>
                        </property>
                        <property name="topMargin">
                         <number>13</number>
                        </property>
                        <property name="rightMargin">
-                        <number>13</number>
+                        <number>15</number>
                        </property>
                        <property name="bottomMargin">
                         <number>13</number>
@@ -2806,6 +2593,240 @@ border-radius: 10px;
                             <property name="sizeHint" stdset="0">
                              <size>
                               <width>20</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="table_item" native="true">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_10">
+                       <property name="leftMargin">
+                        <number>13</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>13</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>13</number>
+                       </property>
+                       <item>
+                        <widget class="QTableWidget" name="pricelist_table">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="cursor" stdset="0">
+                          <cursorShape>IBeamCursor</cursorShape>
+                         </property>
+                         <property name="autoFillBackground">
+                          <bool>false</bool>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">
+#tableWidget{
+	color: rgb(255, 255, 255);
+	gridline-color: rgb(255, 255, 255);
+	background-color: #1a1c28;
+	alternate-background-color: yellow;
+     	background-color: red;
+}</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::NoFrame</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <property name="lineWidth">
+                          <number>1</number>
+                         </property>
+                         <property name="sizeAdjustPolicy">
+                          <enum>QAbstractScrollArea::AdjustIgnored</enum>
+                         </property>
+                         <property name="editTriggers">
+                          <set>QAbstractItemView::NoEditTriggers</set>
+                         </property>
+                         <property name="alternatingRowColors">
+                          <bool>true</bool>
+                         </property>
+                         <property name="showGrid">
+                          <bool>true</bool>
+                         </property>
+                         <property name="gridStyle">
+                          <enum>Qt::NoPen</enum>
+                         </property>
+                         <property name="sortingEnabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="cornerButtonEnabled">
+                          <bool>true</bool>
+                         </property>
+                         <attribute name="horizontalHeaderVisible">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="horizontalHeaderCascadingSectionResizes">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="horizontalHeaderDefaultSectionSize">
+                          <number>200</number>
+                         </attribute>
+                         <attribute name="horizontalHeaderHighlightSections">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="horizontalHeaderMinimumSectionSize">
+                          <number>100</number>
+                         </attribute>
+                         <attribute name="horizontalHeaderStretchLastSection">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderCascadingSectionResizes">
+                          <bool>true</bool>
+                         </attribute>
+                         <column>
+                          <property name="text">
+                           <string>ID</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Category Name</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Size</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Price</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                         </column>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="no_pricelist_found">
+                         <property name="font">
+                          <font>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>No search results found</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QWidget" name="widget_17" native="true">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_13">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QPushButton" name="delete_pricelist_btn">
+                            <property name="minimumSize">
+                             <size>
+                              <width>150</width>
+                              <height>35</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>150</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="text">
+                             <string>Delete</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_4">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
                               <height>20</height>
                              </size>
                             </property>
