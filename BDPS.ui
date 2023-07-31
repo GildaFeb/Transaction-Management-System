@@ -14,23 +14,8 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_22">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QWidget" name="icon_only_widget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
@@ -401,7 +386,7 @@
       </layout>
      </widget>
     </item>
-    <item>
+    <item row="0" column="1">
      <widget class="QWidget" name="full_menu_widget" native="true">
       <layout class="QGridLayout" name="gridLayout_11">
        <property name="rightMargin">
@@ -842,7 +827,7 @@
       </layout>
      </widget>
     </item>
-    <item>
+    <item row="0" column="2">
      <widget class="QWidget" name="widget_3" native="true">
       <property name="styleSheet">
        <string notr="true">#box1{
@@ -1013,17 +998,19 @@ border-radius: 10px;
 	border-radius: 10px;
 }
 
-#edit_search_daily_tnx, #editSearch_dwt_4{
-	border-color: black;
+#edit_search_daily_tnx, #editSearch_dwt_4, #edit_search_new_transaction, #edit_search_category, #edit_search_pricelist, #edit_search_dwp,#edit_search_dwt{
+	border: 2px solid #d6d9e1;
+    border-radius: 5px;
+    background-color: #f8f9f9;
 }
 
-#separator, #separator_dwp {
+#separator, #separator_dwp{
 	background-color:#d6d9e1;
 }
 
 
 #search, #editSearch_dwt_4, #edit_search_daily_tnx, #editSearch_dwt{
-	background-color: #f5f7f9;
+	background-color: #f8f9f9;
 
 }
 
@@ -1039,7 +1026,7 @@ border-radius: 10px;
 }
 
 
-/*--------- buttons ----------*/
+/*------------------------- buttons -----------------------*/
 
 /*PRICE LIST*/
 #manage_price_btn{
@@ -1074,7 +1061,7 @@ border-radius: 10px;
 }
 
 
-#product_info_separator{
+#product_info_separator, #break2_2{
 
 	background-color: #012159;
 	
@@ -1085,11 +1072,25 @@ border-radius: 10px;
 	color: #011B47;
 
 }
+/*TRANSACTION RECORD*/
+#transactionR_combobox{
+	background-color: #f4e10a;
+	color:white;
+}
+
+/* ------------------------- Tables ----------------- */
+
+/*Transaction record page*/
+#pricelist_table, #transaction_record_tbl{
+		
+	 border: 3 solid WHITE;
+     border-radius: 10px;
+}
 
 </string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -2080,11 +2081,7 @@ border-radius: 10px;
      border-radius: 5px;
 }
 
-#pricelist_table {
-		
-	 border: 3 solid WHITE;
-     border-radius: 10px;
-}
+
 
 #pricelist_table{
 	alternate-background-color: #f7f9fa;
@@ -2803,7 +2800,7 @@ border-radius: 10px;
                           <bool>true</bool>
                          </property>
                          <attribute name="horizontalHeaderVisible">
-                          <bool>true</bool>
+                          <bool>false</bool>
                          </attribute>
                          <attribute name="horizontalHeaderCascadingSectionResizes">
                           <bool>true</bool>
@@ -3688,7 +3685,11 @@ background-color: #f5f7f9;
                           </widget>
                          </item>
                          <item>
-                          <widget class="QDateEdit" name="tnx_date_nt"/>
+                          <widget class="QDateEdit" name="tnx_date_nt">
+                           <property name="calendarPopup">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
                          </item>
                         </layout>
                        </item>
@@ -3706,24 +3707,7 @@ background-color: #f5f7f9;
                         </spacer>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_17">
-                         <item>
-                          <widget class="QLabel" name="label_27">
-                           <property name="font">
-                            <font>
-                             <weight>75</weight>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>Due Date</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QDateEdit" name="tnx_due_nt"/>
-                         </item>
-                        </layout>
+                        <layout class="QHBoxLayout" name="horizontalLayout_17"/>
                        </item>
                       </layout>
                      </widget>
@@ -4579,20 +4563,592 @@ background-color: #f5f7f9;
           </layout>
          </widget>
          <widget class="QWidget" name="transaction_record_2">
-          <layout class="QGridLayout" name="gridLayout_6">
-           <item row="0" column="0">
-            <widget class="QLabel" name="daily_transaction">
-             <property name="font">
-              <font>
-               <pointsize>20</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>transaction_record</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
+          <layout class="QVBoxLayout" name="verticalLayout_61">
+           <item>
+            <widget class="QWidget" name="Transaction_record_widget" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_60">
+              <property name="spacing">
+               <number>13</number>
+              </property>
+              <property name="leftMargin">
+               <number>26</number>
+              </property>
+              <property name="topMargin">
+               <number>26</number>
+              </property>
+              <property name="rightMargin">
+               <number>26</number>
+              </property>
+              <property name="bottomMargin">
+               <number>26</number>
+              </property>
+              <item>
+               <widget class="QWidget" name="tr_actions_widget" native="true">
+                <property name="styleSheet">
+                 <string notr="true">*{
+	background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_59">
+                 <property name="spacing">
+                  <number>26</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>26</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>26</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>26</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>26</number>
+                 </property>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_14">
+                   <item>
+                    <widget class="QLabel" name="label_11">
+                     <property name="font">
+                      <font>
+                       <pointsize>12</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Transaction Record</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_24">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>158</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	background-color: #012768;
+	color:white;
+	border-radius:5px;
+	border: 2px solid #012157;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>+ Add Transaction</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	background-color: #012768;
+	color:white;
+	border-radius:5px;
+	border: 2px solid #012157;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>/ Edit Transaction</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_3">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	background-color: #012768;
+	color:white;
+	border-radius:5px;
+	border: 2px solid #012157;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Delete Transaction</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="tr_separator">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>2</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>2</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QFrame {
+	background-color:#d6d9e1;
+}</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_22">
+                   <property name="spacing">
+                    <number>13</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QComboBox" name="transactionR_combobox">
+                     <property name="minimumSize">
+                      <size>
+                       <width>250</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox{
+	background-color:#49505b;
+	color:white;
+	border-radius:0px;
+}</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>Successful Transactions</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Pending Transactions</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Cancelled Transactions</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Failed Transactions</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_24">
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Date From: </string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDateEdit" name="dateEdit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QDateEdit{
+	background-color: white;
+	color:black;
+	border: 2px solid #b5b5b5;
+    border-radius: 2px;
+}</string>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                     <property name="calendarPopup">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_15">
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Date To:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDateEdit" name="dateEdit_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QDateEdit{
+	background-color: white;
+	color:black;
+	border: 2px solid #b5b5b5;
+    border-radius: 2px;
+}</string>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                     <property name="calendarPopup">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_26">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_49">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_47">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLineEdit" name="edit_search_new_transaction">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>35</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="frame">
+                        <bool>false</bool>
+                       </property>
+                       <property name="placeholderText">
+                        <string>  Search..</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="search_pricelist_btn_2">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>40</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>40</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>ArrowCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="resource.qrc">
+                         <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
+                       </property>
+                       <property name="checkable">
+                        <bool>false</bool>
+                       </property>
+                       <property name="flat">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_25">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>378</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_48">
+                     <item>
+                      <widget class="QLabel" name="label_14">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Result:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="transaction_record_result">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>0</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="transaction_record_tbl">
+                <property name="cursor" stdset="0">
+                 <cursorShape>ArrowCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+#tableWidget{
+	color: rgb(255, 255, 255);
+	gridline-color: rgb(255, 255, 255);
+	background-color: #1a1c28;
+}</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <property name="alternatingRowColors">
+                 <bool>true</bool>
+                </property>
+                <property name="sortingEnabled">
+                 <bool>true</bool>
+                </property>
+                <attribute name="horizontalHeaderCascadingSectionResizes">
+                 <bool>true</bool>
+                </attribute>
+                <attribute name="horizontalHeaderDefaultSectionSize">
+                 <number>160</number>
+                </attribute>
+                <attribute name="horizontalHeaderMinimumSectionSize">
+                 <number>160</number>
+                </attribute>
+                <column>
+                 <property name="text">
+                  <string>Transaction Code</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Customer</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Product Name</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Size</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Total Amount</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Paid Amount</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Balance</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
@@ -4952,7 +5508,7 @@ background-color: #f5f7f9;
                       <bool>false</bool>
                      </property>
                      <property name="placeholderText">
-                      <string>Search..</string>
+                      <string>  Search..</string>
                      </property>
                     </widget>
                    </item>
