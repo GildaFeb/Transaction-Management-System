@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1531</width>
-    <height>857</height>
+    <height>864</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -128,6 +128,11 @@
              <width>70</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
            </property>
            <property name="cursor">
             <cursorShape>OpenHandCursor</cursorShape>
@@ -380,6 +385,11 @@
        </item>
        <item>
         <widget class="QPushButton" name="exit_btn_1">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -464,6 +474,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -500,6 +515,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>Categories</string>
            </property>
@@ -530,6 +550,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -557,6 +582,11 @@
          </item>
          <item>
           <widget class="QLabel" name="transaction_label">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>Transactions</string>
            </property>
@@ -569,6 +599,11 @@
              <width>250</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -606,6 +641,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -636,6 +676,11 @@
          </item>
          <item>
           <widget class="QLabel" name="record_labe">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>Records</string>
            </property>
@@ -648,6 +693,11 @@
              <width>250</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -684,6 +734,11 @@
              <width>250</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -723,6 +778,11 @@
              <width>250</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -769,6 +829,11 @@
        </item>
        <item row="3" column="0">
         <widget class="QPushButton" name="exit_btn_2">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -932,6 +997,13 @@ border-radius: 10px;
                </property>
                <item>
                 <widget class="QLabel" name="label_4">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>Administrator</string>
                  </property>
@@ -996,7 +1068,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>7</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -1021,319 +1093,6 @@ border-radius: 10px;
               <property name="verticalSpacing">
                <number>20</number>
               </property>
-              <item row="1" column="0">
-               <widget class="QWidget" name="widget_4" native="true">
-                <property name="styleSheet">
-                 <string notr="true">
-*{
-	background-color:#2e3192;
-border-radius: 10px;
-}
-
-#total_product_widget, #total_sales_widget, #total_revenue_widget{
-	background-color:#2e3192;
-	border-radius: 15px;
-    border: 1px solid #2459ae;
-
-}
-
-#label_sales, #label_revenue, #label_product, #label_summary, #total_sales, #total_revenue, #total_product, #peso_sign_3, #peso_sign, #peso_sign_2{
-
-	color:white;
-	text-align: left;
-}
-</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_9">
-                 <property name="spacing">
-                  <number>25</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>25</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>25</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>25</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>25</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_summary">
-                   <property name="text">
-                    <string>Summary</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="total_revenue_widget" native="true">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_45">
-                    <property name="spacing">
-                     <number>13</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>13</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>13</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>13</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>13</number>
-                    </property>
-                    <item>
-                     <layout class="QVBoxLayout" name="verticalLayout_44">
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_7">
-                        <property name="leftMargin">
-                         <number>10</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>30</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>10</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>10</number>
-                        </property>
-                        <item>
-                         <widget class="QLabel" name="peso_sign">
-                          <property name="text">
-                           <string>₱</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="total_sales">
-                          <property name="text">
-                           <string>2,000</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_19">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>118</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="label_sales_2">
-                        <property name="text">
-                         <string>Total Sales</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_7">
-                      <property name="text">
-                       <string>logo</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="total_sales_widget" native="true">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_46">
-                    <property name="spacing">
-                     <number>13</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>13</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>13</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>13</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>13</number>
-                    </property>
-                    <item>
-                     <layout class="QVBoxLayout" name="verticalLayout_39">
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_8">
-                        <property name="leftMargin">
-                         <number>10</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>30</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>10</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>10</number>
-                        </property>
-                        <item>
-                         <widget class="QLabel" name="peso_sign_2">
-                          <property name="text">
-                           <string>₱</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="total_category">
-                          <property name="text">
-                           <string>10,233</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_16">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>118</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="label_category">
-                        <property name="text">
-                         <string>Total Category</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_6">
-                      <property name="text">
-                       <string>logo</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="total_product_widget" native="true">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_47">
-                    <property name="spacing">
-                     <number>13</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>13</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>13</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>13</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>13</number>
-                    </property>
-                    <item>
-                     <layout class="QVBoxLayout" name="verticalLayout_31">
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_44">
-                        <property name="leftMargin">
-                         <number>10</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>30</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>10</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>10</number>
-                        </property>
-                        <item>
-                         <widget class="QLabel" name="total_product">
-                          <property name="text">
-                           <string>3,432</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="peso_sign_3">
-                          <property name="text">
-                           <string>Products</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_15">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>118</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="label_product">
-                        <property name="text">
-                         <string>Total product</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_3">
-                      <property name="text">
-                       <string>logo</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
               <item row="1" column="1">
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <property name="spacing">
@@ -1358,6 +1117,13 @@ border-radius: 10px;
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
                   </property>
                   <property name="text">
                    <string>Transactions</string>
@@ -1420,6 +1186,11 @@ border-radius: 10px;
                          <layout class="QVBoxLayout" name="verticalLayout_51">
                           <item>
                            <widget class="QLabel" name="total_transactions">
+                            <property name="font">
+                             <font>
+                              <pointsize>13</pointsize>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>230</string>
                             </property>
@@ -1427,6 +1198,13 @@ border-radius: 10px;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_13">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Total Transactions</string>
                             </property>
@@ -1487,6 +1265,11 @@ border-radius: 10px;
                          <layout class="QVBoxLayout" name="verticalLayout_50">
                           <item>
                            <widget class="QLabel" name="PendingTransactions">
+                            <property name="font">
+                             <font>
+                              <pointsize>13</pointsize>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>7</string>
                             </property>
@@ -1494,6 +1277,13 @@ border-radius: 10px;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_23">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Pending Transactions</string>
                             </property>
@@ -1555,6 +1345,11 @@ border-radius: 10px;
                          <layout class="QVBoxLayout" name="verticalLayout_54">
                           <item>
                            <widget class="QLabel" name="sucessful_transactions">
+                            <property name="font">
+                             <font>
+                              <pointsize>13</pointsize>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>982</string>
                             </property>
@@ -1562,6 +1357,13 @@ border-radius: 10px;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_22">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Successful Transactions</string>
                             </property>
@@ -1628,6 +1430,11 @@ border-radius: 10px;
                          <layout class="QVBoxLayout" name="verticalLayout_53">
                           <item>
                            <widget class="QLabel" name="Total_Categories">
+                            <property name="font">
+                             <font>
+                              <pointsize>12</pointsize>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>133</string>
                             </property>
@@ -1635,6 +1442,13 @@ border-radius: 10px;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_16">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Cancelled Transactions</string>
                             </property>
@@ -1699,6 +1513,20 @@ border-radius: 10px;
                 </item>
                </layout>
               </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_8">
+                <property name="font">
+                 <font>
+                  <pointsize>14</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Dashboard</string>
+                </property>
+               </widget>
+              </item>
               <item row="1" column="2">
                <layout class="QVBoxLayout" name="verticalLayout_48">
                 <property name="spacing">
@@ -1723,6 +1551,11 @@ border-radius: 10px;
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
                   </property>
                  </widget>
                 </item>
@@ -1821,7 +1654,7 @@ border-radius: 10px;
                      <property name="font">
                       <font>
                        <family>Yu Gothic UI Semilight</family>
-                       <pointsize>12</pointsize>
+                       <pointsize>11</pointsize>
                       </font>
                      </property>
                      <property name="text">
@@ -1859,11 +1692,375 @@ border-radius: 10px;
                 </item>
                </layout>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_8">
-                <property name="text">
-                 <string>Dashboard</string>
+              <item row="1" column="0">
+               <widget class="QWidget" name="widget_4" native="true">
+                <property name="styleSheet">
+                 <string notr="true">
+*{
+	background-color:#2e3192;
+border-radius: 10px;
+}
+
+#total_product_widget, #total_sales_widget, #total_revenue_widget{
+	background-color:#2e3192;
+	border-radius: 15px;
+    border: 1px solid #2459ae;
+
+}
+
+#label_sales, #label_revenue, #label_product, #label_summary, #total_sales, #total_revenue, #total_product, #peso_sign_3, #peso_sign, #peso_sign_2{
+
+	color:white;
+	text-align: left;
+}
+</string>
                 </property>
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <property name="spacing">
+                  <number>25</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>25</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>25</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>25</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>25</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_summary">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Summary</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="total_revenue_widget" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_45">
+                    <property name="spacing">
+                     <number>13</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>13</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>13</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>13</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>13</number>
+                    </property>
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_44">
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_7">
+                        <property name="leftMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>30</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>10</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="peso_sign">
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>₱</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="total_sales">
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>2,000</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_19">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>118</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_sales_2">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Total Sales</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_7">
+                      <property name="text">
+                       <string>logo</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="total_sales_widget" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_46">
+                    <property name="spacing">
+                     <number>13</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>13</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>13</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>13</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>13</number>
+                    </property>
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_39">
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_8">
+                        <property name="leftMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>30</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>10</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="peso_sign_2">
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>₱</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="total_category">
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>10,233</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_16">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>118</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_category">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Total Category</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_6">
+                      <property name="text">
+                       <string>logo</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="total_product_widget" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_47">
+                    <property name="spacing">
+                     <number>13</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>13</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>13</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>13</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>13</number>
+                    </property>
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_31">
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_44">
+                        <property name="leftMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>30</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>10</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="total_product">
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>3,432</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="peso_sign_3">
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Products</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_15">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>118</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_product">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Total product</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_3">
+                      <property name="text">
+                       <string>logo</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>
@@ -1961,22 +2158,12 @@ border-radius: 10px;
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_10">
                        <item>
-                        <widget class="QLabel" name="no_pricelist_found">
+                        <widget class="QTableWidget" name="pricelist_table">
                          <property name="font">
                           <font>
-                           <pointsize>11</pointsize>
+                           <pointsize>12</pointsize>
                           </font>
                          </property>
-                         <property name="text">
-                          <string>No search results found</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QTableWidget" name="pricelist_table">
                          <property name="styleSheet">
                           <string notr="true">
 #tableWidget{
@@ -2290,6 +2477,13 @@ background-color: #1a1c28;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_18">
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>ID </string>
                          </property>
@@ -2307,6 +2501,13 @@ background-color: #1a1c28;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_19">
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Product Name</string>
                          </property>
@@ -2324,6 +2525,13 @@ background-color: #1a1c28;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_20">
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Size</string>
                          </property>
@@ -2341,6 +2549,13 @@ background-color: #1a1c28;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_21">
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Price</string>
                          </property>
@@ -2380,6 +2595,13 @@ background-color: #1a1c28;
                           </item>
                           <item>
                            <widget class="QPushButton" name="add_item_pricelist_btn">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
                             </property>
@@ -2452,7 +2674,7 @@ background-color: #1a1c28;
                        <widget class="QLabel" name="label_17">
                         <property name="font">
                          <font>
-                          <pointsize>12</pointsize>
+                          <pointsize>14</pointsize>
                           <weight>75</weight>
                           <bold>true</bold>
                          </font>
@@ -2475,6 +2697,13 @@ background-color: #1a1c28;
                           <width>200</width>
                           <height>30</height>
                          </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
                         </property>
                         <property name="cursor">
                          <cursorShape>PointingHandCursor</cursorShape>
@@ -2624,7 +2853,7 @@ background-color: #1a1c28;
                           <widget class="QLabel" name="label_55">
                            <property name="font">
                             <font>
-                             <pointsize>12</pointsize>
+                             <pointsize>14</pointsize>
                              <weight>75</weight>
                              <bold>true</bold>
                             </font>
@@ -2647,6 +2876,13 @@ background-color: #1a1c28;
                              <width>200</width>
                              <height>30</height>
                             </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
                            </property>
                            <property name="cursor">
                             <cursorShape>PointingHandCursor</cursorShape>
@@ -2787,17 +3023,19 @@ background-color: #1a1c28;
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_35">
                           <item>
-                           <widget class="QLabel" name="no_category_found">
+                           <widget class="QLabel" name="No_search_found">
                             <property name="enabled">
-                             <bool>true</bool>
+                             <bool>false</bool>
                             </property>
                             <property name="font">
                              <font>
-                              <pointsize>11</pointsize>
+                              <pointsize>12</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
                              </font>
                             </property>
                             <property name="text">
-                             <string>No search results found</string>
+                             <string>No  Category Found</string>
                             </property>
                             <property name="alignment">
                              <set>Qt::AlignCenter</set>
@@ -2806,11 +3044,10 @@ background-color: #1a1c28;
                           </item>
                           <item>
                            <widget class="QTableWidget" name="category_table">
-                            <property name="maximumSize">
-                             <size>
-                              <width>794</width>
-                              <height>16777215</height>
-                             </size>
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                             </font>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">
@@ -2820,12 +3057,26 @@ background-color: #1a1c28;
 background-color: #1a1c28;
 }</string>
                             </property>
-                            <property name="selectionMode">
-                             <enum>QAbstractItemView::MultiSelection</enum>
-                            </property>
-                            <property name="selectionBehavior">
-                             <enum>QAbstractItemView::SelectRows</enum>
-                            </property>
+                            <row>
+                             <property name="text">
+                              <string>hsbchfs</string>
+                             </property>
+                            </row>
+                            <row>
+                             <property name="text">
+                              <string>sdfcbx</string>
+                             </property>
+                            </row>
+                            <row>
+                             <property name="text">
+                              <string>asdf</string>
+                             </property>
+                            </row>
+                            <row>
+                             <property name="text">
+                              <string>shdbcs</string>
+                             </property>
+                            </row>
                             <column>
                              <property name="text">
                               <string>ID</string>
@@ -2846,6 +3097,86 @@ background-color: #1a1c28;
                               <string>Status</string>
                              </property>
                             </column>
+                            <item row="0" column="0">
+                             <property name="text">
+                              <string>Gris</string>
+                             </property>
+                            </item>
+                            <item row="0" column="1">
+                             <property name="text">
+                              <string>xc</string>
+                             </property>
+                            </item>
+                            <item row="0" column="2">
+                             <property name="text">
+                              <string>wab dx</string>
+                             </property>
+                            </item>
+                            <item row="0" column="3">
+                             <property name="text">
+                              <string>xcv</string>
+                             </property>
+                            </item>
+                            <item row="1" column="0">
+                             <property name="text">
+                              <string>Maangas</string>
+                             </property>
+                            </item>
+                            <item row="1" column="1">
+                             <property name="text">
+                              <string>ds</string>
+                             </property>
+                            </item>
+                            <item row="1" column="2">
+                             <property name="text">
+                              <string>zx</string>
+                             </property>
+                            </item>
+                            <item row="1" column="3">
+                             <property name="text">
+                              <string>ds</string>
+                             </property>
+                            </item>
+                            <item row="2" column="0">
+                             <property name="text">
+                              <string>Shan</string>
+                             </property>
+                            </item>
+                            <item row="2" column="1">
+                             <property name="text">
+                              <string>xcv</string>
+                             </property>
+                            </item>
+                            <item row="2" column="2">
+                             <property name="text">
+                              <string>z</string>
+                             </property>
+                            </item>
+                            <item row="2" column="3">
+                             <property name="text">
+                              <string>ds</string>
+                             </property>
+                            </item>
+                            <item row="3" column="0">
+                             <property name="text">
+                              <string>Don</string>
+                             </property>
+                            </item>
+                            <item row="3" column="1">
+                             <property name="text">
+                              <string>adx a</string>
+                             </property>
+                            </item>
+                            <item row="3" column="2">
+                             <property name="text">
+                              <string>b</string>
+                             </property>
+                            </item>
+                            <item row="3" column="3">
+                             <property name="text">
+                              <string>dc </string>
+                             </property>
+                            </item>
                            </widget>
                           </item>
                           <item>
@@ -2956,6 +3287,13 @@ background-color: #1a1c28;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_59">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>ID </string>
                             </property>
@@ -2963,28 +3301,23 @@ background-color: #1a1c28;
                           </item>
                           <item>
                            <widget class="QTextEdit" name="id_category">
-                            <property name="enabled">
-                             <bool>true</bool>
-                            </property>
                             <property name="maximumSize">
                              <size>
                               <width>16777215</width>
                               <height>30</height>
                              </size>
                             </property>
-                            <property name="focusPolicy">
-                             <enum>Qt::NoFocus</enum>
-                            </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
-                            </property>
-                            <property name="readOnly">
-                             <bool>false</bool>
-                            </property>
                            </widget>
                           </item>
                           <item>
                            <widget class="QLabel" name="label_60">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Product Name</string>
                             </property>
@@ -2995,6 +3328,13 @@ background-color: #1a1c28;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_61">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Description</string>
                             </property>
@@ -3012,6 +3352,13 @@ background-color: #1a1c28;
                           </item>
                           <item>
                            <widget class="QLabel" name="label_63">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Status</string>
                             </property>
@@ -3025,16 +3372,6 @@ background-color: #1a1c28;
                               <height>70</height>
                              </size>
                             </property>
-                            <item>
-                             <property name="text">
-                              <string>Available</string>
-                             </property>
-                            </item>
-                            <item>
-                             <property name="text">
-                              <string>Not Available</string>
-                             </property>
-                            </item>
                            </widget>
                           </item>
                           <item>
@@ -3061,6 +3398,13 @@ background-color: #1a1c28;
                              </item>
                              <item>
                               <widget class="QPushButton" name="add_category_btn">
+                               <property name="font">
+                                <font>
+                                 <pointsize>11</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
                                <property name="cursor">
                                 <cursorShape>PointingHandCursor</cursorShape>
                                </property>
@@ -3255,7 +3599,7 @@ background-color: #f5f7f9;
                           <widget class="QLabel" name="label_26">
                            <property name="font">
                             <font>
-                             <pointsize>8</pointsize>
+                             <pointsize>11</pointsize>
                              <weight>75</weight>
                              <bold>true</bold>
                             </font>
@@ -3266,7 +3610,13 @@ background-color: #f5f7f9;
                           </widget>
                          </item>
                          <item>
-                          <widget class="QDateEdit" name="tnx_date_nt"/>
+                          <widget class="QDateEdit" name="tnx_date_nt">
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                          </widget>
                          </item>
                         </layout>
                        </item>
@@ -3289,6 +3639,7 @@ background-color: #f5f7f9;
                           <widget class="QLabel" name="label_27">
                            <property name="font">
                             <font>
+                             <pointsize>11</pointsize>
                              <weight>75</weight>
                              <bold>true</bold>
                             </font>
@@ -3299,7 +3650,13 @@ background-color: #f5f7f9;
                           </widget>
                          </item>
                          <item>
-                          <widget class="QDateEdit" name="tnx_due_nt"/>
+                          <widget class="QDateEdit" name="tnx_due_nt">
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                          </widget>
                          </item>
                         </layout>
                        </item>
@@ -3328,7 +3685,9 @@ background-color: #f5f7f9;
                           <widget class="QLabel" name="label_28">
                            <property name="font">
                             <font>
-                             <pointsize>10</pointsize>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
                             </font>
                            </property>
                            <property name="text">
@@ -3340,7 +3699,7 @@ background-color: #f5f7f9;
                           <widget class="QLabel" name="tnx_code">
                            <property name="font">
                             <font>
-                             <pointsize>10</pointsize>
+                             <pointsize>11</pointsize>
                              <weight>50</weight>
                              <bold>false</bold>
                             </font>
@@ -3399,6 +3758,7 @@ background-color: #f5f7f9;
                           <widget class="QLabel" name="label_30">
                            <property name="font">
                             <font>
+                             <pointsize>11</pointsize>
                              <weight>75</weight>
                              <bold>true</bold>
                             </font>
@@ -3415,6 +3775,11 @@ background-color: #f5f7f9;
                              <width>250</width>
                              <height>30</height>
                             </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
                            </property>
                            <property name="maxLength">
                             <number>70</number>
@@ -3437,6 +3802,11 @@ background-color: #f5f7f9;
                              <width>250</width>
                              <height>30</height>
                             </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
                            </property>
                            <property name="inputMethodHints">
                             <set>Qt::ImhDigitsOnly</set>
@@ -3505,6 +3875,7 @@ background-color: #f5f7f9;
                         <widget class="QLabel" name="label_41">
                          <property name="font">
                           <font>
+                           <pointsize>11</pointsize>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -3516,6 +3887,11 @@ background-color: #f5f7f9;
                        </item>
                        <item>
                         <widget class="QTableWidget" name="order_detail_table">
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
                          <property name="showGrid">
                           <bool>false</bool>
                          </property>
@@ -3605,6 +3981,11 @@ background-color: #f5f7f9;
                         <layout class="QVBoxLayout" name="verticalLayout_12">
                          <item>
                           <widget class="QLabel" name="label_31">
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
                            <property name="text">
                             <string>Item</string>
                            </property>
@@ -3631,6 +4012,11 @@ background-color: #f5f7f9;
                          </item>
                          <item>
                           <widget class="QLabel" name="label_32">
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
                            <property name="text">
                             <string>Size</string>
                            </property>
@@ -3657,6 +4043,11 @@ background-color: #f5f7f9;
                          </item>
                          <item>
                           <widget class="QLabel" name="label_33">
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
                            <property name="text">
                             <string>Quantity</string>
                            </property>
@@ -3700,6 +4091,13 @@ background-color: #f5f7f9;
                              <width>16777215</width>
                              <height>30</height>
                             </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
                            </property>
                            <property name="cursor">
                             <cursorShape>PointingHandCursor</cursorShape>
@@ -3792,6 +4190,7 @@ background-color: #f5f7f9;
                                   <widget class="QLabel" name="label_34">
                                    <property name="font">
                                     <font>
+                                     <pointsize>11</pointsize>
                                      <weight>75</weight>
                                      <bold>true</bold>
                                     </font>
@@ -3803,6 +4202,11 @@ background-color: #f5f7f9;
                                  </item>
                                  <item>
                                   <widget class="QLabel" name="label_38">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>11</pointsize>
+                                    </font>
+                                   </property>
                                    <property name="text">
                                     <string>Discount</string>
                                    </property>
@@ -3846,6 +4250,11 @@ background-color: #f5f7f9;
                                 <layout class="QVBoxLayout" name="verticalLayout_18">
                                  <item>
                                   <widget class="QLabel" name="label_36">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>11</pointsize>
+                                    </font>
+                                   </property>
                                    <property name="text">
                                     <string>₱ </string>
                                    </property>
@@ -3853,6 +4262,11 @@ background-color: #f5f7f9;
                                  </item>
                                  <item>
                                   <widget class="QLabel" name="label_35">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>11</pointsize>
+                                    </font>
+                                   </property>
                                    <property name="text">
                                     <string>₱</string>
                                    </property>
@@ -3864,6 +4278,11 @@ background-color: #f5f7f9;
                                 <layout class="QVBoxLayout" name="verticalLayout_20">
                                  <item>
                                   <widget class="QLabel" name="subtotal_nt">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>11</pointsize>
+                                    </font>
+                                   </property>
                                    <property name="text">
                                     <string>0.00</string>
                                    </property>
@@ -3871,6 +4290,11 @@ background-color: #f5f7f9;
                                  </item>
                                  <item>
                                   <widget class="QLabel" name="discount_nt">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>11</pointsize>
+                                    </font>
+                                   </property>
                                    <property name="text">
                                     <string>0.00</string>
                                    </property>
@@ -3903,6 +4327,11 @@ background-color: #f5f7f9;
                             </property>
                             <item>
                              <widget class="QLabel" name="label_37">
+                              <property name="font">
+                               <font>
+                                <pointsize>11</pointsize>
+                               </font>
+                              </property>
                               <property name="text">
                                <string>Discount</string>
                               </property>
@@ -3910,6 +4339,11 @@ background-color: #f5f7f9;
                             </item>
                             <item>
                              <widget class="QSpinBox" name="spinBox">
+                              <property name="font">
+                               <font>
+                                <pointsize>11</pointsize>
+                               </font>
+                              </property>
                               <property name="showGroupSeparator" stdset="0">
                                <bool>false</bool>
                               </property>
@@ -3931,6 +4365,13 @@ background-color: #f5f7f9;
                                 <width>16777215</width>
                                 <height>30</height>
                                </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>11</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
                               </property>
                               <property name="cursor">
                                <cursorShape>PointingHandCursor</cursorShape>
@@ -4015,6 +4456,7 @@ background-color: #f5f7f9;
                                  </property>
                                  <property name="font">
                                   <font>
+                                   <pointsize>11</pointsize>
                                    <weight>75</weight>
                                    <bold>true</bold>
                                   </font>
@@ -4032,6 +4474,11 @@ background-color: #f5f7f9;
                                    <verstretch>0</verstretch>
                                   </sizepolicy>
                                  </property>
+                                 <property name="font">
+                                  <font>
+                                   <pointsize>11</pointsize>
+                                  </font>
+                                 </property>
                                  <property name="text">
                                   <string>₱ </string>
                                  </property>
@@ -4039,6 +4486,11 @@ background-color: #f5f7f9;
                                </item>
                                <item>
                                 <widget class="QLabel" name="total_amount">
+                                 <property name="font">
+                                  <font>
+                                   <pointsize>11</pointsize>
+                                  </font>
+                                 </property>
                                  <property name="text">
                                   <string>0.00 </string>
                                  </property>
@@ -4130,6 +4582,13 @@ background-color: #f5f7f9;
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
@@ -4181,37 +4640,12 @@ background-color: #f5f7f9;
             <widget class="QWidget" name="table_area" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_24">
               <item>
-               <widget class="QLabel" name="no_dailytxn_found">
+               <widget class="QTableWidget" name="daily_tnx_table">
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
                  </font>
                 </property>
-                <property name="text">
-                 <string>No search results found</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QTableWidget" name="daily_tnx_table">
-                <row>
-                 <property name="text">
-                  <string>1</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>2</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>3</string>
-                 </property>
-                </row>
                 <column>
                  <property name="text">
                   <string>#</string>
@@ -4242,96 +4676,6 @@ background-color: #f5f7f9;
                   <string>Service Status</string>
                  </property>
                 </column>
-                <item row="0" column="0">
-                 <property name="text">
-                  <string>23</string>
-                 </property>
-                </item>
-                <item row="0" column="1">
-                 <property name="text">
-                  <string>1/10/1000</string>
-                 </property>
-                </item>
-                <item row="0" column="2">
-                 <property name="text">
-                  <string>11</string>
-                 </property>
-                </item>
-                <item row="0" column="3">
-                 <property name="text">
-                  <string>jeru</string>
-                 </property>
-                </item>
-                <item row="0" column="4">
-                 <property name="text">
-                  <string>50</string>
-                 </property>
-                </item>
-                <item row="0" column="5">
-                 <property name="text">
-                  <string>Successful</string>
-                 </property>
-                </item>
-                <item row="1" column="0">
-                 <property name="text">
-                  <string>2</string>
-                 </property>
-                </item>
-                <item row="1" column="1">
-                 <property name="text">
-                  <string>2/20/2000</string>
-                 </property>
-                </item>
-                <item row="1" column="2">
-                 <property name="text">
-                  <string>12</string>
-                 </property>
-                </item>
-                <item row="1" column="3">
-                 <property name="text">
-                  <string>ewan</string>
-                 </property>
-                </item>
-                <item row="1" column="4">
-                 <property name="text">
-                  <string>100</string>
-                 </property>
-                </item>
-                <item row="1" column="5">
-                 <property name="text">
-                  <string>Failed</string>
-                 </property>
-                </item>
-                <item row="2" column="0">
-                 <property name="text">
-                  <string>1</string>
-                 </property>
-                </item>
-                <item row="2" column="1">
-                 <property name="text">
-                  <string>3/30/3000</string>
-                 </property>
-                </item>
-                <item row="2" column="2">
-                 <property name="text">
-                  <string>13</string>
-                 </property>
-                </item>
-                <item row="2" column="3">
-                 <property name="text">
-                  <string>basta</string>
-                 </property>
-                </item>
-                <item row="2" column="4">
-                 <property name="text">
-                  <string>1</string>
-                 </property>
-                </item>
-                <item row="2" column="5">
-                 <property name="text">
-                  <string>Pending</string>
-                 </property>
-                </item>
                </widget>
               </item>
              </layout>
@@ -4427,6 +4771,11 @@ background-color: #f5f7f9;
                          <height>30</height>
                         </size>
                        </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -4492,6 +4841,13 @@ background-color: #f5f7f9;
                      </item>
                      <item alignment="Qt::AlignRight">
                       <widget class="QLabel" name="label_43">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>Filter List </string>
                        </property>
@@ -4525,6 +4881,11 @@ background-color: #f5f7f9;
                        <width>16777215</width>
                        <height>30</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
                      </property>
                      <property name="frame">
                       <bool>false</bool>
@@ -4603,16 +4964,34 @@ background-color: #f5f7f9;
                    </property>
                    <item>
                     <widget class="QLabel" name="label_46">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
                      <property name="text">
                       <string>Date:</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QDateEdit" name="dateEdit_daily_tnx"/>
+                    <widget class="QDateEdit" name="dateEdit_daily_tnx">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                    </widget>
                    </item>
                    <item>
                     <widget class="QLabel" name="num_daily_tnx">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
                      <property name="text">
                       <string>0</string>
                      </property>
@@ -4620,6 +4999,13 @@ background-color: #f5f7f9;
                    </item>
                    <item>
                     <widget class="QLabel" name="label_45">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
                      <property name="text">
                       <string>Transaction</string>
                      </property>
@@ -4680,6 +5066,13 @@ background-color: #f5f7f9;
                      </item>
                      <item>
                       <widget class="QLabel" name="label_48">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>Print Report</string>
                        </property>
@@ -4711,7 +5104,7 @@ background-color: #f5f7f9;
              </property>
              <property name="font">
               <font>
-               <pointsize>13</pointsize>
+               <pointsize>14</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -4777,7 +5170,7 @@ background-color: #f5f7f9;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>13</pointsize>
+                  <pointsize>14</pointsize>
                   <weight>75</weight>
                   <bold>true</bold>
                  </font>
@@ -4847,6 +5240,11 @@ background-color: #f5f7f9;
                             <height>30</height>
                            </size>
                           </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
                           <item>
                            <property name="text">
                             <string>All Transactions</string>
@@ -4909,6 +5307,13 @@ background-color: #f5f7f9;
                         </item>
                         <item alignment="Qt::AlignRight">
                          <widget class="QLabel" name="label_49">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>Filter List</string>
                           </property>
@@ -4930,7 +5335,7 @@ background-color: #f5f7f9;
                        </spacer>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="edit_search_dwt">
+                       <widget class="QLineEdit" name="editSearch_dwt">
                         <property name="minimumSize">
                          <size>
                           <width>300</width>
@@ -4942,6 +5347,11 @@ background-color: #f5f7f9;
                           <width>16777215</width>
                           <height>30</height>
                          </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
                         </property>
                         <property name="frame">
                          <bool>false</bool>
@@ -5016,28 +5426,59 @@ background-color: #f5f7f9;
                        <layout class="QHBoxLayout" name="horizontalLayout_36">
                         <item>
                          <widget class="QLabel" name="label_50">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>Date From:</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QDateEdit" name="datefrom_dwt"/>
+                         <widget class="QDateEdit" name="datefrom_dwt">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                         </widget>
                         </item>
                         <item>
                          <widget class="QLabel" name="label_51">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>Date To:</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QDateEdit" name="dateto_dwt"/>
+                         <widget class="QDateEdit" name="dateto_dwt">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                         </widget>
                         </item>
                        </layout>
                       </item>
                       <item>
                        <widget class="QLabel" name="label_52">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>0</string>
                         </property>
@@ -5045,6 +5486,13 @@ background-color: #f5f7f9;
                       </item>
                       <item>
                        <widget class="QLabel" name="label_53">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>Transaction</string>
                         </property>
@@ -5099,6 +5547,13 @@ background-color: #f5f7f9;
                         </item>
                         <item>
                          <widget class="QLabel" name="label_54">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>Print Report</string>
                           </property>
@@ -5115,37 +5570,12 @@ background-color: #f5f7f9;
                   <widget class="QWidget" name="date_wise_table" native="true">
                    <layout class="QVBoxLayout" name="verticalLayout_30">
                     <item>
-                     <widget class="QLabel" name="no_datewiseT_found">
+                     <widget class="QTableWidget" name="datewise_transaction_table">
                       <property name="font">
                        <font>
                         <pointsize>11</pointsize>
                        </font>
                       </property>
-                      <property name="text">
-                       <string>No search results found</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QTableWidget" name="datewise_transaction_table">
-                      <row>
-                       <property name="text">
-                        <string>1</string>
-                       </property>
-                      </row>
-                      <row>
-                       <property name="text">
-                        <string>2</string>
-                       </property>
-                      </row>
-                      <row>
-                       <property name="text">
-                        <string>3</string>
-                       </property>
-                      </row>
                       <column>
                        <property name="text">
                         <string>#</string>
@@ -5176,96 +5606,6 @@ background-color: #f5f7f9;
                         <string>Service Status</string>
                        </property>
                       </column>
-                      <item row="0" column="0">
-                       <property name="text">
-                        <string>51</string>
-                       </property>
-                      </item>
-                      <item row="0" column="1">
-                       <property name="text">
-                        <string>1/1/1000</string>
-                       </property>
-                      </item>
-                      <item row="0" column="2">
-                       <property name="text">
-                        <string>23</string>
-                       </property>
-                      </item>
-                      <item row="0" column="3">
-                       <property name="text">
-                        <string>grace</string>
-                       </property>
-                      </item>
-                      <item row="0" column="4">
-                       <property name="text">
-                        <string>100</string>
-                       </property>
-                      </item>
-                      <item row="0" column="5">
-                       <property name="text">
-                        <string>a</string>
-                       </property>
-                      </item>
-                      <item row="1" column="0">
-                       <property name="text">
-                        <string>22</string>
-                       </property>
-                      </item>
-                      <item row="1" column="1">
-                       <property name="text">
-                        <string>2/2/2000</string>
-                       </property>
-                      </item>
-                      <item row="1" column="2">
-                       <property name="text">
-                        <string>1</string>
-                       </property>
-                      </item>
-                      <item row="1" column="3">
-                       <property name="text">
-                        <string>sean</string>
-                       </property>
-                      </item>
-                      <item row="1" column="4">
-                       <property name="text">
-                        <string>22</string>
-                       </property>
-                      </item>
-                      <item row="1" column="5">
-                       <property name="text">
-                        <string>b</string>
-                       </property>
-                      </item>
-                      <item row="2" column="0">
-                       <property name="text">
-                        <string>12</string>
-                       </property>
-                      </item>
-                      <item row="2" column="1">
-                       <property name="text">
-                        <string>3/3/3000</string>
-                       </property>
-                      </item>
-                      <item row="2" column="2">
-                       <property name="text">
-                        <string>2</string>
-                       </property>
-                      </item>
-                      <item row="2" column="3">
-                       <property name="text">
-                        <string>ewan</string>
-                       </property>
-                      </item>
-                      <item row="2" column="4">
-                       <property name="text">
-                        <string>21</string>
-                       </property>
-                      </item>
-                      <item row="2" column="5">
-                       <property name="text">
-                        <string>c</string>
-                       </property>
-                      </item>
                      </widget>
                     </item>
                    </layout>
@@ -5297,7 +5637,7 @@ background-color: #f5f7f9;
              </property>
              <property name="font">
               <font>
-               <pointsize>13</pointsize>
+               <pointsize>14</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -5345,6 +5685,11 @@ background-color: #f5f7f9;
                       <width>0</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
                     </property>
                     <item>
                      <property name="text">
@@ -5408,6 +5753,13 @@ background-color: #f5f7f9;
                   </item>
                   <item alignment="Qt::AlignRight">
                    <widget class="QLabel" name="label_73">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>Filter List</string>
                     </property>
@@ -5429,7 +5781,7 @@ background-color: #f5f7f9;
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="edit_search_dwp">
+                 <widget class="QLineEdit" name="editSearch_dwt_4">
                   <property name="minimumSize">
                    <size>
                     <width>300</width>
@@ -5441,6 +5793,11 @@ background-color: #f5f7f9;
                     <width>16777215</width>
                     <height>30</height>
                    </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
                   </property>
                   <property name="frame">
                    <bool>false</bool>
@@ -5515,28 +5872,59 @@ background-color: #f5f7f9;
                  <layout class="QHBoxLayout" name="horizontalLayout_57">
                   <item>
                    <widget class="QLabel" name="label_74">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>Date From:</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDateEdit" name="datefrom_dwt_4"/>
+                   <widget class="QDateEdit" name="datefrom_dwt_4">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                   </widget>
                   </item>
                   <item>
                    <widget class="QLabel" name="label_75">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>Date To:</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDateEdit" name="dateto_dwt_4"/>
+                   <widget class="QDateEdit" name="dateto_dwt_4">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
                 <item>
                  <widget class="QLabel" name="label_76">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>0</string>
                   </property>
@@ -5544,6 +5932,13 @@ background-color: #f5f7f9;
                 </item>
                 <item>
                  <widget class="QLabel" name="label_77">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>Transaction</string>
                   </property>
@@ -5598,6 +5993,13 @@ background-color: #f5f7f9;
                   </item>
                   <item>
                    <widget class="QLabel" name="label_78">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>Print Report</string>
                     </property>
@@ -5614,37 +6016,12 @@ background-color: #f5f7f9;
             <widget class="QWidget" name="table_area_payment" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_32">
               <item>
-               <widget class="QLabel" name="no_datewiseP_found">
+               <widget class="QTableWidget" name="datewise_payment_table">
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
                  </font>
                 </property>
-                <property name="text">
-                 <string>No search results found</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QTableWidget" name="datewise_payment_table">
-                <row>
-                 <property name="text">
-                  <string>1</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>2</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>3</string>
-                 </property>
-                </row>
                 <column>
                  <property name="text">
                   <string>#</string>
@@ -5680,111 +6057,6 @@ background-color: #f5f7f9;
                   <string>Paid Amount</string>
                  </property>
                 </column>
-                <item row="0" column="0">
-                 <property name="text">
-                  <string>23</string>
-                 </property>
-                </item>
-                <item row="0" column="1">
-                 <property name="text">
-                  <string>1/1/2000</string>
-                 </property>
-                </item>
-                <item row="0" column="2">
-                 <property name="text">
-                  <string>sean</string>
-                 </property>
-                </item>
-                <item row="0" column="3">
-                 <property name="text">
-                  <string>2</string>
-                 </property>
-                </item>
-                <item row="0" column="4">
-                 <property name="text">
-                  <string>x</string>
-                 </property>
-                </item>
-                <item row="0" column="5">
-                 <property name="text">
-                  <string>Pending </string>
-                 </property>
-                </item>
-                <item row="0" column="6">
-                 <property name="text">
-                  <string>d</string>
-                 </property>
-                </item>
-                <item row="1" column="0">
-                 <property name="text">
-                  <string>22</string>
-                 </property>
-                </item>
-                <item row="1" column="1">
-                 <property name="text">
-                  <string>1/2/3000</string>
-                 </property>
-                </item>
-                <item row="1" column="2">
-                 <property name="text">
-                  <string>jeru</string>
-                 </property>
-                </item>
-                <item row="1" column="3">
-                 <property name="text">
-                  <string>1</string>
-                 </property>
-                </item>
-                <item row="1" column="4">
-                 <property name="text">
-                  <string>x</string>
-                 </property>
-                </item>
-                <item row="1" column="5">
-                 <property name="text">
-                  <string>Successful</string>
-                 </property>
-                </item>
-                <item row="1" column="6">
-                 <property name="text">
-                  <string>f</string>
-                 </property>
-                </item>
-                <item row="2" column="0">
-                 <property name="text">
-                  <string>25</string>
-                 </property>
-                </item>
-                <item row="2" column="1">
-                 <property name="text">
-                  <string>2/31/2010</string>
-                 </property>
-                </item>
-                <item row="2" column="2">
-                 <property name="text">
-                  <string>don</string>
-                 </property>
-                </item>
-                <item row="2" column="3">
-                 <property name="text">
-                  <string>1</string>
-                 </property>
-                </item>
-                <item row="2" column="4">
-                 <property name="text">
-                  <string>z</string>
-                 </property>
-                </item>
-                <item row="2" column="5">
-                 <property name="text">
-                  <string>Failed</string>
-                 </property>
-                </item>
-                <item row="2" column="6">
-                 <property name="text">
-                  <string>q</string>
-                 </property>
-                </item>
                </widget>
               </item>
              </layout>
