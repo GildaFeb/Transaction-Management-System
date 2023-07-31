@@ -260,18 +260,15 @@ class DBQueries():
                     print(e)
 
     def on_category_selection_changed(self):
-        selected_row = self.ui.category_table.currentRow()
+        selected_rows = self.ui.category_table.selectionModel().selectedRows()
         add_category_btn = self.ui.add_category_btn
-
-        if selected_row >= 0:
+        edit_category_btn = self.ui.edit_category_btn
+        
+        if len(selected_rows) > 0:
             add_category_btn.setEnabled(False)
         else:
             add_category_btn.setEnabled(True)
-
-    def on_selection_changed(self):
-        selected_rows = self.ui.category_table.selectionModel().selectedRows()
-        edit_category_btn = self.ui.edit_category_btn
-
+        
         if len(selected_rows) > 1:
             edit_category_btn.setEnabled(False)
         else:

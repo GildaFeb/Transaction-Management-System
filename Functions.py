@@ -49,7 +49,6 @@ class BtnFunctions(QMainWindow):
         self.ui.delete_category_btn.clicked.connect(lambda: DBQueries.deleteCategory(self, dbFolder))
 
         self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_category_selection_changed(self))
-        self.ui.category_table.selectionModel().selectionChanged.connect(lambda: DBQueries.on_selection_changed(self))
         
         #======================== FETCH and MOD PRICELIST =================================#
         category_names = DBQueries.getCategoryNamesFromProducts(dbFolder)
