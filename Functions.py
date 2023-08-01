@@ -65,6 +65,8 @@ class BtnFunctions(QMainWindow):
         self.ui.update_pricelist_btn.clicked.connect(lambda: DBQueries.editPrice(self, dbFolder))
         self.ui.delete_pricelist_btn.clicked.connect(lambda: DBQueries.deletePrice(self, dbFolder))
 
+        self.ui.pricelist_table.itemSelectionChanged.connect(lambda: DBQueries.on_price_selection_changed(self))
+
     #Price list search field    
     def pricelist_table(self):
         search_pricelist = self.ui.edit_search_pricelist.text().strip()

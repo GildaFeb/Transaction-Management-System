@@ -472,7 +472,7 @@ class DBQueries():
                                     """
         c.execute(check_price_exists_sql)
         existing_price = c.fetchone()
-        
+
         if existing_price:
             #PROMPT
             print("Product with updated values already exists in another row.")
@@ -556,3 +556,18 @@ class DBQueries():
 
                 except Error as e:
                     print(e)
+
+    def on_price_selection_changed(self):
+        selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
+        add_item_pricelist_btn = self.ui.add_item_pricelist_btn
+        update_pricelist_btn = self.ui.update_pricelist_btn
+        
+        if len(selected_rows) > 0:
+            add_item_pricelist_btn.setEnabled(False)
+        else:
+            add_item_pricelist_btn.setEnabled(True)
+        
+        if len(selected_rows) > 1:
+            update_pricelist_btn.setEnabled(False)
+        else:
+            update_pricelist_btn.setEnabled(True)
