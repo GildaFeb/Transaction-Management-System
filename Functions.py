@@ -77,8 +77,11 @@ class BtnFunctions(QMainWindow):
         #======================== FETCH and MOD ORDERS =================================#
         DBQueries.displayOrders(self, DBQueries.getAllOrders(dbFolder))
         self.ui.category_name_nt.addItems(category_names)
-        product_sizes = DBQueries.getProductSizes(self, dbFolder)
-        self.ui.category_size.addItems(product_sizes)
+        
+        selected_category = self.ui.category_name_nt.currentText()
+        sizes = DBQueries.getProductSizes(self, dbFolder)
+        self.ui.category_size.addItems(sizes)
+        self.ui.category_name_nt.currentIndexChanged.connect(lambda: DBQueries.getProductSizes(self, dbFolder))
         
     #Price list search field    
     def pricelist_table(self):

@@ -658,26 +658,31 @@ class DBQueries():
 
     #=============================== ORDER QUERIES ==================================#
     def getProductSizes(self, dbFolder):
+        selected_category = self.ui.category_name_nt.currentText()
         conn = DBQueries.create_connection(dbFolder)
-
-        category_name = self.ui.category_name_nt.currentText()
 
         get_sizes_sql = f"""SELECT DISTINCT PROD_SZ
                             FROM product p
                             INNER JOIN categories c ON p.CAT_ID = c.CAT_ID 
-                            WHERE CAT_NAME = '{category_name}';
+                            WHERE CAT_NAME = '{selected_category}';
                         """
-
         try:
             c = conn.cursor()
             c.execute(get_sizes_sql)
             sizes = [row[0] for row in c.fetchall()]
 
+            self.ui.category_size.clear()
+            if not sizes:
+                self.ui.category_size.setPlaceholderText('No available sizes')
+            else:
+                self.ui.category_size.setCurrentIndex(0)
+                self.ui.category_size.addItems(sizes)
+
             return sizes
         except Error as e:
             print(e)
             return []
-    
+         
     def getAllOrders(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
