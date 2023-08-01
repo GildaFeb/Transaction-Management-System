@@ -62,6 +62,7 @@ class BtnFunctions(QMainWindow):
         DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 
         self.ui.add_item_pricelist_btn.clicked.connect(lambda: DBQueries.addPrice(self, dbFolder))
+        self.ui.update_pricelist_btn.clicked.connect(lambda: DBQueries.editPrice(self, dbFolder))
         self.ui.delete_pricelist_btn.clicked.connect(lambda: DBQueries.deletePrice(self, dbFolder))
 
     #Price list search field    

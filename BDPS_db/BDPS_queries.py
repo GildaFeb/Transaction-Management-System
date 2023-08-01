@@ -3,7 +3,7 @@ import sys
 import sqlite3
 from sqlite3 import Error
 
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
 class DBQueries():
     def __init__(self, arg):
@@ -251,9 +251,16 @@ class DBQueries():
                 print(e)
 
         else:
-            response = input("You have selected multiple categories. Are you sure you want to delete them? (y/n): ").strip().lower()
+            message_box = QMessageBox()
+            message_box.setIcon(QMessageBox.Question)
+            message_box.setText("You have selected multiple categories. Are you sure you want to delete them?")
+            message_box.setWindowTitle("Confirm Deletion")
+            message_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            message_box.setDefaultButton(QMessageBox.No)
 
-            if response == 'y':
+            response = message_box.exec()
+
+            if response == QMessageBox.Yes:
                 category_ids = [int(self.ui.category_table.item(row.row(), 0).text()) for row in selected_rows]
 
                 delete_selected_categories_sql = f"""
@@ -412,6 +419,89 @@ class DBQueries():
 
         except Error as e:
             print(e)
+
+    def editPrice(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        selected_row = self.ui.pricelist_table.currentRow()
+        if selected_row < 0:
+            #PROMPT
+            print("No product selected.")
+            return
+
+        product_id = int(self.ui.pricelist_table.item(selected_row, 0).text())
+        product_category = self.ui.cat_name_pricelist.currentText()
+        product_size = self.ui.size_pricelist.text()
+        product_price = self.ui.price_pricelist.text()
+
+        get_price_data_sql = f"""
+                                SELECT CAT_ID, PROD_SZ, PROD_PRICE FROM product
+                                WHERE PROD_ID = {product_id};
+                                """
+        c = conn.cursor()
+        c.execute(get_price_data_sql)
+        existing_data = c.fetchone()
+
+        if not product_category:
+            product_category = existing_data[0]
+        if not product_size:
+            product_size = existing_data[1]
+        if not product_price:
+            product_price = existing_data[2]
+
+        check_category_exists_sql = f"""
+            SELECT CAT_ID FROM categories WHERE CAT_NAME = '{product_category}';
+        """
+
+        c = conn.cursor()
+        c.execute(check_category_exists_sql)
+        cat_id_result = c.fetchone()
+
+        if not cat_id_result:
+            #PROMPT
+            print("Category does not exist.")
+            return
+
+        cat_id = cat_id_result[0]
+
+        check_price_exists_sql = f"""
+                                    SELECT PROD_ID FROM product
+                                    WHERE CAT_ID = '{cat_id}'
+                                    AND PROD_SZ = '{product_size}'
+                                    AND PROD_PRICE = '{product_price}';
+                                    """
+        c.execute(check_price_exists_sql)
+        existing_price = c.fetchone()
+        
+        if existing_price:
+            #PROMPT
+            print("Product with updated values already exists in another row.")
+            return
+
+        if product_category == existing_data[0] and product_size == existing_data[1] and product_price == existing_data[2]:
+            #PROMPT
+            print("No changes made to the product details.")
+            return
+
+        update_price_data_sql = f""" 
+                                        UPDATE product 
+                                        SET CAT_ID = '{cat_id}', PROD_SZ = '{product_size}', PROD_PRICE = '{product_price}'
+                                        WHERE PROD_ID = {product_id};
+                                    """
+
+        try:
+            c = conn.cursor()
+            c.execute(update_price_data_sql)
+            conn.commit()
+
+            self.ui.cat_name_pricelist.itemText(0)
+            self.ui.size_pricelist.setText("")
+            self.ui.price_pricelist.setText("")
+
+            DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
+
+        except Error as e:
+            print(e)
     
     def deletePrice(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -440,9 +530,16 @@ class DBQueries():
                 print(e)
 
         else:
-            response = input("You have selected multiple prices. Are you sure you want to delete them? (y/n): ").strip().lower()
+            message_box = QMessageBox()
+            message_box.setIcon(QMessageBox.Question)
+            message_box.setText("You have selected multiple categories. Are you sure you want to delete them?")
+            message_box.setWindowTitle("Confirm Deletion")
+            message_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            message_box.setDefaultButton(QMessageBox.No)
 
-            if response == 'y':
+            response = message_box.exec()
+
+            if response == QMessageBox.Yes:
                 prices_ids = [int(self.ui.pricelist_table.item(row.row(), 0).text()) for row in selected_rows]
 
                 delete_selected_prices_sql = f"""
