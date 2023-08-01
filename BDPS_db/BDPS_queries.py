@@ -396,3 +396,50 @@ class DBQueries():
 
         except Error as e:
             print(e)
+    
+    def deletePrice(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
+        if not selected_rows:
+            print("No price for product selected.")
+            return
+
+        if len(selected_rows) == 1:
+            prod_id = int(self.ui.pricelist_table.item(selected_rows[0].row(), 0).text())
+
+            delete_price_sql = f"""
+                                    DELETE FROM product
+                                    WHERE PROD_ID = {prod_id};
+                                """
+
+            try:
+                c = conn.cursor()
+                c.execute(delete_price_sql)
+                conn.commit()
+
+                DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
+
+            except Error as e:
+                print(e)
+
+        else:
+            response = input("You have selected multiple prices. Are you sure you want to delete them? (y/n): ").strip().lower()
+
+            if response == 'y':
+                prices_ids = [int(self.ui.pricelist_table.item(row.row(), 0).text()) for row in selected_rows]
+
+                delete_selected_prices_sql = f"""
+                                                DELETE FROM product
+                                                WHERE PROD_ID IN ({', '.join(str(id) for id in prices_ids)});
+                                            """
+
+                try:
+                    c = conn.cursor()
+                    c.execute(delete_selected_prices_sql)
+                    conn.commit()
+
+                    DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
+
+                except Error as e:
+                    print(e)

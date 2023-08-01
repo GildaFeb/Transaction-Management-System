@@ -1221,6 +1221,8 @@ class Ui_MainWindow(object):
         self.pricelist_table.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
         self.pricelist_table.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.pricelist_table.setAlternatingRowColors(True)
+        self.pricelist_table.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
+        self.pricelist_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.pricelist_table.setShowGrid(True)
         self.pricelist_table.setGridStyle(QtCore.Qt.NoPen)
         self.pricelist_table.setCornerButtonEnabled(True)
