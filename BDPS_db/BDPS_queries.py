@@ -85,8 +85,8 @@ class DBQueries():
             itemCount = 0
 
             self.ui.category_table.setRowCount(rowPosition + 1)
-            qtablewidgetitem = QTableWidgetItem()
-            self.ui.category_table.setVerticalHeaderItem(rowPosition, qtablewidgetitem)
+            category_tablewidgetitem = QTableWidgetItem()
+            self.ui.category_table.setVerticalHeaderItem(rowPosition, category_tablewidgetitem)
 
             for idx, item in enumerate(row):
                 if idx == 0:
@@ -94,10 +94,10 @@ class DBQueries():
                 else:
                     display_item = str(item)
 
-                self.qtablewidgetitem = QTableWidgetItem()
-                self.ui.category_table.setItem(rowPosition, itemCount, self.qtablewidgetitem)
-                self.qtablewidgetitem = self.ui.category_table.item(rowPosition, itemCount)
-                self.qtablewidgetitem.setText(display_item)
+                self.category_tablewidgetitem = QTableWidgetItem()
+                self.ui.category_table.setItem(rowPosition, itemCount, self.category_tablewidgetitem)
+                self.category_tablewidgetitem = self.ui.category_table.item(rowPosition, itemCount)
+                self.category_tablewidgetitem.setText(display_item)
 
                 itemCount = itemCount + 1
             rowPosition = rowPosition + 1
@@ -585,5 +585,109 @@ class DBQueries():
             update_pricelist_btn.setVisible(False)
         else:
             update_pricelist_btn.setVisible(True)
+
+    #================================= CUSTOMER QUERIES ====================================#
+    def getAllCustomers(dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        get_all_customers = """ SELECT * FROM customer; """
+
+        try:
+            c = conn.cursor()
+            c.execute(get_all_customers)
+
+            return c
+        except Error as e:
+            print(e)
+    
+    def addCustomer(self, dbFolder, customer_name, contact_num):
+        conn = DBQueries.create_connection(dbFolder)
+
+        cust_name = self.ui.customer_name_nt.text()
+        cust_cn = self.ui.contact_num_nt.text()
+
+        if not cust_name or not cust_cn:
+            #PROMPT
+            print("Missing fields.")
+            return
+        
+        insert_customer_data_sql = f""" 
+                                        INSERT INTO customer (CUST_NAME, CUST_CN) VALUES ('{cust_name}','{cust_cn}'); 
+                                    """
+
+        try:
+            c = conn.cursor()
+            c.execute(insert_customer_data_sql)
+            conn.commit()
+
+            cust_name = self.ui.customer_name_nt.setText("")
+            cust_cn = self.ui.contact_num_nt.setText("")
+
+        except Error as e:
+            print(e)
+    #============================= TRANSACTION QUERIES ==============================#
+    def getAllTransactions(dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        get_all_transactions = """ SELECT * FROM transactions; """
+
+        try:
+            c = conn.cursor()
+            c.execute(get_all_transactions)
+
+            return c
+        except Error as e:
+            print(e)
+
+
+    #=============================== ORDER QUERIES ==================================#
+    def getAllOrders(dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        get_all_orders = """    SELECT CAT_NAME, PROD_SZ, PROD_PRICE, ORD_QTY, ORD_TOT
+                                FROM orders
+                                LEFT JOIN product ON orders.PROD_ID = product.PROD_ID
+                                LEFT JOIN transactions ON orders.TXN_CODE = transactions.TXN_CODE
+                                LEFT JOIN categories ON product.CAT_ID = categories.CAT_ID;
+                        """
+
+        try:
+            c = conn.cursor()
+            c.execute(get_all_orders)
+            rows = c.fetchall()
+            print(rows)
+            return rows
+
+        except Error as e:
+            print(e)
+    
+    def displayOrders(self, rows):
+        self.ui.order_detail_table.setRowCount(0)
+
+
+        counter = 0  # Separate counter for controlling the iteration
+
+        for row in rows:
+            rowPosition = self.ui.order_detail_table.rowCount()
+
+            if counter > rowPosition:
+                continue
+
+            itemCount = 0
+
+            self.ui.order_detail_table.setRowCount(rowPosition + 1)
+            order_tablewidgetitem = QTableWidgetItem()
+            self.ui.order_detail_table.setVerticalHeaderItem(rowPosition, order_tablewidgetitem)
+
+            for item in row:
+
+                self.order_tablewidgetitem = QTableWidgetItem()
+                self.ui.order_detail_table.setItem(rowPosition, itemCount, self.order_tablewidgetitem)
+                self.order_tablewidgetitem = self.ui.order_detail_table.item(rowPosition, itemCount)
+                self.order_tablewidgetitem.setText(str(item))
+
+                itemCount = itemCount + 1
+            rowPosition = rowPosition + 1
+
 
 

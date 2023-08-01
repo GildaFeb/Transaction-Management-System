@@ -61,6 +61,7 @@ class BtnFunctions(QMainWindow):
         self.ui.delete_category_btn.clicked.connect(lambda: DBQueries.deleteCategory(self, dbFolder))
 
         self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_category_selection_changed(self))
+        
         #======================== FETCH and MOD PRICELIST =================================#
         category_names = DBQueries.getCategoryNames(dbFolder)
         self.ui.cat_name_pricelist.addItems(category_names)
@@ -72,6 +73,9 @@ class BtnFunctions(QMainWindow):
         self.ui.delete_pricelist_btn.clicked.connect(lambda: DBQueries.deletePrice(self, dbFolder))
 
         self.ui.pricelist_table.itemSelectionChanged.connect(lambda: DBQueries.on_price_selection_changed(self))
+
+        #======================== FETCH and MOD ORDERS =================================#
+        DBQueries.displayOrders(self, DBQueries.getAllOrders(dbFolder))
 
     #Price list search field    
     def pricelist_table(self):
