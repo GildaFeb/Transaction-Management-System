@@ -318,7 +318,14 @@ class DBQueries():
             c.execute(get_category_names_sql)
             category_names = [row[0] for row in c.fetchall()]
 
-            return category_names
+            get_sizes_sql = """ SELECT PROD_SZ
+                                FROM product p
+                                LEFT JOIN categories c ON p.CAT_ID = c.CAT_ID;
+                            """
+            c.execute(get_sizes_sql)
+            sizes = [row[0] for row in c.fetchall()]
+
+            return category_names, sizes
         except Error as e:
             print(e)
             return []
@@ -641,6 +648,24 @@ class DBQueries():
 
 
     #=============================== ORDER QUERIES ==================================#
+    def getCategorySizes(dbFolder, selected_category):
+        conn = DBQueries.create_connection(dbFolder)
+
+        get_sizes_sql = """SELECT DISTINCT PROD_SZ
+                        FROM product
+                        INNER JOIN categories ON product.CAT_ID = categories.CAT_ID
+                        WHERE categories.CAT_NAME = ?;
+                        """
+
+        try:
+            c = conn.cursor()
+            c.execute(get_sizes_sql, (selected_category,))
+            sizes = [row[0] for row in c.fetchall()]
+            return sizes
+        except Error as e:
+            print(e)
+            return []
+    
     def getAllOrders(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
@@ -655,7 +680,6 @@ class DBQueries():
             c = conn.cursor()
             c.execute(get_all_orders)
             rows = c.fetchall()
-            print(rows)
             return rows
 
         except Error as e:
@@ -664,8 +688,7 @@ class DBQueries():
     def displayOrders(self, rows):
         self.ui.order_detail_table.setRowCount(0)
 
-
-        counter = 0  # Separate counter for controlling the iteration
+        counter = 0
 
         for row in rows:
             rowPosition = self.ui.order_detail_table.rowCount()
