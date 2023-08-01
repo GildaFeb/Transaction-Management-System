@@ -101,7 +101,7 @@ class DBQueries():
         conn = DBQueries.create_connection(dbFolder)
 
         category_name = self.ui.product_name_category.text()
-        category_desc = self.ui.category_description.toPlainText()
+        category_desc = self.ui.category_description.text()
         category_sts = self.ui.status_category.currentText()
 
         if not category_name or not category_desc:
@@ -302,7 +302,9 @@ class DBQueries():
         conn = DBQueries.create_connection(dbFolder)
 
         get_category_names_sql = """SELECT CAT_NAME
-                                    FROM categories;"""
+                                    FROM categories
+                                    WHERE CAT_STS = 'Available';
+                                """
 
         try:
             c = conn.cursor()
