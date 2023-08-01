@@ -84,18 +84,24 @@ class DBQueries():
 
             itemCount = 0
 
-            self.ui.category_table.setRowCount(rowPosition+1)
+            self.ui.category_table.setRowCount(rowPosition + 1)
             qtablewidgetitem = QTableWidgetItem()
             self.ui.category_table.setVerticalHeaderItem(rowPosition, qtablewidgetitem)
 
-            for item in row:
+            for idx, item in enumerate(row):
+                if idx == 0:
+                    display_item = "C-" + str(item)
+                else:
+                    display_item = str(item)
+
                 self.qtablewidgetitem = QTableWidgetItem()
                 self.ui.category_table.setItem(rowPosition, itemCount, self.qtablewidgetitem)
                 self.qtablewidgetitem = self.ui.category_table.item(rowPosition, itemCount)
-                self.qtablewidgetitem.setText(str(item))
+                self.qtablewidgetitem.setText(display_item)
 
-                itemCount = itemCount+1
-            rowPosition = rowPosition+1
+                itemCount = itemCount + 1
+            rowPosition = rowPosition + 1
+
     
     def addCategory(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -336,7 +342,6 @@ class DBQueries():
             return []
     
     def displayPrices(self, rows):
-        
         self.ui.pricelist_table.setRowCount(0)
 
         for row in rows:
@@ -347,18 +352,24 @@ class DBQueries():
 
             itemCount = 0
 
-            self.ui.pricelist_table.setRowCount(rowPosition+1)
+            self.ui.pricelist_table.setRowCount(rowPosition + 1)
             prices_tablewidgetitem = QTableWidgetItem()
             self.ui.pricelist_table.setVerticalHeaderItem(rowPosition, prices_tablewidgetitem)
 
-            for item in row:
+            for idx, item in enumerate(row):
+                if idx == 0:
+                    display_item = "P-" + str(item)
+                else:
+                    display_item = str(item)
+
                 self.prices_tablewidgetitem = QTableWidgetItem()
                 self.ui.pricelist_table.setItem(rowPosition, itemCount, self.prices_tablewidgetitem)
                 self.prices_tablewidgetitem = self.ui.pricelist_table.item(rowPosition, itemCount)
-                self.prices_tablewidgetitem.setText(str(item))
+                self.prices_tablewidgetitem.setText(display_item)
 
-                itemCount = itemCount+1
-            rowPosition = rowPosition+1
+                itemCount = itemCount + 1
+            rowPosition = rowPosition + 1
+
     
     def addPrice(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
