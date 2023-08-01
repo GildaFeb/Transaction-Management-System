@@ -1329,7 +1329,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         item.setFont(font)
         self.pricelist_table.setHorizontalHeaderItem(3, item)
-        self.pricelist_table.horizontalHeader().setVisible(False)
+        self.pricelist_table.horizontalHeader().setVisible(True)
         self.pricelist_table.horizontalHeader().setCascadingSectionResizes(True)
         self.pricelist_table.horizontalHeader().setDefaultSectionSize(173)
         self.pricelist_table.horizontalHeader().setHighlightSections(True)
@@ -3249,7 +3249,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(1)
         self.new_transaction_btn_1.toggled['bool'].connect(self.new_transaction_btn_2.setChecked) # type: ignore
         self.datewise_transaction_btn_1.toggled['bool'].connect(self.datewise_transaction_btn_2.setChecked) # type: ignore
         self.daily_transaction_btn_1.toggled['bool'].connect(self.daily_transaction_btn_2.setChecked) # type: ignore
@@ -3325,7 +3325,7 @@ class Ui_MainWindow(object):
         self.delete_pricelist_btn.setText(_translate("MainWindow", "Move to trash"))
         self.pricelist_table.setSortingEnabled(True)
         item = self.pricelist_table.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "Product Code"))
+        item.setText(_translate("MainWindow", "Product ID"))
         item = self.pricelist_table.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Category Name"))
         item = self.pricelist_table.horizontalHeaderItem(2)

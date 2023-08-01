@@ -236,7 +236,7 @@ class DBQueries():
             return
 
         if len(selected_rows) == 1:
-            category_id = int(self.ui.category_table.item(selected_rows[0].row(), 0).text())
+            category_id = int(self.ui.category_table.item(selected_rows[0].row(), 0).text().split('-')[-1])
 
             delete_category_sql = f"""
                                     DELETE FROM categories
@@ -268,7 +268,7 @@ class DBQueries():
             response = message_box.exec()
 
             if response == QMessageBox.Yes:
-                category_ids = [int(self.ui.category_table.item(row.row(), 0).text()) for row in selected_rows]
+                category_ids = [int(self.ui.category_table.item(row.row(), 0).text().split('-')[-1]) for row in selected_rows]
 
                 delete_selected_categories_sql = f"""
                                                 DELETE FROM categories
@@ -506,9 +506,10 @@ class DBQueries():
             c.execute(update_price_data_sql)
             conn.commit()
 
-            self.ui.cat_name_pricelist.itemText(0)
-            self.ui.size_pricelist.setText("")
-            self.ui.price_pricelist.setText("")
+            self.ui.id_pricelist.setText('')
+            self.ui.cat_name_pricelist.setCurrentIndex('Available')
+            self.ui.size_pricelist.setPlaceholderText('')
+            self.ui.price_pricelist.setPlaceholderText('')
 
             DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 
@@ -525,7 +526,7 @@ class DBQueries():
             return
 
         if len(selected_rows) == 1:
-            prod_id = int(self.ui.pricelist_table.item(selected_rows[0].row(), 0).text())
+            prod_id = int(self.ui.pricelist_table.item(selected_rows[0].row(), 0).text().split('-')[-1])
 
             delete_price_sql = f"""
                                     DELETE FROM product
@@ -553,7 +554,7 @@ class DBQueries():
             response = message_box.exec()
 
             if response == QMessageBox.Yes:
-                prices_ids = [int(self.ui.pricelist_table.item(row.row(), 0).text()) for row in selected_rows]
+                prices_ids = [int(self.ui.pricelist_table.item(row.row(), 0).text().split('-')[-1]) for row in selected_rows]
 
                 delete_selected_prices_sql = f"""
                                                 DELETE FROM product

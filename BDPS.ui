@@ -1124,7 +1124,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -2921,7 +2921,7 @@ border-radius: 10px;
                              <bool>true</bool>
                             </property>
                             <attribute name="horizontalHeaderVisible">
-                             <bool>false</bool>
+                             <bool>true</bool>
                             </attribute>
                             <attribute name="horizontalHeaderCascadingSectionResizes">
                              <bool>true</bool>
@@ -2949,7 +2949,7 @@ border-radius: 10px;
                             </attribute>
                             <column>
                              <property name="text">
-                              <string>Product Code</string>
+                              <string>Product ID</string>
                              </property>
                              <property name="font">
                               <font>
@@ -7557,7 +7557,7 @@ border-radius: 5px;
  <resources>
   <include location="resource.qrc"/>
   <include location="resource.qrc"/>
-  <include location="COMMITS/10/Transaction-Management-System/resource.qrc"/>
+  <include location="resource.qrc"/>
  </resources>
  <connections>
   <connection>

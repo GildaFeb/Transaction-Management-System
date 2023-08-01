@@ -43,6 +43,9 @@ class BtnFunctions(QMainWindow):
         self.ui.printreport_dwt_btn.clicked.connect(self.datewise_transaction_toExcel)
 
         #================================== TABLES ===============================#
+        self.ui.category_table.horizontalHeader().setVisible(True)
+        self.ui.pricelist_table.horizontalHeader().setVisible(True)
+
         self.ui.category_table.clicked.connect(self.on_category_row_clicked)
         self.ui.pricelist_table.clicked.connect(self.on_pricelist_row_clicked)
 
