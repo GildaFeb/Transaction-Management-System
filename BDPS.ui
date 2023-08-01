@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1618</width>
-    <height>906</height>
+    <height>905</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -998,10 +998,19 @@ border-radius: 10px;
 	border-radius: 10px;
 }
 
-#edit_search_daily_tnx, #editSearch_dwt_4, #edit_search_new_transaction, #edit_search_category, #edit_search_pricelist, #edit_search_dwp,#edit_search_dwt{
+#edit_search_daily_tnx, #editSearch_dwt_4, #edit_search_new_transaction, #edit_search_category, #edit_search_pricelist, #edit_search_dwp,#edit_search_dwt, #category_name_nt, #customer_name_nt, #contact_num_nt,
+#product_quantity,#payment_nt,
+#category_size{
 	border: 2px solid #d6d9e1;
     border-radius: 5px;
-    background-color: #f8f9f9;
+    background-color: white;
+}
+
+ #customer_name_nt, #contact_num_nt{
+	border: 2px solid #f8f9f9;
+    border-radius: 4px;
+    background-color:#f8f9f9;
+	color: black;
 }
 
 #separator, #separator_dwp{
@@ -1025,7 +1034,7 @@ border-radius: 10px;
 	color: white;
 }
 
-#add_item, #pl_label_widget, #pl_label_widget_1, #category_label_widget{
+#add_item, #pl_label_widget, #pl_label_widget_1, #category_label_widget, #pricelist_table_widget{
 	background-color: white;
     border-radius: 10px;
 }
@@ -1042,7 +1051,15 @@ border-radius: 10px;
 }
 
 
-#add_item_pricelist_btn, #add_category_btn{
+
+#add_item_pricelist_btn{
+	background-color: #3A974B;
+	color: white;
+    border: 2px solid #358A44;
+	border-radius: 4px;
+
+}
+#add_category_btn{
 	background-color: #3A974B;
 	color: white;
     border: 2px solid #358A44;
@@ -1107,7 +1124,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -2844,18 +2861,21 @@ border-radius: 10px;
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QTableWidget" name="pricelist_table">
-                         <property name="enabled">
-                          <bool>true</bool>
-                         </property>
-                         <property name="cursor" stdset="0">
-                          <cursorShape>IBeamCursor</cursorShape>
-                         </property>
-                         <property name="autoFillBackground">
-                          <bool>false</bool>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">
+                        <widget class="QWidget" name="pricelist_table_widget" native="true">
+                         <layout class="QVBoxLayout" name="verticalLayout_63">
+                          <item>
+                           <widget class="QTableWidget" name="pricelist_table">
+                            <property name="enabled">
+                             <bool>true</bool>
+                            </property>
+                            <property name="cursor" stdset="0">
+                             <cursorShape>IBeamCursor</cursorShape>
+                            </property>
+                            <property name="autoFillBackground">
+                             <bool>false</bool>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">
 #tableWidget{
 	color: rgb(255, 255, 255);
 	gridline-color: rgb(255, 255, 255);
@@ -2863,115 +2883,121 @@ border-radius: 10px;
 	alternate-background-color: yellow;
      	background-color: red;
 }</string>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::NoFrame</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <property name="lineWidth">
-                          <number>1</number>
-                         </property>
-                         <property name="sizeAdjustPolicy">
-                          <enum>QAbstractScrollArea::AdjustIgnored</enum>
-                         </property>
-                         <property name="editTriggers">
-                          <set>QAbstractItemView::NoEditTriggers</set>
-                         </property>
-                         <property name="alternatingRowColors">
-                          <bool>true</bool>
-                         </property>
-                         <property name="selectionMode">
-                          <enum>QAbstractItemView::MultiSelection</enum>
-                         </property>
-                         <property name="selectionBehavior">
-                          <enum>QAbstractItemView::SelectRows</enum>
-                         </property>
-                         <property name="showGrid">
-                          <bool>true</bool>
-                         </property>
-                         <property name="gridStyle">
-                          <enum>Qt::NoPen</enum>
-                         </property>
-                         <property name="sortingEnabled">
-                          <bool>true</bool>
-                         </property>
-                         <property name="cornerButtonEnabled">
-                          <bool>true</bool>
-                         </property>
-                         <attribute name="horizontalHeaderVisible">
-                          <bool>false</bool>
-                         </attribute>
-                         <attribute name="horizontalHeaderCascadingSectionResizes">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="horizontalHeaderDefaultSectionSize">
-                          <number>173</number>
-                         </attribute>
-                         <attribute name="horizontalHeaderHighlightSections">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="horizontalHeaderMinimumSectionSize">
-                          <number>100</number>
-                         </attribute>
-                         <attribute name="horizontalHeaderStretchLastSection">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="verticalHeaderCascadingSectionResizes">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="verticalHeaderHighlightSections">
-                          <bool>true</bool>
-                         </attribute>
-                         <column>
-                          <property name="text">
-                           <string>Product Code</string>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Category Name</string>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Size</string>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Price</string>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                         </column>
+                            </property>
+                            <property name="frameShape">
+                             <enum>QFrame::NoFrame</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <property name="lineWidth">
+                             <number>1</number>
+                            </property>
+                            <property name="sizeAdjustPolicy">
+                             <enum>QAbstractScrollArea::AdjustIgnored</enum>
+                            </property>
+                            <property name="editTriggers">
+                             <set>QAbstractItemView::NoEditTriggers</set>
+                            </property>
+                            <property name="alternatingRowColors">
+                             <bool>true</bool>
+                            </property>
+                            <property name="selectionMode">
+                             <enum>QAbstractItemView::MultiSelection</enum>
+                            </property>
+                            <property name="selectionBehavior">
+                             <enum>QAbstractItemView::SelectRows</enum>
+                            </property>
+                            <property name="showGrid">
+                             <bool>true</bool>
+                            </property>
+                            <property name="gridStyle">
+                             <enum>Qt::NoPen</enum>
+                            </property>
+                            <property name="sortingEnabled">
+                             <bool>true</bool>
+                            </property>
+                            <property name="cornerButtonEnabled">
+                             <bool>true</bool>
+                            </property>
+                            <attribute name="horizontalHeaderVisible">
+                             <bool>false</bool>
+                            </attribute>
+                            <attribute name="horizontalHeaderCascadingSectionResizes">
+                             <bool>true</bool>
+                            </attribute>
+                            <attribute name="horizontalHeaderDefaultSectionSize">
+                             <number>173</number>
+                            </attribute>
+                            <attribute name="horizontalHeaderHighlightSections">
+                             <bool>true</bool>
+                            </attribute>
+                            <attribute name="horizontalHeaderMinimumSectionSize">
+                             <number>100</number>
+                            </attribute>
+                            <attribute name="horizontalHeaderStretchLastSection">
+                             <bool>true</bool>
+                            </attribute>
+                            <attribute name="verticalHeaderCascadingSectionResizes">
+                             <bool>true</bool>
+                            </attribute>
+                            <attribute name="verticalHeaderHighlightSections">
+                             <bool>true</bool>
+                            </attribute>
+                            <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                             <bool>true</bool>
+                            </attribute>
+                            <column>
+                             <property name="text">
+                              <string>Product Code</string>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                            </column>
+                            <column>
+                             <property name="text">
+                              <string>Category Name</string>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                            </column>
+                            <column>
+                             <property name="text">
+                              <string>Size</string>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                            </column>
+                            <column>
+                             <property name="text">
+                              <string>Price</string>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                            </column>
+                           </widget>
+                          </item>
+                         </layout>
                         </widget>
                        </item>
                        <item>
@@ -3017,18 +3043,21 @@ border-radius: 10px;
               <string notr="true">
 #id_category,
 #category_description,
-#status_categoryt{
+#status_category,
+#product_name_category{
 		
 	 border: 2px solid #c3ccce;
      border-radius: 5px;
-	color: white;
+	 color: black;
+	 background-color: white;
 }
 
 
 
-#pricelist_table{
+#pricelist_table, #category_table_widget{
 	alternate-background-color: #f7f9fa;
     background-color: white;
+	border-radius: 20px;
 }
 </string>
              </property>
@@ -3402,7 +3431,7 @@ border-radius: 10px;
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>10</pointsize>
+                         <pointsize>11</pointsize>
                         </font>
                        </property>
                        <property name="cursor">
@@ -3453,7 +3482,19 @@ border-radius: 10px;
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="product_name_category"/>
+                    <widget class="QLineEdit" name="product_name_category">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                    </widget>
                    </item>
                    <item>
                     <widget class="QLabel" name="cat_description_label">
@@ -3483,7 +3524,7 @@ border-radius: 10px;
                      </property>
                      <property name="font">
                       <font>
-                       <pointsize>10</pointsize>
+                       <pointsize>11</pointsize>
                       </font>
                      </property>
                      <property name="frame">
@@ -3505,6 +3546,17 @@ border-radius: 10px;
                    </item>
                    <item>
                     <widget class="QComboBox" name="status_category">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
                      <item>
                       <property name="text">
                        <string>Available</string>
@@ -3699,150 +3751,191 @@ border-radius: 10px;
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QTableWidget" name="category_table">
-                     <property name="enabled">
-                      <bool>true</bool>
-                     </property>
-                     <property name="cursor" stdset="0">
-                      <cursorShape>IBeamCursor</cursorShape>
-                     </property>
-                     <property name="autoFillBackground">
-                      <bool>false</bool>
-                     </property>
+                    <widget class="QWidget" name="cat_table_widget" native="true">
                      <property name="styleSheet">
-                      <string notr="true">
+                      <string notr="true">#category_table{
+     border-radius: 10px;
+	 background-color: white;
+}</string>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_62">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QWidget" name="category_table_widget" native="true">
+                        <layout class="QVBoxLayout" name="verticalLayout_33">
+                         <item>
+                          <widget class="QTableWidget" name="category_table">
+                           <property name="enabled">
+                            <bool>true</bool>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="cursor" stdset="0">
+                            <cursorShape>IBeamCursor</cursorShape>
+                           </property>
+                           <property name="autoFillBackground">
+                            <bool>false</bool>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">
 #tableWidget{
 	color: rgb(255, 255, 255);
 	gridline-color: rgb(255, 255, 255);
 	background-color: #1a1c28;
 	alternate-background-color: yellow;
-     background-color: red;
-	border-radius: 10px;
+     	background-color: red;
 }</string>
-                     </property>
-                     <property name="frameShape">
-                      <enum>QFrame::NoFrame</enum>
-                     </property>
-                     <property name="frameShadow">
-                      <enum>QFrame::Raised</enum>
-                     </property>
-                     <property name="lineWidth">
-                      <number>1</number>
-                     </property>
-                     <property name="sizeAdjustPolicy">
-                      <enum>QAbstractScrollArea::AdjustIgnored</enum>
-                     </property>
-                     <property name="editTriggers">
-                      <set>QAbstractItemView::NoEditTriggers</set>
-                     </property>
-                     <property name="alternatingRowColors">
-                      <bool>true</bool>
-                     </property>
-                     <property name="selectionMode">
-                      <enum>QAbstractItemView::MultiSelection</enum>
-                     </property>
-                     <property name="selectionBehavior">
-                      <enum>QAbstractItemView::SelectRows</enum>
-                     </property>
-                     <property name="showGrid">
-                      <bool>true</bool>
-                     </property>
-                     <property name="gridStyle">
-                      <enum>Qt::NoPen</enum>
-                     </property>
-                     <property name="sortingEnabled">
-                      <bool>true</bool>
-                     </property>
-                     <property name="cornerButtonEnabled">
-                      <bool>true</bool>
-                     </property>
-                     <attribute name="horizontalHeaderVisible">
-                      <bool>true</bool>
-                     </attribute>
-                     <attribute name="horizontalHeaderCascadingSectionResizes">
-                      <bool>true</bool>
-                     </attribute>
-                     <attribute name="horizontalHeaderDefaultSectionSize">
-                      <number>173</number>
-                     </attribute>
-                     <attribute name="horizontalHeaderHighlightSections">
-                      <bool>true</bool>
-                     </attribute>
-                     <attribute name="horizontalHeaderMinimumSectionSize">
-                      <number>100</number>
-                     </attribute>
-                     <attribute name="horizontalHeaderStretchLastSection">
-                      <bool>true</bool>
-                     </attribute>
-                     <attribute name="verticalHeaderCascadingSectionResizes">
-                      <bool>true</bool>
-                     </attribute>
-                     <attribute name="verticalHeaderHighlightSections">
-                      <bool>true</bool>
-                     </attribute>
-                     <column>
-                      <property name="text">
-                       <string>Category Code</string>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <pointsize>11</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>Category Name</string>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <pointsize>11</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>Description</string>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <pointsize>10</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>Status</string>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <pointsize>10</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                     </column>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="no_category_found">
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>No search results found</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
-                     </property>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::NoFrame</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Raised</enum>
+                           </property>
+                           <property name="lineWidth">
+                            <number>1</number>
+                           </property>
+                           <property name="sizeAdjustPolicy">
+                            <enum>QAbstractScrollArea::AdjustIgnored</enum>
+                           </property>
+                           <property name="editTriggers">
+                            <set>QAbstractItemView::NoEditTriggers</set>
+                           </property>
+                           <property name="alternatingRowColors">
+                            <bool>true</bool>
+                           </property>
+                           <property name="selectionMode">
+                            <enum>QAbstractItemView::MultiSelection</enum>
+                           </property>
+                           <property name="selectionBehavior">
+                            <enum>QAbstractItemView::SelectRows</enum>
+                           </property>
+                           <property name="showGrid">
+                            <bool>true</bool>
+                           </property>
+                           <property name="gridStyle">
+                            <enum>Qt::NoPen</enum>
+                           </property>
+                           <property name="sortingEnabled">
+                            <bool>true</bool>
+                           </property>
+                           <property name="cornerButtonEnabled">
+                            <bool>true</bool>
+                           </property>
+                           <attribute name="horizontalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderCascadingSectionResizes">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderDefaultSectionSize">
+                            <number>173</number>
+                           </attribute>
+                           <attribute name="horizontalHeaderHighlightSections">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderMinimumSectionSize">
+                            <number>100</number>
+                           </attribute>
+                           <attribute name="horizontalHeaderStretchLastSection">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderCascadingSectionResizes">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderHighlightSections">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                            <bool>true</bool>
+                           </attribute>
+                           <column>
+                            <property name="text">
+                             <string>Category ID</string>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Category Name</string>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Description</string>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Status</string>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                           </column>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="no_category_found">
+                        <property name="font">
+                         <font>
+                          <pointsize>10</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>No search results found</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
                   </layout>
@@ -3861,12 +3954,10 @@ border-radius: 10px;
 color: white;
 background-color: #1354cb;
 border-radius: 5px;
-box-shadow: 10px 10px 5px #aaaaaa;
 
 }
 
 #transaction_form{
-box-shadow: 10px 10px 5px #aaaaaa;
 background-color: #fbfbfb;
 border-radius: 15px;
 }
@@ -3900,16 +3991,16 @@ background-color: #f5f7f9;
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_15">
               <property name="leftMargin">
-               <number>20</number>
+               <number>26</number>
               </property>
               <property name="topMargin">
-               <number>20</number>
+               <number>26</number>
               </property>
               <property name="rightMargin">
-               <number>20</number>
+               <number>26</number>
               </property>
               <property name="bottomMargin">
-               <number>20</number>
+               <number>26</number>
               </property>
               <item>
                <widget class="QWidget" name="widget_19" native="true">
@@ -3953,35 +4044,9 @@ background-color: #f5f7f9;
 	border-radius: 5px;
 }
 
-#add_discount {
-	color: white;
-	background-color: #313a46;
-	border-radius: 5px;
-}
-
-#total {
-	background-color: #890500;
-	color: white;
-}
-
-#total_amount {
-	color: white;
-	background-color: #890500;
-}
-
-#peso {
-	color: white;
-	background-color: #890500;
-}
-
-
-#total_frame{
-	background-color: #890500;
-}
 
 #break1, #break2, #break3{
-	background-color: #d6d9e1
-;
+	background-color: #d6d9e1;
 }
 
 #save_transaction_nt{
@@ -3999,8 +4064,32 @@ background-color: #f5f7f9;
                     <number>10</number>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_15">
+                    <property name="leftMargin">
+                     <number>26</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>26</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>26</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>26</number>
+                    </property>
                     <item>
                      <widget class="QWidget" name="widget_21" native="true">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>60</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>60</height>
+                       </size>
+                      </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_18">
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_16">
@@ -4008,7 +4097,7 @@ background-color: #f5f7f9;
                           <widget class="QLabel" name="label_26">
                            <property name="font">
                             <font>
-                             <pointsize>8</pointsize>
+                             <pointsize>11</pointsize>
                              <weight>75</weight>
                              <bold>true</bold>
                             </font>
@@ -4020,6 +4109,11 @@ background-color: #f5f7f9;
                          </item>
                          <item>
                           <widget class="QDateEdit" name="tnx_date_nt">
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
                            <property name="calendarPopup">
                             <bool>true</bool>
                            </property>
@@ -4048,6 +4142,18 @@ background-color: #f5f7f9;
                     </item>
                     <item>
                      <widget class="QWidget" name="widget_22" native="true">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_20">
                        <item>
                         <spacer name="horizontalSpacer_5">
@@ -4080,7 +4186,7 @@ background-color: #f5f7f9;
                           <widget class="QLabel" name="tnx_code">
                            <property name="font">
                             <font>
-                             <pointsize>10</pointsize>
+                             <pointsize>11</pointsize>
                              <weight>50</weight>
                              <bold>false</bold>
                             </font>
@@ -4132,13 +4238,44 @@ background-color: #f5f7f9;
                     </item>
                     <item>
                      <widget class="QWidget" name="widget_23" native="true">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>110</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>100</height>
+                       </size>
+                      </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_21">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>13</number>
+                       </property>
                        <item>
                         <layout class="QVBoxLayout" name="verticalLayout_14">
+                         <property name="spacing">
+                          <number>7</number>
+                         </property>
                          <item>
                           <widget class="QLabel" name="label_30">
                            <property name="font">
                             <font>
+                             <pointsize>11</pointsize>
                              <weight>75</weight>
                              <bold>true</bold>
                             </font>
@@ -4156,6 +4293,11 @@ background-color: #f5f7f9;
                              <height>30</height>
                             </size>
                            </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
                            <property name="maxLength">
                             <number>70</number>
                            </property>
@@ -4171,12 +4313,17 @@ background-color: #f5f7f9;
                           </widget>
                          </item>
                          <item>
-                          <widget class="QLineEdit" name="conatct_num_nt">
+                          <widget class="QLineEdit" name="contact_num_nt">
                            <property name="minimumSize">
                             <size>
                              <width>250</width>
                              <height>30</height>
                             </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
                            </property>
                            <property name="inputMethodHints">
                             <set>Qt::ImhDigitsOnly</set>
@@ -4233,97 +4380,9 @@ background-color: #f5f7f9;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="widget_24" native="true">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_16">
-                       <item>
-                        <widget class="QLabel" name="label_41">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Order Details</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QTableWidget" name="order_detail_table">
-                         <property name="showGrid">
-                          <bool>false</bool>
-                         </property>
-                         <property name="gridStyle">
-                          <enum>Qt::SolidLine</enum>
-                         </property>
-                         <property name="sortingEnabled">
-                          <bool>true</bool>
-                         </property>
-                         <property name="wordWrap">
-                          <bool>true</bool>
-                         </property>
-                         <column>
-                          <property name="text">
-                           <string>Item </string>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Size</string>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Price</string>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Price</string>
-                          </property>
-                         </column>
-                         <column>
-                          <property name="text">
-                           <string>Total</string>
-                          </property>
-                         </column>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="break3">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>2</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>2</height>
-                       </size>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
                      <widget class="QWidget" name="widget_26" native="true">
                       <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
@@ -4337,21 +4396,41 @@ background-color: #f5f7f9;
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>250</height>
+                        <height>16777215</height>
                        </size>
                       </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_29">
+                      <layout class="QHBoxLayout" name="horizontalLayout_24">
                        <item>
                         <layout class="QVBoxLayout" name="verticalLayout_12">
+                         <property name="spacing">
+                          <number>13</number>
+                         </property>
                          <item>
                           <widget class="QLabel" name="label_31">
+                           <property name="minimumSize">
+                            <size>
+                             <width>220</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>220</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
                            <property name="text">
-                            <string>Item</string>
+                            <string>Category Name</string>
                            </property>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QComboBox" name="item_nt">
+                          <widget class="QComboBox" name="category_name_nt">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -4360,9 +4439,20 @@ background-color: #f5f7f9;
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>200</width>
+                             <width>280</width>
                              <height>0</height>
                             </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>280</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
                            </property>
                            <property name="cursor">
                             <cursorShape>PointingHandCursor</cursorShape>
@@ -4371,13 +4461,30 @@ background-color: #f5f7f9;
                          </item>
                          <item>
                           <widget class="QLabel" name="label_32">
+                           <property name="minimumSize">
+                            <size>
+                             <width>220</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>220</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
                            <property name="text">
                             <string>Size</string>
                            </property>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QComboBox" name="size_nt">
+                          <widget class="QComboBox" name="category_size">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -4386,9 +4493,20 @@ background-color: #f5f7f9;
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>200</width>
+                             <width>280</width>
                              <height>0</height>
                             </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>280</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
                            </property>
                            <property name="cursor">
                             <cursorShape>PointingHandCursor</cursorShape>
@@ -4397,13 +4515,30 @@ background-color: #f5f7f9;
                          </item>
                          <item>
                           <widget class="QLabel" name="label_33">
+                           <property name="minimumSize">
+                            <size>
+                             <width>220</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>220</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
                            <property name="text">
                             <string>Quantity</string>
                            </property>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QComboBox" name="quantity_nt">
+                          <widget class="QComboBox" name="product_quantity">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -4412,12 +4547,26 @@ background-color: #f5f7f9;
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>200</width>
+                             <width>280</width>
                              <height>0</height>
                             </size>
                            </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>280</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
                            <property name="cursor">
                             <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
+                           <property name="editable">
+                            <bool>true</bool>
                            </property>
                           </widget>
                          </item>
@@ -4431,21 +4580,26 @@ background-color: #f5f7f9;
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>200</width>
-                             <height>30</height>
+                             <width>280</width>
+                             <height>35</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>16777215</width>
-                             <height>30</height>
+                             <width>280</width>
+                             <height>35</height>
                             </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
                            </property>
                            <property name="cursor">
                             <cursorShape>PointingHandCursor</cursorShape>
                            </property>
                            <property name="text">
-                            <string>Add to order</string>
+                            <string>Add order</string>
                            </property>
                            <property name="iconSize">
                             <size>
@@ -4480,339 +4634,104 @@ background-color: #f5f7f9;
                         </layout>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_10">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
+                        <widget class="QWidget" name="widget_24" native="true">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
                          </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>22</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QWidget" name="widget_27" native="true">
                          <property name="minimumSize">
                           <size>
-                           <width>260</width>
+                           <width>530</width>
                            <height>0</height>
                           </size>
                          </property>
-                         <property name="styleSheet">
-                          <string notr="true">#total_amount{
-	color: white;
-}</string>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
                          </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_22">
+                         <layout class="QVBoxLayout" name="verticalLayout_16">
+                          <property name="leftMargin">
+                           <number>26</number>
+                          </property>
                           <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_27">
-                            <item>
-                             <widget class="QWidget" name="widget_28" native="true">
-                              <layout class="QHBoxLayout" name="horizontalLayout_26">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_17">
-                                 <item>
-                                  <widget class="QLabel" name="label_34">
-                                   <property name="font">
-                                    <font>
-                                     <weight>75</weight>
-                                     <bold>true</bold>
-                                    </font>
-                                   </property>
-                                   <property name="text">
-                                    <string>Subtotal</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item>
-                                  <widget class="QLabel" name="label_38">
-                                   <property name="text">
-                                    <string>Discount</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                </layout>
-                               </item>
-                               <item>
-                                <spacer name="horizontalSpacer_8">
-                                 <property name="orientation">
-                                  <enum>Qt::Horizontal</enum>
-                                 </property>
-                                 <property name="sizeHint" stdset="0">
-                                  <size>
-                                   <width>62</width>
-                                   <height>20</height>
-                                  </size>
-                                 </property>
-                                </spacer>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QWidget" name="widget_29" native="true">
-                              <layout class="QHBoxLayout" name="horizontalLayout_25">
-                               <item>
-                                <spacer name="horizontalSpacer_9">
-                                 <property name="orientation">
-                                  <enum>Qt::Horizontal</enum>
-                                 </property>
-                                 <property name="sizeHint" stdset="0">
-                                  <size>
-                                   <width>35</width>
-                                   <height>20</height>
-                                  </size>
-                                 </property>
-                                </spacer>
-                               </item>
-                               <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_18">
-                                 <item>
-                                  <widget class="QLabel" name="label_36">
-                                   <property name="text">
-                                    <string>₱ </string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item>
-                                  <widget class="QLabel" name="label_35">
-                                   <property name="text">
-                                    <string>₱</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                </layout>
-                               </item>
-                               <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_20">
-                                 <item>
-                                  <widget class="QLabel" name="subtotal_nt">
-                                   <property name="text">
-                                    <string>0.00</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item>
-                                  <widget class="QLabel" name="discount_nt">
-                                   <property name="text">
-                                    <string>0.00</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                </layout>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                           </layout>
+                           <widget class="QLabel" name="label_41">
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Order Details</string>
+                            </property>
+                           </widget>
                           </item>
                           <item>
-                           <spacer name="verticalSpacer_4">
-                            <property name="orientation">
-                             <enum>Qt::Vertical</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                             <size>
-                              <width>20</width>
-                              <height>40</height>
-                             </size>
-                            </property>
-                           </spacer>
-                          </item>
-                          <item>
-                           <layout class="QVBoxLayout" name="verticalLayout_19">
-                            <property name="spacing">
-                             <number>7</number>
-                            </property>
-                            <item>
-                             <widget class="QLabel" name="label_37">
-                              <property name="text">
-                               <string>Discount</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QSpinBox" name="spinBox">
-                              <property name="showGroupSeparator" stdset="0">
-                               <bool>false</bool>
-                              </property>
-                              <property name="maximum">
-                               <number>999999</number>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QPushButton" name="add_discount_nt">
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>30</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>30</height>
-                               </size>
-                              </property>
-                              <property name="cursor">
-                               <cursorShape>PointingHandCursor</cursorShape>
-                              </property>
-                              <property name="text">
-                               <string>Add Discount</string>
-                              </property>
-                              <property name="iconSize">
-                               <size>
-                                <width>20</width>
-                                <height>30</height>
-                               </size>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
-                          </item>
-                          <item>
-                           <spacer name="verticalSpacer_3">
-                            <property name="orientation">
-                             <enum>Qt::Vertical</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                             <size>
-                              <width>20</width>
-                              <height>40</height>
-                             </size>
-                            </property>
-                           </spacer>
-                          </item>
-                          <item>
-                           <widget class="QFrame" name="total_frame">
+                           <widget class="QTableWidget" name="order_detail_table">
                             <property name="minimumSize">
                              <size>
-                              <width>0</width>
-                              <height>30</height>
+                              <width>400</width>
+                              <height>0</height>
                              </size>
                             </property>
                             <property name="maximumSize">
                              <size>
                               <width>16777215</width>
-                              <height>50</height>
+                              <height>16777215</height>
                              </size>
                             </property>
-                            <property name="frameShape">
-                             <enum>QFrame::StyledPanel</enum>
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                             </font>
                             </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
+                            <property name="showGrid">
+                             <bool>false</bool>
                             </property>
-                            <layout class="QVBoxLayout" name="verticalLayout_21">
-                             <property name="spacing">
-                              <number>0</number>
+                            <property name="gridStyle">
+                             <enum>Qt::SolidLine</enum>
+                            </property>
+                            <property name="sortingEnabled">
+                             <bool>true</bool>
+                            </property>
+                            <property name="wordWrap">
+                             <bool>true</bool>
+                            </property>
+                            <column>
+                             <property name="text">
+                              <string>Category Name</string>
                              </property>
-                             <property name="leftMargin">
-                              <number>0</number>
+                            </column>
+                            <column>
+                             <property name="text">
+                              <string>Size</string>
                              </property>
-                             <property name="topMargin">
-                              <number>0</number>
+                            </column>
+                            <column>
+                             <property name="text">
+                              <string>Price</string>
                              </property>
-                             <property name="rightMargin">
-                              <number>0</number>
+                            </column>
+                            <column>
+                             <property name="text">
+                              <string>Quantity</string>
                              </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
+                            </column>
+                            <column>
+                             <property name="text">
+                              <string>Total</string>
                              </property>
-                             <item>
-                              <layout class="QHBoxLayout" name="horizontalLayout_28">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QLabel" name="total">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <weight>75</weight>
-                                   <bold>true</bold>
-                                  </font>
-                                 </property>
-                                 <property name="text">
-                                  <string> Total</string>
-                                 </property>
-                                </widget>
-                               </item>
-                               <item alignment="Qt::AlignRight">
-                                <widget class="QLabel" name="peso">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="text">
-                                  <string>₱ </string>
-                                 </property>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QLabel" name="total_amount">
-                                 <property name="text">
-                                  <string>0.00 </string>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </item>
-                            </layout>
+                            </column>
                            </widget>
                           </item>
                          </layout>
                         </widget>
                        </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QWidget" name="widget_25" native="true">
-                      <layout class="QHBoxLayout" name="horizontalLayout_24">
-                       <property name="spacing">
-                        <number>0</number>
-                       </property>
-                       <property name="leftMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
-                       </property>
                       </layout>
                      </widget>
                     </item>
@@ -4826,7 +4745,7 @@ background-color: #f5f7f9;
                <widget class="QWidget" name="widget_20" native="true">
                 <property name="minimumSize">
                  <size>
-                  <width>200</width>
+                  <width>300</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -4840,6 +4759,37 @@ background-color: #f5f7f9;
                  <string notr="true">#save_transaction_nt {
 	background-color: rgb(0, 38, 102);
     color: white;
+    border-radius: 5px;
+}
+
+#add_discount {
+	color: white;
+	background-color: #313a46;
+	border-radius: 5px;
+}
+
+#total {
+	background-color: #890500;
+	color: white;
+border-radius: 5px;
+}
+
+#total_amount {
+	color: white;
+	background-color: #890500;
+}
+
+#peso {
+	color: white;
+	background-color: #890500;
+}
+
+
+#total_frame{
+	background-color: #890500;
+}
+ #break3{
+	background-color: #d6d9e1;
 }</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_23">
@@ -4857,11 +4807,467 @@ background-color: #f5f7f9;
                   </spacer>
                  </item>
                  <item>
+                  <widget class="QWidget" name="widget_27" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>260</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">#total_amount{
+	color: white;
+}</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_22">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_19">
+                      <property name="spacing">
+                       <number>7</number>
+                      </property>
+                      <item>
+                       <widget class="QLabel" name="label_37">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Discount</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QSpinBox" name="spinBox">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="showGroupSeparator" stdset="0">
+                         <bool>false</bool>
+                        </property>
+                        <property name="maximum">
+                         <number>999999</number>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="add_discount_nt">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
+                        <property name="text">
+                         <string>Add Discount</string>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>20</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_27">
+                      <item>
+                       <widget class="QWidget" name="widget_28" native="true">
+                        <layout class="QHBoxLayout" name="horizontalLayout_26">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <layout class="QVBoxLayout" name="verticalLayout_17">
+                           <item>
+                            <widget class="QLabel" name="label_34">
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Subtotal</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_38">
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Discount</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <spacer name="horizontalSpacer_8">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>62</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QWidget" name="widget_29" native="true">
+                        <layout class="QHBoxLayout" name="horizontalLayout_25">
+                         <item>
+                          <spacer name="horizontalSpacer_9">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>35</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
+                          <layout class="QVBoxLayout" name="verticalLayout_18">
+                           <item>
+                            <widget class="QLabel" name="label_36">
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>₱ </string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_35">
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>₱</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QVBoxLayout" name="verticalLayout_20">
+                           <item>
+                            <widget class="QLabel" name="subtotal_nt">
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>0.00</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="discount_nt">
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>0.00</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer_4">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer_3">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="total_frame">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_21">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_28">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <widget class="QLabel" name="total">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Total</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item alignment="Qt::AlignRight">
+                          <widget class="QLabel" name="peso">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>₱ </string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="total_amount">
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>0.00 </string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_29">
+                   <item>
+                    <widget class="QLabel" name="label_12">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Payment:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="payment_nt">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_59">
+                   <item>
+                    <spacer name="horizontalSpacer_10">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>108</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_52">
+                     <item>
+                      <widget class="QLabel" name="label_10">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Balance:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="balance_nt">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>0</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="break3">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>2</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>2</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <widget class="QPushButton" name="save_transaction_nt">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>30</height>
+                     <height>35</height>
                     </size>
                    </property>
                    <property name="maximumSize">
@@ -4870,21 +5276,16 @@ background-color: #f5f7f9;
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="text">
                     <string>Save Transaction</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_4">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
                    </property>
                   </widget>
                  </item>
@@ -4943,6 +5344,9 @@ background-color: #f5f7f9;
                  </property>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_14">
+                   <property name="spacing">
+                    <number>5</number>
+                   </property>
                    <item>
                     <widget class="QLabel" name="label_11">
                      <property name="font">
@@ -5071,7 +5475,7 @@ background-color: #f5f7f9;
 }</string>
                      </property>
                      <property name="text">
-                      <string>Delete Transaction</string>
+                      <string>- Delete Transaction</string>
                      </property>
                     </widget>
                    </item>
@@ -5498,6 +5902,20 @@ background-color: #f5f7f9;
                   </font>
                  </property>
                 </column>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="no_transaction_found">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>No search result found</string>
+                </property>
                </widget>
               </item>
              </layout>
@@ -6184,7 +6602,7 @@ background-color: #f5f7f9;
                           </item>
                           <item>
                            <property name="text">
-                            <string>Succesful Transactions</string>
+                            <string>Successful Transactions</string>
                            </property>
                           </item>
                           <item>
@@ -7138,6 +7556,8 @@ background-color: #f5f7f9;
  </widget>
  <resources>
   <include location="resource.qrc"/>
+  <include location="resource.qrc"/>
+  <include location="COMMITS/10/Transaction-Management-System/resource.qrc"/>
  </resources>
  <connections>
   <connection>
