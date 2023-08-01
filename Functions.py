@@ -400,19 +400,28 @@ class BtnFunctions(QMainWindow):
 
     #========================== SETTING PLACEHOLDERS =========================#    
     def on_category_row_clicked(self, index):
+        selected_rows = self.ui.category_table.selectionModel().selectedRows()
         row = index.row()
         cat_id = int(self.ui.category_table.item(row, 0).text())
         cat_name = self.ui.category_table.item(row, 1).text()
         cat_desc = self.ui.category_table.item(row, 2).text()
         cat_sts = self.ui.category_table.item(row, 3).text()
-        
+
         self.ui.id_category.setReadOnly(True)
         self.ui.id_category.setText(str(cat_id))
         self.ui.product_name_category.setPlaceholderText(cat_name)
         self.ui.category_description.setPlaceholderText(cat_desc)
         self.ui.status_category.setCurrentIndex(self.ui.status_category.findText(cat_sts))
+
+        if len(selected_rows) > 1:
+            self.ui.id_category.setReadOnly(True)
+            self.ui.id_category.setText('')
+            self.ui.product_name_category.setPlaceholderText('')
+            self.ui.category_description.setPlaceholderText('')
+            self.ui.status_category.setCurrentIndex(-1)
     
     def on_pricelist_row_clicked(self, index):
+        selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
         row = index.row()
         prod_id = int(self.ui.pricelist_table.item(row, 0).text())
         cat_name = self.ui.pricelist_table.item(row, 1).text()
@@ -424,3 +433,10 @@ class BtnFunctions(QMainWindow):
         self.ui.cat_name_pricelist.setCurrentIndex(self.ui.cat_name_pricelist.findText(cat_name))
         self.ui.size_pricelist.setPlaceholderText(prod_sz)
         self.ui.price_pricelist.setPlaceholderText(prod_price)
+
+        if len(selected_rows) > 1:
+            self.ui.id_pricelist.setText('')
+            self.ui.cat_name_pricelist.setCurrentIndex(-1)
+            self.ui.size_pricelist.setPlaceholderText('')
+            self.ui.price_pricelist.setPlaceholderText('')
+            

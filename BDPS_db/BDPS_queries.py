@@ -225,6 +225,7 @@ class DBQueries():
 
         selected_rows = self.ui.category_table.selectionModel().selectedRows()
         if not selected_rows:
+            #PROMPT
             print("No category selected.")
             return
 
@@ -311,7 +312,6 @@ class DBQueries():
             c.execute(get_category_names_sql)
             category_names = [row[0] for row in c.fetchall()]
 
-            print(category_names)
             return category_names
         except Error as e:
             print(e)
@@ -325,7 +325,6 @@ class DBQueries():
                             FROM product p
                             JOIN categories c ON p.CAT_ID = c.CAT_ID
                         '''
-
         try:
             c = conn.cursor()
             c.execute(get_all_prices)
@@ -510,6 +509,7 @@ class DBQueries():
 
         selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
         if not selected_rows:
+            #PROMPT
             print("No price for product selected.")
             return
 
