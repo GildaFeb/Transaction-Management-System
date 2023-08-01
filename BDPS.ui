@@ -1121,10 +1121,17 @@ border-radius: 10px;
      border-radius: 10px;
 }
 
+/* ---------------------- WIDGETS ------------------------*/
+
+
+#update_transaction_details{
+	background-color: #012768;
+}
+
 </string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>8</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -2921,7 +2928,7 @@ border-radius: 10px;
                              <bool>true</bool>
                             </property>
                             <attribute name="horizontalHeaderVisible">
-                             <bool>true</bool>
+                             <bool>false</bool>
                             </attribute>
                             <attribute name="horizontalHeaderCascadingSectionResizes">
                              <bool>true</bool>
@@ -3557,6 +3564,9 @@ border-radius: 10px;
                        <pointsize>11</pointsize>
                       </font>
                      </property>
+                     <property name="editable">
+                      <bool>true</bool>
+                     </property>
                      <item>
                       <property name="text">
                        <string>Available</string>
@@ -3565,6 +3575,11 @@ border-radius: 10px;
                      <item>
                       <property name="text">
                        <string>Not Available</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string/>
                       </property>
                      </item>
                     </widget>
@@ -5410,7 +5425,7 @@ border-radius: 5px;
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton_2">
+                    <widget class="QPushButton" name="update_transaction">
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
@@ -5441,6 +5456,24 @@ border-radius: 5px;
                      </property>
                      <property name="text">
                       <string>/ Edit Transaction</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>false</bool>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="autoRepeat">
+                      <bool>false</bool>
+                     </property>
+                     <property name="autoDefault">
+                      <bool>true</bool>
+                     </property>
+                     <property name="default">
+                      <bool>true</bool>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -7546,6 +7579,1043 @@ border-radius: 5px;
            </item>
           </layout>
          </widget>
+         <widget class="QWidget" name="page">
+          <layout class="QVBoxLayout" name="verticalLayout_69">
+           <item>
+            <widget class="QWidget" name="widget_9" native="true">
+             <property name="styleSheet">
+              <string notr="true">#utd_container{
+	background-color: white;
+}</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_67">
+              <item>
+               <widget class="QWidget" name="widget_12" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_71">
+                 <property name="leftMargin">
+                  <number>26</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>26</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>26</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>13</number>
+                 </property>
+                 <item>
+                  <widget class="QWidget" name="utd_container" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">#utd_label, #utd_id, #utd_spacer{
+	color: white;
+background-color: #012768;
+}
+
+</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_74">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QWidget" name="utd_detail_widget" native="true">
+                      <layout class="QVBoxLayout" name="verticalLayout_70">
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <layout class="QHBoxLayout" name="update_transaction_details">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <widget class="QLabel" name="utd_label">
+                           <property name="minimumSize">
+                            <size>
+                             <width>290</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>280</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>12</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>    Update Transaction Details:    </string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="utd_id">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>T - 000</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_64">
+                         <property name="spacing">
+                          <number>13</number>
+                         </property>
+                         <item>
+                          <layout class="QVBoxLayout" name="verticalLayout_66">
+                           <property name="leftMargin">
+                            <number>26</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>13</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>26</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>13</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_57">
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Customer</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="customer_name_utd">
+                             <property name="minimumSize">
+                              <size>
+                               <width>150</width>
+                               <height>30</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                              </font>
+                             </property>
+                             <property name="maxLength">
+                              <number>70</number>
+                             </property>
+                             <property name="frame">
+                              <bool>false</bool>
+                             </property>
+                             <property name="placeholderText">
+                              <string>Name</string>
+                             </property>
+                             <property name="cursorMoveStyle">
+                              <enum>Qt::VisualMoveStyle</enum>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="contact_num_utd">
+                             <property name="minimumSize">
+                              <size>
+                               <width>150</width>
+                               <height>30</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                              </font>
+                             </property>
+                             <property name="inputMethodHints">
+                              <set>Qt::ImhDigitsOnly</set>
+                             </property>
+                             <property name="maxLength">
+                              <number>15</number>
+                             </property>
+                             <property name="frame">
+                              <bool>false</bool>
+                             </property>
+                             <property name="placeholderText">
+                              <string>Contact No.</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <widget class="QWidget" name="widget_11" native="true">
+                           <layout class="QHBoxLayout" name="horizontalLayout_65">
+                            <property name="spacing">
+                             <number>26</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                            <item>
+                             <layout class="QHBoxLayout" name="horizontalLayout_63">
+                              <property name="spacing">
+                               <number>4</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>13</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>26</number>
+                              </property>
+                              <item alignment="Qt::AlignTop">
+                               <widget class="QLabel" name="label_61">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>11</pointsize>
+                                  <weight>75</weight>
+                                  <bold>true</bold>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>Transaction Status:</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item alignment="Qt::AlignLeft|Qt::AlignTop">
+                               <widget class="QLabel" name="label_62">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>11</pointsize>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>Pending</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </item>
+                            <item>
+                             <layout class="QHBoxLayout" name="horizontalLayout_62">
+                              <property name="spacing">
+                               <number>4</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>13</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>26</number>
+                              </property>
+                              <item alignment="Qt::AlignTop">
+                               <widget class="QLabel" name="label_59">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>11</pointsize>
+                                  <weight>75</weight>
+                                  <bold>true</bold>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>Payment Status:</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item alignment="Qt::AlignLeft|Qt::AlignTop">
+                               <widget class="QLabel" name="label_60">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>11</pointsize>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>Not Paid</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_7" native="true">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>2</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>2</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_8" native="true">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>250</height>
+                       </size>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_72">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QWidget" name="widget_34" native="true">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>530</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_61">
+                          <property name="spacing">
+                           <number>7</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <layout class="QVBoxLayout" name="verticalLayout_65">
+                            <property name="leftMargin">
+                             <number>26</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>13</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="label_55">
+                              <property name="font">
+                               <font>
+                                <pointsize>11</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="text">
+                               <string>Order Details</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QTableWidget" name="order_detail_table_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>650</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>11</pointsize>
+                               </font>
+                              </property>
+                              <property name="showGrid">
+                               <bool>false</bool>
+                              </property>
+                              <property name="gridStyle">
+                               <enum>Qt::SolidLine</enum>
+                              </property>
+                              <property name="sortingEnabled">
+                               <bool>true</bool>
+                              </property>
+                              <property name="wordWrap">
+                               <bool>true</bool>
+                              </property>
+                              <column>
+                               <property name="text">
+                                <string>Category Name</string>
+                               </property>
+                              </column>
+                              <column>
+                               <property name="text">
+                                <string>Size</string>
+                               </property>
+                              </column>
+                              <column>
+                               <property name="text">
+                                <string>Price</string>
+                               </property>
+                              </column>
+                              <column>
+                               <property name="text">
+                                <string>Quantity</string>
+                               </property>
+                              </column>
+                              <column>
+                               <property name="text">
+                                <string>Total</string>
+                               </property>
+                              </column>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QVBoxLayout" name="verticalLayout_73">
+                            <property name="spacing">
+                             <number>7</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>26</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="label_56">
+                              <property name="font">
+                               <font>
+                                <pointsize>11</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="text">
+                               <string>Payment History</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QTableWidget" name="order_detail_table_3">
+                              <property name="minimumSize">
+                               <size>
+                                <width>350</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>350</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>11</pointsize>
+                               </font>
+                              </property>
+                              <property name="showGrid">
+                               <bool>false</bool>
+                              </property>
+                              <property name="gridStyle">
+                               <enum>Qt::SolidLine</enum>
+                              </property>
+                              <property name="sortingEnabled">
+                               <bool>false</bool>
+                              </property>
+                              <property name="wordWrap">
+                               <bool>true</bool>
+                              </property>
+                              <attribute name="horizontalHeaderCascadingSectionResizes">
+                               <bool>true</bool>
+                              </attribute>
+                              <attribute name="horizontalHeaderDefaultSectionSize">
+                               <number>170</number>
+                              </attribute>
+                              <attribute name="horizontalHeaderMinimumSectionSize">
+                               <number>60</number>
+                              </attribute>
+                              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                               <bool>false</bool>
+                              </attribute>
+                              <attribute name="horizontalHeaderStretchLastSection">
+                               <bool>true</bool>
+                              </attribute>
+                              <column>
+                               <property name="text">
+                                <string>Date</string>
+                               </property>
+                              </column>
+                              <column>
+                               <property name="text">
+                                <string>Amount</string>
+                               </property>
+                              </column>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_60">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>26</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>13</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>26</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>26</number>
+                      </property>
+                      <item>
+                       <layout class="QVBoxLayout" name="verticalLayout_64">
+                        <property name="spacing">
+                         <number>5</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label_39">
+                          <property name="minimumSize">
+                           <size>
+                            <width>220</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>220</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Category Name</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="category_name_nt_2">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>280</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>280</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_40">
+                          <property name="minimumSize">
+                           <size>
+                            <width>220</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>220</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Size</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="category_size_2">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>280</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>280</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_44">
+                          <property name="minimumSize">
+                           <size>
+                            <width>220</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>220</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Quantity</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="product_quantity_2">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>280</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>280</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="editable">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="add_order_nt_2">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>280</width>
+                            <height>35</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>280</width>
+                            <height>35</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="text">
+                           <string>Add order</string>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>20</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeat">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoExclusive">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_17">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>428</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <layout class="QVBoxLayout" name="verticalLayout_68">
+                        <property name="spacing">
+                         <number>10</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label_29">
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Payment</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="utd_payment">
+                          <property name="minimumSize">
+                           <size>
+                            <width>350</width>
+                            <height>35</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>350</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="placeholderText">
+                           <string>0.00</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QWidget" name="widget_6" native="true"/>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_58">
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Transaction Status</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="comboBox">
+                          <property name="minimumSize">
+                           <size>
+                            <width>350</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>350</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <item>
+                           <property name="text">
+                            <string>Sucessful Transaction</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Pending Transaction</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Cancelled Transaction</string>
+                           </property>
+                          </item>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_14">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_66">
+                <property name="leftMargin">
+                 <number>26</number>
+                </property>
+                <property name="rightMargin">
+                 <number>26</number>
+                </property>
+                <item>
+                 <spacer name="horizontalSpacer_18">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_5">
+                  <property name="minimumSize">
+                   <size>
+                    <width>250</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>250</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Cancel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_4">
+                  <property name="minimumSize">
+                   <size>
+                    <width>300</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>300</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>Save</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -7663,8 +8733,8 @@ border-radius: 5px;
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>212</x>
-     <y>704</y>
+     <x>313</x>
+     <y>882</y>
     </hint>
     <hint type="destinationlabel">
      <x>284</x>
@@ -7679,8 +8749,8 @@ border-radius: 5px;
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>34</x>
-     <y>715</y>
+     <x>45</x>
+     <y>893</y>
     </hint>
     <hint type="destinationlabel">
      <x>47</x>
@@ -7759,8 +8829,8 @@ border-radius: 5px;
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>27</x>
-     <y>69</y>
+     <x>39</x>
+     <y>123</y>
     </hint>
     <hint type="destinationlabel">
      <x>159</x>
@@ -7795,8 +8865,8 @@ border-radius: 5px;
      <y>140</y>
     </hint>
     <hint type="destinationlabel">
-     <x>104</x>
-     <y>281</y>
+     <x>218</x>
+     <y>372</y>
     </hint>
    </hints>
   </connection>
@@ -7807,8 +8877,8 @@ border-radius: 5px;
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>127</x>
-     <y>265</y>
+     <x>241</x>
+     <y>372</y>
     </hint>
     <hint type="destinationlabel">
      <x>36</x>
@@ -7855,8 +8925,8 @@ border-radius: 5px;
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>113</x>
-     <y>316</y>
+     <x>227</x>
+     <y>322</y>
     </hint>
     <hint type="destinationlabel">
      <x>22</x>
@@ -7875,8 +8945,8 @@ border-radius: 5px;
      <y>192</y>
     </hint>
     <hint type="destinationlabel">
-     <x>90</x>
-     <y>327</y>
+     <x>204</x>
+     <y>322</y>
     </hint>
    </hints>
   </connection>
@@ -7887,8 +8957,8 @@ border-radius: 5px;
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>46</y>
+     <x>499</x>
+     <y>71</y>
     </hint>
     <hint type="destinationlabel">
      <x>334</x>
@@ -7903,8 +8973,8 @@ border-radius: 5px;
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>392</x>
-     <y>54</y>
+     <x>499</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
      <x>71</x>

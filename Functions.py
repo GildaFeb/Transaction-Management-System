@@ -24,6 +24,8 @@ class BtnFunctions(QMainWindow):
         self.ui.icon_only_widget.hide()
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.home_btn_2.setChecked(True)
+        #========================== SEARCH FIELDS =====================================#
+        self.ui.update_transaction.pressed.connect(self.update_transaction_pressed)
 
         #========================== SEARCH FIELDS =====================================#
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
@@ -407,6 +409,9 @@ class BtnFunctions(QMainWindow):
 
     def on_daily_payment_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(7)
+
+    def update_transaction_pressed(self):
+        self.ui.stackedWidget.setCurrentIndex(8)
 
      ## ----------------------- ADD SHADOW --------------------- 
 
