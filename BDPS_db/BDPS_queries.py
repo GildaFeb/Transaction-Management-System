@@ -161,10 +161,10 @@ class DBQueries():
             print("No category selected.")
             return
 
-        category_id = int(self.ui.category_table.item(selected_row, 0).text())
+        category_id = int(self.ui.category_table.item(selected_row, 0).text().split('-')[-1])
         category_name = self.ui.product_name_category.text()
-        category_desc = self.ui.category_description.toPlainText()
-        category_sts = self.ui.status_category.itemText(0)
+        category_desc = self.ui.category_description.text()
+        category_sts = self.ui.status_category.currentText()
 
         get_category_data_sql = f"""
                                 SELECT CAT_NAME, CAT_DESC, CAT_STS FROM categories
@@ -441,7 +441,7 @@ class DBQueries():
             print("No product selected.")
             return
 
-        product_id = int(self.ui.pricelist_table.item(selected_row, 0).text())
+        product_id = int(self.ui.pricelist_table.item(selected_row, 0).text().split('-')[-1])
         product_category = self.ui.cat_name_pricelist.currentText()
         product_size = self.ui.size_pricelist.text()
         product_price = self.ui.price_pricelist.text()
