@@ -72,6 +72,30 @@ class DBQueries():
             return c
         except Error as e:
             print(e)
+
+    def displayCategories(self, rows):
+        self.ui.category_table.setRowCount(0)
+
+        for row in rows:
+            rowPosition = self.ui.category_table.rowCount()
+
+            if rowPosition > row[0]:
+                continue
+
+            itemCount = 0
+
+            self.ui.category_table.setRowCount(rowPosition+1)
+            qtablewidgetitem = QTableWidgetItem()
+            self.ui.category_table.setVerticalHeaderItem(rowPosition, qtablewidgetitem)
+
+            for item in row:
+                self.qtablewidgetitem = QTableWidgetItem()
+                self.ui.category_table.setItem(rowPosition, itemCount, self.qtablewidgetitem)
+                self.qtablewidgetitem = self.ui.category_table.item(rowPosition, itemCount)
+                self.qtablewidgetitem.setText(str(item))
+
+                itemCount = itemCount+1
+            rowPosition = rowPosition+1
     
     def addCategory(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -117,30 +141,6 @@ class DBQueries():
 
         except Error as e:
             print(e)
-
-    def displayCategories(self, rows):
-        self.ui.category_table.setRowCount(0)
-
-        for row in rows:
-            rowPosition = self.ui.category_table.rowCount()
-
-            if rowPosition > row[0]:
-                continue
-
-            itemCount = 0
-
-            self.ui.category_table.setRowCount(rowPosition+1)
-            qtablewidgetitem = QTableWidgetItem()
-            self.ui.category_table.setVerticalHeaderItem(rowPosition, qtablewidgetitem)
-
-            for item in row:
-                self.qtablewidgetitem = QTableWidgetItem()
-                self.ui.category_table.setItem(rowPosition, itemCount, self.qtablewidgetitem)
-                self.qtablewidgetitem = self.ui.category_table.item(rowPosition, itemCount)
-                self.qtablewidgetitem.setText(str(item))
-
-                itemCount = itemCount+1
-            rowPosition = rowPosition+1
 
     def editCategory(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -295,7 +295,11 @@ class DBQueries():
     def getAllPrices(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_all_prices = """ SELECT * FROM product; """
+        get_all_prices = '''
+                            SELECT p.PROD_ID, c.CAT_NAME, p.PROD_SZ, p.PROD_PRICE
+                            FROM product p
+                            JOIN categories c ON p.CAT_ID = c.CAT_ID
+                        '''
 
         try:
             c = conn.cursor()
@@ -308,6 +312,7 @@ class DBQueries():
             return []
     
     def displayPrices(self, rows):
+        
         self.ui.pricelist_table.setRowCount(0)
 
         for row in rows:
@@ -330,3 +335,64 @@ class DBQueries():
 
                 itemCount = itemCount+1
             rowPosition = rowPosition+1
+    
+    def addPrice(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        product_category = self.ui.cat_name_pricelist.currentText()
+        product_size = self.ui.size_pricelist.text()
+        product_price = self.ui.price_pricelist.text()
+
+        if not product_size or not product_price:
+            #PROMPT
+            print("Missing fields.")
+            return
+        
+        check_category_exists_sql = f"""
+            SELECT CAT_ID FROM categories WHERE CAT_NAME = '{product_category}';
+        """
+
+        c = conn.cursor()
+        c.execute(check_category_exists_sql)
+        cat_id_result = c.fetchone()
+
+        if not cat_id_result:
+            #PROMPT
+            print("Category does not exist.")
+            return
+
+        cat_id = cat_id_result[0]
+
+        check_price_exists_sql = f"""
+                                    SELECT PROD_ID FROM product
+                                    WHERE CAT_ID = '{cat_id}'
+                                    AND PROD_SZ = '{product_size}'
+                                    AND PROD_PRICE = '{product_price}';
+                                    """
+        c = conn.cursor()
+        c.execute(check_price_exists_sql)
+        existing_price = c.fetchone()
+
+        if existing_price:
+            #PROMPT
+            print("Price for product already exists.")
+            return
+
+
+        insert_price_data_sql = f""" 
+                                        INSERT INTO product (CAT_ID, PROD_SZ, PROD_PRICE) VALUES ('{cat_id}','{product_size}', '{product_price}'); 
+                                    """
+
+        try:
+            c = conn.cursor()
+            c.execute(insert_price_data_sql)
+            conn.commit()
+
+            self.ui.cat_name_pricelist.itemText(0)
+            self.ui.size_pricelist.setText("")
+            self.ui.price_pricelist.setText("")
+
+            DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
+
+        except Error as e:
+            print(e)
