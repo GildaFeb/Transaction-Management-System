@@ -32,7 +32,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="edit_btn">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -48,7 +48,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Proceed</string>
+    <string>Edit</string>
    </property>
    <property name="default">
     <bool>false</bool>

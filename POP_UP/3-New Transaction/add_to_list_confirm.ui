@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="add_btn">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -29,7 +29,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Proceed</string>
+    <string>Add</string>
    </property>
    <property name="default">
     <bool>false</bool>
