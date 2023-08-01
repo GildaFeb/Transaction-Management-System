@@ -56,7 +56,7 @@ class BtnFunctions(QMainWindow):
         self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_category_selection_changed(self))
         
         #======================== FETCH and MOD PRICELIST =================================#
-        category_names = DBQueries.getCategoryNamesFromProducts(dbFolder)
+        category_names = DBQueries.getCategoryNames(dbFolder)
         self.ui.cat_name_pricelist.addItems(category_names)
 
         DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))

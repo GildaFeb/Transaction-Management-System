@@ -137,6 +137,10 @@ class DBQueries():
             self.ui.category_description.setText("")
             self.ui.status_category.itemText(0)
 
+            category_names = DBQueries.getCategoryNames(dbFolder)
+            self.ui.cat_name_pricelist.clear()
+            self.ui.cat_name_pricelist.addItems(category_names)
+
             DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
 
         except Error as e:
@@ -206,6 +210,10 @@ class DBQueries():
             self.ui.category_description.setText("")
             self.ui.status_category.setCurrentIndex(0)
 
+            category_names = DBQueries.getCategoryNames(dbFolder)
+            self.ui.cat_name_pricelist.clear()
+            self.ui.cat_name_pricelist.addItems(category_names)
+
             DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
 
         except Error as e:
@@ -233,6 +241,10 @@ class DBQueries():
                 c.execute(delete_category_sql)
                 conn.commit()
 
+                category_names = DBQueries.getCategoryNames(dbFolder)
+                self.ui.cat_name_pricelist.clear()
+                self.ui.cat_name_pricelist.addItems(category_names)
+
                 DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
 
             except Error as e:
@@ -253,6 +265,10 @@ class DBQueries():
                     c = conn.cursor()
                     c.execute(delete_selected_categories_sql)
                     conn.commit()
+
+                    category_names = DBQueries.getCategoryNames(dbFolder)
+                    self.ui.cat_name_pricelist.clear()
+                    self.ui.cat_name_pricelist.addItems(category_names)
 
                     DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
 
@@ -275,10 +291,10 @@ class DBQueries():
             edit_category_btn.setEnabled(True)
 
     #======================= PRICE LIST QUERIES =========================#
-    def getCategoryNamesFromProducts(dbFolder):
+    def getCategoryNames(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_category_names_sql = """SELECT categories.CAT_NAME
+        get_category_names_sql = """SELECT CAT_NAME
                                     FROM categories;"""
 
         try:
