@@ -288,14 +288,14 @@ class DBQueries():
         edit_category_btn = self.ui.edit_category_btn
         
         if len(selected_rows) > 0:
-            add_category_btn.setEnabled(False)
+            add_category_btn.setVisible(False)
         else:
-            add_category_btn.setEnabled(True)
-        
+            add_category_btn.setVisible(True)
+            
         if len(selected_rows) > 1:
-            edit_category_btn.setEnabled(False)
+            edit_category_btn.setVisible(False)
         else:
-            edit_category_btn.setEnabled(True)
+            edit_category_btn.setVisible(True)
 
     #======================= PRICE LIST QUERIES =========================#
     def getCategoryNames(dbFolder):
@@ -563,13 +563,15 @@ class DBQueries():
         selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
         add_item_pricelist_btn = self.ui.add_item_pricelist_btn
         update_pricelist_btn = self.ui.update_pricelist_btn
-        
+
         if len(selected_rows) > 0:
-            add_item_pricelist_btn.setEnabled(False)
+            add_item_pricelist_btn.setVisible(False)
         else:
-            add_item_pricelist_btn.setEnabled(True)
-        
+            add_item_pricelist_btn.setVisible(True)
+
         if len(selected_rows) > 1:
-            update_pricelist_btn.setEnabled(False)
+            update_pricelist_btn.setVisible(False)
         else:
-            update_pricelist_btn.setEnabled(True)
+            update_pricelist_btn.setVisible(True)
+
+

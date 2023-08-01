@@ -405,7 +405,9 @@ class BtnFunctions(QMainWindow):
         cat_name = self.ui.category_table.item(row, 1).text()
         cat_desc = self.ui.category_table.item(row, 2).text()
         cat_sts = self.ui.category_table.item(row, 3).text()
-
+        
+        self.ui.id_category.setReadOnly(True)
+        self.ui.id_category.setText(str(cat_id))
         self.ui.product_name_category.setPlaceholderText(cat_name)
         self.ui.category_description.setPlaceholderText(cat_desc)
         self.ui.status_category.setCurrentIndex(self.ui.status_category.findText(cat_sts))
@@ -417,6 +419,8 @@ class BtnFunctions(QMainWindow):
         prod_sz = self.ui.pricelist_table.item(row, 2).text()
         prod_price = self.ui.pricelist_table.item(row, 3).text()
 
-        self.ui.cat_name_pricelist.setPlaceholderText(cat_name)
+        self.ui.id_pricelist.setReadOnly(True)
+        self.ui.id_pricelist.setText(str(prod_id))
+        self.ui.cat_name_pricelist.setCurrentIndex(self.ui.cat_name_pricelist.findText(cat_name))
         self.ui.size_pricelist.setPlaceholderText(prod_sz)
         self.ui.price_pricelist.setPlaceholderText(prod_price)
