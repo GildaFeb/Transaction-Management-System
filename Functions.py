@@ -63,7 +63,7 @@ class BtnFunctions(QMainWindow):
         self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_category_selection_changed(self))
         
         #======================== FETCH and MOD PRICELIST =================================#
-        category_names, sizes = DBQueries.getCategoryNames(dbFolder)
+        category_names = DBQueries.getCategoryNames(dbFolder)
         self.ui.cat_name_pricelist.addItems(category_names)
 
         DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
@@ -77,8 +77,9 @@ class BtnFunctions(QMainWindow):
         #======================== FETCH and MOD ORDERS =================================#
         DBQueries.displayOrders(self, DBQueries.getAllOrders(dbFolder))
         self.ui.category_name_nt.addItems(category_names)
-        self.ui.category_size.addItems(sizes)
-
+        product_sizes = DBQueries.getProductSizes(self, dbFolder)
+        self.ui.category_size.addItems(product_sizes)
+        
     #Price list search field    
     def pricelist_table(self):
         search_pricelist = self.ui.edit_search_pricelist.text().strip()

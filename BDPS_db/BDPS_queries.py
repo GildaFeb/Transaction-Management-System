@@ -318,14 +318,7 @@ class DBQueries():
             c.execute(get_category_names_sql)
             category_names = [row[0] for row in c.fetchall()]
 
-            get_sizes_sql = """ SELECT PROD_SZ
-                                FROM product p
-                                LEFT JOIN categories c ON p.CAT_ID = c.CAT_ID;
-                            """
-            c.execute(get_sizes_sql)
-            sizes = [row[0] for row in c.fetchall()]
-
-            return category_names, sizes
+            return category_names
         except Error as e:
             print(e)
             return []
@@ -430,6 +423,10 @@ class DBQueries():
             c.execute(insert_price_data_sql)
             conn.commit()
 
+            product_size = DBQueries.getProductSizes(dbFolder)
+            self.ui.category_size.clear()
+            self.ui.category_size.addItems(product_size)
+
             self.ui.cat_name_pricelist.itemText(0)
             self.ui.size_pricelist.setText("")
             self.ui.price_pricelist.setText("")
@@ -513,6 +510,10 @@ class DBQueries():
             c.execute(update_price_data_sql)
             conn.commit()
 
+            product_size = DBQueries.getProductSizes(dbFolder)
+            self.ui.category_size.clear()
+            self.ui.category_size.addItems(product_size)
+            
             self.ui.id_pricelist.setText('')
             self.ui.cat_name_pricelist.setCurrentIndex('Available')
             self.ui.size_pricelist.setPlaceholderText('')
@@ -545,6 +546,10 @@ class DBQueries():
                 c.execute(delete_price_sql)
                 conn.commit()
 
+                product_size = DBQueries.getProductSizes(dbFolder)
+                self.ui.category_size.clear()
+                self.ui.category_size.addItems(product_size)
+
                 DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 
             except Error as e:
@@ -572,6 +577,10 @@ class DBQueries():
                     c = conn.cursor()
                     c.execute(delete_selected_prices_sql)
                     conn.commit()
+
+                    product_size = DBQueries.getProductSizes(dbFolder)
+                    self.ui.category_size.clear()
+                    self.ui.category_size.addItems(product_size)
 
                     DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 
@@ -648,19 +657,22 @@ class DBQueries():
 
 
     #=============================== ORDER QUERIES ==================================#
-    def getCategorySizes(dbFolder, selected_category):
+    def getProductSizes(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_sizes_sql = """SELECT DISTINCT PROD_SZ
-                        FROM product
-                        INNER JOIN categories ON product.CAT_ID = categories.CAT_ID
-                        WHERE categories.CAT_NAME = ?;
+        category_name = self.ui.category_name_nt.currentText()
+
+        get_sizes_sql = f"""SELECT DISTINCT PROD_SZ
+                            FROM product p
+                            INNER JOIN categories c ON p.CAT_ID = c.CAT_ID 
+                            WHERE CAT_NAME = '{category_name}';
                         """
 
         try:
             c = conn.cursor()
-            c.execute(get_sizes_sql, (selected_category,))
+            c.execute(get_sizes_sql)
             sizes = [row[0] for row in c.fetchall()]
+
             return sizes
         except Error as e:
             print(e)
@@ -671,9 +683,9 @@ class DBQueries():
 
         get_all_orders = """    SELECT CAT_NAME, PROD_SZ, PROD_PRICE, ORD_QTY, ORD_TOT
                                 FROM orders
-                                LEFT JOIN product ON orders.PROD_ID = product.PROD_ID
-                                LEFT JOIN transactions ON orders.TXN_CODE = transactions.TXN_CODE
-                                LEFT JOIN categories ON product.CAT_ID = categories.CAT_ID;
+                                INNER JOIN product ON orders.PROD_ID = product.PROD_ID
+                                INNER JOIN transactions ON orders.TXN_CODE = transactions.TXN_CODE
+                                INNER JOIN categories ON product.CAT_ID = categories.CAT_ID;
                         """
 
         try:
