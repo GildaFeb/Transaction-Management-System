@@ -1,5 +1,5 @@
 import os
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox, QComboBox, QFileDialog
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox, QComboBox, QFileDialog, QLineEdit
 #from PyQt5.QtGui import QStandardItemModel, QStandardItem
 #from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 #from PyQt5 import QtWidgets, QtGui, QtCore
@@ -41,7 +41,11 @@ class BtnFunctions(QMainWindow):
         self.ui.printreport_dwp_btn.clicked.connect(self.datewise_payment_toExcel)
         self.ui.printreport_daily_tnx_btn.clicked.connect(self.daily_transaction_toExcel)
         self.ui.printreport_dwt_btn.clicked.connect(self.datewise_transaction_toExcel)
-        
+
+        #================================== TABLES ===============================#
+        self.ui.category_table.clicked.connect(self.on_category_row_clicked)
+        self.ui.pricelist_table.clicked.connect(self.on_pricelist_row_clicked)
+
         #========================== DATABASE PATH =====================================#
         dbFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'BDPS_db/BDPS.db'))
         DBQueries.main(dbFolder)
@@ -54,7 +58,6 @@ class BtnFunctions(QMainWindow):
         self.ui.delete_category_btn.clicked.connect(lambda: DBQueries.deleteCategory(self, dbFolder))
 
         self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_category_selection_changed(self))
-        
         #======================== FETCH and MOD PRICELIST =================================#
         category_names = DBQueries.getCategoryNames(dbFolder)
         self.ui.cat_name_pricelist.addItems(category_names)
@@ -393,3 +396,27 @@ class BtnFunctions(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(7)
 
      ## ----------------------- ADD SHADOW --------------------- 
+
+
+    #========================== SETTING PLACEHOLDERS =========================#    
+    def on_category_row_clicked(self, index):
+        row = index.row()
+        cat_id = int(self.ui.category_table.item(row, 0).text())
+        cat_name = self.ui.category_table.item(row, 1).text()
+        cat_desc = self.ui.category_table.item(row, 2).text()
+        cat_sts = self.ui.category_table.item(row, 3).text()
+
+        self.ui.product_name_category.setPlaceholderText(cat_name)
+        self.ui.category_description.setPlaceholderText(cat_desc)
+        self.ui.status_category.setCurrentIndex(self.ui.status_category.findText(cat_sts))
+    
+    def on_pricelist_row_clicked(self, index):
+        row = index.row()
+        prod_id = int(self.ui.pricelist_table.item(row, 0).text())
+        cat_name = self.ui.pricelist_table.item(row, 1).text()
+        prod_sz = self.ui.pricelist_table.item(row, 2).text()
+        prod_price = self.ui.pricelist_table.item(row, 3).text()
+
+        self.ui.cat_name_pricelist.setPlaceholderText(cat_name)
+        self.ui.size_pricelist.setPlaceholderText(prod_sz)
+        self.ui.price_pricelist.setPlaceholderText(prod_price)
