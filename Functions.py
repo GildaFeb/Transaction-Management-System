@@ -100,7 +100,7 @@ class BtnFunctions(QMainWindow):
 
     #Category search field   
     def category_table(self):
-        search_category = self.ui.edit_search_category.toPlainText()
+        search_category = self.ui.edit_search_category.text().strip()
 
         # Check if the search field is empty
         if not search_category:
