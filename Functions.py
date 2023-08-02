@@ -20,12 +20,12 @@ class BtnFunctions(QMainWindow):
         self.ui.no_dailytxn_found.hide()
         self.ui.no_datewiseT_found.hide()
         self.ui.no_datewiseP_found.hide()
+        self.ui.no_transaction_found.hide()            
+
         
         self.ui.icon_only_widget.hide()
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.home_btn_2.setChecked(True)
-        #========================== SEARCH FIELDS =====================================#
-        self.ui.update_transaction.pressed.connect(self.update_transaction_pressed)
 
         #========================== SEARCH FIELDS =====================================#
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
@@ -33,11 +33,12 @@ class BtnFunctions(QMainWindow):
         self.ui.edit_search_daily_tnx.textChanged.connect(self.daily_tnx_table)
         self.ui.edit_search_dwt.textChanged.connect(self.datewise_txn_table)
         self.ui.edit_search_dwp.textChanged.connect(self.datewise_payment_table)
+        self.ui.edit_search_new_transaction.textChanged.connect(self.transaction_table)
 
-        #========================== FILTER BUTTONS =====================================#
-        self.ui.filter_daily_tnx_btn.clicked.connect(self.filter_daily_tnx_clicked) 
-        self.ui.filter_dwt_btn.clicked.connect(self.filter_date_wise_transaction_clicked)      
-        self.ui.filter_dwp_btn.clicked.connect(self.filter_date_wise_payment_clicked)
+        #========================== FILTER FUNCTIONS =====================================#
+        #self.ui.filter_daily_tnx.currentIndexChanged.connect(self.filter_dailytxn_table)
+        #self.ui.filter_dwt.currentIndexChanged.connect(self.filter_datewise_txn_table)
+        #self.ui.filter_dwt_4.currentIndexChanged.connect(self.filter_date_wise_payment_table) 
         
         #========================== EXCEL EXPORT BUTTONS =====================================#
         self.ui.printreport_dwp_btn.clicked.connect(self.datewise_payment_toExcel)
@@ -84,6 +85,8 @@ class BtnFunctions(QMainWindow):
         sizes = DBQueries.getProductSizes(self, dbFolder)
         self.ui.category_size.addItems(sizes)
         self.ui.category_name_nt.currentIndexChanged.connect(lambda: DBQueries.getProductSizes(self, dbFolder))
+        
+        #======================== SEARCH FIELDS FUNCTIONS =================================#
         
     #Price list search field    
     def pricelist_table(self):
@@ -146,6 +149,37 @@ class BtnFunctions(QMainWindow):
         if not row_matches:
             self.ui.category_table.hide()
             self.ui.no_category_found.show()
+            
+    #Transaction records search field   
+    def transaction_table(self):
+        search_transaction = self.ui.edit_search_new_transaction.text().strip()
+
+        # Check if the search field is empty
+        if not search_transaction:
+        # If the search field is empty, reset the QTableWidget to show all items
+            for row in range(self.ui.transaction_record_tbl.rowCount()):
+                self.ui.transaction_record_tbl.setRowHidden(row, False)
+                self.ui.transaction_record_tbl.show()
+                self.ui.no_transaction_found.hide()            
+        
+        row_matches = False
+            
+        for row in range(self.ui.transaction_record_tbl.rowCount()):
+            for col in range(self.ui.transaction_record_tbl.columnCount()):
+                item = self.ui.transaction_record_tbl.item(row, col)
+                
+                if item is not None and search_transaction.lower() in item.text().lower():
+                    self.ui.transaction_record_tbl.setRowHidden(row, False)
+                    row_matches = True
+                    self.ui.transaction_record_tbl.show()
+                    self.ui.no_transaction_found.hide()            
+                    break
+                else:
+                    self.ui.transaction_record_tbl.setRowHidden(row, True)
+        
+        if not row_matches:
+            self.ui.transaction_record_tbl.hide()
+            self.ui.no_transaction_found.show()                       
             
     #Daily Transaction search field
     def daily_tnx_table(self):
@@ -240,7 +274,7 @@ class BtnFunctions(QMainWindow):
             self.ui.datewise_payment_table.hide()
             self.ui.no_datewiseP_found.show()
 
-        #======================== END OF SEARCH FIELDS FUNCTIONS =================================#
+        #======================== FILTER FUNCTIONS =================================#
                 
     #Daily Transaction filter button
     def filter_daily_tnx_clicked(self):
@@ -254,7 +288,8 @@ class BtnFunctions(QMainWindow):
     def filter_date_wise_payment_clicked(self):
         print("date-wise payment filter")
         
-        #======================== END OF FILTER FUNCTIONS =================================#
+        #======================== EXPORT FUNCTIONS =================================#
+        
     #Daily Transaction to Excel
     def daily_transaction_toExcel(self):
         path, _ = QFileDialog.getSaveFileName(self, "Save Excel File", "", "Excel Files (*.xlsx);;All Files (*)")
@@ -333,8 +368,6 @@ class BtnFunctions(QMainWindow):
                 
             sample.save(path)  
             
-        #======================== END OF EXPORT FUNCTIONS =================================#
-
                 
     #----------------------------------------------------------------------#
     

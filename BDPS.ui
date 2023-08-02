@@ -1131,7 +1131,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>8</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -3565,7 +3565,7 @@ border-radius: 10px;
                       </font>
                      </property>
                      <property name="editable">
-                      <bool>true</bool>
+                      <bool>false</bool>
                      </property>
                      <item>
                       <property name="text">
@@ -3575,11 +3575,6 @@ border-radius: 10px;
                      <item>
                       <property name="text">
                        <string>Not Available</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string/>
                       </property>
                      </item>
                     </widget>
@@ -4583,6 +4578,36 @@ background-color: #f5f7f9;
                            <property name="editable">
                             <bool>true</bool>
                            </property>
+                           <item>
+                            <property name="text">
+                             <string>1</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>5</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>10</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>20</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>50</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>100</string>
+                            </property>
+                           </item>
                           </widget>
                          </item>
                          <item>
@@ -5815,6 +5840,23 @@ border-radius: 5px;
                </widget>
               </item>
               <item>
+               <widget class="QLabel" name="no_transaction_found">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>No search result found</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QTableWidget" name="transaction_record_tbl">
                 <property name="cursor" stdset="0">
                  <cursorShape>ArrowCursor</cursorShape>
@@ -5851,6 +5893,11 @@ border-radius: 5px;
                 <attribute name="horizontalHeaderMinimumSectionSize">
                  <number>160</number>
                 </attribute>
+                <row>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </row>
                 <column>
                  <property name="text">
                   <string>Transaction Code</string>
@@ -5935,20 +5982,41 @@ border-radius: 5px;
                   </font>
                  </property>
                 </column>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="no_transaction_found">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>No search result found</string>
-                </property>
+                <item row="0" column="0">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+                <item row="0" column="1">
+                 <property name="text">
+                  <string>azx</string>
+                 </property>
+                </item>
+                <item row="0" column="2">
+                 <property name="text">
+                  <string>af</string>
+                 </property>
+                </item>
+                <item row="0" column="3">
+                 <property name="text">
+                  <string>asf</string>
+                 </property>
+                </item>
+                <item row="0" column="4">
+                 <property name="text">
+                  <string>saf</string>
+                 </property>
+                </item>
+                <item row="0" column="5">
+                 <property name="text">
+                  <string>asf</string>
+                 </property>
+                </item>
+                <item row="0" column="6">
+                 <property name="text">
+                  <string>asf</string>
+                 </property>
+                </item>
                </widget>
               </item>
              </layout>
