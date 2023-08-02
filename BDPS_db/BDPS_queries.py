@@ -698,5 +698,49 @@ class DBQueries():
 
                 itemCount = itemCount + 1
             rowPosition = rowPosition + 1
-
     
+    def addOrder(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        order_service = self.ui.category_name_nt.currentText()
+        order_size = self.ui.category_size.currentText()
+        order_quantity = self.ui.product_quantity.currentText()
+
+        if not order_service or not order_size or not order_quantity:
+            print("Missing fields.")
+            return
+
+        get_order_price_sql = """ SELECT PROD_ID, PROD_PRICE FROM product p 
+                                INNER JOIN service s ON s.SERV_ID = p.SERV_ID 
+                                WHERE SERV_NAME = ? AND PROD_SZ = ?;
+                                """
+        try:
+            c = conn.cursor()
+            c.execute(get_order_price_sql, (order_service, order_size))
+            product_data = c.fetchone()
+
+            if not product_data:
+                print("Price not found for the selected service and size.")
+                return
+
+            product_id, order_price = product_data
+
+            order_total = order_price * int(order_quantity)
+
+            insert_order_data_sql = """
+                                    INSERT INTO orders (PROD_ID, ORD_QTY, ORD_TOT) VALUES (?, ?, ?);
+                                    """
+
+            c.execute(insert_order_data_sql, (product_id, order_quantity, order_total))
+            conn.commit()
+
+            self.ui.category_name_nt.setCurrentIndex(0)
+            self.ui.category_size.setCurrentIndex(0)
+            self.ui.product_quantity.setCurrentIndex(0)
+
+            DBQueries.displayOrders(self, DBQueries.getAllOrders(dbFolder))
+
+        except Error as e:
+            print(e)
+
+        

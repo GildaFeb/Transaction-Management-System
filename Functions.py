@@ -85,6 +85,8 @@ class BtnFunctions(QMainWindow):
         sizes = DBQueries.getProductSizes(self, dbFolder)
         self.ui.category_size.addItems(sizes)
         self.ui.category_name_nt.currentIndexChanged.connect(lambda: DBQueries.getProductSizes(self, dbFolder))
+
+        self.ui.add_order_nt.clicked.connect(lambda: DBQueries.addOrder(self, dbFolder))
         
         #======================== SEARCH FIELDS FUNCTIONS =================================#
         
