@@ -643,14 +643,21 @@ class DBQueries():
     def getAllJobs(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_all_jobs = """    SELECT JOB_ID, SERV_NAME, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT
-                                FROM jobs
-                                INNER JOIN product ON jobs.PROD_ID = product.PROD_ID
-                                INNER JOIN service ON product.SERV_ID = service.SERV_ID;
+        check_job_temp_table_sql = "SELECT name FROM sqlite_master WHERE type='table' AND name='job_temp';"
+        c = conn.cursor()
+        c.execute(check_job_temp_table_sql)
+        job_temp_exists = c.fetchone()
+
+        if job_temp_exists:
+            get_all_jobs = """SELECT JOB_ID, SERV_NAME, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT
+                            FROM job_temp
+                            INNER JOIN product ON job_temp.PROD_ID = product.PROD_ID
+                            INNER JOIN service ON product.SERV_ID = service.SERV_ID;
                         """
+        else:
+            return []
 
         try:
-            c = conn.cursor()
             c.execute(get_all_jobs)
             rows = c.fetchall()
             return rows
@@ -669,9 +676,26 @@ class DBQueries():
                 order_tablewidgetitem = QTableWidgetItem(str(item))
                 self.ui.order_detail_table.setItem(rowPosition, itemCount, order_tablewidgetitem)
 
-    
+    def create_job_temp_table(dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+        create_table_sql =  """
+                                CREATE TABLE IF NOT EXISTS job_temp (
+                                    JOB_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    PROD_ID INTEGER NOT NULL,
+                                    JOB_QTY INTEGER NOT NULL,
+                                    JOB_TOT REAL NOT NULL,
+                                    FOREIGN KEY (PROD_ID) REFERENCES product (PROD_ID));
+                            """
+        try:
+            c = conn.cursor()
+            c.execute(create_table_sql)
+            conn.commit()
+        except Error as e:
+            print(e)
+        
     def addJob(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
+        DBQueries.create_job_temp_table(dbFolder)
 
         job_service = self.ui.category_name_nt.currentText()
         job_size = self.ui.category_size.currentText()
@@ -684,7 +708,7 @@ class DBQueries():
         get_job_price_sql = """ SELECT PROD_ID, PROD_PRICE FROM product p 
                                 INNER JOIN service s ON s.SERV_ID = p.SERV_ID 
                                 WHERE SERV_NAME = ? AND PROD_SZ = ?;
-                                """
+                            """
         try:
             c = conn.cursor()
             c.execute(get_job_price_sql, (job_service, job_size))
@@ -698,17 +722,61 @@ class DBQueries():
 
             job_total = job_price * int(job_quantity)
 
-            insert_job_data_sql = """
-                                    INSERT INTO jobs (PROD_ID, JOB_QTY, JOB_TOT) VALUES (?, ?, ?);
-                                    """
+            check_job_sql = """
+                        SELECT JOB_ID FROM job_temp WHERE PROD_ID = ? AND JOB_QTY = ?;
+                        """
+            c.execute(check_job_sql, (product_id, job_quantity))
+            existing_job_id = c.fetchone()
 
-            c.execute(insert_job_data_sql, (product_id, job_quantity, job_total))
-            conn.commit()
+            if existing_job_id:
+                print("Similar job already exists.")
+                return
+
+            check_job_temp_sql =    """
+                                        SELECT JOB_ID FROM job_temp;
+                                    """
+            c.execute(check_job_temp_sql)
+            first_order = c.fetchone()
+
+            if not first_order:
+
+                insert_job_data_sql = """
+                    INSERT INTO job_temp (PROD_ID, JOB_QTY, JOB_TOT) VALUES (?, ?, ?);
+                """
+                c.execute(insert_job_data_sql, (product_id, job_quantity, job_total))
+                conn.commit()
+            
+            else:
+                insert_job_data_sql = """
+                    INSERT INTO job_temp (PROD_ID, JOB_QTY, JOB_TOT) VALUES (?, ?, ?);
+                """
+                c.execute(insert_job_data_sql, (product_id, job_quantity, job_total))
+                conn.commit()
 
             self.ui.category_name_nt.setCurrentIndex(0)
             self.ui.category_size.setCurrentIndex(0)
             self.ui.product_quantity.setCurrentIndex(0)
 
+            DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
+
+        except Error as e:
+            print(e)
+    
+    def transfer_data_from_job_temp_to_jobs(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        transfer_data_sql = """
+            INSERT INTO jobs (PROD_ID, JOB_QTY, JOB_TOT)
+            SELECT PROD_ID, JOB_QTY, JOB_TOT FROM job_temp;
+        """
+        try:
+            c = conn.cursor()
+            c.execute(transfer_data_sql)
+            conn.commit()
+
+            clear_job_temp_sql = "DROP TABLE job_temp;"
+            c.execute(clear_job_temp_sql)
+            conn.commit()
             DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
 
         except Error as e:

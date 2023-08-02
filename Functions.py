@@ -81,7 +81,7 @@ class BtnFunctions(QMainWindow):
         self.ui.pricelist_table.itemSelectionChanged.connect(lambda: DBQueries.on_price_selection_changed(self))
 
         #======================== FETCH and MOD JOBS =================================#
-        DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
+        #DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
         self.ui.category_name_nt.addItems(service_names)
         
         sizes = DBQueries.getProductSizes(self, dbFolder)
@@ -90,6 +90,7 @@ class BtnFunctions(QMainWindow):
 
         self.ui.add_order_nt.clicked.connect(lambda: DBQueries.addJob(self, dbFolder))
         self.ui.delete_job_detail_btn.clicked.connect(lambda: DBQueries.deleteJob(self, dbFolder))
+        self.ui.reset_job_detail_btn.clicked.connect(lambda: DBQueries.transfer_data_from_job_temp_to_jobs(self, dbFolder))
 
         self.ui.order_detail_table.itemSelectionChanged.connect(lambda: DBQueries.on_job_selection_changed(self))
         
