@@ -26,7 +26,10 @@ class BtnFunctions(QMainWindow):
         self.ui.icon_only_widget.hide()
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.home_btn_2.setChecked(True)
-
+        
+        #========================== UPDATE =====================================#
+        self.ui.update_transaction.pressed.connect(self.update_transaction_pressed)
+        
         #========================== SEARCH FIELDS =====================================#
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
         self.ui.edit_search_category.textChanged.connect(self.category_table)
