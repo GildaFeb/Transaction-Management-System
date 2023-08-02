@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icon/down-arrow.png</file>
     <file>icon/01lighticons-02full.png</file>
     <file>icon/003lighticons-01white.png</file>
     <file>icon/10.png</file>
