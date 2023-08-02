@@ -611,20 +611,6 @@ class DBQueries():
 
         except Error as e:
             print(e)
-    #============================= TRANSACTION QUERIES ==============================#
-    def getAllTransactions(dbFolder):
-        conn = DBQueries.create_connection(dbFolder)
-
-        get_all_transactions = """ SELECT * FROM transactions; """
-
-        try:
-            c = conn.cursor()
-            c.execute(get_all_transactions)
-
-            return c
-        except Error as e:
-            print(e)
-
 
     #=============================== JOB QUERIES ==================================#
     def getProductSizes(self, dbFolder):
@@ -742,5 +728,18 @@ class DBQueries():
 
         except Error as e:
             print(e)
+            
+    #============================= TRANSACTION QUERIES ==============================#
+    def getAllTransactions(dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
 
-        
+        get_all_transactions = """ SELECT * FROM transactions; """
+
+        try:
+            c = conn.cursor()
+            c.execute(get_all_transactions)
+
+            return c
+        except Error as e:
+            print(e)
+
