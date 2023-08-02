@@ -995,11 +995,11 @@ border-radius: 10px;
          <property name="styleSheet">
           <string notr="true">#action_area, #table_area, #action_area_payment, #table_area_payment, #datewise_payment {
 	background-color:white;
-	border-radius: 10px;
+	border-radius: 15px;
 }
 
 #edit_search_daily_tnx, #editSearch_dwt_4, #edit_search_new_transaction, #edit_search_category, #edit_search_pricelist, #edit_search_dwp,#edit_search_dwt, #category_name_nt, #customer_name_nt, #contact_num_nt,
-#product_quantity,#payment_nt,
+#product_quantity,#payment_nt, #dateEdit_daily_tnx
 #category_size{
 	border: 2px solid #d6d9e1;
     border-radius: 5px;
@@ -1126,12 +1126,18 @@ border-radius: 10px;
 
 #update_transaction_details{
 	background-color: #012768;
+   
 }
 
+ #blue_border{
+	background-color: #2e3091;
+border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+}
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -4819,6 +4825,15 @@ background-color: #f5f7f9;
                               <pointsize>11</pointsize>
                              </font>
                             </property>
+                            <property name="editTriggers">
+                             <set>QAbstractItemView::NoEditTriggers</set>
+                            </property>
+                            <property name="selectionMode">
+                             <enum>QAbstractItemView::MultiSelection</enum>
+                            </property>
+                            <property name="selectionBehavior">
+                             <enum>QAbstractItemView::SelectRows</enum>
+                            </property>
                             <property name="showGrid">
                              <bool>false</bool>
                             </property>
@@ -5724,6 +5739,18 @@ border-radius: 5px;
                     <number>0</number>
                    </property>
                    <item>
+                    <widget class="QLabel" name="label_24">
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Date From: </string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <widget class="QDateEdit" name="dateEdit">
                      <property name="minimumSize">
                       <size>
@@ -5752,18 +5779,6 @@ border-radius: 5px;
                      </property>
                      <property name="calendarPopup">
                       <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_24">
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Date From: </string>
                      </property>
                     </widget>
                    </item>
@@ -6010,6 +6025,13 @@ border-radius: 5px;
 	color: rgb(255, 255, 255);
 	gridline-color: rgb(255, 255, 255);
 	background-color: #1a1c28;
+	
+}
+
+QHeaderView::section {
+ background-color:#2e3092;
+color: white
+
 }</string>
                 </property>
                 <property name="frameShape">
@@ -6023,6 +6045,12 @@ border-radius: 5px;
                 </property>
                 <property name="alternatingRowColors">
                  <bool>false</bool>
+                </property>
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::MultiSelection</enum>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectRows</enum>
                 </property>
                 <property name="sortingEnabled">
                  <bool>true</bool>
@@ -6130,11 +6158,65 @@ border-radius: 5px;
          </widget>
          <widget class="QWidget" name="daily_transaction_2">
           <layout class="QGridLayout" name="gridLayout_7">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_42">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>  Daily Transactions</string>
+             </property>
+            </widget>
+           </item>
            <item row="3" column="0">
             <widget class="QWidget" name="table_area" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_24">
+             <property name="styleSheet">
+              <string notr="true">QHeaderView::section {
+
+color: black;
+
+}</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_19">
+              <property name="spacing">
+               <number>13</number>
+              </property>
+              <property name="leftMargin">
+               <number>13</number>
+              </property>
+              <property name="topMargin">
+               <number>13</number>
+              </property>
+              <property name="rightMargin">
+               <number>13</number>
+              </property>
+              <property name="bottomMargin">
+               <number>13</number>
+              </property>
               <item>
-               <widget class="QLabel" name="no_dailytxn_found">
+               <widget class="QLabel" name="blue_border">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
@@ -6143,15 +6225,63 @@ border-radius: 5px;
                  </font>
                 </property>
                 <property name="text">
-                 <string>No search results found</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <string/>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QTableWidget" name="daily_tnx_table">
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>0</number>
+                </property>
+                <property name="autoScroll">
+                 <bool>true</bool>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <property name="tabKeyNavigation">
+                 <bool>true</bool>
+                </property>
+                <property name="showDropIndicator" stdset="0">
+                 <bool>true</bool>
+                </property>
+                <property name="dragDropOverwriteMode">
+                 <bool>true</bool>
+                </property>
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::MultiSelection</enum>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectRows</enum>
+                </property>
+                <property name="showGrid">
+                 <bool>true</bool>
+                </property>
+                <property name="gridStyle">
+                 <enum>Qt::NoPen</enum>
+                </property>
+                <property name="sortingEnabled">
+                 <bool>true</bool>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="cornerButtonEnabled">
+                 <bool>true</bool>
+                </property>
+                <attribute name="horizontalHeaderDefaultSectionSize">
+                 <number>150</number>
+                </attribute>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>true</bool>
+                </attribute>
                 <row>
                  <property name="text">
                   <string>1</string>
@@ -6169,32 +6299,86 @@ border-radius: 5px;
                 </row>
                 <column>
                  <property name="text">
-                  <string>#</string>
+                  <string>Job Code</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
                  </property>
                 </column>
                 <column>
                  <property name="text">
                   <string>Date</string>
                  </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Transaction Code</string>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
                  </property>
                 </column>
                 <column>
                  <property name="text">
-                  <string>Client</string>
+                  <string>Particular</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
                  </property>
                 </column>
                 <column>
                  <property name="text">
-                  <string>Total Amount</string>
+                  <string>Service</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
                  </property>
                 </column>
                 <column>
                  <property name="text">
-                  <string>Transaction Status</string>
+                  <string>Size</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Quantity</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Amount</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
                  </property>
                 </column>
                 <item row="0" column="0">
@@ -6212,19 +6396,9 @@ border-radius: 5px;
                   <string>11</string>
                  </property>
                 </item>
-                <item row="0" column="3">
-                 <property name="text">
-                  <string>jeru</string>
-                 </property>
-                </item>
-                <item row="0" column="4">
+                <item row="0" column="6">
                  <property name="text">
                   <string>50</string>
-                 </property>
-                </item>
-                <item row="0" column="5">
-                 <property name="text">
-                  <string>Successful</string>
                  </property>
                 </item>
                 <item row="1" column="0">
@@ -6242,19 +6416,9 @@ border-radius: 5px;
                   <string>12</string>
                  </property>
                 </item>
-                <item row="1" column="3">
-                 <property name="text">
-                  <string>ewan</string>
-                 </property>
-                </item>
-                <item row="1" column="4">
+                <item row="1" column="6">
                  <property name="text">
                   <string>100</string>
-                 </property>
-                </item>
-                <item row="1" column="5">
-                 <property name="text">
-                  <string>Failed</string>
                  </property>
                 </item>
                 <item row="2" column="0">
@@ -6272,19 +6436,9 @@ border-radius: 5px;
                   <string>13</string>
                  </property>
                 </item>
-                <item row="2" column="3">
-                 <property name="text">
-                  <string>basta</string>
-                 </property>
-                </item>
-                <item row="2" column="4">
+                <item row="2" column="6">
                  <property name="text">
                   <string>1</string>
-                 </property>
-                </item>
-                <item row="2" column="5">
-                 <property name="text">
-                  <string>Pending</string>
                  </property>
                 </item>
                </widget>
@@ -6323,42 +6477,20 @@ border-radius: 5px;
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_26">
                  <property name="spacing">
-                  <number>0</number>
+                  <number>7</number>
                  </property>
                  <property name="leftMargin">
-                  <number>0</number>
+                  <number>7</number>
                  </property>
                  <property name="topMargin">
-                  <number>0</number>
+                  <number>7</number>
                  </property>
                  <property name="rightMargin">
-                  <number>0</number>
+                  <number>7</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>0</number>
+                  <number>7</number>
                  </property>
-                 <item>
-                  <widget class="QFrame" name="separator">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>1</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>1</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                  </widget>
-                 </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_34">
                    <property name="spacing">
@@ -6378,6 +6510,11 @@ border-radius: 5px;
                    </property>
                    <item>
                     <widget class="QLabel" name="label_46">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
                      <property name="text">
                       <string>Date:</string>
                      </property>
@@ -6385,22 +6522,16 @@ border-radius: 5px;
                    </item>
                    <item>
                     <widget class="QDateEdit" name="dateEdit_daily_tnx">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
                      <property name="displayFormat">
                       <string>yyyy/MM/dd</string>
                      </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="num_daily_tnx">
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_45">
-                     <property name="text">
-                      <string>Transaction</string>
+                     <property name="calendarPopup">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -6459,14 +6590,41 @@ border-radius: 5px;
                      </item>
                      <item>
                       <widget class="QLabel" name="label_48">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
                        <property name="text">
-                        <string>Print Report</string>
+                        <string>Export</string>
                        </property>
                       </widget>
                      </item>
                     </layout>
                    </item>
                   </layout>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="separator">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>1</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>1</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_32">
@@ -6482,6 +6640,63 @@ border-radius: 5px;
                    <property name="bottomMargin">
                     <number>7</number>
                    </property>
+                   <item>
+                    <widget class="QLineEdit" name="edit_search_daily_tnx">
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                     <property name="placeholderText">
+                      <string>  Search..</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="search_daily_tnx_btn">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>35</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="baseSize">
+                      <size>
+                       <width>35</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resource.qrc">
+                       <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
+                     </property>
+                     <property name="default">
+                      <bool>false</bool>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_30">
                      <property name="leftMargin">
@@ -6515,6 +6730,11 @@ border-radius: 5px;
                          <width>16777215</width>
                          <height>30</height>
                         </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
                        </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
@@ -6579,13 +6799,6 @@ border-radius: 5px;
                        </property>
                       </widget>
                      </item>
-                     <item alignment="Qt::AlignRight">
-                      <widget class="QLabel" name="label_43">
-                       <property name="text">
-                        <string>Filter List </string>
-                       </property>
-                      </widget>
-                     </item>
                     </layout>
                    </item>
                    <item>
@@ -6602,50 +6815,26 @@ border-radius: 5px;
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="edit_search_daily_tnx">
-                     <property name="minimumSize">
-                      <size>
-                       <width>300</width>
-                       <height>30</height>
-                      </size>
+                    <widget class="QLabel" name="label_45">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
                      </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="frame">
-                      <bool>false</bool>
-                     </property>
-                     <property name="placeholderText">
-                      <string>  Search..</string>
+                     <property name="text">
+                      <string>Result:</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="search_daily_tnx_btn">
-                     <property name="maximumSize">
-                      <size>
-                       <width>35</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="baseSize">
-                      <size>
-                       <width>35</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
+                    <widget class="QLabel" name="num_daily_tnx">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
                      </property>
                      <property name="text">
-                      <string/>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="resource.qrc">
-                       <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
+                      <string>0</string>
                      </property>
                     </widget>
                    </item>
@@ -6657,29 +6846,20 @@ border-radius: 5px;
              </layout>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_42">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>60</height>
-              </size>
-             </property>
+           <item row="4" column="0">
+            <widget class="QLabel" name="no_dailytxn_found">
              <property name="font">
               <font>
-               <pointsize>13</pointsize>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
              <property name="text">
-              <string>  Daily Transactions</string>
+              <string>No search results found</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -7065,7 +7245,7 @@ border-radius: 5px;
                         <item>
                          <widget class="QLabel" name="label_54">
                           <property name="text">
-                           <string>Print Report</string>
+                           <string>Export</string>
                           </property>
                          </widget>
                         </item>
@@ -7096,6 +7276,24 @@ border-radius: 5px;
                     </item>
                     <item>
                      <widget class="QTableWidget" name="datewise_transaction_table">
+                      <property name="frameShape">
+                       <enum>QFrame::NoFrame</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Plain</enum>
+                      </property>
+                      <property name="editTriggers">
+                       <set>QAbstractItemView::NoEditTriggers</set>
+                      </property>
+                      <property name="selectionMode">
+                       <enum>QAbstractItemView::MultiSelection</enum>
+                      </property>
+                      <property name="selectionBehavior">
+                       <enum>QAbstractItemView::SelectRows</enum>
+                      </property>
+                      <property name="showGrid">
+                       <bool>true</bool>
+                      </property>
                       <row>
                        <property name="text">
                         <string>1</string>
@@ -7598,6 +7796,15 @@ border-radius: 5px;
               </item>
               <item>
                <widget class="QTableWidget" name="datewise_payment_table">
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::MultiSelection</enum>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectRows</enum>
+                </property>
                 <row>
                  <property name="text">
                   <string>1</string>
@@ -8217,6 +8424,15 @@ background-color: #012768;
                                 <pointsize>11</pointsize>
                                </font>
                               </property>
+                              <property name="editTriggers">
+                               <set>QAbstractItemView::NoEditTriggers</set>
+                              </property>
+                              <property name="selectionMode">
+                               <enum>QAbstractItemView::MultiSelection</enum>
+                              </property>
+                              <property name="selectionBehavior">
+                               <enum>QAbstractItemView::SelectRows</enum>
+                              </property>
                               <property name="showGrid">
                                <bool>false</bool>
                               </property>
@@ -8298,6 +8514,15 @@ background-color: #012768;
                                <font>
                                 <pointsize>11</pointsize>
                                </font>
+                              </property>
+                              <property name="editTriggers">
+                               <set>QAbstractItemView::NoEditTriggers</set>
+                              </property>
+                              <property name="selectionMode">
+                               <enum>QAbstractItemView::MultiSelection</enum>
+                              </property>
+                              <property name="selectionBehavior">
+                               <enum>QAbstractItemView::SelectRows</enum>
                               </property>
                               <property name="showGrid">
                                <bool>false</bool>
