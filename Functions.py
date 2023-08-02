@@ -49,25 +49,25 @@ class BtnFunctions(QMainWindow):
         self.ui.category_table.horizontalHeader().setVisible(True)
         self.ui.pricelist_table.horizontalHeader().setVisible(True)
 
-        self.ui.category_table.clicked.connect(self.on_category_row_clicked)
+        self.ui.category_table.clicked.connect(self.on_service_row_clicked)
         self.ui.pricelist_table.clicked.connect(self.on_pricelist_row_clicked)
 
         #========================== DATABASE PATH =====================================#
         dbFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'BDPS_db/BDPS.db'))
         DBQueries.main(dbFolder)
 
-        #======================== FETCH and MOD CATEGORIES =================================#
-        DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+        #======================== FETCH and MOD SERVICES =================================#
+        DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
-        self.ui.add_category_btn.clicked.connect(lambda: DBQueries.addCategory(self, dbFolder))
-        self.ui.edit_category_btn.clicked.connect(lambda: DBQueries.editCategory(self, dbFolder))
-        self.ui.delete_category_btn.clicked.connect(lambda: DBQueries.deleteCategory(self, dbFolder))
+        self.ui.add_category_btn.clicked.connect(lambda: DBQueries.addService(self, dbFolder))
+        self.ui.edit_category_btn.clicked.connect(lambda: DBQueries.editService(self, dbFolder))
+        self.ui.delete_category_btn.clicked.connect(lambda: DBQueries.deleteService(self, dbFolder))
 
-        self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_category_selection_changed(self))
+        self.ui.category_table.itemSelectionChanged.connect(lambda: DBQueries.on_service_selection_changed(self))
         
         #======================== FETCH and MOD PRICELIST =================================#
-        category_names = DBQueries.getCategoryNames(dbFolder)
-        self.ui.cat_name_pricelist.addItems(category_names)
+        service_names = DBQueries.getServiceNames(dbFolder)
+        self.ui.cat_name_pricelist.addItems(service_names)
 
         DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 
@@ -79,9 +79,9 @@ class BtnFunctions(QMainWindow):
 
         #======================== FETCH and MOD ORDERS =================================#
         DBQueries.displayOrders(self, DBQueries.getAllOrders(dbFolder))
-        self.ui.category_name_nt.addItems(category_names)
+        self.ui.category_name_nt.addItems(service_names)
         
-        selected_category = self.ui.category_name_nt.currentText()
+        selected_service = self.ui.category_name_nt.currentText()
         sizes = DBQueries.getProductSizes(self, dbFolder)
         self.ui.category_size.addItems(sizes)
         self.ui.category_name_nt.currentIndexChanged.connect(lambda: DBQueries.getProductSizes(self, dbFolder))
@@ -450,19 +450,19 @@ class BtnFunctions(QMainWindow):
 
 
     #========================== SETTING PLACEHOLDERS =========================#    
-    def on_category_row_clicked(self, index):
+    def on_service_row_clicked(self, index):
         selected_rows = self.ui.category_table.selectionModel().selectedRows()
         row = index.row()
-        cat_id = self.ui.category_table.item(row, 0).text()
-        cat_name = self.ui.category_table.item(row, 1).text()
-        cat_desc = self.ui.category_table.item(row, 2).text()
-        cat_sts = self.ui.category_table.item(row, 3).text()
+        serv_id = self.ui.category_table.item(row, 0).text()
+        serv_name = self.ui.category_table.item(row, 1).text()
+        serv_desc = self.ui.category_table.item(row, 2).text()
+        serv_sts = self.ui.category_table.item(row, 3).text()
 
         self.ui.id_category.setReadOnly(True)
-        self.ui.id_category.setText(cat_id)
-        self.ui.product_name_category.setPlaceholderText(cat_name)
-        self.ui.category_description.setPlaceholderText(cat_desc)
-        self.ui.status_category.setCurrentIndex(self.ui.status_category.findText(cat_sts))
+        self.ui.id_category.setText(serv_id)
+        self.ui.product_name_category.setPlaceholderText(serv_name)
+        self.ui.category_description.setPlaceholderText(serv_desc)
+        self.ui.status_category.setCurrentIndex(self.ui.status_category.findText(serv_sts))
 
         if len(selected_rows) != 1:
             self.ui.id_category.setReadOnly(True)

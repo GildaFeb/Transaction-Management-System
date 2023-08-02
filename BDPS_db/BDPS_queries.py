@@ -27,53 +27,23 @@ class DBQueries():
             print(e)
     
     def main(dbFolder):
-        create_category_table = """ CREATE TABLE IF NOT EXISTS categories (
-                                                `CAT_ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-                                                `CAT_NAME` VARCHAR(50) DEFAULT NULL,
-                                                `CAT_DESC` VARCHAR(1000) DEFAULT NULL,
-                                                `CAT_STS` VARCHAR(50) DEFAULT NULL
-                                                );
-                                        """
         conn = DBQueries.create_connection(dbFolder)
 
-        if conn is not None:
-            DBQueries.create_table(conn, create_category_table)
-        else:
-            #PROMPT
-            print("Error! Cannot connect.")
-        
-        create_product_table = """ CREATE TABLE IF NOT EXISTS product (
-                                                `PROD_ID` INTEGER PRIMARY KEY,
-                                                `CAT_ID` INTEGER NOT NULL,
-                                                `PROD_SZ` VARCHAR(100) DEFAULT NULL,
-                                                `PROD_PRICE` INTEGER DEFAULT NULL,
-                                                FOREIGN KEY (`CAT_ID`) REFERENCES `categories` (`CAT_ID`)
-                                                );
-                                """
+    #============================= SERVICE QUERIES =======================================#
+    def getAllServices(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        if conn is not None:
-            DBQueries.create_table(conn, create_product_table)
-        else:
-            #PROMPT
-            print("Error! Cannot connect.")
-    
-
-    #============================= CATEGORY QUERIES =======================================#
-    def getAllCategories(dbFolder):
-        conn = DBQueries.create_connection(dbFolder)
-
-        get_all_categories = """ SELECT * FROM categories; """
+        get_all_service = """ SELECT * FROM service; """
 
         try:
             c = conn.cursor()
-            c.execute(get_all_categories)
+            c.execute(get_all_service)
 
             return c
         except Error as e:
             print(e)
 
-    def displayCategories(self, rows):
+    def displayServices(self, rows):
         self.ui.category_table.setRowCount(0)
 
         for row in rows:
@@ -85,74 +55,74 @@ class DBQueries():
             itemCount = 0
 
             self.ui.category_table.setRowCount(rowPosition + 1)
-            category_tablewidgetitem = QTableWidgetItem()
-            self.ui.category_table.setVerticalHeaderItem(rowPosition, category_tablewidgetitem)
+            service_tablewidgetitem = QTableWidgetItem()
+            self.ui.category_table.setVerticalHeaderItem(rowPosition, service_tablewidgetitem)
 
             for idx, item in enumerate(row):
                 if idx == 0:
-                    display_item = "C-" + str(item)
+                    display_item = "S-" + str(item)
                 else:
                     display_item = str(item)
 
-                self.category_tablewidgetitem = QTableWidgetItem()
-                self.ui.category_table.setItem(rowPosition, itemCount, self.category_tablewidgetitem)
-                self.category_tablewidgetitem = self.ui.category_table.item(rowPosition, itemCount)
-                self.category_tablewidgetitem.setText(display_item)
+                self.service_tablewidgetitem = QTableWidgetItem()
+                self.ui.category_table.setItem(rowPosition, itemCount, self.service_tablewidgetitem)
+                self.service_tablewidgetitem = self.ui.category_table.item(rowPosition, itemCount)
+                self.service_tablewidgetitem.setText(display_item)
 
                 itemCount = itemCount + 1
             rowPosition = rowPosition + 1
 
     
-    def addCategory(self, dbFolder):
+    def addService(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        category_name = self.ui.product_name_category.text()
-        category_desc = self.ui.category_description.text()
-        category_sts = self.ui.status_category.currentText()
+        service_name = self.ui.product_name_category.text()
+        service_desc = self.ui.category_description.text()
+        service_sts = self.ui.status_category.currentText()
 
-        if not category_name or not category_desc:
+        if not service_name or not service_desc:
             #PROMPT
             print("Missing fields.")
             return
 
-        check_category_exists_sql = f"""
-                                    SELECT CAT_ID FROM categories
-                                    WHERE CAT_NAME = '{category_name}'
-                                    AND CAT_DESC = '{category_desc}'
-                                    AND CAT_STS = '{category_sts}';
+        check_service_exists_sql = f"""
+                                    SELECT SERV_ID FROM service
+                                    WHERE SERV_NAME = '{service_name}'
+                                    AND SERV_DESC = '{service_desc}'
+                                    AND SERV_STS = '{service_sts}';
                                     """
         c = conn.cursor()
-        c.execute(check_category_exists_sql)
-        existing_category = c.fetchone()
+        c.execute(check_service_exists_sql)
+        existing_service = c.fetchone()
 
-        if existing_category:
+        if existing_service:
             #PROMPT
-            print("Category already exists.")
+            print("Service already exists.")
             return
 
-        insert_category_data_sql = f""" 
-                                        INSERT INTO categories (CAT_NAME, CAT_DESC, CAT_STS) VALUES ('{category_name}','{category_desc}', '{category_sts}'); 
+        insert_service_data_sql = f""" 
+                                        INSERT INTO service (SERV_NAME, SERV_DESC, SERV_STS) VALUES ('{service_name}','{service_desc}', '{service_sts}'); 
                                     """
 
         try:
             c = conn.cursor()
-            c.execute(insert_category_data_sql)
+            c.execute(insert_service_data_sql)
             conn.commit()
 
             self.ui.product_name_category.setText("")
             self.ui.category_description.setText("")
             self.ui.status_category.itemText(0)
 
-            category_names = DBQueries.getCategoryNames(dbFolder)
+            service_names = DBQueries.getCategoryNames(dbFolder)
             self.ui.cat_name_pricelist.clear()
-            self.ui.cat_name_pricelist.addItems(category_names)
+            self.ui.cat_name_pricelist.addItems(service_names)
 
-            DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+            DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
         except Error as e:
             print(e)
 
-    def editCategory(self, dbFolder):
+    def editService(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
         selected_row = self.ui.category_table.currentRow()
@@ -161,55 +131,55 @@ class DBQueries():
             print("No category selected.")
             return
 
-        category_id = int(self.ui.category_table.item(selected_row, 0).text().split('-')[-1])
-        category_name = self.ui.product_name_category.text()
-        category_desc = self.ui.category_description.text()
-        category_sts = self.ui.status_category.currentText()
+        service_id = int(self.ui.category_table.item(selected_row, 0).text().split('-')[-1])
+        service_name = self.ui.product_name_category.text()
+        service_desc = self.ui.category_description.text()
+        service_sts = self.ui.status_category.currentText()
 
-        get_category_data_sql = f"""
-                                SELECT CAT_NAME, CAT_DESC, CAT_STS FROM categories
-                                WHERE CAT_ID = {category_id};
+        get_service_data_sql = f"""
+                                SELECT SERV_NAME, SERV_DESC, SERV_STS FROM service
+                                WHERE SERV_ID = {service_id};
                                 """
         c = conn.cursor()
-        c.execute(get_category_data_sql)
+        c.execute(get_service_data_sql)
         existing_data = c.fetchone()
 
-        if not category_name:
-            category_name = existing_data[0]
-        if not category_desc:
-            category_desc = existing_data[1]
-        if not category_sts:
-            category_sts = existing_data[2]
+        if not service_name:
+            service_name = existing_data[0]
+        if not service_desc:
+            service_desc = existing_data[1]
+        if not service_sts:
+            service_sts = existing_data[2]
 
-        check_category_exists_sql = f"""
-                                    SELECT CAT_ID FROM categories
-                                    WHERE CAT_NAME = '{category_name}'
-                                    AND CAT_DESC = '{category_desc}'
-                                    AND CAT_STS = '{category_sts}'
-                                    AND CAT_ID != {category_id};
+        check_service_exists_sql = f"""
+                                    SELECT SERV_ID FROM service
+                                    WHERE SERV_NAME = '{service_name}'
+                                    AND SERV_DESC = '{service_desc}'
+                                    AND SERV_STS = '{service_sts}'
+                                    AND SERV_ID != {service_id};
                                     """
-        c.execute(check_category_exists_sql)
+        c.execute(check_service_exists_sql)
         existing_category = c.fetchone()
 
         if existing_category:
             #PROMPT
-            print("Category with updated values already exists in another row.")
+            print("Service with updated values already exists in another row.")
             return
 
-        if category_name == existing_data[0] and category_desc == existing_data[1] and category_sts == existing_data[2]:
+        if service_name == existing_data[0] and service_desc == existing_data[1] and service_sts == existing_data[2]:
             #PROMPT
             print("No changes made to the category details.")
             return
 
-        update_category_data_sql = f""" 
-                                        UPDATE categories 
-                                        SET CAT_NAME = '{category_name}', CAT_DESC = '{category_desc}', CAT_STS = '{category_sts}'
-                                        WHERE CAT_ID = {category_id};
+        update_service_data_sql = f""" 
+                                        UPDATE service 
+                                        SET SERV_NAME = '{service_name}', SERV_DESC = '{service_desc}', SERV_STS = '{service_sts}'
+                                        WHERE SERV_ID = {service_id};
                                     """
 
         try:
             c = conn.cursor()
-            c.execute(update_category_data_sql)
+            c.execute(update_service_data_sql)
             conn.commit()
 
             self.ui.product_name_category.setText("")
@@ -219,43 +189,43 @@ class DBQueries():
             self.ui.status_category.setCurrentIndex(0)
 
 
-            category_names = DBQueries.getCategoryNames(dbFolder)
+            service_names = DBQueries.getServiceNames(dbFolder)
             self.ui.cat_name_pricelist.clear()
-            self.ui.cat_name_pricelist.addItems(category_names)
+            self.ui.cat_name_pricelist.addItems(service_names)
 
-            DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+            DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
         except Error as e:
             print(e)
 
 
-    def deleteCategory(self, dbFolder):
+    def deleteService(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
         selected_rows = self.ui.category_table.selectionModel().selectedRows()
         if not selected_rows:
             #PROMPT
-            print("No category selected.")
+            print("No service selected.")
             return
 
         if len(selected_rows) == 1:
-            category_id = int(self.ui.category_table.item(selected_rows[0].row(), 0).text().split('-')[-1])
+            service_id = int(self.ui.category_table.item(selected_rows[0].row(), 0).text().split('-')[-1])
 
-            delete_category_sql = f"""
-                                    DELETE FROM categories
-                                    WHERE CAT_ID = {category_id};
+            delete_service_sql = f"""
+                                    DELETE FROM service
+                                    WHERE SERV_ID = {service_id};
                                 """
 
             try:
                 c = conn.cursor()
-                c.execute(delete_category_sql)
+                c.execute(delete_service_sql)
                 conn.commit()
 
-                category_names = DBQueries.getCategoryNames(dbFolder)
+                service_names = DBQueries.getServiceNames(dbFolder)
                 self.ui.cat_name_pricelist.clear()
-                self.ui.cat_name_pricelist.addItems(category_names)
+                self.ui.cat_name_pricelist.addItems(service_names)
 
-                DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+                DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
             except Error as e:
                 print(e)
@@ -263,7 +233,7 @@ class DBQueries():
         else:
             message_box = QMessageBox()
             message_box.setIcon(QMessageBox.Question)
-            message_box.setText("You have selected multiple categories. Are you sure you want to delete them?")
+            message_box.setText("You have selected multiple services. Are you sure you want to delete them?")
             message_box.setWindowTitle("Confirm Deletion")
             message_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             message_box.setDefaultButton(QMessageBox.No)
@@ -271,57 +241,57 @@ class DBQueries():
             response = message_box.exec()
 
             if response == QMessageBox.Yes:
-                category_ids = [int(self.ui.category_table.item(row.row(), 0).text().split('-')[-1]) for row in selected_rows]
+                service_ids = [int(self.ui.category_table.item(row.row(), 0).text().split('-')[-1]) for row in selected_rows]
 
-                delete_selected_categories_sql = f"""
-                                                DELETE FROM categories
-                                                WHERE CAT_ID IN ({', '.join(str(id) for id in category_ids)});
+                delete_selected_service_sql = f"""
+                                                DELETE FROM service
+                                                WHERE SERV_ID IN ({', '.join(str(id) for id in service_ids)});
                                             """
 
                 try:
                     c = conn.cursor()
-                    c.execute(delete_selected_categories_sql)
+                    c.execute(delete_selected_service_sql)
                     conn.commit()
 
-                    category_names = DBQueries.getCategoryNames(dbFolder)
+                    service_names = DBQueries.getServiceNames(dbFolder)
                     self.ui.cat_name_pricelist.clear()
-                    self.ui.cat_name_pricelist.addItems(category_names)
+                    self.ui.cat_name_pricelist.addItems(service_names)
 
-                    DBQueries.displayCategories(self, DBQueries.getAllCategories(dbFolder))
+                    DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
                 except Error as e:
                     print(e)
 
-    def on_category_selection_changed(self):
+    def on_service_selection_changed(self):
         selected_rows = self.ui.category_table.selectionModel().selectedRows()
-        add_category_btn = self.ui.add_category_btn
-        edit_category_btn = self.ui.edit_category_btn
+        add_service_btn = self.ui.add_category_btn
+        edit_service_btn = self.ui.edit_category_btn
         
         if len(selected_rows) > 0:
-            add_category_btn.setVisible(False)
+            add_service_btn.setVisible(False)
         else:
-            add_category_btn.setVisible(True)
+            add_service_btn.setVisible(True)
             
         if len(selected_rows) > 1:
-            edit_category_btn.setVisible(False)
+            edit_service_btn.setVisible(False)
         else:
-            edit_category_btn.setVisible(True)
+            edit_service_btn.setVisible(True)
 
     #======================= PRICE LIST QUERIES =========================#
-    def getCategoryNames(dbFolder):
+    def getServiceNames(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_category_names_sql = """SELECT CAT_NAME
-                                    FROM categories
-                                    WHERE CAT_STS = 'Available';
+        get_service_names_sql = """SELECT SERV_NAME
+                                    FROM service
+                                    WHERE SERV_STS = 'Available';
                                 """
 
         try:
             c = conn.cursor()
-            c.execute(get_category_names_sql)
-            category_names = [row[0] for row in c.fetchall()]
+            c.execute(get_service_names_sql)
+            service_names = [row[0] for row in c.fetchall()]
 
-            return category_names
+            return service_names
         except Error as e:
             print(e)
             return []
@@ -330,9 +300,9 @@ class DBQueries():
         conn = DBQueries.create_connection(dbFolder)
 
         get_all_prices = '''
-                            SELECT p.PROD_ID, c.CAT_NAME, p.PROD_SZ, p.PROD_PRICE
+                            SELECT p.PROD_ID, s.SERV_NAME, p.PROD_SZ, p.PROD_PRICE
                             FROM product p
-                            JOIN categories c ON p.CAT_ID = c.CAT_ID
+                            JOIN service s ON p.SERV_ID = s.SERV_ID
                         '''
         try:
             c = conn.cursor()
@@ -377,7 +347,7 @@ class DBQueries():
     def addPrice(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        product_category = self.ui.cat_name_pricelist.currentText()
+        product_service = self.ui.cat_name_pricelist.currentText()
         product_size = self.ui.size_pricelist.text()
         product_price = self.ui.price_pricelist.text()
 
@@ -386,24 +356,24 @@ class DBQueries():
             print("Missing fields.")
             return
         
-        check_category_exists_sql = f"""
-            SELECT CAT_ID FROM categories WHERE CAT_NAME = '{product_category}';
+        check_service_exists_sql = f"""
+            SELECT SERV_ID FROM service WHERE SERV_NAME = '{product_service}';
         """
 
         c = conn.cursor()
-        c.execute(check_category_exists_sql)
-        cat_id_result = c.fetchone()
+        c.execute(check_service_exists_sql)
+        serv_id_result = c.fetchone()
 
-        if not cat_id_result:
+        if not serv_id_result:
             #PROMPT
-            print("Category does not exist.")
+            print("Service does not exist.")
             return
 
-        cat_id = cat_id_result[0]
+        serv_id = serv_id_result[0]
 
         check_price_exists_sql = f"""
                                     SELECT PROD_ID FROM product
-                                    WHERE CAT_ID = '{cat_id}'
+                                    WHERE SERV_ID = '{serv_id}'
                                     AND PROD_SZ = '{product_size}'
                                     AND PROD_PRICE = '{product_price}';
                                     """
@@ -418,7 +388,7 @@ class DBQueries():
 
 
         insert_price_data_sql = f""" 
-                                        INSERT INTO product (CAT_ID, PROD_SZ, PROD_PRICE) VALUES ('{cat_id}','{product_size}', '{product_price}'); 
+                                        INSERT INTO product (SERV_ID, PROD_SZ, PROD_PRICE) VALUES ('{serv_id}','{product_size}', '{product_price}'); 
                                     """
 
         try:
@@ -448,43 +418,43 @@ class DBQueries():
             return
 
         product_id = int(self.ui.pricelist_table.item(selected_row, 0).text().split('-')[-1])
-        product_category = self.ui.cat_name_pricelist.currentText()
+        product_service = self.ui.cat_name_pricelist.currentText()
         product_size = self.ui.size_pricelist.text()
         product_price = self.ui.price_pricelist.text()
 
         get_price_data_sql = f"""
-                                SELECT CAT_ID, PROD_SZ, PROD_PRICE FROM product
+                                SELECT SERV_ID, PROD_SZ, PROD_PRICE FROM product
                                 WHERE PROD_ID = {product_id};
                                 """
         c = conn.cursor()
         c.execute(get_price_data_sql)
         existing_data = c.fetchone()
 
-        if not product_category:
-            product_category = existing_data[0]
+        if not product_service:
+            product_service = existing_data[0]
         if not product_size:
             product_size = existing_data[1]
         if not product_price:
             product_price = existing_data[2]
 
-        check_category_exists_sql = f"""
-            SELECT CAT_ID FROM categories WHERE CAT_NAME = '{product_category}';
+        check_service_exists_sql = f"""
+            SELECT SERV_ID FROM service WHERE SERV_NAME = '{product_service}';
         """
 
         c = conn.cursor()
-        c.execute(check_category_exists_sql)
-        cat_id_result = c.fetchone()
+        c.execute(check_service_exists_sql)
+        serv_id_result = c.fetchone()
 
-        if not cat_id_result:
+        if not serv_id_result:
             #PROMPT
-            print("Category does not exist.")
+            print("Service does not exist.")
             return
 
-        cat_id = cat_id_result[0]
+        serv_id = serv_id_result[0]
 
         check_price_exists_sql = f"""
                                     SELECT PROD_ID FROM product
-                                    WHERE CAT_ID = '{cat_id}'
+                                    WHERE SERV_ID = '{serv_id}'
                                     AND PROD_SZ = '{product_size}'
                                     AND PROD_PRICE = '{product_price}';
                                     """
@@ -496,14 +466,14 @@ class DBQueries():
             print("Product with updated values already exists in another row.")
             return
 
-        if product_category == existing_data[0] and product_size == existing_data[1] and product_price == existing_data[2]:
+        if product_service == existing_data[0] and product_size == existing_data[1] and product_price == existing_data[2]:
             #PROMPT
             print("No changes made to the product details.")
             return
 
         update_price_data_sql = f""" 
                                         UPDATE product 
-                                        SET CAT_ID = '{cat_id}', PROD_SZ = '{product_size}', PROD_PRICE = '{product_price}'
+                                        SET SERV_ID = '{serv_id}', PROD_SZ = '{product_size}', PROD_PRICE = '{product_price}'
                                         WHERE PROD_ID = {product_id};
                                     """
 
@@ -558,7 +528,7 @@ class DBQueries():
         else:
             message_box = QMessageBox()
             message_box.setIcon(QMessageBox.Question)
-            message_box.setText("You have selected multiple categories. Are you sure you want to delete them?")
+            message_box.setText("You have selected multiple products. Are you sure you want to delete them?")
             message_box.setWindowTitle("Confirm Deletion")
             message_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             message_box.setDefaultButton(QMessageBox.No)
@@ -602,54 +572,54 @@ class DBQueries():
         else:
             update_pricelist_btn.setVisible(True)
 
-    #================================= CUSTOMER QUERIES ====================================#
-    def getAllCustomers(dbFolder):
+    #================================= PARTICULARS QUERIES ====================================#
+    def getAllParticulars(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_all_customers = """ SELECT * FROM customer; """
+        get_all_particular = """ SELECT * FROM particular; """
 
         try:
             c = conn.cursor()
-            c.execute(get_all_customers)
+            c.execute(get_all_particular)
 
             return c
         except Error as e:
             print(e)
     
-    def addCustomer(self, dbFolder, customer_name, contact_num):
+    def addParticular(self, dbFolder, particular_name, particular_num):
         conn = DBQueries.create_connection(dbFolder)
 
-        cust_name = self.ui.customer_name_nt.text()
-        cust_cn = self.ui.contact_num_nt.text()
+        particular_name = self.ui.customer_name_nt.text()
+        particular_cn = self.ui.contact_num_nt.text()
 
-        if not cust_name or not cust_cn:
+        if not particular_name or not particular_cn:
             #PROMPT
             print("Missing fields.")
             return
         
-        insert_customer_data_sql = f""" 
-                                        INSERT INTO customer (CUST_NAME, CUST_CN) VALUES ('{cust_name}','{cust_cn}'); 
+        insert_particular_data_sql = f""" 
+                                        INSERT INTO particular (PRTCLR_NAME, PRTCLR_CN) VALUES ('{particular_name}','{particular_cn}'); 
                                     """
 
         try:
             c = conn.cursor()
-            c.execute(insert_customer_data_sql)
+            c.execute(insert_particular_data_sql)
             conn.commit()
 
-            cust_name = self.ui.customer_name_nt.setText("")
-            cust_cn = self.ui.contact_num_nt.setText("")
+            particular_name = self.ui.customer_name_nt.setText("")
+            particular_cn = self.ui.contact_num_nt.setText("")
 
         except Error as e:
             print(e)
     #============================= TRANSACTION QUERIES ==============================#
-    def getAllTransactions(dbFolder):
+    def getAllJobs(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_all_transactions = """ SELECT * FROM transactions; """
+        get_all_jobs = """ SELECT * FROM job; """
 
         try:
             c = conn.cursor()
-            c.execute(get_all_transactions)
+            c.execute(get_all_jobs)
 
             return c
         except Error as e:
@@ -658,13 +628,13 @@ class DBQueries():
 
     #=============================== ORDER QUERIES ==================================#
     def getProductSizes(self, dbFolder):
-        selected_category = self.ui.category_name_nt.currentText()
+        selected_service = self.ui.category_name_nt.currentText()
         conn = DBQueries.create_connection(dbFolder)
 
         get_sizes_sql = f"""SELECT DISTINCT PROD_SZ
                             FROM product p
-                            INNER JOIN categories c ON p.CAT_ID = c.CAT_ID 
-                            WHERE CAT_NAME = '{selected_category}';
+                            INNER JOIN service s ON p.SERV_ID = s.SERV_ID 
+                            WHERE SERV_NAME = '{selected_service}';
                         """
         try:
             c = conn.cursor()
@@ -686,11 +656,10 @@ class DBQueries():
     def getAllOrders(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_all_orders = """    SELECT CAT_NAME, PROD_SZ, PROD_PRICE, ORD_QTY, ORD_TOT
+        get_all_orders = """    SELECT SERV_NAME, PROD_SZ, PROD_PRICE, ORD_QTY, ORD_TOT
                                 FROM orders
                                 INNER JOIN product ON orders.PROD_ID = product.PROD_ID
-                                INNER JOIN transactions ON orders.TXN_CODE = transactions.TXN_CODE
-                                INNER JOIN categories ON product.CAT_ID = categories.CAT_ID;
+                                INNER JOIN service ON product.SERV_ID = service.SERV_ID;
                         """
 
         try:
@@ -729,5 +698,4 @@ class DBQueries():
                 itemCount = itemCount + 1
             rowPosition = rowPosition + 1
 
-
-
+    
