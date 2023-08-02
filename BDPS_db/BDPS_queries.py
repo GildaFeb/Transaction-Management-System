@@ -612,21 +612,21 @@ class DBQueries():
         except Error as e:
             print(e)
     #============================= TRANSACTION QUERIES ==============================#
-    def getAllJobs(dbFolder):
+    def getAllTransactions(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_all_jobs = """ SELECT * FROM job; """
+        get_all_transactions = """ SELECT * FROM transactions; """
 
         try:
             c = conn.cursor()
-            c.execute(get_all_jobs)
+            c.execute(get_all_transactions)
 
             return c
         except Error as e:
             print(e)
 
 
-    #=============================== ORDER QUERIES ==================================#
+    #=============================== JOB QUERIES ==================================#
     def getProductSizes(self, dbFolder):
         selected_service = self.ui.category_name_nt.currentText()
         conn = DBQueries.create_connection(dbFolder)
@@ -654,25 +654,25 @@ class DBQueries():
             print(e)
             return []
          
-    def getAllOrders(dbFolder):
+    def getAllJobs(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_all_orders = """    SELECT SERV_NAME, PROD_SZ, PROD_PRICE, ORD_QTY, ORD_TOT
-                                FROM orders
-                                INNER JOIN product ON orders.PROD_ID = product.PROD_ID
+        get_all_jobs = """    SELECT SERV_NAME, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT
+                                FROM jobs
+                                INNER JOIN product ON jobs.PROD_ID = product.PROD_ID
                                 INNER JOIN service ON product.SERV_ID = service.SERV_ID;
                         """
 
         try:
             c = conn.cursor()
-            c.execute(get_all_orders)
+            c.execute(get_all_jobs)
             rows = c.fetchall()
             return rows
 
         except Error as e:
             print(e)
     
-    def displayOrders(self, rows):
+    def displayJobs(self, rows):
         self.ui.order_detail_table.setRowCount(0)
 
         counter = 0
@@ -699,46 +699,46 @@ class DBQueries():
                 itemCount = itemCount + 1
             rowPosition = rowPosition + 1
     
-    def addOrder(self, dbFolder):
+    def addJob(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        order_service = self.ui.category_name_nt.currentText()
-        order_size = self.ui.category_size.currentText()
-        order_quantity = self.ui.product_quantity.currentText()
+        job_service = self.ui.category_name_nt.currentText()
+        job_size = self.ui.category_size.currentText()
+        job_quantity = self.ui.product_quantity.currentText()
 
-        if not order_service or not order_size or not order_quantity:
+        if not job_service or not job_size or not job_quantity:
             print("Missing fields.")
             return
 
-        get_order_price_sql = """ SELECT PROD_ID, PROD_PRICE FROM product p 
+        get_job_price_sql = """ SELECT PROD_ID, PROD_PRICE FROM product p 
                                 INNER JOIN service s ON s.SERV_ID = p.SERV_ID 
                                 WHERE SERV_NAME = ? AND PROD_SZ = ?;
                                 """
         try:
             c = conn.cursor()
-            c.execute(get_order_price_sql, (order_service, order_size))
+            c.execute(get_job_price_sql, (job_service, job_size))
             product_data = c.fetchone()
 
             if not product_data:
                 print("Price not found for the selected service and size.")
                 return
 
-            product_id, order_price = product_data
+            product_id, job_price = product_data
 
-            order_total = order_price * int(order_quantity)
+            job_total = job_price * int(job_quantity)
 
-            insert_order_data_sql = """
-                                    INSERT INTO orders (PROD_ID, ORD_QTY, ORD_TOT) VALUES (?, ?, ?);
+            insert_job_data_sql = """
+                                    INSERT INTO jobs (PROD_ID, JOB_QTY, JOB_TOT) VALUES (?, ?, ?);
                                     """
 
-            c.execute(insert_order_data_sql, (product_id, order_quantity, order_total))
+            c.execute(insert_job_data_sql, (product_id, job_quantity, job_total))
             conn.commit()
 
             self.ui.category_name_nt.setCurrentIndex(0)
             self.ui.category_size.setCurrentIndex(0)
             self.ui.product_quantity.setCurrentIndex(0)
 
-            DBQueries.displayOrders(self, DBQueries.getAllOrders(dbFolder))
+            DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
 
         except Error as e:
             print(e)

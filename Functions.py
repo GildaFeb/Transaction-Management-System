@@ -80,8 +80,8 @@ class BtnFunctions(QMainWindow):
 
         self.ui.pricelist_table.itemSelectionChanged.connect(lambda: DBQueries.on_price_selection_changed(self))
 
-        #======================== FETCH and MOD ORDERS =================================#
-        DBQueries.displayOrders(self, DBQueries.getAllOrders(dbFolder))
+        #======================== FETCH and MOD JOBS =================================#
+        DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
         self.ui.category_name_nt.addItems(service_names)
         
         selected_service = self.ui.category_name_nt.currentText()
@@ -89,7 +89,7 @@ class BtnFunctions(QMainWindow):
         self.ui.category_size.addItems(sizes)
         self.ui.category_name_nt.currentIndexChanged.connect(lambda: DBQueries.getProductSizes(self, dbFolder))
 
-        self.ui.add_order_nt.clicked.connect(lambda: DBQueries.addOrder(self, dbFolder))
+        self.ui.add_order_nt.clicked.connect(lambda: DBQueries.addJob(self, dbFolder))
         
         #======================== SEARCH FIELDS FUNCTIONS =================================#
         
