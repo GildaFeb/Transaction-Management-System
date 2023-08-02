@@ -1131,7 +1131,7 @@ border-radius: 10px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -6177,6 +6177,8 @@ border-radius: 5px;
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
                  </font>
                 </property>
                 <property name="text">
@@ -6231,7 +6233,7 @@ border-radius: 5px;
                 </column>
                 <column>
                  <property name="text">
-                  <string>Service Status</string>
+                  <string>Transaction Status</string>
                  </property>
                 </column>
                 <item row="0" column="0">
@@ -6601,7 +6603,11 @@ border-radius: 5px;
                     </widget>
                    </item>
                    <item>
-                    <widget class="QDateEdit" name="dateEdit_daily_tnx"/>
+                    <widget class="QDateEdit" name="dateEdit_daily_tnx">
+                     <property name="displayFormat">
+                      <string>yyyy/MM/dd</string>
+                     </property>
+                    </widget>
                    </item>
                    <item>
                     <widget class="QLabel" name="num_daily_tnx">
