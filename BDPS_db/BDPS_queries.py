@@ -643,7 +643,7 @@ class DBQueries():
     def getAllJobs(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        get_all_jobs = """    SELECT SERV_NAME, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT
+        get_all_jobs = """    SELECT JOB_ID, SERV_NAME, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT
                                 FROM jobs
                                 INNER JOIN product ON jobs.PROD_ID = product.PROD_ID
                                 INNER JOIN service ON product.SERV_ID = service.SERV_ID;
@@ -661,29 +661,14 @@ class DBQueries():
     def displayJobs(self, rows):
         self.ui.order_detail_table.setRowCount(0)
 
-        counter = 0
-
         for row in rows:
             rowPosition = self.ui.order_detail_table.rowCount()
-
-            if counter > rowPosition:
-                continue
-
-            itemCount = 0
-
             self.ui.order_detail_table.setRowCount(rowPosition + 1)
-            order_tablewidgetitem = QTableWidgetItem()
-            self.ui.order_detail_table.setVerticalHeaderItem(rowPosition, order_tablewidgetitem)
 
-            for item in row:
+            for itemCount, item in enumerate(row[1:], start=0):
+                order_tablewidgetitem = QTableWidgetItem(str(item))
+                self.ui.order_detail_table.setItem(rowPosition, itemCount, order_tablewidgetitem)
 
-                self.order_tablewidgetitem = QTableWidgetItem()
-                self.ui.order_detail_table.setItem(rowPosition, itemCount, self.order_tablewidgetitem)
-                self.order_tablewidgetitem = self.ui.order_detail_table.item(rowPosition, itemCount)
-                self.order_tablewidgetitem.setText(str(item))
-
-                itemCount = itemCount + 1
-            rowPosition = rowPosition + 1
     
     def addJob(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -732,14 +717,16 @@ class DBQueries():
     def deleteJob(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
+        selected_rows = self.ui.order_detail_table.selectionModel().selectedRows()
         if not selected_rows:
             #PROMPT
             print("No job selected.")
             return
 
         if len(selected_rows) == 1:
-            job_id = int(self.ui.pricelist_table.item(selected_rows[0].row(), 0).text().split('-')[-1])
+            print(self.ui.order_detail_table.item(selected_rows[0].row(), 0).text())
+            job_id = int(self.ui.order_detail_table.item(selected_rows[0].row(), 0).text())
+            print(job_id)
 
             delete_job_sql = f"""
                                     DELETE FROM jobs
@@ -767,7 +754,7 @@ class DBQueries():
             response = message_box.exec()
 
             if response == QMessageBox.Yes:
-                jobs_ids = [int(self.ui.pricelist_table.item(row.row(), 0).text().split('-')[-1]) for row in selected_rows]
+                jobs_ids = [int(self.ui.order_detail_table.item(row.row(), 0).text().split('-')[-1]) for row in selected_rows]
 
                 delete_selected_jobs_sql = f"""
                                                 DELETE FROM jobs

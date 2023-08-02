@@ -89,7 +89,7 @@ class BtnFunctions(QMainWindow):
         self.ui.category_name_nt.currentIndexChanged.connect(lambda: DBQueries.getProductSizes(self, dbFolder))
 
         self.ui.add_order_nt.clicked.connect(lambda: DBQueries.addJob(self, dbFolder))
-        self.ui.delete_job_detail_btn.clicked.connect(lambda: DBQueries.deleteJobs(self, dbFolder))
+        self.ui.delete_job_detail_btn.clicked.connect(lambda: DBQueries.deleteJob(self, dbFolder))
 
         self.ui.order_detail_table.itemSelectionChanged.connect(lambda: DBQueries.on_job_selection_changed(self))
         
