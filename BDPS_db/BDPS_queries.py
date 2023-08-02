@@ -113,7 +113,7 @@ class DBQueries():
             self.ui.category_description.setText("")
             self.ui.status_category.itemText(0)
 
-            service_names = DBQueries.getCategoryNames(dbFolder)
+            service_names = DBQueries.getServiceNames(dbFolder)
             self.ui.cat_name_pricelist.clear()
             self.ui.cat_name_pricelist.addItems(service_names)
 
@@ -128,7 +128,7 @@ class DBQueries():
         selected_row = self.ui.category_table.currentRow()
         if selected_row < 0:
             #PROMPT
-            print("No category selected.")
+            print("No service selected.")
             return
 
         service_id = int(self.ui.category_table.item(selected_row, 0).text().split('-')[-1])
@@ -159,16 +159,16 @@ class DBQueries():
                                     AND SERV_ID != {service_id};
                                     """
         c.execute(check_service_exists_sql)
-        existing_category = c.fetchone()
+        existing_service = c.fetchone()
 
-        if existing_category:
+        if existing_service:
             #PROMPT
             print("Service with updated values already exists in another row.")
             return
 
         if service_name == existing_data[0] and service_desc == existing_data[1] and service_sts == existing_data[2]:
             #PROMPT
-            print("No changes made to the category details.")
+            print("No changes made to the service details.")
             return
 
         update_service_data_sql = f""" 
@@ -645,7 +645,8 @@ class DBQueries():
             if not sizes:
                 self.ui.category_size.setPlaceholderText('No available sizes')
             else:
-                self.ui.category_size.setCurrentIndex(0)
+                if self.ui.category_size.count() > 0:
+                    self.ui.category_size.setCurrentText(self.ui.category_size.itemText(0))
                 self.ui.category_size.addItems(sizes)
 
             return sizes
