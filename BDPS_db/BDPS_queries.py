@@ -717,59 +717,35 @@ class DBQueries():
     def deleteJob(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        selected_rows = self.ui.order_detail_table.selectionModel().selectedRows()
-        if not selected_rows:
-            #PROMPT
-            print("No job selected.")
-            return
+        all_jobs = DBQueries.getAllJobs(dbFolder)
 
-        if len(selected_rows) == 1:
-            print(self.ui.order_detail_table.item(selected_rows[0].row(), 0).text())
-            job_id = int(self.ui.order_detail_table.item(selected_rows[0].row(), 0).text())
-            print(job_id)
+        try:
+            c = conn.cursor()
+            for row in all_jobs:
+                job_id = row[0]
+                job_service = row[1]
+                job_size = row[2]
+                job_price = float(row[3])
+                job_quantity = int(row[4])
 
-            delete_job_sql = f"""
+                print(job_id)
+
+                delete_job_sql = f"""
                                     DELETE FROM jobs
-                                    WHERE JOB_ID = {job_id};
+                                    WHERE JOB_ID = {job_id} IN (
+                                        SELECT product.PROD_SZ, product.PROD_PRICE, jobs.JOB_QTY
+                                        FROM jobs
+                                        INNER JOIN product ON jobs.PROD_ID = product.PROD_ID
+                                        INNER JOIN service ON product.SERV_ID = service.SERV_ID
+                                        WHERE SERV_NAME = ? AND PROD_SZ = ? AND PROD_PRICE = ? AND JOB_QTY = ?);
                                 """
+                c.execute(delete_job_sql, (job_service, job_size, job_price, job_quantity))
 
-            try:
-                c = conn.cursor()
-                c.execute(delete_job_sql)
-                conn.commit()
+            conn.commit()
+            DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
 
-                DBQueries.displayJobs(self, DBQueries.getAllJobs)
-
-            except Error as e:
-                print(e)
-
-        else:
-            message_box = QMessageBox()
-            message_box.setIcon(QMessageBox.Question)
-            message_box.setText("You have selected multiple jobs. Are you sure you want to delete them?")
-            message_box.setWindowTitle("Confirm Deletion")
-            message_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-            message_box.setDefaultButton(QMessageBox.No)
-
-            response = message_box.exec()
-
-            if response == QMessageBox.Yes:
-                jobs_ids = [int(self.ui.order_detail_table.item(row.row(), 0).text().split('-')[-1]) for row in selected_rows]
-
-                delete_selected_jobs_sql = f"""
-                                                DELETE FROM jobs
-                                                WHERE JOB_ID IN ({', '.join(str(id) for id in jobs_ids)});
-                                            """
-
-                try:
-                    c = conn.cursor()
-                    c.execute(delete_selected_jobs_sql)
-                    conn.commit()
-
-                    DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
-
-                except Error as e:
-                    print(e)
+        except Error as e:
+            print(e)
     
     def on_job_selection_changed(self):
         selected_rows = self.ui.order_detail_table.selectionModel().selectedRows()
