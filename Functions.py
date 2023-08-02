@@ -36,9 +36,9 @@ class BtnFunctions(QMainWindow):
         self.ui.edit_search_new_transaction.textChanged.connect(self.transaction_table)
 
         #========================== FILTER FUNCTIONS =====================================#
-        self.ui.filter_daily_tnx.currentIndexChanged.connect(self.filter_dailytxn_table)
-        self.ui.filter_dwt.currentIndexChanged.connect(self.filter_datewise_txn_table)
-        self.ui.filter_dwt_4.currentIndexChanged.connect(self.filter_date_wise_payment_table) 
+        #self.ui.filter_daily_tnx.currentIndexChanged.connect(self.filter_dailytxn_table)
+        #self.ui.filter_dwt.currentIndexChanged.connect(self.filter_datewise_txn_table)
+        #self.ui.filter_dwt_4.currentIndexChanged.connect(self.filter_date_wise_payment_table) 
         
         #========================== EXCEL EXPORT BUTTONS =====================================#
         self.ui.printreport_dwp_btn.clicked.connect(self.datewise_payment_toExcel)

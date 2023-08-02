@@ -214,7 +214,10 @@ class DBQueries():
 
             self.ui.product_name_category.setText("")
             self.ui.category_description.setText("")
+            self.ui.product_name_category.setPlaceholderText("")
+            self.ui.category_description.setPlaceholderText("")
             self.ui.status_category.setCurrentIndex(0)
+
 
             category_names = DBQueries.getCategoryNames(dbFolder)
             self.ui.cat_name_pricelist.clear()
@@ -423,13 +426,12 @@ class DBQueries():
             c.execute(insert_price_data_sql)
             conn.commit()
 
-            product_size = DBQueries.getProductSizes(dbFolder)
-            self.ui.category_size.clear()
-            self.ui.category_size.addItems(product_size)
-
-            self.ui.cat_name_pricelist.itemText(0)
-            self.ui.size_pricelist.setText("")
-            self.ui.price_pricelist.setText("")
+            self.ui.id_pricelist.setText('')
+            self.ui.cat_name_pricelist.setCurrentIndex(0)
+            self.ui.size_pricelist.setPlaceholderText('')
+            self.ui.price_pricelist.setPlaceholderText('')
+            self.ui.size_pricelist.setText('')
+            self.ui.price_pricelist.setText('')
 
             DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 
@@ -509,15 +511,13 @@ class DBQueries():
             c = conn.cursor()
             c.execute(update_price_data_sql)
             conn.commit()
-
-            product_size = DBQueries.getProductSizes(dbFolder)
-            self.ui.category_size.clear()
-            self.ui.category_size.addItems(product_size)
             
             self.ui.id_pricelist.setText('')
-            self.ui.cat_name_pricelist.setCurrentIndex('Available')
+            self.ui.cat_name_pricelist.setCurrentIndex(0)
             self.ui.size_pricelist.setPlaceholderText('')
             self.ui.price_pricelist.setPlaceholderText('')
+            self.ui.size_pricelist.setText('')
+            self.ui.price_pricelist.setText('')
 
             DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 
