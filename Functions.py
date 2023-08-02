@@ -84,12 +84,14 @@ class BtnFunctions(QMainWindow):
         DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
         self.ui.category_name_nt.addItems(service_names)
         
-        selected_service = self.ui.category_name_nt.currentText()
         sizes = DBQueries.getProductSizes(self, dbFolder)
-        self.ui.category_size.addItems(sizes)
+
         self.ui.category_name_nt.currentIndexChanged.connect(lambda: DBQueries.getProductSizes(self, dbFolder))
 
         self.ui.add_order_nt.clicked.connect(lambda: DBQueries.addJob(self, dbFolder))
+        self.ui.delete_job_detail_btn.clicked.connect(lambda: DBQueries.deleteJobs(self, dbFolder))
+
+        self.ui.order_detail_table.itemSelectionChanged.connect(lambda: DBQueries.on_job_selection_changed(self))
         
         #======================== SEARCH FIELDS FUNCTIONS =================================#
         
@@ -533,4 +535,4 @@ class BtnFunctions(QMainWindow):
             self.ui.cat_name_pricelist.setCurrentIndex(-1)
             self.ui.size_pricelist.setPlaceholderText('')
             self.ui.price_pricelist.setPlaceholderText('')
-            
+    

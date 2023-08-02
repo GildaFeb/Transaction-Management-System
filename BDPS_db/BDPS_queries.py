@@ -728,6 +728,70 @@ class DBQueries():
 
         except Error as e:
             print(e)
+    
+    def deleteJob(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
+        if not selected_rows:
+            #PROMPT
+            print("No job selected.")
+            return
+
+        if len(selected_rows) == 1:
+            job_id = int(self.ui.pricelist_table.item(selected_rows[0].row(), 0).text().split('-')[-1])
+
+            delete_job_sql = f"""
+                                    DELETE FROM jobs
+                                    WHERE JOB_ID = {job_id};
+                                """
+
+            try:
+                c = conn.cursor()
+                c.execute(delete_job_sql)
+                conn.commit()
+
+                DBQueries.displayJobs(self, DBQueries.getAllJobs)
+
+            except Error as e:
+                print(e)
+
+        else:
+            message_box = QMessageBox()
+            message_box.setIcon(QMessageBox.Question)
+            message_box.setText("You have selected multiple jobs. Are you sure you want to delete them?")
+            message_box.setWindowTitle("Confirm Deletion")
+            message_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            message_box.setDefaultButton(QMessageBox.No)
+
+            response = message_box.exec()
+
+            if response == QMessageBox.Yes:
+                jobs_ids = [int(self.ui.pricelist_table.item(row.row(), 0).text().split('-')[-1]) for row in selected_rows]
+
+                delete_selected_jobs_sql = f"""
+                                                DELETE FROM jobs
+                                                WHERE JOB_ID IN ({', '.join(str(id) for id in jobs_ids)});
+                                            """
+
+                try:
+                    c = conn.cursor()
+                    c.execute(delete_selected_jobs_sql)
+                    conn.commit()
+
+                    DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
+
+                except Error as e:
+                    print(e)
+    
+    def on_job_selection_changed(self):
+        selected_rows = self.ui.order_detail_table.selectionModel().selectedRows()
+        add_order_nt = self.ui.add_order_nt
+
+        if len(selected_rows) > 0:
+            add_order_nt.setVisible(False)
+        else:
+            add_order_nt.setVisible(True)
             
     #============================= TRANSACTION QUERIES ==============================#
     def getAllTransactions(dbFolder):
