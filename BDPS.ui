@@ -4124,6 +4124,9 @@ background-color: #f5f7f9;
                              <pointsize>11</pointsize>
                             </font>
                            </property>
+                           <property name="cursor">
+                            <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
                            <property name="calendarPopup">
                             <bool>true</bool>
                            </property>
@@ -4659,6 +4662,57 @@ background-color: #f5f7f9;
                           </widget>
                          </item>
                          <item>
+                          <widget class="QPushButton" name="delete_job_detail_btn">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>280</width>
+                             <height>35</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>280</width>
+                             <height>35</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="cursor">
+                            <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
+                           <property name="text">
+                            <string>Delete</string>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>20</width>
+                             <height>30</height>
+                            </size>
+                           </property>
+                           <property name="checkable">
+                            <bool>false</bool>
+                           </property>
+                           <property name="autoRepeat">
+                            <bool>false</bool>
+                           </property>
+                           <property name="autoExclusive">
+                            <bool>false</bool>
+                           </property>
+                           <property name="flat">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <spacer name="verticalSpacer_5">
                            <property name="orientation">
                             <enum>Qt::Vertical</enum>
@@ -4683,7 +4737,7 @@ background-color: #f5f7f9;
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>530</width>
+                           <width>300</width>
                            <height>0</height>
                           </size>
                          </property>
@@ -4694,22 +4748,57 @@ background-color: #f5f7f9;
                           </size>
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_16">
-                          <property name="leftMargin">
-                           <number>26</number>
-                          </property>
                           <item>
-                           <widget class="QLabel" name="label_41">
-                            <property name="font">
-                             <font>
-                              <pointsize>11</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Order Details</string>
-                            </property>
-                           </widget>
+                           <layout class="QHBoxLayout" name="horizontalLayout_68">
+                            <item>
+                             <widget class="QLabel" name="label_41">
+                              <property name="font">
+                               <font>
+                                <pointsize>11</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="text">
+                               <string>Job Details</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPushButton" name="reset_job_detail_btn">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>150</width>
+                                <height>35</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>150</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>11</pointsize>
+                                <underline>true</underline>
+                               </font>
+                              </property>
+                              <property name="cursor">
+                               <cursorShape>PointingHandCursor</cursorShape>
+                              </property>
+                              <property name="text">
+                               <string>Reset</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
                           </item>
                           <item>
                            <widget class="QTableWidget" name="order_detail_table">
@@ -4834,6 +4923,33 @@ border-radius: 5px;
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_23">
                  <item>
+                  <widget class="QPushButton" name="new_form_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>New Form</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <spacer name="verticalSpacer_6">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
@@ -4866,73 +4982,6 @@ border-radius: 5px;
                     <property name="rightMargin">
                      <number>0</number>
                     </property>
-                    <item>
-                     <layout class="QVBoxLayout" name="verticalLayout_19">
-                      <property name="spacing">
-                       <number>7</number>
-                      </property>
-                      <item>
-                       <widget class="QLabel" name="label_37">
-                        <property name="font">
-                         <font>
-                          <pointsize>11</pointsize>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string>Discount</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QSpinBox" name="spinBox">
-                        <property name="font">
-                         <font>
-                          <pointsize>11</pointsize>
-                         </font>
-                        </property>
-                        <property name="showGroupSeparator" stdset="0">
-                         <bool>false</bool>
-                        </property>
-                        <property name="maximum">
-                         <number>999999</number>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QPushButton" name="add_discount_nt">
-                        <property name="minimumSize">
-                         <size>
-                          <width>0</width>
-                          <height>30</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>30</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <pointsize>11</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>PointingHandCursor</cursorShape>
-                        </property>
-                        <property name="text">
-                         <string>Add Discount</string>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>20</width>
-                          <height>30</height>
-                         </size>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_27">
                       <item>
@@ -5201,7 +5250,74 @@ border-radius: 5px;
                       </layout>
                      </widget>
                     </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_67">
+                      <property name="spacing">
+                       <number>7</number>
+                      </property>
+                      <item>
+                       <widget class="QLabel" name="label_37">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Discount</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QSpinBox" name="discount_input">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="showGroupSeparator" stdset="0">
+                         <bool>false</bool>
+                        </property>
+                        <property name="maximum">
+                         <number>999999</number>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
                    </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="add_discount_nt">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>Add Discount</string>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>20</width>
+                     <height>30</height>
+                    </size>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -5326,6 +5442,33 @@ border-radius: 5px;
                    </property>
                    <property name="text">
                     <string>Save Transaction</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="cancel_transaction_nt">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>Cancel</string>
                    </property>
                   </widget>
                  </item>
