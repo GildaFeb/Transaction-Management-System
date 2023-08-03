@@ -4,6 +4,7 @@ import time
 import sqlite3
 from sqlite3 import Error
 from datetime import datetime
+import uuid
 
 #from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
@@ -1044,14 +1045,14 @@ class DBQueries():
         txn_date = datetime.now().strftime('%Y-%m-%d')
         txn_sts = 'Pending'
         pmt_disc = self.ui.discount_nt.text()
-        pmt_paid = self.ui.payment_nt.text()
+        pmt_paid = float(self.ui.payment_nt.text())
 
         conn = sqlite3.connect(dbFolder)
         cursor = conn.cursor()
 
         try:
             
-            #========================== INSERT ON PARTICULAR ===========================#
+             #========================== INSERT ON PARTICULAR ===========================#
             prtclr_insert_sql = """
                 INSERT INTO particular (PRTCLR_NAME, PRTCLR_CN)
                 VALUES (?, ?)
@@ -1067,22 +1068,27 @@ class DBQueries():
             """
             cursor.execute(job_transfer_sql)
 
-            job_id = cursor.lastrowid
+            cursor.execute("SELECT JOB_ID FROM jobs")
+            job_ids = [row[0] for row in cursor.fetchall()]
+
+            num_jobs = len(job_ids)
 
             clear_job_temp_sql = "DROP TABLE IF EXISTS job_temp"
             cursor.execute(clear_job_temp_sql)
 
-            conn.commit()
-
             #========================== INSERT ON TRANSACTIONS ===========================#
-            current_prtclr_id = cursor.lastrowid
-            txn_insert_sql = """
+            txn_insert_sql ="""
                 INSERT INTO transactions (PRTCLR_ID, JOB_ID, TXN_DATE, TXN_STS)
                 VALUES (?, ?, ?, ?)
             """
-            cursor.execute(txn_insert_sql, (current_prtclr_id, job_id, txn_date, txn_sts))
-            txn_code = cursor.lastrowid
-            print(txn_code)
+            cursor.execute("SELECT MAX(TXN_CODE) FROM transactions")
+            last_txn_code = cursor.fetchone()[0]
+            current_txn_code = last_txn_code + 1 if last_txn_code else 1
+
+            for i in range(num_jobs):
+                current_prtclr_id = prtclr_id
+                current_job_id = job_ids[i]
+                cursor.execute(txn_insert_sql, (current_prtclr_id, current_job_id, txn_date, txn_sts))
 
             #========================== INSERT ON PAYMENT ===========================#
             pmt_tot = conn.execute("SELECT SUBTOTAL FROM job_temp WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp)").fetchone()[0] - pmt_disc
@@ -1094,7 +1100,9 @@ class DBQueries():
                 INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             """
-            cursor.execute(pmt_insert_sql, (txn_code, pmt_disc, pmt_tot, pmt_paid, pmt_bal, pmt_date, pmt_sts))
+            cursor.execute(pmt_insert_sql, (current_txn_code, pmt_disc, pmt_tot, pmt_paid, pmt_bal, pmt_date, pmt_sts))
+
+            conn.commit()
 
             print("Transaction saved successfully.")
         except Exception as e:
