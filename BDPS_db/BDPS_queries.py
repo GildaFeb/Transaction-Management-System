@@ -914,9 +914,9 @@ class DBQueries():
             print("Job list is empty. Please add jobs first.")
             return False
 
-        pmt_disc_qlabel_text = self.ui.discount_nt.text()
+        pmt_disc_text = self.ui.discount_nt.text()
         try:
-            payment_discount = float(pmt_disc_qlabel_text) if pmt_disc_qlabel_text else 0.0
+            payment_discount = float(pmt_disc_text) if pmt_disc_text else 0.0
         except ValueError:
             print("Invalid discount amount.")
             return False
@@ -928,7 +928,7 @@ class DBQueries():
                 return False
 
         payment_total = subtotal - payment_discount
-        self.ui.total_amount.setText(str(payment_total))
+        self.ui.total_nt.setText(str(payment_total))
 
         payment_paid_text = self.ui.payment_nt.text()
         try:
@@ -961,33 +961,33 @@ class DBQueries():
             print("Error adding payment:", e)
             return False
         
-    def update_total_amount(self, dbFolder):
+    def update_total_nt(self, dbFolder):
         subtotal = DBQueries.calculate_subtotal_from_job_temp(self, dbFolder)
-        pmt_disc_qlabel_text = self.ui.discount_nt.text()
+        pmt_disc_text = self.ui.discount_nt.text()
 
         if subtotal is None:
             print("Subtotal is not available. Please add jobs first.")
             return
 
         try:
-            payment_discount = float(pmt_disc_qlabel_text) if pmt_disc_qlabel_text else 0.0
+            payment_discount = float(pmt_disc_text) if pmt_disc_text else 0.0
         except ValueError:
             print("Invalid discount amount.")
             return
 
         payment_total = subtotal - payment_discount
-        self.ui.total_amount.setText(str(payment_total))
+        self.ui.total_nt.setText(str(payment_total))
         
     def checkDiscount(self, dbFolder):
         subtotal = DBQueries.calculate_subtotal_from_job_temp(self, dbFolder)
-        pmt_disc_qlabel_text = self.ui.discount_nt.text()
+        pmt_disc_text = self.ui.discount_nt.text()
 
         if subtotal is None:
             print("Subtotal is not available. Please add jobs first.")
             return False
 
         try:
-            payment_discount = float(pmt_disc_qlabel_text) if pmt_disc_qlabel_text else 0.0
+            payment_discount = float(pmt_disc_text) if pmt_disc_text else 0.0
         except ValueError:
             print("Invalid discount amount.")
             return False
@@ -1000,18 +1000,30 @@ class DBQueries():
     
     def check_payment_amount(self, dbFolder):
         payment_nt = self.ui.payment_nt.text()
-        total_amount = self.ui.total_amount.text()
+        total_nt = self.ui.total_nt.text()
 
         try:
             payment_nt_value = float(payment_nt) if payment_nt else 0.0
-            total_amount_value = float(total_amount)
+            total_nt_value = float(total_nt)
         except ValueError:
             print("Invalid payment amount or total amount.")
             return
 
-        if payment_nt_value > total_amount_value:
+        if payment_nt_value > total_nt_value:
             warning_message = "Payment amount exceeds the total amount."
             QMessageBox.warning(self, "Invalid Payment Amount", warning_message)
+
+    def update_balance_nt(self, dbFolder):
+        try:
+            payment_nt_value = float(self.ui.payment_nt.text()) if self.ui.payment_nt.text() else 0.0
+            total_nt_value = float(self.ui.total_nt.text())
+        except ValueError:
+            print("Invalid payment amount or total amount.")
+            return
+
+        balance = total_nt_value - payment_nt_value
+        self.ui.balance_nt.setText(str(balance))
+
     #============================= TRANSACTION QUERIES ==============================#
     def getAllTransactions(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
