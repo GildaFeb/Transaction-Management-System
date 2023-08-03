@@ -33,6 +33,9 @@ class BtnFunctions(QMainWindow):
         #========================== RESET OF TABLES =====================================#
         self.ui.pushButton_4.clicked.connect(self.reset_dailytxn_table)
         self.ui.pushButton_5.clicked.connect(self.reset_txn_table)
+        self.ui.pushButton_6.clicked.connect(self.reset_datewise_txn_table)
+        self.ui.pushButton_7.clicked.connect(self.reset_datewise_payment_table)
+
         #========================== DASHBOARD =====================================#
         self.ui.transaction_record_tbl.model().rowsRemoved.connect(self.count_transaction_record)
         self.ui.transaction_record_tbl.model().rowsInserted.connect(self.count_transaction_record)
@@ -459,7 +462,27 @@ class BtnFunctions(QMainWindow):
             self.ui.transaction_record_tbl.setRowHidden(row, False)        
             self.ui.transaction_record_tbl.show()
             self.ui.no_transaction_found.hide()            
-                  
+    
+    def reset_datewise_txn_table:
+        #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
+        #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
+        #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
+        
+        for row in range(self.ui.datewise_transaction_table.rowCount()):
+            self.ui.datewise_transaction_table.setRowHidden(row, False)        
+            self.ui.datewise_transaction_table.show()
+            self.ui.no_datewiseT_found.hide()
+    
+    def reset_datewise_payment_table:
+        #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
+        #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
+        #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
+        
+        for row in range(self.ui.datewise_payment_table.rowCount()):
+            self.ui.datewise_payment_table.setRowHidden(row, False)        
+            self.ui.datewise_payment_table.show()
+            self.ui.no_datewiseP_found.hide()
+                        
         #======================== DASHBOARD FUNCTIONS =================================#
 
     def count_transaction_record(self):
