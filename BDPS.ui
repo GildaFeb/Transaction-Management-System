@@ -784,7 +784,7 @@ border-top-left-radius: 30px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -1482,7 +1482,7 @@ border-radius: 10px;
                         <item>
                          <layout class="QVBoxLayout" name="verticalLayout_53">
                           <item>
-                           <widget class="QLabel" name="Total_Categories">
+                           <widget class="QLabel" name="cancelled_transactions">
                             <property name="font">
                              <font>
                               <pointsize>10</pointsize>
@@ -5967,6 +5967,51 @@ color: white
                 <attribute name="verticalHeaderCascadingSectionResizes">
                  <bool>true</bool>
                 </attribute>
+                <row>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>4</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>5</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>6</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>7</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>8</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>9</string>
+                 </property>
+                </row>
                 <row/>
                 <column>
                  <property name="text">
@@ -6064,6 +6109,106 @@ color: white
                   </font>
                  </property>
                 </column>
+                <item row="0" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="0" column="5">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
+                <item row="1" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="1" column="5">
+                 <property name="text">
+                  <string>Cancelled</string>
+                 </property>
+                </item>
+                <item row="2" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="2" column="5">
+                 <property name="text">
+                  <string>Successful</string>
+                 </property>
+                </item>
+                <item row="3" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="3" column="5">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
+                <item row="4" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="4" column="5">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
+                <item row="5" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="5" column="5">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
+                <item row="6" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="6" column="5">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
+                <item row="7" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="7" column="5">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
+                <item row="8" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="8" column="5">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
+                <item row="9" column="4">
+                 <property name="text">
+                  <string>100.00</string>
+                 </property>
+                </item>
+                <item row="9" column="5">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item>

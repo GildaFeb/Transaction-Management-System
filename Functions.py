@@ -92,6 +92,7 @@ class BtnFunctions(QMainWindow):
         self.ui.transaction_record_tbl.model().rowsInserted.connect(self.count_transaction_record)
         #self.ui.pushButton_3.clicked.connect(self.delete_selected_row)
         self.count_transaction_record()
+        self.count_transaction_status()
         
         #========================== SEARCH FIELDS =====================================#
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
@@ -503,7 +504,8 @@ class BtnFunctions(QMainWindow):
         self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
         self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
         self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
-        
+        self.ui.edit_search_daily_tnx.setEnabled(True)
+
         for row in range(self.ui.daily_tnx_table.rowCount()):
             self.ui.daily_tnx_table.setRowHidden(row, False)        
             self.ui.daily_tnx_table.show()
@@ -542,8 +544,44 @@ class BtnFunctions(QMainWindow):
         #======================== DASHBOARD FUNCTIONS =================================#
 
     def count_transaction_record(self):
+        
         total_transaction = self.ui.transaction_record_tbl.rowCount()
-        self.ui.total_transactions.setText(f"{total_transaction}")            
+        self.ui.total_transactions.setText(f"{total_transaction}")
+
+        pending_txn = 0
+        successful_txn = 0
+        cancelled_txn = 0
+
+        for row in range(self.ui.transaction_record_tbl.rowCount()):            
+            status_item = self.ui.transaction_record_tbl.item(row, 5)
+            if status_item is not None and status_item.text().strip() == "Pending":
+                pending_txn += 1
+            elif status_item is not None and status_item.text().strip() == "Successful":
+                successful_txn += 1
+            elif status_item is not None and status_item.text().strip() == "Cancelled":
+                cancelled_txn += 1
+                
+        self.ui.PendingTransactions.setText(f"{pending_txn}")
+        self.ui.sucessful_transactions.setText(f"{successful_txn}")        
+        self.ui.cancelled_transactions.setText(f"{cancelled_txn}")
+
+    def count_transaction_status(self):
+        pending_txn = 0
+        successful_txn = 0
+        cancelled_txn = 0
+        for row in range(self.ui.transaction_record_tbl.rowCount()):
+            status_item = self.ui.transaction_record_tbl.item(row, 5)
+            if status_item is not None and status_item.text().strip() == "Pending":
+                pending_txn += 1
+            elif status_item is not None and status_item.text().strip() == "Successful":
+                successful_txn += 1
+            elif status_item is not None and status_item.text().strip() == "Cancelled":
+                cancelled_txn += 1
+
+        
+        self.ui.PendingTransactions.setText(f"{pending_txn}")  
+        self.ui.sucessful_transactions.setText(f"{successful_txn}")        
+        self.ui.cancelled_transactions.setText(f"{cancelled_txn}")    
     #----------------------------------------------------------------------#
     
     ## Function for searching
