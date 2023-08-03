@@ -463,7 +463,7 @@ class BtnFunctions(QMainWindow):
             self.ui.transaction_record_tbl.show()
             self.ui.no_transaction_found.hide()            
     
-    def reset_datewise_txn_table:
+    def reset_datewise_txn_table(self):
         #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
         #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
         #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
@@ -473,7 +473,7 @@ class BtnFunctions(QMainWindow):
             self.ui.datewise_transaction_table.show()
             self.ui.no_datewiseT_found.hide()
     
-    def reset_datewise_payment_table:
+    def reset_datewise_payment_table(self):
         #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
         #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
         #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
