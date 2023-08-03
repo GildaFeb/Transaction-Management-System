@@ -685,6 +685,7 @@ class DBQueries():
                                     PROD_ID INTEGER NOT NULL,
                                     JOB_QTY INTEGER NOT NULL,
                                     JOB_TOT REAL NOT NULL,
+                                    SUBTOTAL REAL NOT NULL DEFAULT JOB_TOT,
                                     FOREIGN KEY (PROD_ID) REFERENCES product (PROD_ID));
                             """
         try:
@@ -733,26 +734,27 @@ class DBQueries():
                 print("Similar job already exists.")
                 return
 
-            check_job_temp_sql =    """
-                                        SELECT JOB_ID FROM job_temp;
-                                    """
-            c.execute(check_job_temp_sql)
-            first_order = c.fetchone()
+            insert_job_data_sql = """
+                INSERT INTO job_temp (PROD_ID, JOB_QTY, JOB_TOT, SUBTOTAL) VALUES (?, ?, ?, ?);
+            """
+            c.execute(insert_job_data_sql, (product_id, job_quantity, job_total, job_total))
+            conn.commit()
 
-            if not first_order:
+            update_subtotal_sql = """
+                UPDATE job_temp SET SUBTOTAL = (
+                    SELECT IFNULL(SUM(JOB_TOT), 0) FROM job_temp
+                );
+            """
+            c.execute(update_subtotal_sql)
+            conn.commit()
 
-                insert_job_data_sql = """
-                    INSERT INTO job_temp (PROD_ID, JOB_QTY, JOB_TOT) VALUES (?, ?, ?);
-                """
-                c.execute(insert_job_data_sql, (product_id, job_quantity, job_total))
-                conn.commit()
-            
-            else:
-                insert_job_data_sql = """
-                    INSERT INTO job_temp (PROD_ID, JOB_QTY, JOB_TOT) VALUES (?, ?, ?);
-                """
-                c.execute(insert_job_data_sql, (product_id, job_quantity, job_total))
-                conn.commit()
+            get_last_row_subtotal_sql = """
+                                            SELECT SUBTOTAL FROM job_temp WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp);
+                                        """
+            c.execute(get_last_row_subtotal_sql)
+            last_row_subtotal = c.fetchone()[0]
+
+            self.ui.subtotal_nt.setText(str(last_row_subtotal))
 
             self.ui.category_name_nt.setCurrentIndex(0)
             self.ui.category_size.setCurrentIndex(0)
@@ -807,6 +809,14 @@ class DBQueries():
                 job_quantity = int(row[4])
 
                 print(job_id)
+
+                update_subtotal_sql = """
+                                        UPDATE job_temp SET SUBTOTAL = (
+                                            SELECT IFNULL(SUM(JOB_TOT), 0) FROM job_temp
+                                        ) WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp);
+                                    """
+                c.execute(update_subtotal_sql, (job_price * job_quantity, job_id))
+                conn.commit()
 
                 delete_job_sql = f"""
                                     DELETE FROM jobs
