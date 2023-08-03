@@ -120,10 +120,12 @@ class BtnFunctions(QMainWindow):
         #========================== DASHBOARD =====================================#
         self.ui.transaction_record_tbl.model().rowsRemoved.connect(self.count_transaction_record)
         self.ui.transaction_record_tbl.model().rowsInserted.connect(self.count_transaction_record)
-        #self.ui.pushButton_3.clicked.connect(self.delete_selected_row)
+        self.ui.transaction_record_tbl.itemChanged.connect(self.count_transaction_status)
+
+        #self.ui.pushButton_3.clicked.connect(self.delete_row)
+        #self.ui.pushButton.clicked.connect(self.add_row)
         self.count_transaction_record()
         self.count_transaction_status()
-        
         #========================== SEARCH FIELDS =====================================#
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
         self.ui.edit_search_category.textChanged.connect(self.category_table)
@@ -587,24 +589,41 @@ class BtnFunctions(QMainWindow):
         pending_txn = 0
         successful_txn = 0
         cancelled_txn = 0
+        total_sales = 0
 
         for row in range(self.ui.transaction_record_tbl.rowCount()):            
             status_item = self.ui.transaction_record_tbl.item(row, 5)
+            amount_paid = self.ui.transaction_record_tbl.item(row, 4)
             if status_item is not None and status_item.text().strip() == "Pending":
                 pending_txn += 1
             elif status_item is not None and status_item.text().strip() == "Successful":
                 successful_txn += 1
             elif status_item is not None and status_item.text().strip() == "Cancelled":
                 cancelled_txn += 1
+        
+        for row in range(self.ui.transaction_record_tbl.rowCount()):
+            amount_paid = self.ui.transaction_record_tbl.item(row, 4)
+            
+            if amount_paid is not None:
+                try:
+                    amount_paid = float(amount_paid.text())
+                    total_sales += amount_paid
+                except ValueError:
+                    pass
+        
+        self.ui.total_sales.setText(f"{total_sales:.2f}")
                 
         self.ui.PendingTransactions.setText(f"{pending_txn}")
         self.ui.sucessful_transactions.setText(f"{successful_txn}")        
         self.ui.cancelled_transactions.setText(f"{cancelled_txn}")
+        self.ui.total_sales.setText(f"{total_sales:.2f}")
 
     def count_transaction_status(self):
         pending_txn = 0
         successful_txn = 0
         cancelled_txn = 0
+        total_sales = 0
+
         for row in range(self.ui.transaction_record_tbl.rowCount()):
             status_item = self.ui.transaction_record_tbl.item(row, 5)
             if status_item is not None and status_item.text().strip() == "Pending":
@@ -614,10 +633,21 @@ class BtnFunctions(QMainWindow):
             elif status_item is not None and status_item.text().strip() == "Cancelled":
                 cancelled_txn += 1
 
+        for row in range(self.ui.transaction_record_tbl.rowCount()):
+            amount_paid = self.ui.transaction_record_tbl.item(row, 4)
+            
+            if amount_paid is not None:
+                try:
+                    amount_paid = float(amount_paid.text())
+                    total_sales += amount_paid
+                except ValueError:
+                    pass
         
+        self.ui.total_sales.setText(f"{total_sales:.2f}")
         self.ui.PendingTransactions.setText(f"{pending_txn}")  
         self.ui.sucessful_transactions.setText(f"{successful_txn}")        
-        self.ui.cancelled_transactions.setText(f"{cancelled_txn}")    
+        self.ui.cancelled_transactions.setText(f"{cancelled_txn}")
+        
     #----------------------------------------------------------------------#
     
     ## Function for searching
