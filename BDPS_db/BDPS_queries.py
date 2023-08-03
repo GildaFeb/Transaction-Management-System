@@ -4,16 +4,24 @@ import sqlite3
 from sqlite3 import Error
 from datetime import datetime
 
-from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
+#from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+import time
+import sys
+import os
+from openpyxl import load_workbook, Workbook
 
 from POP_UP.add1 import Add_Categ
 from POP_UP.edit_confirm_categ1 import Edit_Categ
 from POP_UP.NoDetails8 import No_Details
 from POP_UP.delete_confirm_categ1 import Del_Categ
+
 
 
 class DBQueries():
@@ -92,7 +100,7 @@ class DBQueries():
         service_sts = self.ui.status_category.currentText()
 
         if not service_name or not service_desc:
-            #PROMPT
+# ================ PROMPT ================ #
             print("Missing fields.")
             return
 
@@ -107,7 +115,7 @@ class DBQueries():
         existing_service = c.fetchone()
 
         if existing_service:
-            #PROMPT
+# ================ PROMPT ================ #
             print("Service already exists.")
             return
 
@@ -146,12 +154,13 @@ class DBQueries():
 
         selected_row = self.ui.category_table.currentRow()
         if selected_row < 0:
-            #PROMPT
+
+            # ========================= PROMPT ========================= #
 
             # === DRA === #
             # === Edit Category Btn / No Service === #
             self.ui.edit_category_btn.clicked.connect(lambda: self.edit_no_service())
-            print("No service selected.")
+            #print("No service selected.")
 
             return
         
@@ -187,12 +196,12 @@ class DBQueries():
         existing_service = c.fetchone()
 
         if existing_service:
-            #PROMPT
+# ================ PROMPT ================ #
             print("Service with updated values already exists in another row.")
             return
 
         if service_name == existing_data[0] and service_desc == existing_data[1] and service_sts == existing_data[2]:
-            #PROMPT
+# ================ PROMPT ================ #
             print("No changes made to the service details.")
             return
 
@@ -229,7 +238,10 @@ class DBQueries():
 
         selected_rows = self.ui.category_table.selectionModel().selectedRows()
         if not selected_rows:
-            #PROMPT
+            
+# =============== PROMPT ================= # (Same with the no service in edit)
+            self.ui.edit_category_btn.clicked.connect(lambda: self.edit_no_service())
+
             print("No service selected.")
             return
 
@@ -377,7 +389,8 @@ class DBQueries():
         product_price = self.ui.price_pricelist.text()
 
         if not product_size or not product_price:
-            #PROMPT
+
+# ================ PROMPT ================ #
             print("Missing fields.")
             return
         
@@ -390,7 +403,7 @@ class DBQueries():
         serv_id_result = c.fetchone()
 
         if not serv_id_result:
-            #PROMPT
+# ================ PROMPT ================ #
             print("Service does not exist.")
             return
 
@@ -407,7 +420,7 @@ class DBQueries():
         existing_price = c.fetchone()
 
         if existing_price:
-            #PROMPT
+# ================ PROMPT ================ #
             print("Price for product already exists.")
             return
 
@@ -438,7 +451,7 @@ class DBQueries():
 
         selected_row = self.ui.pricelist_table.currentRow()
         if selected_row < 0:
-            #PROMPT
+# ================ PROMPT ================ #
             print("No product selected.")
             return
 
@@ -471,7 +484,7 @@ class DBQueries():
         serv_id_result = c.fetchone()
 
         if not serv_id_result:
-            #PROMPT
+# ================ PROMPT ================ #
             print("Service does not exist.")
             return
 
@@ -487,12 +500,12 @@ class DBQueries():
         existing_price = c.fetchone()
 
         if existing_price:
-            #PROMPT
+# ================ PROMPT ================ #
             print("Product with updated values already exists in another row.")
             return
 
         if product_service == existing_data[0] and product_size == existing_data[1] and product_price == existing_data[2]:
-            #PROMPT
+# ================ PROMPT ================ #
             print("No changes made to the product details.")
             return
 
@@ -524,7 +537,7 @@ class DBQueries():
 
         selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
         if not selected_rows:
-            #PROMPT
+# ================ PROMPT ================ #
             print("No price for product selected.")
             return
 
@@ -618,7 +631,7 @@ class DBQueries():
         particular_cn = self.ui.contact_num_nt.text()
 
         if not particular_name or not particular_cn:
-            #PROMPT
+# ================ PROMPT ================ #
             print("Missing fields.")
             return
         

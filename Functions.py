@@ -7,8 +7,59 @@ from openpyxl import load_workbook, Workbook
 from BDPS_ui import Ui_MainWindow
 from BDPS_db.BDPS_queries import DBQueries
 
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+import time
+import sys
+import os
+from openpyxl import load_workbook, Workbook
+
+from POP_UP.add1 import Add_Categ
+from POP_UP.edit_confirm_categ1 import Edit_Categ
+from POP_UP.NoDetails8 import No_Details
+from POP_UP.delete_confirm_categ1 import Del_Categ
+
 
 class BtnFunctions(QMainWindow):
+
+
+    # METHODS FOR BUTTONS IN CATEGORY/SERVICE - DRA #
+    def pressed_add(self): # to open delete_confirm_categ
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Add_Categ() # from other py file
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    #  EDIT BTN  #
+    def pressed_edit(self): # to open delete_confirm_categ
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Edit_Categ() # from other py file
+        self.ui.setupUi(self.window)
+        self.window.show()
+    
+    #  DEL BTN  #
+    def pressed_del(self): # to open delete_confirm_categ
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Del_Categ() # from other py file
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    
+
+    
+    #  NO SERVICE SELECTED  #
+    def edit_no_service(self): # to open delete_confirm_categ
+        self.window = QtWidgets.QMainWindow()
+        self.ui = No_Details() # from other py file
+        self.ui.setupUi(self.window)
+        self.window.show()
+    # ============ #
+
+
     def __init__(self):
         super(BtnFunctions, self).__init__()
 
