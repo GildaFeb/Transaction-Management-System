@@ -146,7 +146,6 @@ class BtnFunctions(QMainWindow):
         self.ui.pricelist_table.itemSelectionChanged.connect(lambda: DBQueries.on_price_selection_changed(self))
 
         #======================== FETCH and MOD JOBS =================================#
-        #DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
         self.ui.category_name_nt.addItems(service_names)
         
         sizes = DBQueries.getProductSizes(self, dbFolder)
@@ -162,7 +161,8 @@ class BtnFunctions(QMainWindow):
         #======================== FETCH and MOD PAYMENTS =================================#
         self.ui.new_form_btn.clicked.connect(lambda: DBQueries.addPayment(self, dbFolder))
         self.ui.discount_input.valueChanged.connect(self.update_discount_label)
-
+        self.ui.discount_input.valueChanged.connect(lambda: DBQueries.checkDiscount(self, dbFolder))
+        self.ui.add_discount_nt.clicked.connect(lambda: DBQueries.checkDiscount(self, dbFolder))
         
         #======================== SEARCH FIELDS FUNCTIONS =================================#
         
@@ -705,5 +705,5 @@ class BtnFunctions(QMainWindow):
             self.ui.price_pricelist.setPlaceholderText('')
     
     def update_discount_label(self, discount):
-        self.discount_nt.setText(str(discount))
+        self.ui.discount_nt.setText(str(discount))
     

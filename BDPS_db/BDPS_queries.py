@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 import sqlite3
 from sqlite3 import Error
 from datetime import datetime
@@ -12,9 +13,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
 from PyQt5 import QtGui
-import time
-import sys
-import os
+
 from openpyxl import load_workbook, Workbook
 
 from POP_UP.add1 import Add_Categ
@@ -801,6 +800,26 @@ class DBQueries():
 
         except Error as e:
             print(e)
+
+    def calculate_subtotal_from_job_temp(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        try:
+            c = conn.cursor()
+
+            get_subtotal_sql = """
+                SELECT SUM(JOB_TOT) FROM job_temp;
+            """
+            c.execute(get_subtotal_sql)
+            subtotal = c.fetchone()[0]
+
+        except Error as e:
+            print(e)
+            subtotal = 0.0
+
+        conn.close()
+
+        return subtotal
     
     def transfer_data_from_job_temp_to_jobs(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -815,18 +834,11 @@ class DBQueries():
             c.execute(transfer_data_sql)
             conn.commit()
 
-            get_subtotal_sql = """
-                SELECT SUM(JOB_TOT) FROM job_temp;
-            """
-            c.execute(get_subtotal_sql)
-            subtotal = c.fetchone()[0]
-
             clear_job_temp_sql = "DROP TABLE job_temp;"
             c.execute(clear_job_temp_sql)
             conn.commit()
 
             DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
-            return subtotal if subtotal else 0.0
 
         except Error as e:
             print(e)
@@ -901,8 +913,11 @@ class DBQueries():
             print("Invalid discount amount.")
             return False
 
-        subtotal = DBQueries.transfer_data_from_job_temp_to_jobs(self, dbFolder)
+        subtotal = DBQueries.calculate_subtotal_from_job_temp(self, dbFolder)
         self.ui.subtotal_nt.setText(str(subtotal))
+
+        if not DBQueries.checkDiscount(self, dbFolder):
+                return False
 
         payment_total = subtotal - payment_discount
         self.ui.total_amount.setText(str(payment_total))
@@ -937,7 +952,26 @@ class DBQueries():
         except Error as e:
             print("Error adding payment:", e)
             return False
+        
+    def checkDiscount(self, dbFolder):
+        subtotal = DBQueries.calculate_subtotal_from_job_temp(self, dbFolder)
+        pmt_disc_qlabel_text = self.ui.discount_nt.text()
 
+        if subtotal is None:
+            print("Subtotal is not available. Please add jobs first.")
+            return False
+
+        try:
+            payment_discount = float(pmt_disc_qlabel_text) if pmt_disc_qlabel_text else 0.0
+        except ValueError:
+            print("Invalid discount amount.")
+            return False
+
+        if payment_discount > subtotal:
+            QMessageBox.warning(self, "Invalid Discount", "Discount amount cannot be greater than the subtotal.")
+            return False
+
+        return True
     #============================= TRANSACTION QUERIES ==============================#
     def getAllTransactions(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
