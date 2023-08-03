@@ -28,6 +28,14 @@ class DBQueries():
         super(DBQueries, self).__init__()
         self.arg = arg
     
+
+    # === DRA ===
+    def edit_no_service(self): # to open delete_confirm_categ
+        self.window = QtWidgets.QMainWindow()
+        self.ui = No_Details() # from other py file
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def create_connection(db_file):
         conn = None
         try:
