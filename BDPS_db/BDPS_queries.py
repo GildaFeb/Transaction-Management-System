@@ -1037,4 +1037,69 @@ class DBQueries():
             return c
         except Error as e:
             print(e)
+    
+    def saveTransaction(self, dbFolder):
+        prtclr_name = self.ui.customer_name_nt.text()
+        prtclr_cn = self.ui.contact_num_nt.text()
+        txn_date = datetime.now().strftime('%Y-%m-%d')
+        txn_sts = 'Pending'
+        pmt_disc = self.ui.discount_nt.text()
+        pmt_paid = self.ui.payment_nt.text()
+
+        conn = sqlite3.connect(dbFolder)
+        cursor = conn.cursor()
+
+        try:
+            
+            #========================== INSERT ON PARTICULAR ===========================#
+            prtclr_insert_sql = """
+                INSERT INTO particular (PRTCLR_NAME, PRTCLR_CN)
+                VALUES (?, ?)
+            """
+
+            cursor.execute(prtclr_insert_sql, (prtclr_name, prtclr_cn))
+            prtclr_id = cursor.lastrowid
+
+            #========================== INSERT ON JOBS ===========================#
+            job_transfer_sql = """
+                INSERT INTO jobs (PROD_ID, JOB_QTY, JOB_TOT)
+                SELECT PROD_ID, JOB_QTY, JOB_TOT FROM job_temp
+            """
+            cursor.execute(job_transfer_sql)
+
+            job_id = cursor.lastrowid
+
+            clear_job_temp_sql = "DROP TABLE IF EXISTS job_temp"
+            cursor.execute(clear_job_temp_sql)
+
+            conn.commit()
+
+            #========================== INSERT ON TRANSACTIONS ===========================#
+            current_prtclr_id = cursor.lastrowid
+            txn_insert_sql = """
+                INSERT INTO transactions (PRTCLR_ID, JOB_ID, TXN_DATE, TXN_STS)
+                VALUES (?, ?, ?, ?)
+            """
+            cursor.execute(txn_insert_sql, (current_prtclr_id, job_id, txn_date, txn_sts))
+            txn_code = cursor.lastrowid
+            print(txn_code)
+
+            #========================== INSERT ON PAYMENT ===========================#
+            pmt_tot = conn.execute("SELECT SUBTOTAL FROM job_temp WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp)").fetchone()[0] - pmt_disc
+            pmt_bal = pmt_tot - pmt_paid
+            pmt_sts = 'Fully Paid' if pmt_bal == 0 else 'Partially Paid'
+            pmt_date = txn_date
+
+            pmt_insert_sql = """
+                INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """
+            cursor.execute(pmt_insert_sql, (txn_code, pmt_disc, pmt_tot, pmt_paid, pmt_bal, pmt_date, pmt_sts))
+
+            print("Transaction saved successfully.")
+        except Exception as e:
+            print("Error saving transaction:", e)
+        finally:
+            cursor.close()
+            conn.close()
 

@@ -203,6 +203,9 @@ class BtnFunctions(QMainWindow):
         self.ui.payment_nt.textChanged.connect(lambda: DBQueries.check_payment_amount(self, dbFolder))
         self.ui.payment_nt.textChanged.connect(lambda: DBQueries.update_balance_nt(self, dbFolder))
 
+        #======================== FETCH and MOD PAYMENTS =================================#
+        self.ui.save_transaction_nt.clicked.connect(lambda: DBQueries.saveTransaction(self, dbFolder))
+
         #======================== SEARCH FIELDS FUNCTIONS =================================#
         
     #Price list search field    
