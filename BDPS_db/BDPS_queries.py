@@ -2,6 +2,7 @@ import os
 import sys
 import sqlite3
 from sqlite3 import Error
+from datetime import datetime
 
 from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
@@ -769,15 +770,24 @@ class DBQueries():
             INSERT INTO jobs (PROD_ID, JOB_QTY, JOB_TOT)
             SELECT PROD_ID, JOB_QTY, JOB_TOT FROM job_temp;
         """
+            
         try:
             c = conn.cursor()
             c.execute(transfer_data_sql)
             conn.commit()
 
+            get_subtotal_sql = """
+                SELECT SUM(JOB_TOT) FROM job_temp;
+            """
+            c.execute(get_subtotal_sql)
+            subtotal = c.fetchone()[0]
+
             clear_job_temp_sql = "DROP TABLE job_temp;"
             c.execute(clear_job_temp_sql)
             conn.commit()
+
             DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
+            return subtotal if subtotal else 0.0
 
         except Error as e:
             print(e)
@@ -823,7 +833,64 @@ class DBQueries():
             add_order_nt.setVisible(False)
         else:
             add_order_nt.setVisible(True)
-            
+    #============================== PAYMENT QUERIES =================================#
+    
+    def addPayment(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        check_job_temp_table_sql = "SELECT name FROM sqlite_master WHERE type='table' AND name='job_temp';"
+        c = conn.cursor()
+        c.execute(check_job_temp_table_sql)
+        job_temp_exists = c.fetchone()
+
+        if not job_temp_exists:
+            print("Job list is empty. Please add jobs first.")
+            return False
+
+        pmt_disc_qlabel_text = self.ui.discount_nt.text()
+        try:
+            payment_discount = float(pmt_disc_qlabel_text) if pmt_disc_qlabel_text else 0.0
+        except ValueError:
+            print("Invalid discount amount.")
+            return False
+
+        subtotal = DBQueries.transfer_data_from_job_temp_to_jobs(self, dbFolder)
+        self.ui.subtotal_nt.setText(str(subtotal))
+
+        payment_total = subtotal - payment_discount
+        self.ui.total_amount.setText(str(payment_total))
+
+        payment_paid_text = self.ui.payment_nt.text()
+        try:
+            payment_paid = float(payment_paid_text)
+        except ValueError:
+            print("Invalid payment amount.")
+            return False
+
+        if not payment_paid or payment_paid < 0:
+            print("Missing payment details or invalid payment amount.")
+            return False
+
+        payment_bal = payment_total - payment_paid
+        payment_sts = 'Fully Paid' if payment_bal == 0 else 'Partially Paid'
+        payment_date = datetime.now().strftime('%Y-%m-%d')
+
+        insert_payment_sql = """
+            INSERT INTO payment (PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
+            VALUES (?, ?, ?, ?, ?, ?);
+        """
+
+        try:
+            c = conn.cursor()
+            c.execute(insert_payment_sql, (payment_discount, payment_total, payment_paid, payment_bal, payment_date, payment_sts))
+            conn.commit()
+
+            print("Payment added successfully.")
+            return True
+        except Error as e:
+            print("Error adding payment:", e)
+            return False
+
     #============================= TRANSACTION QUERIES ==============================#
     def getAllTransactions(dbFolder):
         conn = DBQueries.create_connection(dbFolder)

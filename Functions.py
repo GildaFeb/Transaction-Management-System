@@ -106,6 +106,11 @@ class BtnFunctions(QMainWindow):
         self.ui.reset_job_detail_btn.clicked.connect(lambda: DBQueries.transfer_data_from_job_temp_to_jobs(self, dbFolder))
 
         self.ui.order_detail_table.itemSelectionChanged.connect(lambda: DBQueries.on_job_selection_changed(self))
+
+        #======================== FETCH and MOD PAYMENTS =================================#
+        self.ui.new_form_btn.clicked.connect(lambda: DBQueries.addPayment(self, dbFolder))
+        self.ui.discount_input.valueChanged.connect(self.update_discount_label)
+
         
         #======================== SEARCH FIELDS FUNCTIONS =================================#
         
@@ -609,4 +614,7 @@ class BtnFunctions(QMainWindow):
             self.ui.cat_name_pricelist.setCurrentIndex(-1)
             self.ui.size_pricelist.setPlaceholderText('')
             self.ui.price_pricelist.setPlaceholderText('')
+    
+    def update_discount_label(self, discount):
+        self.discount_nt.setText(str(discount))
     
