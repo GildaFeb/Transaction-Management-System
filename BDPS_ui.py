@@ -1805,6 +1805,7 @@ class Ui_MainWindow(object):
         self.label_26.setObjectName("label_26")
         self.horizontalLayout_16.addWidget(self.label_26)
         self.tnx_date_nt = QtWidgets.QDateEdit(self.widget_21)
+        self.tnx_date_nt.setMinimumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.tnx_date_nt.setFont(font)
@@ -2209,11 +2210,16 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "}\n"
 "\n"
-"#total_amount {\n"
+"#total_nt {\n"
 "    color: white;\n"
 "    background-color: #890500;\n"
+"\n"
 "}\n"
 "\n"
+"#subtotal_nt, #discount_nt, #balance_nt{\n"
+"    background-color: #f4f5f7;\n"
+"    color: black;\n"
+"}\n"
 "#peso {\n"
 "    color: white;\n"
 "    background-color: #890500;\n"
@@ -2306,16 +2312,22 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.addLayout(self.verticalLayout_18)
         self.verticalLayout_20 = QtWidgets.QVBoxLayout()
         self.verticalLayout_20.setObjectName("verticalLayout_20")
-        self.subtotal_nt = QtWidgets.QLabel(self.widget_29)
+        self.subtotal_nt = QtWidgets.QLineEdit(self.widget_29)
+        self.subtotal_nt.setBaseSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.subtotal_nt.setFont(font)
+        self.subtotal_nt.setFrame(False)
+        self.subtotal_nt.setReadOnly(True)
         self.subtotal_nt.setObjectName("subtotal_nt")
         self.verticalLayout_20.addWidget(self.subtotal_nt)
-        self.discount_nt = QtWidgets.QLabel(self.widget_29)
+        self.discount_nt = QtWidgets.QLineEdit(self.widget_29)
+        self.discount_nt.setBaseSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.discount_nt.setFont(font)
+        self.discount_nt.setFrame(False)
+        self.discount_nt.setReadOnly(True)
         self.discount_nt.setObjectName("discount_nt")
         self.verticalLayout_20.addWidget(self.discount_nt)
         self.horizontalLayout_25.addLayout(self.verticalLayout_20)
@@ -2352,6 +2364,8 @@ class Ui_MainWindow(object):
         self.total.setFont(font)
         self.total.setObjectName("total")
         self.horizontalLayout_28.addWidget(self.total)
+        spacerItem26 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_28.addItem(spacerItem26)
         self.peso = QtWidgets.QLabel(self.total_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2363,12 +2377,15 @@ class Ui_MainWindow(object):
         self.peso.setFont(font)
         self.peso.setObjectName("peso")
         self.horizontalLayout_28.addWidget(self.peso, 0, QtCore.Qt.AlignRight)
-        self.total_amount = QtWidgets.QLabel(self.total_frame)
+        self.total_nt = QtWidgets.QLineEdit(self.total_frame)
+        self.total_nt.setBaseSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(11)
-        self.total_amount.setFont(font)
-        self.total_amount.setObjectName("total_amount")
-        self.horizontalLayout_28.addWidget(self.total_amount)
+        self.total_nt.setFont(font)
+        self.total_nt.setFrame(False)
+        self.total_nt.setReadOnly(True)
+        self.total_nt.setObjectName("total_nt")
+        self.horizontalLayout_28.addWidget(self.total_nt, 0, QtCore.Qt.AlignRight)
         self.verticalLayout_21.addLayout(self.horizontalLayout_28)
         self.verticalLayout_22.addWidget(self.total_frame)
         self.horizontalLayout_67 = QtWidgets.QHBoxLayout()
@@ -2418,8 +2435,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_23.addLayout(self.horizontalLayout_29)
         self.horizontalLayout_59 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_59.setObjectName("horizontalLayout_59")
-        spacerItem26 = QtWidgets.QSpacerItem(108, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_59.addItem(spacerItem26)
+        spacerItem27 = QtWidgets.QSpacerItem(108, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_59.addItem(spacerItem27)
         self.horizontalLayout_52 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_52.setObjectName("horizontalLayout_52")
         self.label_10 = QtWidgets.QLabel(self.widget_20)
@@ -2428,10 +2445,15 @@ class Ui_MainWindow(object):
         self.label_10.setFont(font)
         self.label_10.setObjectName("label_10")
         self.horizontalLayout_52.addWidget(self.label_10)
-        self.balance_nt = QtWidgets.QLabel(self.widget_20)
+        self.balance_nt = QtWidgets.QLineEdit(self.widget_20)
+        self.balance_nt.setMinimumSize(QtCore.QSize(70, 0))
+        self.balance_nt.setMaximumSize(QtCore.QSize(50, 16777215))
+        self.balance_nt.setBaseSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.balance_nt.setFont(font)
+        self.balance_nt.setFrame(False)
+        self.balance_nt.setReadOnly(True)
         self.balance_nt.setObjectName("balance_nt")
         self.horizontalLayout_52.addWidget(self.balance_nt)
         self.horizontalLayout_59.addLayout(self.horizontalLayout_52)
@@ -2495,8 +2517,8 @@ class Ui_MainWindow(object):
         self.label_11.setFont(font)
         self.label_11.setObjectName("label_11")
         self.horizontalLayout_14.addWidget(self.label_11)
-        spacerItem27 = QtWidgets.QSpacerItem(158, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_14.addItem(spacerItem27)
+        spacerItem28 = QtWidgets.QSpacerItem(158, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_14.addItem(spacerItem28)
         self.pushButton_5 = QtWidgets.QPushButton(self.tr_actions_widget)
         self.pushButton_5.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_5.setStyleSheet("QPushButton{\n"
@@ -2613,8 +2635,8 @@ class Ui_MainWindow(object):
         self.dateEdit_2.setObjectName("dateEdit_2")
         self.verticalLayout_59.addWidget(self.dateEdit_2)
         self.horizontalLayout_22.addLayout(self.verticalLayout_59)
-        spacerItem28 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_22.addItem(spacerItem28)
+        spacerItem29 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_22.addItem(spacerItem29)
         self.pushButton = QtWidgets.QPushButton(self.tr_actions_widget)
         self.pushButton.setMinimumSize(QtCore.QSize(200, 35))
         self.pushButton.setMaximumSize(QtCore.QSize(16777215, 35))
@@ -2729,8 +2751,8 @@ class Ui_MainWindow(object):
         self.transactionR_combobox.addItem("")
         self.transactionR_combobox.addItem("")
         self.horizontalLayout_49.addWidget(self.transactionR_combobox)
-        spacerItem29 = QtWidgets.QSpacerItem(378, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_49.addItem(spacerItem29)
+        spacerItem30 = QtWidgets.QSpacerItem(378, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_49.addItem(spacerItem30)
         self.horizontalLayout_48 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_48.setObjectName("horizontalLayout_48")
         self.label_14 = QtWidgets.QLabel(self.tr_actions_widget)
@@ -2911,7 +2933,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_76.setSpacing(13)
         self.verticalLayout_76.setObjectName("verticalLayout_76")
         self.horizontalLayout_69 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_69.setContentsMargins(-1, 0, 12, -1)
+        self.horizontalLayout_69.setContentsMargins(-1, 0, 0, -1)
         self.horizontalLayout_69.setSpacing(15)
         self.horizontalLayout_69.setObjectName("horizontalLayout_69")
         self.label_42 = QtWidgets.QLabel(self.daily_transaction_2)
@@ -2973,7 +2995,26 @@ class Ui_MainWindow(object):
         font.setPointSize(11)
         self.dateEdit_daily_tnx.setFont(font)
         self.dateEdit_daily_tnx.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.dateEdit_daily_tnx.setStyleSheet("")
+        self.dateEdit_daily_tnx.setStyleSheet("QDateEdit{\n"
+"    background-color:white;\n"
+"    color:black;\n"
+"    border-radius:7px;\n"
+"    border: 2px solid #c3ccce;\n"
+"    padding-left: 10px;\n"
+"}\n"
+"\n"
+"QDateEdit::drop-down {\n"
+"    border: 0px;\n"
+"    background-color: #c3ccce;\n"
+"    padding: 5px 5px;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow {\n"
+"    image: url(:/icon/icon/down-arrow.png);\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    padding: 10px 10px;\n"
+"}")
         self.dateEdit_daily_tnx.setFrame(True)
         self.dateEdit_daily_tnx.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
         self.dateEdit_daily_tnx.setCalendarPopup(True)
@@ -2982,8 +3023,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_31 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_31.setSpacing(0)
         self.horizontalLayout_31.setObjectName("horizontalLayout_31")
-        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_31.addItem(spacerItem30)
+        spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_31.addItem(spacerItem31)
         self.printreport_daily_tnx_btn = QtWidgets.QPushButton(self.widget_32)
         self.printreport_daily_tnx_btn.setMinimumSize(QtCore.QSize(35, 35))
         self.printreport_daily_tnx_btn.setMaximumSize(QtCore.QSize(35, 35))
@@ -3078,8 +3119,8 @@ class Ui_MainWindow(object):
         self.filter_daily_tnx.addItem("")
         self.horizontalLayout_30.addWidget(self.filter_daily_tnx)
         self.horizontalLayout_32.addLayout(self.horizontalLayout_30)
-        spacerItem31 = QtWidgets.QSpacerItem(318, 27, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_32.addItem(spacerItem31)
+        spacerItem32 = QtWidgets.QSpacerItem(318, 27, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_32.addItem(spacerItem32)
         self.label_45 = QtWidgets.QLabel(self.widget_32)
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -3359,7 +3400,7 @@ class Ui_MainWindow(object):
         self.label_50.setObjectName("label_50")
         self.horizontalLayout_35.addWidget(self.label_50)
         self.datefrom_dwt = QtWidgets.QDateEdit(self.date_wise)
-        self.datefrom_dwt.setMinimumSize(QtCore.QSize(140, 35))
+        self.datefrom_dwt.setMinimumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.datefrom_dwt.setFont(font)
@@ -3394,7 +3435,7 @@ class Ui_MainWindow(object):
         self.label_51.setObjectName("label_51")
         self.horizontalLayout_35.addWidget(self.label_51)
         self.dateto_dwt = QtWidgets.QDateEdit(self.date_wise)
-        self.dateto_dwt.setMinimumSize(QtCore.QSize(140, 35))
+        self.dateto_dwt.setMinimumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.dateto_dwt.setFont(font)
@@ -3425,8 +3466,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_33 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_33.setObjectName("horizontalLayout_33")
         self.horizontalLayout_35.addLayout(self.horizontalLayout_33)
-        spacerItem32 = QtWidgets.QSpacerItem(318, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_35.addItem(spacerItem32)
+        spacerItem33 = QtWidgets.QSpacerItem(318, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_35.addItem(spacerItem33)
         self.horizontalLayout_37 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_37.setObjectName("horizontalLayout_37")
         self.printreport_dwt_btn = QtWidgets.QPushButton(self.date_wise)
@@ -3550,8 +3591,8 @@ class Ui_MainWindow(object):
         self.date_year_tnx.setCalendarPopup(True)
         self.date_year_tnx.setObjectName("date_year_tnx")
         self.horizontalLayout_38.addWidget(self.date_year_tnx)
-        spacerItem33 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_38.addItem(spacerItem33)
+        spacerItem34 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_38.addItem(spacerItem34)
         self.label_53 = QtWidgets.QLabel(self.date_wise)
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -3701,6 +3742,7 @@ class Ui_MainWindow(object):
         self.pushButton_7.setStyleSheet("QPushButton{\n"
 "    border: 2px solid #e1e2e4;\n"
 "    background-color: #fbfcfd;\n"
+"    border-radius: 10px;\n"
 "}\n"
 "\n"
 "")
@@ -3794,8 +3836,8 @@ class Ui_MainWindow(object):
         self.dateto_dwt_4.setCalendarPopup(True)
         self.dateto_dwt_4.setObjectName("dateto_dwt_4")
         self.horizontalLayout_54.addWidget(self.dateto_dwt_4)
-        spacerItem34 = QtWidgets.QSpacerItem(318, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_54.addItem(spacerItem34)
+        spacerItem35 = QtWidgets.QSpacerItem(318, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_54.addItem(spacerItem35)
         self.horizontalLayout_58 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_58.setSpacing(0)
         self.horizontalLayout_58.setObjectName("horizontalLayout_58")
@@ -3920,8 +3962,8 @@ class Ui_MainWindow(object):
         self.date_year_tnx_pmt.setCalendarPopup(True)
         self.date_year_tnx_pmt.setObjectName("date_year_tnx_pmt")
         self.horizontalLayout_56.addWidget(self.date_year_tnx_pmt)
-        spacerItem35 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_56.addItem(spacerItem35)
+        spacerItem36 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_56.addItem(spacerItem36)
         self.label_77 = QtWidgets.QLabel(self.datewise_payment)
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -4499,11 +4541,11 @@ class Ui_MainWindow(object):
         self.add_order_utd.setAutoExclusive(False)
         self.add_order_utd.setObjectName("add_order_utd")
         self.verticalLayout_64.addWidget(self.add_order_utd)
-        spacerItem36 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_64.addItem(spacerItem36)
+        spacerItem37 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_64.addItem(spacerItem37)
         self.horizontalLayout_60.addLayout(self.verticalLayout_64)
-        spacerItem37 = QtWidgets.QSpacerItem(108, 212, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_60.addItem(spacerItem37)
+        spacerItem38 = QtWidgets.QSpacerItem(108, 212, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_60.addItem(spacerItem38)
         self.verticalLayout_68 = QtWidgets.QVBoxLayout()
         self.verticalLayout_68.setSpacing(10)
         self.verticalLayout_68.setObjectName("verticalLayout_68")
@@ -4567,8 +4609,8 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.verticalLayout_68.addWidget(self.comboBox)
-        spacerItem38 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_68.addItem(spacerItem38)
+        spacerItem39 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_68.addItem(spacerItem39)
         self.horizontalLayout_60.addLayout(self.verticalLayout_68)
         self.verticalLayout_74.addLayout(self.horizontalLayout_60)
         self.verticalLayout_71.addWidget(self.utd_container)
@@ -4577,8 +4619,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_66 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_66.setContentsMargins(26, -1, 26, -1)
         self.horizontalLayout_66.setObjectName("horizontalLayout_66")
-        spacerItem39 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_66.addItem(spacerItem39)
+        spacerItem40 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_66.addItem(spacerItem40)
         self.cancel_update = QtWidgets.QPushButton(self.page)
         self.cancel_update.setMinimumSize(QtCore.QSize(200, 35))
         self.cancel_update.setMaximumSize(QtCore.QSize(250, 16777215))
@@ -4712,8 +4754,8 @@ class Ui_MainWindow(object):
         self.datewise_payment_btn_1.setObjectName("datewise_payment_btn_1")
         self.verticalLayout.addWidget(self.datewise_payment_btn_1)
         self.verticalLayout_3.addLayout(self.verticalLayout)
-        spacerItem40 = QtWidgets.QSpacerItem(20, 375, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem40)
+        spacerItem41 = QtWidgets.QSpacerItem(20, 375, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem41)
         self.exit_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
         self.exit_btn_1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.exit_btn_1.setText("")
@@ -4725,7 +4767,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
         self.new_transaction_btn_1.toggled['bool'].connect(self.new_transaction_btn_2.setChecked) # type: ignore
         self.datewise_transaction_btn_1.toggled['bool'].connect(self.datewise_transaction_btn_2.setChecked) # type: ignore
         self.daily_transaction_btn_1.toggled['bool'].connect(self.daily_transaction_btn_2.setChecked) # type: ignore
@@ -4868,16 +4910,16 @@ class Ui_MainWindow(object):
         self.label_38.setText(_translate("MainWindow", "Discount"))
         self.label_36.setText(_translate("MainWindow", "₱ "))
         self.label_35.setText(_translate("MainWindow", "₱"))
-        self.subtotal_nt.setText(_translate("MainWindow", "0.00"))
-        self.discount_nt.setText(_translate("MainWindow", "0.00"))
+        self.subtotal_nt.setPlaceholderText(_translate("MainWindow", "0.00"))
+        self.discount_nt.setPlaceholderText(_translate("MainWindow", "0.00"))
         self.total.setText(_translate("MainWindow", " Total"))
         self.peso.setText(_translate("MainWindow", "₱ "))
-        self.total_amount.setText(_translate("MainWindow", "0.00 "))
+        self.total_nt.setPlaceholderText(_translate("MainWindow", "0.00"))
         self.label_37.setText(_translate("MainWindow", "Discount"))
         self.add_discount_nt.setText(_translate("MainWindow", "Add Discount"))
         self.label_12.setText(_translate("MainWindow", "Payment:"))
         self.label_10.setText(_translate("MainWindow", "Balance:"))
-        self.balance_nt.setText(_translate("MainWindow", "0"))
+        self.balance_nt.setPlaceholderText(_translate("MainWindow", "0.00"))
         self.save_transaction_nt.setText(_translate("MainWindow", "Save Transaction"))
         self.cancel_transaction_nt.setText(_translate("MainWindow", "Cancel"))
         self.label_11.setText(_translate("MainWindow", "Transaction Record"))

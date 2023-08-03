@@ -784,7 +784,7 @@ border-top-left-radius: 30px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -3831,6 +3831,12 @@ background-color: #f5f7f9;
                          </item>
                          <item>
                           <widget class="QDateEdit" name="tnx_date_nt">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>35</height>
+                            </size>
+                           </property>
                            <property name="font">
                             <font>
                              <pointsize>11</pointsize>
@@ -4724,11 +4730,16 @@ QComboBox::down-arrow {
 border-radius: 5px;
 }
 
-#total_amount {
+#total_nt {
 	color: white;
 	background-color: #890500;
+
 }
 
+#subtotal_nt, #discount_nt, #balance_nt{
+	background-color: #f4f5f7;
+	color: black;
+}
 #peso {
 	color: white;
 	background-color: #890500;
@@ -4924,25 +4935,49 @@ border-radius: 5px;
                          <item>
                           <layout class="QVBoxLayout" name="verticalLayout_20">
                            <item>
-                            <widget class="QLabel" name="subtotal_nt">
+                            <widget class="QLineEdit" name="subtotal_nt">
+                             <property name="baseSize">
+                              <size>
+                               <width>0</width>
+                               <height>0</height>
+                              </size>
+                             </property>
                              <property name="font">
                               <font>
                                <pointsize>11</pointsize>
                               </font>
                              </property>
-                             <property name="text">
+                             <property name="frame">
+                              <bool>false</bool>
+                             </property>
+                             <property name="readOnly">
+                              <bool>true</bool>
+                             </property>
+                             <property name="placeholderText">
                               <string>0.00</string>
                              </property>
                             </widget>
                            </item>
                            <item>
-                            <widget class="QLabel" name="discount_nt">
+                            <widget class="QLineEdit" name="discount_nt">
+                             <property name="baseSize">
+                              <size>
+                               <width>0</width>
+                               <height>0</height>
+                              </size>
+                             </property>
                              <property name="font">
                               <font>
                                <pointsize>11</pointsize>
                               </font>
                              </property>
-                             <property name="text">
+                             <property name="frame">
+                              <bool>false</bool>
+                             </property>
+                             <property name="readOnly">
+                              <bool>true</bool>
+                             </property>
+                             <property name="placeholderText">
                               <string>0.00</string>
                              </property>
                             </widget>
@@ -5044,6 +5079,19 @@ border-radius: 5px;
                            </property>
                           </widget>
                          </item>
+                         <item>
+                          <spacer name="horizontalSpacer_27">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
                          <item alignment="Qt::AlignRight">
                           <widget class="QLabel" name="peso">
                            <property name="sizePolicy">
@@ -5062,15 +5110,27 @@ border-radius: 5px;
                            </property>
                           </widget>
                          </item>
-                         <item>
-                          <widget class="QLabel" name="total_amount">
+                         <item alignment="Qt::AlignRight">
+                          <widget class="QLineEdit" name="total_nt">
+                           <property name="baseSize">
+                            <size>
+                             <width>0</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="font">
                             <font>
                              <pointsize>11</pointsize>
                             </font>
                            </property>
-                           <property name="text">
-                            <string>0.00 </string>
+                           <property name="frame">
+                            <bool>false</bool>
+                           </property>
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                           <property name="placeholderText">
+                            <string>0.00</string>
                            </property>
                           </widget>
                          </item>
@@ -5210,14 +5270,38 @@ border-radius: 5px;
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLabel" name="balance_nt">
+                      <widget class="QLineEdit" name="balance_nt">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="baseSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
                        <property name="font">
                         <font>
                          <pointsize>11</pointsize>
                         </font>
                        </property>
-                       <property name="text">
-                        <string>0</string>
+                       <property name="frame">
+                        <bool>false</bool>
+                       </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
+                       <property name="placeholderText">
+                        <string>0.00</string>
                        </property>
                       </widget>
                      </item>
@@ -6259,7 +6343,7 @@ color: white
               <number>0</number>
              </property>
              <property name="rightMargin">
-              <number>12</number>
+              <number>0</number>
              </property>
              <item>
               <widget class="QLabel" name="label_42">
@@ -6436,7 +6520,26 @@ color: white
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true"/>
+                      <string notr="true">QDateEdit{
+	background-color:white;
+	color:black;
+	border-radius:7px;
+    border: 2px solid #c3ccce;
+	padding-left: 10px;
+}
+
+QDateEdit::drop-down {
+	border: 0px;
+	background-color: #c3ccce;
+	padding: 5px 5px;
+}
+
+QDateEdit::down-arrow {
+	image: url(:/icon/icon/down-arrow.png);
+	width: 15px;
+	height: 15px;
+	padding: 10px 10px;
+}</string>
                      </property>
                      <property name="frame">
                       <bool>true</bool>
@@ -7358,7 +7461,7 @@ color: black;
                        <widget class="QDateEdit" name="datefrom_dwt">
                         <property name="minimumSize">
                          <size>
-                          <width>140</width>
+                          <width>150</width>
                           <height>35</height>
                          </size>
                         </property>
@@ -7413,7 +7516,7 @@ QDateEdit::down-arrow {
                        <widget class="QDateEdit" name="dateto_dwt">
                         <property name="minimumSize">
                          <size>
-                          <width>140</width>
+                          <width>150</width>
                           <height>35</height>
                          </size>
                         </property>
@@ -8115,6 +8218,7 @@ QDateEdit::down-arrow {
                 <string notr="true">QPushButton{
 	border: 2px solid #e1e2e4;
 	background-color: #fbfcfd;
+	border-radius: 10px;
 }
 
 </string>
