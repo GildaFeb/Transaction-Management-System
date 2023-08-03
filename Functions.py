@@ -1,7 +1,7 @@
 import os
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox, QComboBox, QFileDialog, QLineEdit
 #from PyQt5.QtGui import QStandardItemModel, QStandardItem
-#from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
+from PyQt5.QtCore import pyqtSlot, QFile, QTextStream, QDate
 #from PyQt5 import QtWidgets, QtGui, QtCore
 from openpyxl import load_workbook, Workbook
 from BDPS_ui import Ui_MainWindow
@@ -33,16 +33,16 @@ class BtnFunctions(QMainWindow):
         #========================== SEARCH FIELDS =====================================#
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
         self.ui.edit_search_category.textChanged.connect(self.category_table)
-        self.ui.edit_search_daily_tnx.textChanged.connect(self.daily_tnx_table)
+        self.ui.edit_search_daily_tnx.textChanged.connect(self.filter_dailytxn_table)
         self.ui.edit_search_dwt.textChanged.connect(self.datewise_txn_table)
         self.ui.edit_search_dwp.textChanged.connect(self.datewise_payment_table)
         self.ui.edit_search_new_transaction.textChanged.connect(self.transaction_table)
 
         #========================== FILTER FUNCTIONS =====================================#
-        #self.ui.filter_daily_tnx.currentIndexChanged.connect(self.filter_dailytxn_table)
+        self.ui.filter_daily_tnx.currentIndexChanged.connect(self.filter_dailytxn_table)
         #self.ui.filter_dwt.currentIndexChanged.connect(self.filter_datewise_txn_table)
         #self.ui.filter_dwp.currentIndexChanged.connect(self.filter_date_wise_payment_table) 
-        
+        self.ui.dateEdit_daily_tnx.dateChanged.connect(self.filter_dailytxn_table)
         #========================== EXCEL EXPORT BUTTONS =====================================#
         self.ui.printreport_dwp_btn.clicked.connect(self.datewise_payment_toExcel)
         self.ui.printreport_daily_tnx_btn.clicked.connect(self.daily_transaction_toExcel)
@@ -283,49 +283,56 @@ class BtnFunctions(QMainWindow):
             self.ui.no_datewiseP_found.show()
 
         #======================== FILTER FUNCTIONS =================================#
-    """            
+              
     #Daily Transaction Filter 
     def filter_dailytxn_table(self):
         selected_item = self.ui.filter_daily_tnx.currentText()
-        
+        search_dailytxn = self.ui.edit_search_daily_tnx.text().strip().lower()
+    
         no_row_matches = True
-
+        
         for row in range(self.ui.daily_tnx_table.rowCount()):
-            status_item = self.ui.daily_tnx_table.item(row, 5)
+            status_item = self.ui.daily_tnx_table.item(row, 3)
+            for col in range(self.ui.daily_tnx_table.columnCount()):
+                item = self.ui.daily_tnx_table.item(row, col)
             
-            if status_item is not None:
-                status = status_item.text().strip()
-                if selected_item == "All Transactions":
-                    self.ui.daily_tnx_table.setRowHidden(row, False)
-                    self.ui.daily_tnx_table.show()
-                    self.ui.no_dailytxn_found.hide()
-                    no_row_matches = False
-
-                elif selected_item == "Pending Transactions" and status == "Pending":
-                    self.ui.daily_tnx_table.setRowHidden(row, False)
-                    self.ui.daily_tnx_table.show()
-                    self.ui.no_dailytxn_found.hide()
-                    no_row_matches = False
-                    
-                elif selected_item == "Failed Transactions" and status == "Failed":
-                    self.ui.daily_tnx_table.setRowHidden(row, False)
-                    self.ui.daily_tnx_table.show()
-                    self.ui.no_dailytxn_found.hide()
-                    no_row_matches = False
-
-                elif selected_item == "Successful Transactions" and status == "Successful":
-                    self.ui.daily_tnx_table.setRowHidden(row, False)
-                    self.ui.daily_tnx_table.show()
-                    self.ui.no_dailytxn_found.hide()
-                    no_row_matches = False 
-                else:
-                    self.ui.daily_tnx_table.setRowHidden(row, True)
+                if status_item is not None and item is not None:
+                    status = status_item.text().strip()
+                    if (selected_item == "All Transactions") and (search_dailytxn in item.text().lower()):
+                        self.ui.daily_tnx_table.setRowHidden(row, False)
+                        self.ui.daily_tnx_table.show()
+                        self.ui.no_dailytxn_found.hide()
+                        no_row_matches = False
+                        break
+                    elif (selected_item == "Pending Transactions" and status == "Pending") and (search_dailytxn in item.text().lower()):
+                        self.ui.daily_tnx_table.setRowHidden(row, False)
+                        self.ui.daily_tnx_table.show()
+                        self.ui.no_dailytxn_found.hide()
+                        no_row_matches = False
+                        break
+                    elif (selected_item == "Failed Transactions" and status == "Failed") and (search_dailytxn in item.text().lower()):
+                        self.ui.daily_tnx_table.setRowHidden(row, False)
+                        self.ui.daily_tnx_table.show()
+                        self.ui.no_dailytxn_found.hide()
+                        no_row_matches = False
+                        break
+                    elif (selected_item == "Successful Transactions" and status == "Successful") and (search_dailytxn in item.text().lower()):
+                        self.ui.daily_tnx_table.setRowHidden(row, False)
+                        self.ui.daily_tnx_table.show()
+                        self.ui.no_dailytxn_found.hide()
+                        no_row_matches = False
+                        break 
+                    else:
+                        self.ui.daily_tnx_table.setRowHidden(row, True)
         
         if no_row_matches == True:
             self.ui.daily_tnx_table.hide()
             self.ui.no_dailytxn_found.setText(f"There is no {selected_item} found.")
             self.ui.no_dailytxn_found.show()
-    """          
+        else:
+            self.ui.daily_tnx_table.show()
+            self.ui.no_dailytxn_found.hide()
+            
     #Date-wise transaction filter button
     def filter_date_wise_transaction_clicked(self):
         print("date-wise transactions filter")  

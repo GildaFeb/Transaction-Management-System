@@ -784,7 +784,7 @@ border-top-left-radius: 30px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -6291,30 +6291,16 @@ color: white
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QDateEdit{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #c3ccce;
-	padding-left: 10px;
-}
-
-QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
-	padding: 5px 5px;
-width: 10px;
-}
-
-QDateEdit::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
+                      <string notr="true"/>
+                     </property>
+                     <property name="frame">
+                      <bool>true</bool>
+                     </property>
+                     <property name="buttonSymbols">
+                      <enum>QAbstractSpinBox::UpDownArrows</enum>
                      </property>
                      <property name="displayFormat">
-                      <string>yyyy/MM/dd</string>
+                      <string>yyyy-MM-dd</string>
                      </property>
                      <property name="calendarPopup">
                       <bool>true</bool>
@@ -6558,7 +6544,7 @@ QComboBox::down-arrow {
                        </property>
                        <item>
                         <property name="text">
-                         <string>All transactions</string>
+                         <string>All Transactions</string>
                         </property>
                        </item>
                        <item>
@@ -6738,6 +6724,16 @@ color: black;
                   <string>3</string>
                  </property>
                 </row>
+                <row>
+                 <property name="text">
+                  <string>4</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>5</string>
+                 </property>
+                </row>
                 <column>
                  <property name="text">
                   <string>Job Code</string>
@@ -6829,12 +6825,27 @@ color: black;
                 </item>
                 <item row="0" column="1">
                  <property name="text">
-                  <string>1/10/1000</string>
+                  <string>2010-10-29</string>
                  </property>
                 </item>
                 <item row="0" column="2">
                  <property name="text">
                   <string>11</string>
+                 </property>
+                </item>
+                <item row="0" column="3">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
+                <item row="0" column="4">
+                 <property name="text">
+                  <string>small</string>
+                 </property>
+                </item>
+                <item row="0" column="5">
+                 <property name="text">
+                  <string>23</string>
                  </property>
                 </item>
                 <item row="0" column="6">
@@ -6849,12 +6860,27 @@ color: black;
                 </item>
                 <item row="1" column="1">
                  <property name="text">
-                  <string>2/20/2000</string>
+                  <string>2002-09-20</string>
                  </property>
                 </item>
                 <item row="1" column="2">
                  <property name="text">
                   <string>12</string>
+                 </property>
+                </item>
+                <item row="1" column="3">
+                 <property name="text">
+                  <string>Failed</string>
+                 </property>
+                </item>
+                <item row="1" column="4">
+                 <property name="text">
+                  <string>large</string>
+                 </property>
+                </item>
+                <item row="1" column="5">
+                 <property name="text">
+                  <string>25</string>
                  </property>
                 </item>
                 <item row="1" column="6">
@@ -6869,7 +6895,7 @@ color: black;
                 </item>
                 <item row="2" column="1">
                  <property name="text">
-                  <string>3/30/3000</string>
+                  <string>2005-01-30</string>
                  </property>
                 </item>
                 <item row="2" column="2">
@@ -6877,7 +6903,92 @@ color: black;
                   <string>13</string>
                  </property>
                 </item>
+                <item row="2" column="3">
+                 <property name="text">
+                  <string>Successful</string>
+                 </property>
+                </item>
+                <item row="2" column="4">
+                 <property name="text">
+                  <string>ewan</string>
+                 </property>
+                </item>
+                <item row="2" column="5">
+                 <property name="text">
+                  <string>21</string>
+                 </property>
+                </item>
                 <item row="2" column="6">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+                <item row="3" column="0">
+                 <property name="text">
+                  <string>5</string>
+                 </property>
+                </item>
+                <item row="3" column="1">
+                 <property name="text">
+                  <string>2019-08-21</string>
+                 </property>
+                </item>
+                <item row="3" column="2">
+                 <property name="text">
+                  <string>14</string>
+                 </property>
+                </item>
+                <item row="3" column="3">
+                 <property name="text">
+                  <string>Pending</string>
+                 </property>
+                </item>
+                <item row="3" column="4">
+                 <property name="text">
+                  <string>g</string>
+                 </property>
+                </item>
+                <item row="3" column="5">
+                 <property name="text">
+                  <string>25</string>
+                 </property>
+                </item>
+                <item row="3" column="6">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+                <item row="4" column="0">
+                 <property name="text">
+                  <string>6</string>
+                 </property>
+                </item>
+                <item row="4" column="1">
+                 <property name="text">
+                  <string>2023-01-01</string>
+                 </property>
+                </item>
+                <item row="4" column="2">
+                 <property name="text">
+                  <string>15</string>
+                 </property>
+                </item>
+                <item row="4" column="3">
+                 <property name="text">
+                  <string>Failed</string>
+                 </property>
+                </item>
+                <item row="4" column="4">
+                 <property name="text">
+                  <string>z</string>
+                 </property>
+                </item>
+                <item row="4" column="5">
+                 <property name="text">
+                  <string>21</string>
+                 </property>
+                </item>
+                <item row="4" column="6">
                  <property name="text">
                   <string>1</string>
                  </property>
