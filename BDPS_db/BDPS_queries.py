@@ -6,6 +6,16 @@ from datetime import datetime
 
 from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
+from POP_UP.add1 import Add_Categ
+from POP_UP.edit_confirm_categ1 import Edit_Categ
+from POP_UP.NoDetails8 import No_Details
+from POP_UP.delete_confirm_categ1 import Del_Categ
+
+
 class DBQueries():
     def __init__(self, arg):
         super(DBQueries, self).__init__()
@@ -122,6 +132,14 @@ class DBQueries():
 
         except Error as e:
             print(e)
+    
+    
+    # === DRA ===
+    def edit_no_service(self): # to open delete_confirm_categ
+        self.window = QtWidgets.QMainWindow()
+        self.ui = No_Details() # from other py file
+        self.ui.setupUi(self.window)
+        self.window.show()
 
     def editService(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -129,8 +147,14 @@ class DBQueries():
         selected_row = self.ui.category_table.currentRow()
         if selected_row < 0:
             #PROMPT
+
+            # === DRA === #
+            # === Edit Category Btn / No Service === #
+            self.ui.edit_category_btn.clicked.connect(lambda: self.edit_no_service())
             print("No service selected.")
+
             return
+        
 
         service_id = int(self.ui.category_table.item(selected_row, 0).text().split('-')[-1])
         service_name = self.ui.product_name_category.text()
