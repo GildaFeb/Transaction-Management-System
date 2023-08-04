@@ -2336,6 +2336,7 @@ class Ui_MainWindow(object):
 "}")
         self.widget_20.setObjectName("widget_20")
         self.verticalLayout_23 = QtWidgets.QVBoxLayout(self.widget_20)
+        self.verticalLayout_23.setSpacing(8)
         self.verticalLayout_23.setObjectName("verticalLayout_23")
         spacerItem21 = QtWidgets.QSpacerItem(20, 633, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_23.addItem(spacerItem21)
@@ -2511,12 +2512,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_23.addWidget(self.add_discount_nt)
         self.horizontalLayout_29 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
+        self.verticalLayout_23.addLayout(self.horizontalLayout_29)
+        self.break3 = QtWidgets.QFrame(self.widget_20)
+        self.break3.setMinimumSize(QtCore.QSize(0, 2))
+        self.break3.setMaximumSize(QtCore.QSize(16777215, 2))
+        self.break3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.break3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.break3.setObjectName("break3")
+        self.verticalLayout_23.addWidget(self.break3)
         self.label_12 = QtWidgets.QLabel(self.widget_20)
         font = QtGui.QFont()
         font.setPointSize(11)
         self.label_12.setFont(font)
         self.label_12.setObjectName("label_12")
-        self.horizontalLayout_29.addWidget(self.label_12)
+        self.verticalLayout_23.addWidget(self.label_12)
         self.payment_nt = QtWidgets.QLineEdit(self.widget_20)
         self.payment_nt.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
@@ -2524,12 +2533,50 @@ class Ui_MainWindow(object):
         self.payment_nt.setFont(font)
         self.payment_nt.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.payment_nt.setObjectName("payment_nt")
-        self.horizontalLayout_29.addWidget(self.payment_nt)
-        self.verticalLayout_23.addLayout(self.horizontalLayout_29)
+        self.verticalLayout_23.addWidget(self.payment_nt)
+        self.label_64 = QtWidgets.QLabel(self.widget_20)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        self.label_64.setFont(font)
+        self.label_64.setObjectName("label_64")
+        self.verticalLayout_23.addWidget(self.label_64)
+        self.comboBox_2 = QtWidgets.QComboBox(self.widget_20)
+        self.comboBox_2.setMinimumSize(QtCore.QSize(200, 40))
+        self.comboBox_2.setMaximumSize(QtCore.QSize(350, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.comboBox_2.setFont(font)
+        self.comboBox_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.comboBox_2.setStyleSheet("QComboBox{\n"
+"    background-color:white;\n"
+"    color:black;\n"
+"    border-radius:7px;\n"
+"    border: 2px solid #efedd3;\n"
+"    padding-left: 10px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    border: 0px;\n"
+"    background-color: #efedd3;\n"
+"    padding: 15px;\n"
+"    width: 10px;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(:/icon/icon/down-arrow.png);\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    padding: 10px 10px;\n"
+"}")
+        self.comboBox_2.setObjectName("comboBox_2")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.verticalLayout_23.addWidget(self.comboBox_2)
         self.horizontalLayout_59 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_59.setObjectName("horizontalLayout_59")
-        spacerItem27 = QtWidgets.QSpacerItem(108, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_59.addItem(spacerItem27)
         self.horizontalLayout_52 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_52.setObjectName("horizontalLayout_52")
         self.label_10 = QtWidgets.QLabel(self.widget_20)
@@ -2552,14 +2599,9 @@ class Ui_MainWindow(object):
         self.balance_nt.setObjectName("balance_nt")
         self.horizontalLayout_52.addWidget(self.balance_nt)
         self.horizontalLayout_59.addLayout(self.horizontalLayout_52)
+        spacerItem27 = QtWidgets.QSpacerItem(108, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_59.addItem(spacerItem27)
         self.verticalLayout_23.addLayout(self.horizontalLayout_59)
-        self.break3 = QtWidgets.QFrame(self.widget_20)
-        self.break3.setMinimumSize(QtCore.QSize(0, 2))
-        self.break3.setMaximumSize(QtCore.QSize(16777215, 2))
-        self.break3.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.break3.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.break3.setObjectName("break3")
-        self.verticalLayout_23.addWidget(self.break3)
         self.save_transaction_nt = QtWidgets.QPushButton(self.widget_20)
         self.save_transaction_nt.setMinimumSize(QtCore.QSize(0, 35))
         self.save_transaction_nt.setMaximumSize(QtCore.QSize(16777215, 30))
@@ -4332,7 +4374,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
         self.new_transaction_btn_1.toggled['bool'].connect(self.new_transaction_btn_2.setChecked) # type: ignore
         self.datewise_transaction_btn_1.toggled['bool'].connect(self.datewise_transaction_btn_2.setChecked) # type: ignore
         self.daily_transaction_btn_1.toggled['bool'].connect(self.daily_transaction_btn_2.setChecked) # type: ignore
@@ -4512,6 +4554,10 @@ class Ui_MainWindow(object):
         self.label_37.setText(_translate("MainWindow", "Discount"))
         self.add_discount_nt.setText(_translate("MainWindow", "Add Discount"))
         self.label_12.setText(_translate("MainWindow", "Payment:"))
+        self.label_64.setText(_translate("MainWindow", "Transaction Status"))
+        self.comboBox_2.setItemText(0, _translate("MainWindow", "Sucessful Transaction"))
+        self.comboBox_2.setItemText(1, _translate("MainWindow", "Pending Transaction"))
+        self.comboBox_2.setItemText(2, _translate("MainWindow", "Cancelled Transaction"))
         self.label_10.setText(_translate("MainWindow", "Balance:"))
         self.balance_nt.setPlaceholderText(_translate("MainWindow", "0"))
         self.save_transaction_nt.setText(_translate("MainWindow", "Save Transaction"))

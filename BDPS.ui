@@ -789,7 +789,7 @@ border-top-left-radius: 30px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -4957,6 +4957,9 @@ border-radius: 5px;
 }</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_23">
+                 <property name="spacing">
+                  <number>8</number>
+                 </property>
                  <item>
                   <spacer name="verticalSpacer_6">
                    <property name="orientation">
@@ -5393,54 +5396,138 @@ border-radius: 5px;
                   </widget>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_29">
+                  <layout class="QHBoxLayout" name="horizontalLayout_29"/>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="break3">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>2</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>2</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_12">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Payment:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="payment_nt">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_64">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>50</weight>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Transaction Status</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>350</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QComboBox{
+	background-color:white;
+	color:black;
+	border-radius:7px;
+    border: 2px solid #efedd3;
+	padding-left: 10px;
+}
+
+QComboBox::drop-down {
+	border: 0px;
+	background-color: #efedd3;
+	padding: 15px;
+	width: 10px;
+}
+
+QComboBox::down-arrow {
+	image: url(:/icon/icon/down-arrow.png);
+	width: 15px;
+	height: 15px;
+	padding: 10px 10px;
+}</string>
+                   </property>
                    <item>
-                    <widget class="QLabel" name="label_12">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Payment:</string>
-                     </property>
-                    </widget>
+                    <property name="text">
+                     <string>Sucessful Transaction</string>
+                    </property>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="payment_nt">
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
+                    <property name="text">
+                     <string>Pending Transaction</string>
+                    </property>
                    </item>
-                  </layout>
+                   <item>
+                    <property name="text">
+                     <string>Cancelled Transaction</string>
+                    </property>
+                   </item>
+                  </widget>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_59">
-                   <item>
-                    <spacer name="horizontalSpacer_10">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>108</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_52">
                      <item>
@@ -5499,29 +5586,20 @@ border-radius: 5px;
                      </item>
                     </layout>
                    </item>
+                   <item>
+                    <spacer name="horizontalSpacer_10">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>108</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
                   </layout>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="break3">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>2</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>2</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                  </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="save_transaction_nt">
