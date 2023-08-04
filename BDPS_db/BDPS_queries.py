@@ -1261,6 +1261,7 @@ class DBQueries():
 
             conn.commit()
 
+            DBQueries.displayTransactionRecords(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDailyTransactions(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDatewiseTransactions(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDatewisePayments(self, DBQueries.getAllTransactions(dbFolder))
@@ -1282,6 +1283,8 @@ class DBQueries():
             self.ui.comboBox_2.setCurrentIndex(0)
             self.ui.balance_nt.setText('0.00')
             DBQueries.resetJobDetails(self, dbFolder)
+            current_txn_code = DBQueries.get_next_txn_code(self, dbFolder)
+            self.ui.tnx_code_nt.setText(str(current_txn_code))
 
 
         except Exception as e:
