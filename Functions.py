@@ -212,6 +212,9 @@ class BtnFunctions(QMainWindow):
         current_txn_code = DBQueries.get_next_txn_code(self, dbFolder)
         self.ui.tnx_code_nt.setText(str(current_txn_code))
 
+        self.ui.update_transaction.clicked.connect(lambda: DBQueries.updateTransactions(self, dbFolder))
+        self.ui.transaction_record_tbl.itemSelectionChanged.connect(lambda: DBQueries.on_txn_selection_changed(self))
+        
         #=============================== ON EXIT ========================================#
         atexit.register(DBQueries.drop_job_temp_table, dbFolder)
 

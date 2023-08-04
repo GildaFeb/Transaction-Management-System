@@ -861,8 +861,6 @@ class DBQueries():
                 job_price = float(row[3])
                 job_quantity = int(row[4])
 
-                print(job_id)
-
                 update_subtotal_sql = """
                                         UPDATE job_temp SET SUBTOTAL = (
                                             SELECT IFNULL(SUM(JOB_TOT), 0) FROM job_temp
@@ -1038,104 +1036,11 @@ class DBQueries():
         try:
             c = conn.cursor()
             c.execute(get_all_transactions)
+            rows = c.fetchall()
 
-            return c
+            return rows
         except Error as e:
             print(e)
-
-    def displayTransactionRecords(self, rows):
-        self.ui.transaction_record_tbl.setRowCount(0)
-
-        for row in rows:
-            rowPosition = self.ui.transaction_record_tbl.rowCount()
-            self.ui.transaction_record_tbl.setRowCount(rowPosition + 1)
-
-            job_id = row[15]
-            txn_date = row[2]
-            particular_cn = row[5]
-            pmt_tot = row[10]
-            pmt_paid = row[11]
-            txn_sts = row[3]
-            pmt_sts = row[14]
-            pmt_bal = row[12]
-
-            self.ui.transaction_record_tbl.setItem(rowPosition, 0, QTableWidgetItem(str(job_id)))
-            self.ui.transaction_record_tbl.setItem(rowPosition, 1, QTableWidgetItem(str(txn_date)))
-            self.ui.transaction_record_tbl.setItem(rowPosition, 2, QTableWidgetItem(str(particular_cn)))
-            self.ui.transaction_record_tbl.setItem(rowPosition, 3, QTableWidgetItem(str(pmt_tot)))
-            self.ui.transaction_record_tbl.setItem(rowPosition, 4, QTableWidgetItem(str(pmt_paid)))
-            self.ui.transaction_record_tbl.setItem(rowPosition, 5, QTableWidgetItem(str(txn_sts)))
-            self.ui.transaction_record_tbl.setItem(rowPosition, 6, QTableWidgetItem(str(pmt_sts)))
-            self.ui.transaction_record_tbl.setItem(rowPosition, 7, QTableWidgetItem(str(pmt_bal)))
-
-    def displayDailyTransactions(self, rows):
-        self.ui.daily_tnx_table.setRowCount(0)
-
-        for row in rows:
-            rowPosition = self.ui.daily_tnx_table.rowCount()
-            self.ui.daily_tnx_table.setRowCount(rowPosition + 1)
-
-            job_id = row[15]
-            txn_date = row[2]
-            prtclr_name = row[5]
-            serv_sts = row[27]
-            prod_sz = row[22]
-            job_qty = row[17]
-            job_tot = row[18]
-
-            self.ui.daily_tnx_table.setItem(rowPosition, 0, QTableWidgetItem(str(job_id)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 1, QTableWidgetItem(str(txn_date)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 2, QTableWidgetItem(str(prtclr_name)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 3, QTableWidgetItem(str(serv_sts)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 4, QTableWidgetItem(str(prod_sz)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 5, QTableWidgetItem(str(job_qty)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 6, QTableWidgetItem(str(job_tot)))
-    
-    def displayDatewiseTransactions(self, rows):
-        self.ui.datewise_transaction_table.setRowCount(0)
-
-        for row in rows:
-            rowPosition = self.ui.datewise_transaction_table.rowCount()
-            self.ui.datewise_transaction_table.setRowCount(rowPosition + 1)
-
-            txn_code = row[0]
-            txn_date = row[2]
-            particular_cn = row[5]
-            pmt_tot = row[10]
-            txn_sts = row[3]
-
-            self.ui.datewise_transaction_table.setItem(rowPosition, 0, QTableWidgetItem(str(txn_code)))
-            self.ui.datewise_transaction_table.setItem(rowPosition, 1, QTableWidgetItem(str(txn_date)))
-            self.ui.datewise_transaction_table.setItem(rowPosition, 2, QTableWidgetItem(str(particular_cn)))
-            self.ui.datewise_transaction_table.setItem(rowPosition, 3, QTableWidgetItem(str(pmt_tot)))
-            self.ui.datewise_transaction_table.setItem(rowPosition, 4, QTableWidgetItem(str(txn_sts)))
-    
-
-    def displayDatewisePayments(self, rows):
-        self.ui.datewise_payment_table.setRowCount(0)
-
-        for row in rows:
-            rowPosition = self.ui.datewise_payment_table.rowCount()
-            self.ui.datewise_payment_table.setRowCount(rowPosition + 1)
-
-            pmt_id = row[7]
-            pmt_date = row[13]
-            prtclr_name = row[5]
-            pmt_disc = row[9]
-            pmt_tot = row[10]
-            pmt_paid = row[11]
-            pmt_bal = row[12]
-            pmt_sts = row[14]
-
-            self.ui.datewise_payment_table.setItem(rowPosition, 0, QTableWidgetItem(str(pmt_id)))
-            self.ui.datewise_payment_table.setItem(rowPosition, 1, QTableWidgetItem(str(pmt_date)))
-            self.ui.datewise_payment_table.setItem(rowPosition, 2, QTableWidgetItem(str(prtclr_name)))
-            self.ui.datewise_payment_table.setItem(rowPosition, 3, QTableWidgetItem(str(pmt_disc)))
-            self.ui.datewise_payment_table.setItem(rowPosition, 4, QTableWidgetItem(str(pmt_tot)))
-            self.ui.datewise_payment_table.setItem(rowPosition, 5, QTableWidgetItem(str(pmt_paid)))
-            self.ui.datewise_payment_table.setItem(rowPosition, 6, QTableWidgetItem(str(pmt_bal)))
-            self.ui.datewise_payment_table.setItem(rowPosition, 7, QTableWidgetItem(str(pmt_sts)))
-
 
     def get_next_txn_code(self, dbFolder):
         conn = sqlite3.connect(dbFolder)
@@ -1226,7 +1131,172 @@ class DBQueries():
         finally:
             cursor.close()
             conn.close()
+    
 
+    def updateTransactions(self, dbFolder):
+        conn = DBQueries.create_connection(dbFolder)
+
+        selected_row = self.ui.transaction_record_table.currentRow()
+        if selected_row < 0:
+            print("No transaction selected.")
+
+            return
+        
+        txn_code = int(self.ui.transaction_record_table.item(selected_row, 0).text().split('-')[-1])
+        txn_date = self.ui.transaction_record_table.item(selected_row, 2).text()
+        prtclr_name = self.ui.transaction_record_table.item(selected_row, 3).text()
+        job_tot = float(self.ui.transaction_record_table.item(selected_row, 4).text())
+        pmt_paid = float(self.ui.transaction_record_table.item(selected_row, 5).text())
+
+        get_txn_jobs_data_sql = """
+                                SELECT JOB_ID, SERV_NAME, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT FROM jobs j
+                                INNER JOIN product p ON p.PROD_ID = j.PROD_ID
+                                INNER JOIN service s ON s.SERV_ID = p.PROD_ID
+                                WHERE TXN_CODE = ?;
+                                """
+        c.execute(get_txn_jobs_data_sql, (txn_code,))
+        existing_data = c.fetchall()
+
+        self.ui.order_detail_table_2.setRowCount(len(existing_data))
+        for row_index, row_data in enumerate(existing_data):
+            for col_index, cell_value in enumerate(row_data):
+                self.ui.order_detail_table_2.setItem(row_index, col_index, QtWidgets.QTableWidgetItem(str(cell_value)))
+
+        prtclr_name = self.ui.customer_name_utd.text()
+        prtclr_cn = self.ui.contact_num_utd.text()
+        serv_name = self.ui.category_name_nt2.text()
+        prod_sz = self.ui.category_size_2.text()
+        prod_qty = self.ui.product_quantity_2.text()
+        pmt_paid = self.ui.pmt_paid.text()
+        txn_sts = self.ui.combobox.currentText()
+
+        update_txn_data_sql = """
+            UPDATE transactions
+            SET PRTCLR_NAME = ?, PRTCLR_CN = ?, SERV_NAME = ?, PROD_SZ = ?, PROD_QTY = ?, PMT_PAID = ?, TXN_STS = ?
+            WHERE TXN_CODE = ?;
+        """
+
+        try:
+            c = conn.cursor()
+            c.execute(update_txn_data_sql, (prtclr_name, prtclr_cn, serv_name, prod_sz, prod_qty, pmt_paid, txn_sts, txn_code))
+            conn.commit()
+
+            self.ui.customer_name_utd.setText("")
+            self.ui.job_details_table.clearContents()
+            self.ui.job_details_table.setRowCount(0)
+
+            self.displayTransactionRecords(DBQueries.getAllTransactions(dbFolder))
+
+        except Exception as e:
+            print("Error updating transaction:", e)
+
+        finally:
+            conn.close()
+
+    def on_txn_selection_changed(self):
+        selected_rows = self.ui.transaction_record_tbl.selectionModel().selectedRows()
+        update_txn_btn = self.ui.update_transaction
+            
+        if len(selected_rows) > 1:
+            update_txn_btn.setVisible(False)
+        else:
+            update_txn_btn.setVisible(True)
+
+
+    def displayTransactionRecords(self, rows):
+        self.ui.transaction_record_tbl.setRowCount(0)
+
+        for row in rows:
+            rowPosition = self.ui.transaction_record_tbl.rowCount()
+            self.ui.transaction_record_tbl.setRowCount(rowPosition + 1)
+
+            txn_code = row[0]
+            txn_date = row[2]
+            particular_cn = row[5]
+            pmt_tot = row[10]
+            pmt_paid = row[11]
+            txn_sts = row[3]
+            pmt_sts = row[14]
+            pmt_bal = row[12]
+
+            self.ui.transaction_record_tbl.setItem(rowPosition, 0, QTableWidgetItem(str(txn_code)))
+            self.ui.transaction_record_tbl.setItem(rowPosition, 1, QTableWidgetItem(str(txn_date)))
+            self.ui.transaction_record_tbl.setItem(rowPosition, 2, QTableWidgetItem(str(particular_cn)))
+            self.ui.transaction_record_tbl.setItem(rowPosition, 3, QTableWidgetItem(str(pmt_tot)))
+            self.ui.transaction_record_tbl.setItem(rowPosition, 4, QTableWidgetItem(str(pmt_paid)))
+            self.ui.transaction_record_tbl.setItem(rowPosition, 5, QTableWidgetItem(str(txn_sts)))
+            self.ui.transaction_record_tbl.setItem(rowPosition, 6, QTableWidgetItem(str(pmt_sts)))
+            self.ui.transaction_record_tbl.setItem(rowPosition, 7, QTableWidgetItem(str(pmt_bal)))
+
+    def displayDailyTransactions(self, rows):
+        self.ui.daily_tnx_table.setRowCount(0)
+
+        for row in rows:
+            rowPosition = self.ui.daily_tnx_table.rowCount()
+            self.ui.daily_tnx_table.setRowCount(rowPosition + 1)
+
+            job_id = row[15]
+            txn_date = row[2]
+            prtclr_name = row[5]
+            serv_sts = row[27]
+            prod_sz = row[22]
+            job_qty = row[17]
+            job_tot = row[18]
+
+            self.ui.daily_tnx_table.setItem(rowPosition, 0, QTableWidgetItem(str(job_id)))
+            self.ui.daily_tnx_table.setItem(rowPosition, 1, QTableWidgetItem(str(txn_date)))
+            self.ui.daily_tnx_table.setItem(rowPosition, 2, QTableWidgetItem(str(prtclr_name)))
+            self.ui.daily_tnx_table.setItem(rowPosition, 3, QTableWidgetItem(str(serv_sts)))
+            self.ui.daily_tnx_table.setItem(rowPosition, 4, QTableWidgetItem(str(prod_sz)))
+            self.ui.daily_tnx_table.setItem(rowPosition, 5, QTableWidgetItem(str(job_qty)))
+            self.ui.daily_tnx_table.setItem(rowPosition, 6, QTableWidgetItem(str(job_tot)))
+    
+    def displayDatewiseTransactions(self, rows):
+        self.ui.datewise_transaction_table.setRowCount(0)
+
+        for row in rows:
+            rowPosition = self.ui.datewise_transaction_table.rowCount()
+            self.ui.datewise_transaction_table.setRowCount(rowPosition + 1)
+
+            txn_code = row[0]
+            txn_date = row[2]
+            particular_cn = row[5]
+            pmt_tot = row[10]
+            txn_sts = row[3]
+
+            self.ui.datewise_transaction_table.setItem(rowPosition, 0, QTableWidgetItem(str(txn_code)))
+            self.ui.datewise_transaction_table.setItem(rowPosition, 1, QTableWidgetItem(str(txn_date)))
+            self.ui.datewise_transaction_table.setItem(rowPosition, 2, QTableWidgetItem(str(particular_cn)))
+            self.ui.datewise_transaction_table.setItem(rowPosition, 3, QTableWidgetItem(str(pmt_tot)))
+            self.ui.datewise_transaction_table.setItem(rowPosition, 4, QTableWidgetItem(str(txn_sts)))
+    
+
+    def displayDatewisePayments(self, rows):
+        self.ui.datewise_payment_table.setRowCount(0)
+
+        for row in rows:
+            rowPosition = self.ui.datewise_payment_table.rowCount()
+            self.ui.datewise_payment_table.setRowCount(rowPosition + 1)
+
+            pmt_id = row[7]
+            pmt_date = row[13]
+            prtclr_name = row[5]
+            pmt_disc = row[9]
+            pmt_tot = row[10]
+            pmt_paid = row[11]
+            pmt_bal = row[12]
+            pmt_sts = row[14]
+
+            self.ui.datewise_payment_table.setItem(rowPosition, 0, QTableWidgetItem(str(pmt_id)))
+            self.ui.datewise_payment_table.setItem(rowPosition, 1, QTableWidgetItem(str(pmt_date)))
+            self.ui.datewise_payment_table.setItem(rowPosition, 2, QTableWidgetItem(str(prtclr_name)))
+            self.ui.datewise_payment_table.setItem(rowPosition, 3, QTableWidgetItem(str(pmt_disc)))
+            self.ui.datewise_payment_table.setItem(rowPosition, 4, QTableWidgetItem(str(pmt_tot)))
+            self.ui.datewise_payment_table.setItem(rowPosition, 5, QTableWidgetItem(str(pmt_paid)))
+            self.ui.datewise_payment_table.setItem(rowPosition, 6, QTableWidgetItem(str(pmt_bal)))
+            self.ui.datewise_payment_table.setItem(rowPosition, 7, QTableWidgetItem(str(pmt_sts)))
+
+    #======================================== ON EXIT =================================#
     def drop_job_temp_table(dbFolder):
         try:
             conn = sqlite3.connect(dbFolder)
