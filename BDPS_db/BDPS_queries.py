@@ -719,7 +719,7 @@ class DBQueries():
             rowPosition = self.ui.order_detail_table.rowCount()
             self.ui.order_detail_table.setRowCount(rowPosition + 1)
 
-            for itemCount, item in enumerate(row[1:], start=0):
+            for itemCount, item in enumerate(row[0:], start=0):
                 order_tablewidgetitem = QTableWidgetItem(str(item))
                 self.ui.order_detail_table.setItem(rowPosition, itemCount, order_tablewidgetitem)
 
@@ -850,43 +850,54 @@ class DBQueries():
     
     def deleteJob(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
-        c = conn.cursor()
 
         selected_rows = self.ui.order_detail_table.selectionModel().selectedRows()
 
-        for selected_row in selected_rows:
-            row_index = selected_row.row()
-            serv_name = self.ui.order_detail_table.item(row_index, 0).text()
-            prod_sz = self.ui.order_detail_table.item(row_index, 1).text()
-            prod_price = self.ui.order_detail_table.item(row_index, 2).text()
-            job_qty = self.ui.order_detail_table.item(row_index, 3).text()
-            job_tot = self.ui.order_detail_table.item(row_index, 4).text()
+        if len(selected_rows) == 1:
+            job_count = int(self.ui.order_detail_table.item(selected_rows[0].row(), 0).text())
 
-        try:
-            delete_job_detail_sql = """DELETE FROM job_temp
-                                        WHERE (JOB_ID, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT) IN (
-                                            SELECT job_temp.JOB_ID, product.PROD_SZ, product.PROD_PRICE, job_temp.JOB_QTY, job_temp.JOB_TOT
-                                            FROM job_temp
-                                            INNER JOIN product ON job_temp.PROD_ID = product.PROD_ID
-                                            INNER JOIN service ON product.SERV_ID = service.SERV_ID
-                                            WHERE service.SERV_NAME = ?
-                                        )
-                                        AND PROD_SZ = ? 
-                                        AND PROD_PRICE = ? 
-                                        AND JOB_QTY = ? 
-                                        AND JOB_TOT = ?;"""
+            delete_service_sql = f"""
+                                    DELETE FROM job_temp
+                                    WHERE JOB_ID = {job_count};
+                                """
 
-            c.execute(delete_job_detail_sql, (serv_name, prod_sz, prod_price, job_qty, job_tot))
-            conn.commit()
-            print("Row deleted successfully.")
-            return True
+            try:
+                c = conn.cursor()
+                c.execute(delete_service_sql)
+                conn.commit()
 
-        except sqlite3.Error as e:
-            print(e)
-            return False
+                DBQueries.displayJob(self, DBQueries.getAllJobs(dbFolder))
 
-        finally:
-            conn.close()
+            except Error as e:
+                print(e)
+
+        else:
+            message_box = QMessageBox()
+            message_box.setIcon(QMessageBox.Question)
+            message_box.setText("You have selected multiple jobs. Are you sure you want to delete them?")
+            message_box.setWindowTitle("Confirm Deletion")
+            message_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            message_box.setDefaultButton(QMessageBox.No)
+
+            response = message_box.exec()
+
+            if response == QMessageBox.Yes:
+                job_ids = [int(self.ui.order_detail_table.item(row.row(), 0).text()) for row in selected_rows]
+
+                delete_selected_job_sql = f"""
+                                                DELETE FROM job_temp
+                                                WHERE JOB_ID IN ({', '.join(str(id) for id in job_ids)});
+                                            """
+
+                try:
+                    c = conn.cursor()
+                    c.execute(delete_selected_job_sql)
+                    conn.commit()
+
+                    DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
+
+                except Error as e:
+                    print(e)
     
     def on_job_selection_changed(self):
         selected_rows = self.ui.order_detail_table.selectionModel().selectedRows()
