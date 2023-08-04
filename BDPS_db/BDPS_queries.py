@@ -1226,10 +1226,24 @@ class DBQueries():
             conn.close()
     
 
-    def updateTransactions(self, dbFolder, txn_code, txn_date, prtclr_name, job_tot, pmt_paid, txn_sts, pmt_sts, pmt_bal):
+    def updateTransactions(self, dbFolder):
+        
         conn = DBQueries.create_connection(dbFolder)
+        c = conn.cursor()
 
         selected_row = self.ui.transaction_record_tbl.currentRow()
+
+        txn_item = self.ui.transaction_record_tbl.item(selected_row, 0)
+        txn_code = int(txn_item.text().split('-')[-1])
+        txn_date = self.ui.transaction_record_tbl.item(selected_row, 1).text()
+        prtclr_name = self.ui.transaction_record_tbl.item(selected_row, 2).text()
+        job_tot = float(self.ui.transaction_record_tbl.item(selected_row, 3).text())
+        pmt_paid = float(self.ui.transaction_record_tbl.item(selected_row, 4).text())
+        txn_sts = self.ui.transaction_record_tbl.item(selected_row, 5).text()
+        pmt_sts = self.ui.transaction_record_tbl.item(selected_row, 6).text()
+        pmt_bal = float(self.ui.transaction_record_tbl.item(selected_row, 7).text())
+
+        QtCore.QTimer.singleShot(100, lambda: self.ui.stackedWidget.setCurrentIndex(8))
 
         get_txn_jobs_data_sql = """
                                 SELECT JOB_ID, SERV_NAME, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT FROM jobs j
@@ -1247,11 +1261,11 @@ class DBQueries():
 
         prtclr_name = self.ui.customer_name_utd.text()
         prtclr_cn = self.ui.contact_num_utd.text()
-        serv_name = self.ui.category_name_nt2.text()
-        prod_sz = self.ui.category_size_2.text()
-        prod_qty = self.ui.product_quantity_2.text()
-        pmt_paid = self.ui.pmt_paid.text()
-        txn_sts = self.ui.combobox.currentText()
+        serv_name = self.ui.category_name_nt_2.currentText()
+        prod_sz = self.ui.category_size_2.currentText()
+        prod_qty = self.ui.product_quantity_2.currentText()
+        pmt_paid = self.ui.utd_payment.text()
+        txn_sts = self.ui.comboBox.currentText()
 
         update_txn_data_sql = """
             UPDATE transactions
