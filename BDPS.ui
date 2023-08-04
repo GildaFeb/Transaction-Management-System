@@ -785,7 +785,7 @@ border-top-left-radius: 30px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>8</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -9354,7 +9354,7 @@ background-color: #012768;
 
 </string>
                    </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_74">
+                   <layout class="QVBoxLayout" name="verticalLayout_80">
                     <property name="spacing">
                      <number>0</number>
                     </property>
@@ -9427,7 +9427,7 @@ background-color: #012768;
                           </widget>
                          </item>
                          <item>
-                          <widget class="QLabel" name="utd_id">
+                          <widget class="QLineEdit" name="utd_id">
                            <property name="minimumSize">
                             <size>
                              <width>0</width>
@@ -9436,13 +9436,19 @@ background-color: #012768;
                            </property>
                            <property name="font">
                             <font>
-                             <pointsize>11</pointsize>
+                             <pointsize>12</pointsize>
                              <weight>75</weight>
                              <bold>true</bold>
                             </font>
                            </property>
-                           <property name="text">
-                            <string>T - 000</string>
+                           <property name="frame">
+                            <bool>false</bool>
+                           </property>
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                           <property name="placeholderText">
+                            <string>T - 0</string>
                            </property>
                           </widget>
                          </item>
@@ -9456,13 +9462,13 @@ background-color: #012768;
                          <item>
                           <layout class="QVBoxLayout" name="verticalLayout_66">
                            <property name="leftMargin">
-                            <number>26</number>
+                            <number>30</number>
                            </property>
                            <property name="topMargin">
                             <number>13</number>
                            </property>
                            <property name="rightMargin">
-                            <number>26</number>
+                            <number>30</number>
                            </property>
                            <property name="bottomMargin">
                             <number>13</number>
@@ -9552,6 +9558,12 @@ background-color: #012768;
                          </item>
                          <item>
                           <widget class="QWidget" name="widget_11" native="true">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <layout class="QHBoxLayout" name="horizontalLayout_65">
                             <property name="spacing">
                              <number>26</number>
@@ -9804,7 +9816,7 @@ background-color: #012768;
                           <item>
                            <layout class="QVBoxLayout" name="verticalLayout_65">
                             <property name="leftMargin">
-                             <number>26</number>
+                             <number>30</number>
                             </property>
                             <property name="rightMargin">
                              <number>13</number>
@@ -9863,9 +9875,20 @@ background-color: #012768;
                               <property name="wordWrap">
                                <bool>true</bool>
                               </property>
+                              <attribute name="horizontalHeaderDefaultSectionSize">
+                               <number>150</number>
+                              </attribute>
+                              <attribute name="horizontalHeaderStretchLastSection">
+                               <bool>true</bool>
+                              </attribute>
                               <column>
                                <property name="text">
-                                <string>Category Name</string>
+                                <string>Job Nos.</string>
+                               </property>
+                              </column>
+                              <column>
+                               <property name="text">
+                                <string>Service</string>
                                </property>
                               </column>
                               <column>
@@ -9880,7 +9903,7 @@ background-color: #012768;
                               </column>
                               <column>
                                <property name="text">
-                                <string>Quantity</string>
+                                <string>Qty</string>
                                </property>
                               </column>
                               <column>
@@ -9898,7 +9921,7 @@ background-color: #012768;
                              <number>7</number>
                             </property>
                             <property name="rightMargin">
-                             <number>26</number>
+                             <number>30</number>
                             </property>
                             <item>
                              <widget class="QLabel" name="label_56">
@@ -9990,26 +10013,17 @@ background-color: #012768;
                      </widget>
                     </item>
                     <item>
-                     <layout class="QHBoxLayout" name="horizontalLayout_60">
-                      <property name="spacing">
-                       <number>0</number>
-                      </property>
-                      <property name="leftMargin">
-                       <number>26</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>13</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>26</number>
-                      </property>
-                      <property name="bottomMargin">
-                       <number>0</number>
-                      </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_30">
                       <item>
-                       <layout class="QVBoxLayout" name="verticalLayout_64">
+                       <layout class="QVBoxLayout" name="verticalLayout_74">
                         <property name="spacing">
-                         <number>5</number>
+                         <number>7</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>30</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>30</number>
                         </property>
                         <item>
                          <widget class="QLabel" name="label_39">
@@ -10190,35 +10204,37 @@ QComboBox::down-arrow {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QComboBox" name="product_quantity_2">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>280</width>
-                            <height>35</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>280</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>11</pointsize>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QComboBox{
+                         <layout class="QHBoxLayout" name="horizontalLayout_33">
+                          <item>
+                           <widget class="QComboBox" name="product_quantity_2">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>280</width>
+                              <height>35</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>280</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                             </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QComboBox{
 	background-color:white;
 	color:black;
 	border-radius:7px;
@@ -10239,42 +10255,42 @@ QComboBox::down-arrow {
 	height: 15px;
 	padding: 10px 10px;
 }</string>
-                          </property>
-                          <property name="editable">
-                           <bool>true</bool>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="add_order_utd">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>280</width>
-                            <height>35</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>280</width>
-                            <height>35</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">#add_order_nt {
+                            </property>
+                            <property name="editable">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="add_order_utd">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>280</width>
+                              <height>35</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>280</width>
+                              <height>35</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">#add_order_nt {
 	background-color: #3786BA;
 	color: white;
     border: 2px solid #2F74A1;
@@ -10282,26 +10298,28 @@ QComboBox::down-arrow {
 
 
 }</string>
-                          </property>
-                          <property name="text">
-                           <string>ADD JOB</string>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>20</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="checkable">
-                           <bool>false</bool>
-                          </property>
-                          <property name="autoRepeat">
-                           <bool>false</bool>
-                          </property>
-                          <property name="autoExclusive">
-                           <bool>false</bool>
-                          </property>
-                         </widget>
+                            </property>
+                            <property name="text">
+                             <string>ADD JOB</string>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>20</width>
+                              <height>30</height>
+                             </size>
+                            </property>
+                            <property name="checkable">
+                             <bool>false</bool>
+                            </property>
+                            <property name="autoRepeat">
+                             <bool>false</bool>
+                            </property>
+                            <property name="autoExclusive">
+                             <bool>false</bool>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
                         </item>
                         <item>
                          <spacer name="verticalSpacer_15">
@@ -10310,8 +10328,8 @@ QComboBox::down-arrow {
                           </property>
                           <property name="sizeHint" stdset="0">
                            <size>
-                            <width>20</width>
-                            <height>40</height>
+                            <width>0</width>
+                            <height>0</height>
                            </size>
                           </property>
                          </spacer>
@@ -10335,6 +10353,15 @@ QComboBox::down-arrow {
                        <layout class="QVBoxLayout" name="verticalLayout_68">
                         <property name="spacing">
                          <number>10</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>30</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>30</number>
                         </property>
                         <item>
                          <widget class="QLabel" name="label_29">
