@@ -785,7 +785,7 @@ border-top-left-radius: 30px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>8</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -4115,8 +4115,14 @@ QDateEdit::down-arrow {
                        </item>
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_19">
-                         <item>
+                         <item alignment="Qt::AlignRight">
                           <widget class="QLabel" name="label_28">
+                           <property name="minimumSize">
+                            <size>
+                             <width>200</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="font">
                             <font>
                              <pointsize>10</pointsize>
@@ -4125,19 +4131,38 @@ QDateEdit::down-arrow {
                            <property name="text">
                             <string>Transaction #</string>
                            </property>
+                           <property name="alignment">
+                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           </property>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QLabel" name="tnx_code">
+                          <widget class="QLineEdit" name="tnx_code_nt">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>20</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
                            <property name="font">
                             <font>
-                             <pointsize>11</pointsize>
-                             <weight>50</weight>
-                             <bold>false</bold>
+                             <pointsize>12</pointsize>
                             </font>
                            </property>
-                           <property name="text">
-                            <string>109283</string>
+                           <property name="frame">
+                            <bool>false</bool>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                           </property>
+                           <property name="placeholderText">
+                            <string>0</string>
                            </property>
                           </widget>
                          </item>
