@@ -2259,6 +2259,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.order_detail_table.setFont(font)
+        self.order_detail_table.setFrameShadow(QtWidgets.QFrame.Plain)
         self.order_detail_table.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.order_detail_table.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
         self.order_detail_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
@@ -3528,6 +3529,7 @@ class Ui_MainWindow(object):
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
+        self.datefrom_dwt.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 5), QtCore.QTime(0, 0, 0)))
         self.datefrom_dwt.setCalendarPopup(True)
         self.datefrom_dwt.setObjectName("datefrom_dwt")
         self.horizontalLayout_35.addWidget(self.datefrom_dwt)
@@ -3563,6 +3565,7 @@ class Ui_MainWindow(object):
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
+        self.dateto_dwt.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 5), QtCore.QTime(0, 0, 0)))
         self.dateto_dwt.setCalendarPopup(True)
         self.dateto_dwt.setObjectName("dateto_dwt")
         self.horizontalLayout_35.addWidget(self.dateto_dwt)
@@ -3652,7 +3655,7 @@ class Ui_MainWindow(object):
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
-        self.date_month_tnx.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 1, 1), QtCore.QTime(0, 0, 0)))
+        self.date_month_tnx.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 1), QtCore.QTime(0, 0, 0)))
         self.date_month_tnx.setCalendarPopup(True)
         self.date_month_tnx.setObjectName("date_month_tnx")
         self.horizontalLayout_57.addWidget(self.date_month_tnx)
@@ -3688,7 +3691,8 @@ class Ui_MainWindow(object):
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
-        self.date_year_tnx.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 1, 1), QtCore.QTime(0, 0, 0)))
+        self.date_year_tnx.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 14), QtCore.QTime(0, 0, 0)))
+        self.date_year_tnx.setMinimumDate(QtCore.QDate(2023, 9, 14))
         self.date_year_tnx.setCalendarPopup(True)
         self.date_year_tnx.setObjectName("date_year_tnx")
         self.horizontalLayout_57.addWidget(self.date_year_tnx)
@@ -3811,9 +3815,7 @@ class Ui_MainWindow(object):
         self.datewise_transaction_table.horizontalHeader().setDefaultSectionSize(200)
         self.datewise_transaction_table.horizontalHeader().setStretchLastSection(True)
         self.verticalLayout_30.addWidget(self.datewise_transaction_table)
-        self.verticalLayout_29.addWidget(self.date_wise_table)
-        self.verticalLayout_27.addWidget(self.widget_31)
-        self.no_datewiseT_found = QtWidgets.QLabel(self.widget_30)
+        self.no_datewiseT_found = QtWidgets.QLabel(self.date_wise_table)
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -3821,7 +3823,9 @@ class Ui_MainWindow(object):
         self.no_datewiseT_found.setFont(font)
         self.no_datewiseT_found.setAlignment(QtCore.Qt.AlignCenter)
         self.no_datewiseT_found.setObjectName("no_datewiseT_found")
-        self.verticalLayout_27.addWidget(self.no_datewiseT_found)
+        self.verticalLayout_30.addWidget(self.no_datewiseT_found)
+        self.verticalLayout_29.addWidget(self.date_wise_table)
+        self.verticalLayout_27.addWidget(self.widget_31)
         self.verticalLayout_38.addWidget(self.widget_30)
         self.stackedWidget.addWidget(self.datewise_transactions)
         self.datewise_payments_2 = QtWidgets.QWidget()
@@ -3904,6 +3908,7 @@ class Ui_MainWindow(object):
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
+        self.datefrom_dwt_4.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 6), QtCore.QTime(0, 0, 0)))
         self.datefrom_dwt_4.setCalendarPopup(True)
         self.datefrom_dwt_4.setObjectName("datefrom_dwt_4")
         self.horizontalLayout_54.addWidget(self.datefrom_dwt_4)
@@ -3940,6 +3945,7 @@ class Ui_MainWindow(object):
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
+        self.dateto_dwt_4.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 5), QtCore.QTime(0, 0, 0)))
         self.dateto_dwt_4.setCalendarPopup(True)
         self.dateto_dwt_4.setObjectName("dateto_dwt_4")
         self.horizontalLayout_54.addWidget(self.dateto_dwt_4)
@@ -4027,7 +4033,7 @@ class Ui_MainWindow(object):
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
-        self.date_month_pmt.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 1, 1), QtCore.QTime(0, 0, 0)))
+        self.date_month_pmt.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 5), QtCore.QTime(0, 0, 0)))
         self.date_month_pmt.setCalendarPopup(True)
         self.date_month_pmt.setObjectName("date_month_pmt")
         self.horizontalLayout_56.addWidget(self.date_month_pmt)
@@ -4063,7 +4069,7 @@ class Ui_MainWindow(object):
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
-        self.date_year_tnx_pmt.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 1, 1), QtCore.QTime(0, 0, 0)))
+        self.date_year_tnx_pmt.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 5), QtCore.QTime(0, 0, 0)))
         self.date_year_tnx_pmt.setCalendarPopup(True)
         self.date_year_tnx_pmt.setObjectName("date_year_tnx_pmt")
         self.horizontalLayout_56.addWidget(self.date_year_tnx_pmt)
@@ -4886,7 +4892,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(6)
         self.new_transaction_btn_1.toggled['bool'].connect(self.new_transaction_btn_2.setChecked) # type: ignore
         self.datewise_transaction_btn_1.toggled['bool'].connect(self.datewise_transaction_btn_2.setChecked) # type: ignore
         self.daily_transaction_btn_1.toggled['bool'].connect(self.daily_transaction_btn_2.setChecked) # type: ignore
@@ -5047,7 +5053,7 @@ class Ui_MainWindow(object):
         self.reset_job_detail_btn.setText(_translate("MainWindow", "Reset"))
         self.order_detail_table.setSortingEnabled(True)
         item = self.order_detail_table.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "Job ID"))
+        item.setText(_translate("MainWindow", "Job Nos"))
         item = self.order_detail_table.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Service Name"))
         item = self.order_detail_table.horizontalHeaderItem(2)

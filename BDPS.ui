@@ -785,7 +785,7 @@ border-top-left-radius: 30px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>6</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -4858,6 +4858,9 @@ QComboBox::down-arrow {
                               <pointsize>11</pointsize>
                              </font>
                             </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Plain</enum>
+                            </property>
                             <property name="editTriggers">
                              <set>QAbstractItemView::NoEditTriggers</set>
                             </property>
@@ -4881,7 +4884,7 @@ QComboBox::down-arrow {
                             </property>
                             <column>
                              <property name="text">
-                              <string>Job ID</string>
+                              <string>Job Nos</string>
                              </property>
                             </column>
                             <column>
@@ -7743,6 +7746,16 @@ QDateEdit::down-arrow {
 	padding: 10px 10px;
 }</string>
                         </property>
+                        <property name="dateTime">
+                         <datetime>
+                          <hour>0</hour>
+                          <minute>0</minute>
+                          <second>0</second>
+                          <year>2023</year>
+                          <month>9</month>
+                          <day>5</day>
+                         </datetime>
+                        </property>
                         <property name="calendarPopup">
                          <bool>true</bool>
                         </property>
@@ -7797,6 +7810,16 @@ QDateEdit::down-arrow {
 	height: 15px;
 	padding: 10px 10px;
 }</string>
+                        </property>
+                        <property name="dateTime">
+                         <datetime>
+                          <hour>0</hour>
+                          <minute>0</minute>
+                          <second>0</second>
+                          <year>2023</year>
+                          <month>9</month>
+                          <day>5</day>
+                         </datetime>
                         </property>
                         <property name="calendarPopup">
                          <bool>true</bool>
@@ -8015,7 +8038,7 @@ QDateEdit::down-arrow {
                           <minute>0</minute>
                           <second>0</second>
                           <year>2023</year>
-                          <month>1</month>
+                          <month>9</month>
                           <day>1</day>
                          </datetime>
                         </property>
@@ -8083,9 +8106,16 @@ QDateEdit::down-arrow {
                           <minute>0</minute>
                           <second>0</second>
                           <year>2023</year>
-                          <month>1</month>
-                          <day>1</day>
+                          <month>9</month>
+                          <day>14</day>
                          </datetime>
+                        </property>
+                        <property name="minimumDate">
+                         <date>
+                          <year>2023</year>
+                          <month>9</month>
+                          <day>14</day>
+                         </date>
                         </property>
                         <property name="displayFormat">
                          <string>yyyy</string>
@@ -8350,27 +8380,27 @@ QDateEdit::down-arrow {
                       </item>
                      </widget>
                     </item>
+                    <item>
+                     <widget class="QLabel" name="no_datewiseT_found">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>No search results found</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
                    </layout>
                   </widget>
                  </item>
                 </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="no_datewiseT_found">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>No search results found</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
                </widget>
               </item>
              </layout>
@@ -8564,6 +8594,16 @@ QDateEdit::down-arrow {
 	padding: 10px 10px;
 }</string>
                   </property>
+                  <property name="dateTime">
+                   <datetime>
+                    <hour>0</hour>
+                    <minute>0</minute>
+                    <second>0</second>
+                    <year>2023</year>
+                    <month>9</month>
+                    <day>6</day>
+                   </datetime>
+                  </property>
                   <property name="calendarPopup">
                    <bool>true</bool>
                   </property>
@@ -8619,6 +8659,16 @@ QDateEdit::down-arrow {
 	height: 15px;
 	padding: 10px 10px;
 }</string>
+                  </property>
+                  <property name="dateTime">
+                   <datetime>
+                    <hour>0</hour>
+                    <minute>0</minute>
+                    <second>0</second>
+                    <year>2023</year>
+                    <month>9</month>
+                    <day>5</day>
+                   </datetime>
                   </property>
                   <property name="calendarPopup">
                    <bool>true</bool>
@@ -8845,8 +8895,8 @@ QDateEdit::down-arrow {
                     <minute>0</minute>
                     <second>0</second>
                     <year>2023</year>
-                    <month>1</month>
-                    <day>1</day>
+                    <month>9</month>
+                    <day>5</day>
                    </datetime>
                   </property>
                   <property name="displayFormat">
@@ -8913,8 +8963,8 @@ QDateEdit::down-arrow {
                     <minute>0</minute>
                     <second>0</second>
                     <year>2023</year>
-                    <month>1</month>
-                    <day>1</day>
+                    <month>9</month>
+                    <day>5</day>
                    </datetime>
                   </property>
                   <property name="displayFormat">
