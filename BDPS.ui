@@ -2846,7 +2846,7 @@ QComboBox::down-arrow {
                             </column>
                             <column>
                              <property name="text">
-                              <string>Category Name</string>
+                              <string>Service Name</string>
                              </property>
                              <property name="font">
                               <font>
@@ -4864,6 +4864,20 @@ QComboBox::down-arrow {
                             <property name="wordWrap">
                              <bool>true</bool>
                             </property>
+                            <attribute name="horizontalHeaderDefaultSectionSize">
+                             <number>110</number>
+                            </attribute>
+                            <attribute name="horizontalHeaderStretchLastSection">
+                             <bool>true</bool>
+                            </attribute>
+                            <attribute name="verticalHeaderVisible">
+                             <bool>false</bool>
+                            </attribute>
+                            <column>
+                             <property name="text">
+                              <string>Count</string>
+                             </property>
+                            </column>
                             <column>
                              <property name="text">
                               <string>Service Name</string>
@@ -4881,7 +4895,7 @@ QComboBox::down-arrow {
                             </column>
                             <column>
                              <property name="text">
-                              <string>Quantity</string>
+                              <string>Qty</string>
                              </property>
                             </column>
                             <column>
