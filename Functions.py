@@ -120,12 +120,17 @@ class BtnFunctions(QMainWindow):
         #========================== DASHBOARD =====================================#
         self.ui.transaction_record_tbl.model().rowsRemoved.connect(self.count_transaction_record)
         self.ui.transaction_record_tbl.model().rowsInserted.connect(self.count_transaction_record)
-        self.ui.transaction_record_tbl.itemChanged.connect(self.count_transaction_status)
+        self.ui.transaction_record_tbl.itemChanged.connect(self.count_transaction_record)
+        self.ui.pricelist_table.model().rowsRemoved.connect(self.count_total_product)
+        self.ui.pricelist_table.model().rowsInserted.connect(self.count_total_product)
+        self.ui.pricelist_table.itemChanged.connect(self.count_total_product)
+        self.ui.category_table.model().rowsRemoved.connect(self.count_total_service)
+        self.ui.category_table.model().rowsRemoved.connect(self.count_total_service)
+        self.ui.category_table.itemChanged.connect(self.count_total_service)
 
-        #self.ui.pushButton_3.clicked.connect(self.delete_row)
-        #self.ui.pushButton.clicked.connect(self.add_row)
         self.count_transaction_record()
-        self.count_transaction_status()
+        self.count_total_product()
+        self.count_total_service()        
         #========================== SEARCH FIELDS =====================================#
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
         self.ui.edit_search_category.textChanged.connect(self.category_table)
@@ -594,11 +599,11 @@ class BtnFunctions(QMainWindow):
         for row in range(self.ui.transaction_record_tbl.rowCount()):            
             status_item = self.ui.transaction_record_tbl.item(row, 5)
             amount_paid = self.ui.transaction_record_tbl.item(row, 4)
-            if status_item is not None and status_item.text().strip() == "Pending":
+            if status_item is not None and status_item.text().strip() == "Pending Transaction":
                 pending_txn += 1
-            elif status_item is not None and status_item.text().strip() == "Successful":
+            elif status_item is not None and status_item.text().strip() == "Sucessful Transaction":
                 successful_txn += 1
-            elif status_item is not None and status_item.text().strip() == "Cancelled":
+            elif status_item is not None and status_item.text().strip() == "Cancelled Transaction":
                 cancelled_txn += 1
         
         for row in range(self.ui.transaction_record_tbl.rowCount()):
@@ -617,7 +622,7 @@ class BtnFunctions(QMainWindow):
         self.ui.sucessful_transactions.setText(f"{successful_txn}")        
         self.ui.cancelled_transactions.setText(f"{cancelled_txn}")
         self.ui.total_sales.setText(f"{total_sales:.2f}")
-
+    """
     def count_transaction_status(self):
         pending_txn = 0
         successful_txn = 0
@@ -647,7 +652,19 @@ class BtnFunctions(QMainWindow):
         self.ui.PendingTransactions.setText(f"{pending_txn}")  
         self.ui.sucessful_transactions.setText(f"{successful_txn}")        
         self.ui.cancelled_transactions.setText(f"{cancelled_txn}")
+        """
+    def count_total_product(self):
+        total_prod = 0
         
+        total_prod = self.ui.pricelist_table.rowCount()
+        self.ui.total_product.setText(f"{total_prod}")
+    
+    def count_total_service(self):
+        total_srvce = 0
+        
+        total_srvce = self.ui.category_table.rowCount()
+        self.ui.total_category.setText(f"{total_srvce}")
+
     #----------------------------------------------------------------------#
     
     ## Function for searching
@@ -676,7 +693,7 @@ class BtnFunctions(QMainWindow):
     ## ----------------------- functions for changing menu page ---------------------
     def on_home_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(0)
-
+    
     def on_home_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(0)
 
