@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1618</width>
-    <height>868</height>
+    <height>849</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -779,13 +779,17 @@ border-top-left-radius: 30px;
 }
  #blue_border_3{
 	background-color: #e8d709;
-border-top-left-radius: 30px;
+	border-top-left-radius: 30px;
 	border-top-right-radius: 30px;
 }
-</string>
+
+ #table_area_payment, #table_area{
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+}</string>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -1792,6 +1796,9 @@ border-radius: 10px;
                  </widget>
                 </item>
                 <item>
+                 <widget class="QDial" name="dial"/>
+                </item>
+                <item>
                  <widget class="QWidget" name="widget_5" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1925,7 +1932,7 @@ border-radius: 10px;
                </layout>
               </item>
               <item row="0" column="0">
-               <widget class="QLabel" name="label_8">
+               <widget class="QLabel" name="dashboard_label">
                 <property name="font">
                  <font>
                   <pointsize>12</pointsize>
@@ -2051,33 +2058,6 @@ border-radius: 10px;
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_9">
-                   <item>
-                    <widget class="QPushButton" name="manage_price_btn">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="text">
-                      <string>Manage prices</string>
-                     </property>
-                    </widget>
-                   </item>
                    <item>
                     <spacer name="horizontalSpacer">
                      <property name="orientation">
@@ -2555,6 +2535,9 @@ QComboBox::down-arrow {
 	padding-left: 10px;
 }</string>
                          </property>
+                         <property name="maximum">
+                          <double>9999999.000000000000000</double>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -2991,7 +2974,7 @@ QComboBox::down-arrow {
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>100</height>
+                  <height>70</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -3019,7 +3002,7 @@ QComboBox::down-arrow {
                     <widget class="QLabel" name="label_27">
                      <property name="font">
                       <font>
-                       <pointsize>12</pointsize>
+                       <pointsize>16</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -3042,93 +3025,59 @@ QComboBox::down-arrow {
                      </property>
                     </spacer>
                    </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_40">
                    <item>
-                    <widget class="QPushButton" name="manage_category_btn">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="text">
-                      <string>Manage service</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_4">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>194</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="search_category">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>40</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>40</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>ArrowCursor</cursorShape>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="resource.qrc">
-                       <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
-                     </property>
-                     <property name="checkable">
-                      <bool>false</bool>
-                     </property>
-                     <property name="flat">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
+                    <layout class="QHBoxLayout" name="horizontalLayout_40">
+                     <item>
+                      <widget class="QPushButton" name="search_category">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>40</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>40</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>ArrowCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="resource.qrc">
+                         <normaloff>:/icon/icon/search-13-48.ico</normaloff>:/icon/icon/search-13-48.ico</iconset>
+                       </property>
+                       <property name="checkable">
+                        <bool>false</bool>
+                       </property>
+                       <property name="flat">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                    <item>
                     <widget class="QLineEdit" name="edit_search_category">
                      <property name="enabled">
                       <bool>true</bool>
                      </property>
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
                      <property name="minimumSize">
                       <size>
-                       <width>0</width>
+                       <width>500</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -4918,11 +4867,6 @@ QComboBox::down-arrow {
                             </property>
                             <column>
                              <property name="text">
-                              <string>Job Nos</string>
-                             </property>
-                            </column>
-                            <column>
-                             <property name="text">
                               <string>Service Name</string>
                              </property>
                             </column>
@@ -5689,13 +5633,13 @@ border-radius: 5px;
                   <number>13</number>
                  </property>
                  <property name="leftMargin">
-                  <number>26</number>
+                  <number>30</number>
                  </property>
                  <property name="topMargin">
                   <number>26</number>
                  </property>
                  <property name="rightMargin">
-                  <number>26</number>
+                  <number>30</number>
                  </property>
                  <property name="bottomMargin">
                   <number>26</number>
@@ -5862,6 +5806,9 @@ QDateEdit::down-arrow {
                        <property name="frame">
                         <bool>false</bool>
                        </property>
+                       <property name="displayFormat">
+                        <string>yyyy-MM-dd</string>
+                       </property>
                        <property name="calendarPopup">
                         <bool>true</bool>
                        </property>
@@ -5925,6 +5872,9 @@ QDateEdit::down-arrow {
                        <property name="frame">
                         <bool>false</bool>
                        </property>
+                       <property name="displayFormat">
+                        <string>yyyy-MM-dd</string>
+                       </property>
                        <property name="calendarPopup">
                         <bool>true</bool>
                        </property>
@@ -5944,41 +5894,6 @@ QDateEdit::down-arrow {
                       </size>
                      </property>
                     </spacer>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{
-	background-color: #012768;
-	color:white;
-	border-radius:5px;
-	border: 2px solid #012157;
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>+ Add Transaction</string>
-                     </property>
-                    </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="update_transaction">
@@ -6030,41 +5945,6 @@ QDateEdit::down-arrow {
                      </property>
                      <property name="flat">
                       <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_3">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{
-	background-color: #012768;
-	color:white;
-	border-radius:5px;
-	border: 2px solid #012157;
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>- Delete Transaction</string>
                      </property>
                     </widget>
                    </item>
@@ -6199,11 +6079,6 @@ QComboBox::down-arrow {
                      <item>
                       <property name="text">
                        <string>Cancelled Transactions</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string>Failed Transactions</string>
                       </property>
                      </item>
                     </widget>
@@ -6487,13 +6362,13 @@ color: white
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>17</height>
+               <height>160</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>150</height>
+               <height>160</height>
               </size>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -6501,16 +6376,16 @@ color: white
                <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>26</number>
+               <number>30</number>
               </property>
               <property name="topMargin">
-               <number>10</number>
+               <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>26</number>
+               <number>30</number>
               </property>
               <property name="bottomMargin">
-               <number>26</number>
+               <number>0</number>
               </property>
               <item>
                <widget class="QWidget" name="widget_32" native="true">
@@ -6794,13 +6669,13 @@ color: white
 	background-color:white;
 	color:black;
 	border-radius:7px;
-    border: 2px solid #c3ccce;
+    border: 2px solid #012768;
 	padding-left: 10px;
 }
 
 QDateEdit::drop-down {
 	border: 0px;
-	background-color: #c3ccce;
+	background-color: #012768;
 	padding: 5px 5px;
 width: 15px;
 }
@@ -6933,24 +6808,24 @@ QDateEdit::down-arrow {
            <item>
             <widget class="QWidget" name="table_area" native="true">
              <property name="styleSheet">
-              <string notr="true">QHeaderView::section {
-
-color: black;
-
-}</string>
+              <string notr="true">
+#date_wise_table{\n\n	border-top-left-radius: 30px;\n	border-top-right-radius: 30px;\n}</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_19">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <property name="leftMargin">
-               <number>26</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
-               <number>26</number>
+               <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>26</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
-               <number>26</number>
+               <number>0</number>
               </property>
               <item>
                <widget class="QLabel" name="blue_border">
@@ -7169,42 +7044,6 @@ color: black;
                <number>20</number>
               </property>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_70">
-                <item>
-                 <widget class="QLabel" name="label_47">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                  <property name="baseSize">
-                   <size>
-                    <width>0</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>13</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>  Date-wise Transaction</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
                <widget class="QWidget" name="widget_31" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -7233,27 +7072,30 @@ color: black;
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>150</height>
+                     <height>160</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>150</height>
+                     <height>160</height>
                     </size>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_25">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
                     <property name="leftMargin">
-                     <number>20</number>
+                     <number>30</number>
                     </property>
                     <property name="topMargin">
-                     <number>20</number>
+                     <number>0</number>
                     </property>
                     <property name="rightMargin">
-                     <number>20</number>
+                     <number>30</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>20</number>
+                     <number>0</number>
                     </property>
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_35">
@@ -7273,134 +7115,34 @@ color: black;
                        <number>0</number>
                       </property>
                       <item>
-                       <widget class="QLabel" name="label_50">
-                        <property name="font">
-                         <font>
-                          <pointsize>11</pointsize>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string>Date From:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QDateEdit" name="datefrom_dwt">
+                       <widget class="QLabel" name="label_47">
                         <property name="minimumSize">
                          <size>
-                          <width>150</width>
-                          <height>40</height>
+                          <width>0</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>60</height>
+                         </size>
+                        </property>
+                        <property name="baseSize">
+                         <size>
+                          <width>0</width>
+                          <height>0</height>
                          </size>
                         </property>
                         <property name="font">
                          <font>
-                          <pointsize>11</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>PointingHandCursor</cursorShape>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QDateEdit{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #c3ccce;
-	padding-left: 10px;
-}
-
-QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
-	padding: 5px 5px;
-width: 15px;
-}
-
-QDateEdit::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
-                        </property>
-                        <property name="dateTime">
-                         <datetime>
-                          <hour>0</hour>
-                          <minute>0</minute>
-                          <second>0</second>
-                          <year>2023</year>
-                          <month>9</month>
-                          <day>5</day>
-                         </datetime>
-                        </property>
-                        <property name="calendarPopup">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="label_51">
-                        <property name="font">
-                         <font>
-                          <pointsize>11</pointsize>
+                          <pointsize>13</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
                          </font>
                         </property>
                         <property name="text">
-                         <string>Date To:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QDateEdit" name="dateto_dwt">
-                        <property name="minimumSize">
-                         <size>
-                          <width>150</width>
-                          <height>40</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <pointsize>11</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>PointingHandCursor</cursorShape>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QDateEdit{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #c3ccce;
-	padding-left: 10px;
-}
-
-QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
-	padding: 5px 5px;
-width: 15px;
-}
-
-QDateEdit::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
-                        </property>
-                        <property name="dateTime">
-                         <datetime>
-                          <hour>0</hour>
-                          <minute>0</minute>
-                          <second>0</second>
-                          <year>2023</year>
-                          <month>9</month>
-                          <day>5</day>
-                         </datetime>
-                        </property>
-                        <property name="calendarPopup">
-                         <bool>true</bool>
+                         <string>  Date-wise Transaction</string>
                         </property>
                        </widget>
                       </item>
@@ -7478,13 +7220,13 @@ QDateEdit::down-arrow {
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>1</height>
+                        <height>2</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>1</height>
+                        <height>2</height>
                        </size>
                       </property>
                       <property name="frameShape">
@@ -7499,6 +7241,15 @@ QDateEdit::down-arrow {
                      <layout class="QHBoxLayout" name="horizontalLayout_57">
                       <property name="spacing">
                        <number>13</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
                       </property>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_36">
@@ -7593,13 +7344,13 @@ QDateEdit::down-arrow {
 	background-color:white;
 	color:black;
 	border-radius:7px;
-    border: 2px solid #c3ccce;
+    border: 2px solid #c71f3a;
 	padding-left: 10px;
 }
 
 QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
+	border: 2px;
+	background-color: #c71f3a;
 	padding: 5px 5px;
 width: 15px;
 }
@@ -7662,13 +7413,13 @@ QDateEdit::down-arrow {
 	background-color:white;
 	color:black;
 	border-radius:7px;
-    border: 2px solid #c3ccce;
+    border: 2px solid #c71f3a;
 	padding-left: 10px;
 }
 
 QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
+	border: 2px;
+	background-color: #c71f3a;
 	padding: 5px 5px;
 width: 15px;
 }
@@ -7812,7 +7563,27 @@ QDateEdit::down-arrow {
                  </item>
                  <item>
                   <widget class="QWidget" name="date_wise_table" native="true">
+                   <property name="styleSheet">
+                    <string notr="true">
+#date_wise_table{
+
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+}</string>
+                   </property>
                    <layout class="QVBoxLayout" name="verticalLayout_30">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
                     <item>
                      <widget class="QLabel" name="blue_border_2">
                       <property name="minimumSize">
@@ -7827,6 +7598,29 @@ QDateEdit::down-arrow {
                         <weight>75</weight>
                         <bold>true</bold>
                        </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string>QDateEdit{
+	background-color:white;
+	color:black;
+	border-radius:7px;
+    border: 2px solid #c71f3a;
+	padding-left: 10px;
+}
+
+QDateEdit::drop-down {
+	border: 1px;
+	background-color: #c71f3a;
+	padding: 5px 5px;
+width: 15px;
+}
+
+QDateEdit::down-arrow {
+	image: url(:/icon/icon/down-arrow.png);
+	width: 15px;
+	height: 15px;
+	padding: 10px 10px;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -7975,61 +7769,34 @@ QDateEdit::down-arrow {
             <number>30</number>
            </property>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_71">
-             <item>
-              <widget class="QLabel" name="label_25">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>60</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>60</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>13</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>  Date-wise Payment</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
             <widget class="QWidget" name="datewise_payment" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>150</height>
+               <height>160</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>150</height>
+               <height>160</height>
               </size>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_40">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <property name="leftMargin">
-               <number>20</number>
+               <number>30</number>
               </property>
               <property name="topMargin">
-               <number>20</number>
+               <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>20</number>
+               <number>30</number>
               </property>
               <property name="bottomMargin">
-               <number>20</number>
+               <number>0</number>
               </property>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_54">
@@ -8049,134 +7816,28 @@ QDateEdit::down-arrow {
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="label_74">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Date From:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QDateEdit" name="datefrom_dwt_4">
+                 <widget class="QLabel" name="label_25">
                   <property name="minimumSize">
                    <size>
-                    <width>150</width>
-                    <height>40</height>
+                    <width>0</width>
+                    <height>60</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QDateEdit{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #c3ccce;
-	padding-left: 10px;
-}
-
-QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
-	padding: 5px 5px;
-	width: 15px;
-}
-
-QDateEdit::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
-                  </property>
-                  <property name="dateTime">
-                   <datetime>
-                    <hour>0</hour>
-                    <minute>0</minute>
-                    <second>0</second>
-                    <year>2023</year>
-                    <month>9</month>
-                    <day>6</day>
-                   </datetime>
-                  </property>
-                  <property name="calendarPopup">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_75">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Date To:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QDateEdit" name="dateto_dwt_4">
-                  <property name="minimumSize">
-                   <size>
-                    <width>150</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QDateEdit{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #c3ccce;
-	padding-left: 10px;
-}
-
-QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
-	padding: 5px 5px;
-	width: 15px;
-}
-
-QDateEdit::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
-                  </property>
-                  <property name="dateTime">
-                   <datetime>
-                    <hour>0</hour>
-                    <minute>0</minute>
-                    <second>0</second>
-                    <year>2023</year>
-                    <month>9</month>
-                    <day>5</day>
-                   </datetime>
-                  </property>
-                  <property name="calendarPopup">
-                   <bool>true</bool>
+                   <string>  Date-wise Payment</string>
                   </property>
                  </widget>
                 </item>
@@ -8254,13 +7915,13 @@ QDateEdit::down-arrow {
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>1</height>
+                  <height>2</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>1</height>
+                  <height>2</height>
                  </size>
                 </property>
                 <property name="frameShape">
@@ -8377,15 +8038,15 @@ QDateEdit::down-arrow {
 	background-color:white;
 	color:black;
 	border-radius:7px;
-    border: 2px solid #c3ccce;
+    border: 2px solid #e0d234;
 	padding-left: 10px;
 }
 
 QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
+	border: 2px;
+	background-color: #e0d234;
 	padding: 5px 5px;
-	width: 15px;
+width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -8446,15 +8107,15 @@ QDateEdit::down-arrow {
 	background-color:white;
 	color:black;
 	border-radius:7px;
-    border: 2px solid #c3ccce;
+    border: 2px solid #e0d234;
 	padding-left: 10px;
 }
 
 QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
+	border: 2px;
+	background-color: #e0d234;
 	padding: 5px 5px;
-	width: 15px;
+width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -8576,7 +8237,30 @@ QDateEdit::down-arrow {
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="styleSheet">
+              <string notr="true">
+#date_wise_table{
+
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+}</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_41">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QLabel" name="blue_border_3">
                 <property name="minimumSize">
@@ -9446,328 +9130,6 @@ background-color: #012768;
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_30">
                       <item>
-                       <layout class="QVBoxLayout" name="verticalLayout_74">
-                        <property name="spacing">
-                         <number>7</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>30</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>30</number>
-                        </property>
-                        <item>
-                         <widget class="QLabel" name="label_39">
-                          <property name="minimumSize">
-                           <size>
-                            <width>220</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>220</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Service Name</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QComboBox" name="category_name_nt_2">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>280</width>
-                            <height>35</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>280</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>11</pointsize>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QComboBox{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #efedd3;
-	padding-left: 10px;
-}
-
-QComboBox::drop-down {
-	border: 0px;
-	background-color: #efedd3;
-	padding: 15px;
-	width: 10px;
-}
-
-QComboBox::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_40">
-                          <property name="minimumSize">
-                           <size>
-                            <width>220</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>220</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Size</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QComboBox" name="category_size_2">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>280</width>
-                            <height>35</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>280</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>11</pointsize>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QComboBox{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #efedd3;
-	padding-left: 10px;
-}
-
-QComboBox::drop-down {
-	border: 0px;
-	background-color: #efedd3;
-	padding: 15px;
-	width: 10px;
-}
-
-QComboBox::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_44">
-                          <property name="minimumSize">
-                           <size>
-                            <width>220</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>220</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>10</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Quantity</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_33">
-                          <item>
-                           <widget class="QComboBox" name="product_quantity_2">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="minimumSize">
-                             <size>
-                              <width>280</width>
-                              <height>35</height>
-                             </size>
-                            </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>280</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <pointsize>11</pointsize>
-                             </font>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QComboBox{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #efedd3;
-	padding-left: 10px;
-}
-
-QComboBox::drop-down {
-	border: 0px;
-	background-color: #efedd3;
-	padding: 15px;
-	width: 10px;
-}
-
-QComboBox::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
-                            </property>
-                            <property name="editable">
-                             <bool>true</bool>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QPushButton" name="add_order_utd">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="minimumSize">
-                             <size>
-                              <width>280</width>
-                              <height>35</height>
-                             </size>
-                            </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>280</width>
-                              <height>35</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <pointsize>10</pointsize>
-                             </font>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">#add_order_nt {
-	background-color: #3786BA;
-	color: white;
-    border: 2px solid #2F74A1;
-	border-radius: 4px;
-
-
-}</string>
-                            </property>
-                            <property name="text">
-                             <string>ADD JOB</string>
-                            </property>
-                            <property name="iconSize">
-                             <size>
-                              <width>20</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="checkable">
-                             <bool>false</bool>
-                            </property>
-                            <property name="autoRepeat">
-                             <bool>false</bool>
-                            </property>
-                            <property name="autoExclusive">
-                             <bool>false</bool>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </item>
-                        <item>
-                         <spacer name="verticalSpacer_15">
-                          <property name="orientation">
-                           <enum>Qt::Vertical</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>0</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
                        <spacer name="horizontalSpacer_17">
                         <property name="orientation">
                          <enum>Qt::Horizontal</enum>
@@ -9854,7 +9216,7 @@ QComboBox::down-arrow {
                           <property name="minimumSize">
                            <size>
                             <width>350</width>
-                            <height>0</height>
+                            <height>40</height>
                            </size>
                           </property>
                           <property name="maximumSize">
