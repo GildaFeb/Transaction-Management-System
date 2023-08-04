@@ -1247,6 +1247,7 @@ class DBQueries():
                 SELECT PROD_ID, JOB_QTY, JOB_TOT, ? FROM job_temp
             """
             cursor.execute(job_transfer_sql, (current_txn_code,))
+
             #========================== INSERT ON PAYMENT ===========================#
             pmt_tot = float(conn.execute("SELECT SUBTOTAL FROM job_temp WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp)").fetchone()[0]) - pmt_disc
             pmt_bal = pmt_tot - pmt_paid
@@ -1412,6 +1413,9 @@ class DBQueries():
             new_prtclr_name = self.ui.customer_name_utd.text()
             new_prtclr_cn = self.ui.contact_num_utd.text()
 
+            print(new_prtclr_cn)
+            print(new_prtclr_name)
+
             update_particular_sql = """
                     UPDATE particular
                     SET PRTCLR_NAME=?, PRTCLR_CN=?
@@ -1433,7 +1437,6 @@ class DBQueries():
 
             conn.commit()
 
-            self.ui.customer_name_utd.setText("")
             self.ui.order_detail_table_2.clearContents()
             self.ui.order_detail_table_2.setRowCount(0)
             self.ui.order_detail_table_3.clearContents()
