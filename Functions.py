@@ -656,39 +656,28 @@ class BtnFunctions(QMainWindow):
         #======================== RESET FUNCTIONS =================================#
         
     def reset_dailytxn_table(self):
-        self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
-        self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
-
+        self.count_labels_txns()
         for row in range(self.ui.daily_tnx_table.rowCount()):
             self.ui.daily_tnx_table.setRowHidden(row, False)        
             self.ui.daily_tnx_table.show()
             self.ui.no_dailytxn_found.hide()
             
     def reset_txn_table(self):
-        #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
-        #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
-        #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
-        
+        self.count_labels_txns()
         for row in range(self.ui.transaction_record_tbl.rowCount()):
             self.ui.transaction_record_tbl.setRowHidden(row, False)        
             self.ui.transaction_record_tbl.show()
             self.ui.no_transaction_found.hide()            
     
     def reset_datewise_txn_table(self):
-        #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
-        #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
-        #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
-        
+        self.count_labels_txns()
         for row in range(self.ui.datewise_transaction_table.rowCount()):
             self.ui.datewise_transaction_table.setRowHidden(row, False)        
             self.ui.datewise_transaction_table.show()
             self.ui.no_datewiseT_found.hide()
     
     def reset_datewise_payment_table(self):
-        #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
-        #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
-        #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
-        
+        self.count_labels_txns()
         for row in range(self.ui.datewise_payment_table.rowCount()):
             self.ui.datewise_payment_table.setRowHidden(row, False)        
             self.ui.datewise_payment_table.show()
