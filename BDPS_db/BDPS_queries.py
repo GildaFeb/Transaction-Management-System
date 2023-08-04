@@ -143,6 +143,8 @@ class DBQueries():
             service_names = DBQueries.getServiceNames(dbFolder)
             self.ui.cat_name_pricelist.clear()
             self.ui.cat_name_pricelist.addItems(service_names)
+            self.ui.category_name_nt.clear()
+            self.ui.category_name_nt.addItems(service_names)
 
             DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
@@ -234,6 +236,8 @@ class DBQueries():
             service_names = DBQueries.getServiceNames(dbFolder)
             self.ui.cat_name_pricelist.clear()
             self.ui.cat_name_pricelist.addItems(service_names)
+            self.ui.category_name_nt.clear()
+            self.ui.category_name_nt.addItems(service_names)
 
             DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
@@ -269,6 +273,8 @@ class DBQueries():
                 service_names = DBQueries.getServiceNames(dbFolder)
                 self.ui.cat_name_pricelist.clear()
                 self.ui.cat_name_pricelist.addItems(service_names)
+                self.ui.category_name_nt.clear()
+                self.ui.category_name_nt.addItems(service_names)
 
                 DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
@@ -1233,6 +1239,8 @@ class DBQueries():
         txn_item = self.ui.transaction_record_tbl.item(selected_row, 0)
         txn_code = int(txn_item.text().split('-')[-1])
 
+        self.ui.utd_id.setText("T-" + str(txn_code))
+
         self.ui.stackedWidget.setCurrentIndex(8)
 
         get_txn_jobs_data_sql = """
@@ -1262,6 +1270,23 @@ class DBQueries():
             for col_index, cell_value in enumerate(row_data):
                 self.ui.order_detail_table_3.setItem(row_index, col_index, QtWidgets.QTableWidgetItem(str(cell_value)))
 
+        get_statuses_data_sql = """
+                                SELECT TXN_STS, PMT_STS FROM payment p
+                                INNER JOIN transactions t ON t.TXN_CODE = p.TXN_CODE
+                                WHERE t.TXN_CODE = ?
+                                """
+        c.execute(get_statuses_data_sql, (txn_code,))
+        statuses_data = c.fetchall()
+
+        txn_sts, pmt_sts = statuses_data[0]
+
+        self.ui.lineEdit_3.setText(str(txn_sts))
+        self.ui.lineEdit_4.setText(str(pmt_sts))
+
+        if pmt_sts == 'Fully Paid':
+            self.ui.utd_payment.setEnabled(False)
+        else:
+            self.ui.utd_payment.setEnabled(True)
 
         self.ui.save_update.clicked.connect(lambda: DBQueries.on_save_update(self, dbFolder, txn_code))
 
