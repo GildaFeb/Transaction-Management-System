@@ -866,7 +866,7 @@ class DBQueries():
                 c.execute(delete_service_sql)
                 conn.commit()
 
-                DBQueries.displayJob(self, DBQueries.getAllJobs(dbFolder))
+                DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
 
             except Error as e:
                 print(e)
