@@ -1061,6 +1061,20 @@ class DBQueries():
             cursor.execute(prtclr_insert_sql, (prtclr_name, prtclr_cn))
             prtclr_id = cursor.lastrowid
 
+            #========================== INSERT ON TRANSACTIONS ===========================#
+            txn_insert_sql ="""
+                INSERT INTO transactions (PRTCLR_ID, JOB_ID, TXN_DATE, TXN_STS)
+                VALUES (?, ?, ?, ?)
+            """
+            cursor.execute("SELECT MAX(TXN_CODE) FROM transactions")
+            last_txn_code = cursor.fetchone()[0]
+            current_txn_code = last_txn_code + 1 if last_txn_code else 1
+
+            for i in range(num_jobs):
+                current_prtclr_id = prtclr_id
+                current_job_id = job_ids[i]
+                cursor.execute(txn_insert_sql, (current_prtclr_id, current_job_id, txn_date, txn_sts))
+
             #========================== INSERT ON JOBS ===========================#
             job_transfer_sql = """
                 INSERT INTO jobs (PROD_ID, JOB_QTY, JOB_TOT)
@@ -1075,20 +1089,6 @@ class DBQueries():
 
             clear_job_temp_sql = "DROP TABLE IF EXISTS job_temp"
             cursor.execute(clear_job_temp_sql)
-
-            #========================== INSERT ON TRANSACTIONS ===========================#
-            txn_insert_sql ="""
-                INSERT INTO transactions (PRTCLR_ID, JOB_ID, TXN_DATE, TXN_STS)
-                VALUES (?, ?, ?, ?)
-            """
-            cursor.execute("SELECT MAX(TXN_CODE) FROM transactions")
-            last_txn_code = cursor.fetchone()[0]
-            current_txn_code = last_txn_code + 1 if last_txn_code else 1
-
-            for i in range(num_jobs):
-                current_prtclr_id = prtclr_id
-                current_job_id = job_ids[i]
-                cursor.execute(txn_insert_sql, (current_prtclr_id, current_job_id, txn_date, txn_sts))
 
             #========================== INSERT ON PAYMENT ===========================#
             pmt_tot = conn.execute("SELECT SUBTOTAL FROM job_temp WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp)").fetchone()[0] - pmt_disc
