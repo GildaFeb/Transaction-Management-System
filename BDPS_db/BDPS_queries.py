@@ -30,7 +30,6 @@ class DBQueries():
         super(DBQueries, self).__init__()
         self.arg = arg
     
-
     # === DRA ===
     def edit_no_service(self): # to open delete_confirm_categ
         self.window = QtWidgets.QMainWindow()
@@ -100,7 +99,6 @@ class DBQueries():
                 itemCount = itemCount + 1
             rowPosition = rowPosition + 1
 
-    
     def addService(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
@@ -151,7 +149,6 @@ class DBQueries():
 
         except Error as e:
             print(e)
-    
     
     # === DRA ===
     def edit_no_service(self): # to open delete_confirm_categ
@@ -244,7 +241,6 @@ class DBQueries():
 
         except Error as e:
             print(e)
-
 
     def deleteService(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -395,7 +391,6 @@ class DBQueries():
                 itemCount = itemCount + 1
             rowPosition = rowPosition + 1
 
-    
     def addPrice(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
@@ -705,6 +700,7 @@ class DBQueries():
                             INNER JOIN product ON job_temp.PROD_ID = product.PROD_ID
                             INNER JOIN service ON product.SERV_ID = service.SERV_ID;
                         """
+
         else:
             return []
 
@@ -854,42 +850,43 @@ class DBQueries():
     
     def deleteJob(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
+        c = conn.cursor()
 
-        all_jobs = DBQueries.getAllJobs(dbFolder)
+        selected_rows = self.ui.order_detail_table.selectionModel().selectedRows()
+
+        for selected_row in selected_rows:
+            row_index = selected_row.row()
+            serv_name = self.ui.order_detail_table.item(row_index, 0).text()
+            prod_sz = self.ui.order_detail_table.item(row_index, 1).text()
+            prod_price = self.ui.order_detail_table.item(row_index, 2).text()
+            job_qty = self.ui.order_detail_table.item(row_index, 3).text()
+            job_tot = self.ui.order_detail_table.item(row_index, 4).text()
 
         try:
-            c = conn.cursor()
-            for row in all_jobs:
-                job_id = row[0]
-                job_service = row[1]
-                job_size = row[2]
-                job_price = float(row[3])
-                job_quantity = int(row[4])
+            delete_job_detail_sql = """DELETE FROM job_temp
+                                        WHERE (JOB_ID, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT) IN (
+                                            SELECT job_temp.JOB_ID, product.PROD_SZ, product.PROD_PRICE, job_temp.JOB_QTY, job_temp.JOB_TOT
+                                            FROM job_temp
+                                            INNER JOIN product ON job_temp.PROD_ID = product.PROD_ID
+                                            INNER JOIN service ON product.SERV_ID = service.SERV_ID
+                                            WHERE service.SERV_NAME = ?
+                                        )
+                                        AND PROD_SZ = ? 
+                                        AND PROD_PRICE = ? 
+                                        AND JOB_QTY = ? 
+                                        AND JOB_TOT = ?;"""
 
-                update_subtotal_sql = """
-                                        UPDATE job_temp SET SUBTOTAL = (
-                                            SELECT IFNULL(SUM(JOB_TOT), 0) FROM job_temp
-                                        ) WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp);
-                                    """
-                c.execute(update_subtotal_sql, (job_price * job_quantity, job_id))
-                conn.commit()
-
-                delete_job_sql = f"""
-                                    DELETE FROM jobs
-                                    WHERE JOB_ID = {job_id} IN (
-                                        SELECT product.PROD_SZ, product.PROD_PRICE, jobs.JOB_QTY
-                                        FROM jobs
-                                        INNER JOIN product ON jobs.PROD_ID = product.PROD_ID
-                                        INNER JOIN service ON product.SERV_ID = service.SERV_ID
-                                        WHERE SERV_NAME = ? AND PROD_SZ = ? AND PROD_PRICE = ? AND JOB_QTY = ?);
-                                """
-                c.execute(delete_job_sql, (job_service, job_size, job_price, job_quantity))
-
+            c.execute(delete_job_detail_sql, (serv_name, prod_sz, prod_price, job_qty, job_tot))
             conn.commit()
-            DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
+            print("Row deleted successfully.")
+            return True
 
-        except Error as e:
+        except sqlite3.Error as e:
             print(e)
+            return False
+
+        finally:
+            conn.close()
     
     def on_job_selection_changed(self):
         selected_rows = self.ui.order_detail_table.selectionModel().selectedRows()
@@ -1072,12 +1069,19 @@ class DBQueries():
     
     def displayTransactionRecords(self, rows):
         self.ui.transaction_record_tbl.setRowCount(0)
+        displayed_txn_codes = set()
 
         for row in rows:
+            txn_code = "T-" + str(row[0])
+
+            if txn_code in displayed_txn_codes:
+                continue
+
+            displayed_txn_codes.add(txn_code)
+
             rowPosition = self.ui.transaction_record_tbl.rowCount()
             self.ui.transaction_record_tbl.setRowCount(rowPosition + 1)
 
-            txn_code = "T-" + str(row[0])
             txn_date = row[2]
             particular_cn = row[5]
             pmt_tot = row[10]
@@ -1094,6 +1098,7 @@ class DBQueries():
             self.ui.transaction_record_tbl.setItem(rowPosition, 5, QTableWidgetItem(str(txn_sts)))
             self.ui.transaction_record_tbl.setItem(rowPosition, 6, QTableWidgetItem(str(pmt_sts)))
             self.ui.transaction_record_tbl.setItem(rowPosition, 7, QTableWidgetItem(str(pmt_bal)))
+
 
     def displayDailyTransactions(self, rows):
         self.ui.daily_tnx_table.setRowCount(0)
@@ -1245,7 +1250,6 @@ class DBQueries():
 
             conn.commit()
 
-            DBQueries.displayTransactionRecords(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDailyTransactions(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDatewiseTransactions(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDatewisePayments(self, DBQueries.getAllTransactions(dbFolder))
@@ -1266,6 +1270,8 @@ class DBQueries():
             self.ui.payment_nt.setText("")
             self.ui.comboBox_2.setCurrentIndex(0)
             self.ui.balance_nt.setText('0.00')
+            DBQueries.resetJobDetails(self, dbFolder)
+
 
         except Exception as e:
             print("Error saving transaction:", e)
@@ -1381,7 +1387,6 @@ class DBQueries():
                 this_txn_pmt_bal = pmt_bal - this_txn_pmt_paid
                 this_txn_pmt_sts = 'Fully Paid' if this_txn_pmt_bal == 0 else 'Partially Paid'
 
-                # Insert new payment data
                 insert_new_payment_sql = """
                     INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
                     VALUES (?, ?, ?, ?, ?, ?, ?);
@@ -1421,7 +1426,6 @@ class DBQueries():
             self.ui.order_detail_table_3.setRowCount(0)
 
             self.ui.stackedWidget.setCurrentIndex(4)
-            DBQueries.displayTransactionRecords(lambda: DBQueries.getAllTransactions(dbFolder))
 
         except ValueError as ve:
             print("Error updating transaction:", ve)
