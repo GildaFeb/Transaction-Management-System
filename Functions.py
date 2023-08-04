@@ -108,7 +108,8 @@ class BtnFunctions(QMainWindow):
         self.ui.no_datewiseP_found.hide()
         self.ui.no_transaction_found.hide() 
         self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  
-        
+        self.ui.date_month_tnx.setDate(QDate.currentDate())
+        self.ui.date_year_tnx.setDate(QDate.currentDate())
         #========================== UPDATE =====================================#
         self.ui.update_transaction.pressed.connect(self.update_transaction_pressed)
         
