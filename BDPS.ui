@@ -788,7 +788,7 @@ border-top-left-radius: 30px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -6159,6 +6159,11 @@ QComboBox::down-arrow {
                      </property>
                      <item>
                       <property name="text">
+                       <string>All Transactions</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
                        <string>Successful Transactions</string>
                       </property>
                      </item>
@@ -6285,6 +6290,9 @@ color: white
                 <property name="sortingEnabled">
                  <bool>true</bool>
                 </property>
+                <property name="rowCount">
+                 <number>0</number>
+                </property>
                 <attribute name="horizontalHeaderCascadingSectionResizes">
                  <bool>true</bool>
                 </attribute>
@@ -6300,7 +6308,6 @@ color: white
                 <attribute name="verticalHeaderCascadingSectionResizes">
                  <bool>true</bool>
                 </attribute>
-                <row/>
                 <column>
                  <property name="text">
                   <string>Job ID</string>
@@ -6397,16 +6404,6 @@ color: white
                   </font>
                  </property>
                 </column>
-                <item row="0" column="4">
-                 <property name="text">
-                  <string>100.00</string>
-                 </property>
-                </item>
-                <item row="0" column="5">
-                 <property name="text">
-                  <string>Pending</string>
-                 </property>
-                </item>
                </widget>
               </item>
               <item>
