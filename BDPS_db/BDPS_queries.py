@@ -1232,13 +1232,6 @@ class DBQueries():
 
         txn_item = self.ui.transaction_record_tbl.item(selected_row, 0)
         txn_code = int(txn_item.text().split('-')[-1])
-        txn_date = self.ui.transaction_record_tbl.item(selected_row, 1).text()
-        prtclr_name = self.ui.transaction_record_tbl.item(selected_row, 2).text()
-        job_tot = float(self.ui.transaction_record_tbl.item(selected_row, 3).text())
-        pmt_paid = float(self.ui.transaction_record_tbl.item(selected_row, 4).text())
-        txn_sts = self.ui.transaction_record_tbl.item(selected_row, 5).text()
-        pmt_sts = self.ui.transaction_record_tbl.item(selected_row, 6).text()
-        pmt_bal = float(self.ui.transaction_record_tbl.item(selected_row, 7).text())
 
         self.ui.stackedWidget.setCurrentIndex(8)
 
@@ -1249,12 +1242,26 @@ class DBQueries():
                                 WHERE TXN_CODE = ?;
                                 """
         c.execute(get_txn_jobs_data_sql, (txn_code,))
-        existing_data = c.fetchall()
+        jobs_data = c.fetchall()
 
-        self.ui.order_detail_table_2.setRowCount(len(existing_data))
-        for row_index, row_data in enumerate(existing_data):
+        self.ui.order_detail_table_2.setRowCount(len(jobs_data))
+        for row_index, row_data in enumerate(jobs_data):
             for col_index, cell_value in enumerate(row_data):
                 self.ui.order_detail_table_2.setItem(row_index, col_index, QtWidgets.QTableWidgetItem(str(cell_value)))
+
+        get_txn_pmts_data_sql = """
+                                SELECT PMT_DATE, PMT_PAID FROM payment p
+                                INNER JOIN transactions t ON t.TXN_CODE = p.TXN_CODE
+                                WHERE t.TXN_CODE = ?
+                                """
+        c.execute(get_txn_pmts_data_sql, (txn_code,))
+        pmts_data = c.fetchall()
+
+        self.ui.order_detail_table_3.setRowCount(len(pmts_data))
+        for row_index, row_data in enumerate(pmts_data):
+            for col_index, cell_value in enumerate(row_data):
+                self.ui.order_detail_table_3.setItem(row_index, col_index, QtWidgets.QTableWidgetItem(str(cell_value)))
+
 
         self.ui.save_update.clicked.connect(lambda: DBQueries.on_save_update(self, dbFolder, txn_code))
 
