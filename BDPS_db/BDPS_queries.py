@@ -394,7 +394,7 @@ class DBQueries():
 
         product_service = self.ui.cat_name_pricelist.currentText()
         product_size = self.ui.size_pricelist.text()
-        product_price = self.ui.price_pricelist.text()
+        product_price = self.ui.price_pricelist.value()
 
         if not product_size or not product_price:
 
@@ -445,9 +445,8 @@ class DBQueries():
             self.ui.id_pricelist.setText('')
             self.ui.cat_name_pricelist.setCurrentIndex(0)
             self.ui.size_pricelist.setPlaceholderText('')
-            self.ui.price_pricelist.setPlaceholderText('')
+            self.ui.price_pricelist.setSpecialValueText('')
             self.ui.size_pricelist.setText('')
-            self.ui.price_pricelist.setText('')
 
             DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 
@@ -466,7 +465,7 @@ class DBQueries():
         product_id = int(self.ui.pricelist_table.item(selected_row, 0).text().split('-')[-1])
         product_service = self.ui.cat_name_pricelist.currentText()
         product_size = self.ui.size_pricelist.text()
-        product_price = self.ui.price_pricelist.text()
+        product_price = self.ui.price_pricelist.value()
 
         get_price_data_sql = f"""
                                 SELECT SERV_ID, PROD_SZ, PROD_PRICE FROM product
@@ -531,9 +530,8 @@ class DBQueries():
             self.ui.id_pricelist.setText('')
             self.ui.cat_name_pricelist.setCurrentIndex(0)
             self.ui.size_pricelist.setPlaceholderText('')
-            self.ui.price_pricelist.setPlaceholderText('')
+            self.ui.price_pricelist.setSpecialValueText('')
             self.ui.size_pricelist.setText('')
-            self.ui.price_pricelist.setText('')
 
             DBQueries.displayPrices(self, DBQueries.getAllPrices(dbFolder))
 

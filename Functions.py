@@ -765,13 +765,13 @@ class BtnFunctions(QMainWindow):
         self.ui.id_pricelist.setText(prod_id)
         self.ui.cat_name_pricelist.setCurrentIndex(self.ui.cat_name_pricelist.findText(cat_name))
         self.ui.size_pricelist.setPlaceholderText(prod_sz)
-        self.ui.price_pricelist.setPlaceholderText(prod_price)
+        self.ui.price_pricelist.setSpecialValueText(prod_price)
 
         if len(selected_rows) != 1:
             self.ui.id_pricelist.setText('')
             self.ui.cat_name_pricelist.setCurrentIndex(-1)
             self.ui.size_pricelist.setPlaceholderText('')
-            self.ui.price_pricelist.setPlaceholderText('')
+            self.ui.price_pricelist.setSpecialValueText('')
     
     def update_discount_label(self, discount):
         self.ui.discount_nt.setText(str(discount))
