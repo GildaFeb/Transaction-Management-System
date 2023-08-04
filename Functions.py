@@ -112,7 +112,8 @@ class BtnFunctions(QMainWindow):
         self.ui.date_year_tnx.setDate(QDate.currentDate())
         self.ui.date_month_pmt.setDate(QDate.currentDate())
         self.ui.date_year_tnx_pmt.setDate(QDate.currentDate())
-        
+        self.ui.dateEdit.setDate(QDate.currentDate())
+        self.ui.dateEdit_2.setDate(QDate.currentDate())
         #========================== RESET OF TABLES =====================================#
         self.ui.pushButton_4.clicked.connect(self.reset_dailytxn_table)
         self.ui.pushButton_5.clicked.connect(self.reset_txn_table)
@@ -149,6 +150,9 @@ class BtnFunctions(QMainWindow):
         self.ui.date_month_tnx.dateChanged.connect(self.filter_bydate_dwtxn_table)
         self.ui.date_year_tnx_pmt.dateChanged.connect(self.filter_date_wise_payment_table)
         self.ui. date_month_pmt.dateChanged.connect(self.filter_date_wise_payment_table)
+        self.ui.dateEdit.dateChanged.connect(self.filter_txnrec_table)
+        self.ui.dateEdit_2.dateChanged.connect(self.filter_txnrec_table)
+        self.ui.transactionR_combobox.currentIndexChanged.connect(self.filter_txnrec_table)
         
         #========================== EXCEL EXPORT BUTTONS =====================================#
         self.ui.printreport_dwp_btn.clicked.connect(self.datewise_payment_toExcel)
@@ -305,26 +309,11 @@ class BtnFunctions(QMainWindow):
             for row in range(self.ui.transaction_record_tbl.rowCount()):
                 self.ui.transaction_record_tbl.setRowHidden(row, False)
                 self.ui.transaction_record_tbl.show()
+                total_txn_record = self.ui.transaction_record_tbl.rowCount()
+                self.ui.lineEdit.setText(f"{total_txn_record}")                          
                 self.ui.no_transaction_found.hide()            
-        
-        row_matches = False
-            
-        for row in range(self.ui.transaction_record_tbl.rowCount()):
-            for col in range(self.ui.transaction_record_tbl.columnCount()):
-                item = self.ui.transaction_record_tbl.item(row, col)
-                
-                if item is not None and search_transaction.lower() in item.text().lower():
-                    self.ui.transaction_record_tbl.setRowHidden(row, False)
-                    row_matches = True
-                    self.ui.transaction_record_tbl.show()
-                    self.ui.no_transaction_found.hide()            
-                    break
-                else:
-                    self.ui.transaction_record_tbl.setRowHidden(row, True)
-        
-        if not row_matches:
-            self.ui.transaction_record_tbl.hide()
-            self.ui.no_transaction_found.show()
+        else:
+            self.filter_txnrec_table()
                                    
     #Daily transactions search field
     def daily_txn_table(self):
@@ -360,16 +349,18 @@ class BtnFunctions(QMainWindow):
     #Date-wise payments search field
     def datewise_payment_table(self):
         search_datewise_pay = self.ui.edit_search_dwp.text().strip()
-
+        total_sales_dwp = 0
         # Check if the search field is empty
         if not search_datewise_pay:
         # If the search field is empty, reset the QTableWidget to show all items
             for row in range(self.ui.datewise_payment_table.rowCount()):
+                amount_paid = self.ui.datewise_payment_table.item(row, 5)
                 self.ui.datewise_payment_table.setRowHidden(row, False)
                 self.ui.datewise_payment_table.show()
                 self.ui.no_datewiseP_found.hide()
-                total_sales_dwp = self.ui.datewise_transaction_table.rowCount()
-                self.ui.label_49.setText(f"{total_sales_dwp}")
+                amount_paid = float(amount_paid.text())
+                total_sales_dwp += amount_paid
+            self.ui.label_49.setText(f"{total_sales_dwp:.2f}")
         else:
             self.filter_date_wise_payment_table()
 
@@ -414,8 +405,7 @@ class BtnFunctions(QMainWindow):
                 
         self.ui.dt_total.setText(f"{total_dailytxn}")
     
-            
-    #Date-wise transaction filter button
+    #Date-wise transaction filter 
     def filter_bydate_dwtxn_table(self):
         from_month = self.ui.date_month_tnx.date().month()
         to_year = self.ui.date_year_tnx.date().year()
@@ -472,32 +462,103 @@ class BtnFunctions(QMainWindow):
             for col in range(self.ui.datewise_payment_table.columnCount()):
                 item = self.ui.datewise_payment_table.item(row, col).text().lower()
                 date_item = self.ui.datewise_payment_table.item(row, 1)
+                amount_paid = self.ui.datewise_payment_table.item(row, 5)
                 if date_item is not None:
                     date_str = date_item.text()
                     date = QDate.fromString(date_str, "yyyy-MM-dd")
                     if (from_date <= date <= to_date) and (search_datewise_pay in item):
                         self.ui.datewise_payment_table.setRowHidden(row, False)
                         no_row_matches = False
-                        total_sales_dwp += 1
                         self.ui.datewise_payment_table.show()
                         self.ui.no_datewiseP_found.hide()  
+                        amount_paid = float(amount_paid.text())
+                        total_sales_dwp += amount_paid
                         break
                     else:
                         self.ui.datewise_payment_table.setRowHidden(row, True)
                         
-        if not from_date <= date <= to_date:
+        if no_row_matches == True and not from_date <= date <= to_date:
+            self.ui.label_49.setText("0.00")
             self.ui.datewise_payment_table.hide()
             self.ui.no_datewiseP_found.setText(f"There is no transaction found during the month of {from_date.longMonthName(from_date.month())} {to_year}.")
             self.ui.no_datewiseP_found.show()
             
         if no_row_matches == True and from_date <= date <= to_date:
+            self.ui.label_49.setText("0.00")
             self.ui.datewise_payment_table.hide()
             self.ui.no_datewiseP_found.setText(f"There is no {search_datewise_pay} found during the month of {from_date.longMonthName(from_date.month())} {to_year}.")
             self.ui.no_datewiseP_found.show()
 
-        self.ui.dt_total.setText(f"{total_sales_dwp}")
+        self.ui.label_49.setText(f"{total_sales_dwp:.2f}")
         
+    #Transaction records filter 
+    def filter_txnrec_table(self):
+        selected_item = self.ui.transactionR_combobox.currentText()
+        search_transaction = self.ui.edit_search_new_transaction.text().strip().lower()
+        
+        date_from = self.ui.dateEdit.date()
+        date_to = self.ui.dateEdit_2.date()
+        total_txn_record = 0  
+        date_from_str = date_from.toString("yyyy-MM-dd")
+        date_to_str = date_to.toString("yyyy-MM-dd")     
+           
+        no_row_matches = True
                     
+        for row in range(self.ui.transaction_record_tbl.rowCount()):
+            status_item = self.ui.transaction_record_tbl.item(row, 5)
+            date_item = self.ui.transaction_record_tbl.item(row, 1)
+            for col in range(self.ui.transaction_record_tbl.columnCount()):
+                item = self.ui.transaction_record_tbl.item(row, col)
+            
+                if status_item is not None and date_item is not None:
+                    status = status_item.text().strip()
+                    str_date_item = date_item.text().strip()
+                    if (selected_item == "All Transactions") and (search_transaction in item.text().lower()) and (date_from_str <= str_date_item <= date_to_str):
+                        self.ui.transaction_record_tbl.setRowHidden(row, False)
+                        self.ui.transaction_record_tbl.show()
+                        self.ui.no_transaction_found.hide()
+                        no_row_matches = False
+                        total_txn_record += 1   
+                        break
+                    elif (selected_item == "Pending Transactions" and status == "Pending Transaction") and (search_transaction in item.text().lower()) and (date_from_str <= str_date_item <= date_to_str):
+                        self.ui.transaction_record_tbl.setRowHidden(row, False)
+                        self.ui.transaction_record_tbl.show()
+                        self.ui.no_transaction_found.hide()
+                        no_row_matches = False
+                        total_txn_record += 1   
+                        break
+                    elif (selected_item == "Cancelled Transactions" and status == "Cancelled Transaction") and (search_transaction in item.text().lower()) and (date_from_str <= str_date_item <= date_to_str):
+                        self.ui.transaction_record_tbl.setRowHidden(row, False)
+                        self.ui.transaction_record_tbl.show()
+                        self.ui.no_transaction_found.hide()
+                        no_row_matches = False
+                        total_txn_record += 1   
+                        break
+                    elif (selected_item == "Successful Transactions" and status == "Sucessful Transaction") and (search_transaction in item.text().lower()) and (date_from_str <= str_date_item <= date_to_str):
+                        self.ui.transaction_record_tbl.setRowHidden(row, False)
+                        self.ui.transaction_record_tbl.show()
+                        self.ui.no_transaction_found.hide()
+                        no_row_matches = False
+                        total_txn_record += 1   
+                        break 
+                    else:
+                        self.ui.transaction_record_tbl.setRowHidden(row, True)
+                        
+        if no_row_matches == True and not date_from_str <= str_date_item <= date_to_str:
+            date_in_words1 = QDate.fromString(date_from_str, "yyyy-MM-dd").toString("yyyy MMMM d")
+            date_in_words2 = QDate.fromString(date_to_str, "yyyy-MM-dd").toString("yyyy MMMM d")
+            self.ui.transaction_record_tbl.hide()
+            self.ui.no_transaction_found.setText(f"There are no {selected_item} found during {date_in_words1} to  {date_in_words2}.")
+            self.ui.no_transaction_found.show()
+            
+        if no_row_matches == True and date_from_str <= str_date_item <= date_to_str:
+            date_in_words1 = QDate.fromString(date_from_str, "yyyy-MM-dd").toString("yyyy MMMM d")
+            date_in_words2 = QDate.fromString(date_to_str, "yyyy-MM-dd").toString("yyyy MMMM d")
+            self.ui.transaction_record_tbl.hide()
+            self.ui.no_transaction_found.setText(f"There are no search results found in {selected_item} during the {date_in_words1} to  {date_in_words2}.")
+            self.ui.no_transaction_found.show()
+
+        self.ui.lineEdit.setText(f"{total_txn_record}")                          
         #======================== EXPORT FUNCTIONS =================================#
         
     #Daily Transaction to Excel
@@ -592,48 +653,48 @@ class BtnFunctions(QMainWindow):
         
         total_datewise_txn = self.ui.datewise_transaction_table.rowCount()
         self.ui.lineEdit_2.setText(f"{total_datewise_txn}")
-        
-        total_sales_dwp = self.ui.datewise_payment_table.rowCount()
-        self.ui.label_49.setText(f"{total_sales_dwp}")
-        
+                
         total_txn_record = self.ui.transaction_record_tbl.rowCount()
         self.ui.lineEdit.setText(f"{total_txn_record}")
+        
+        for row in range(self.ui.datewise_payment_table.rowCount()):
+            amount_paid = self.ui.datewise_payment_table.item(row, 5)
+            
+            if amount_paid is not None:
+                try:
+                    amount_paid = float(amount_paid.text())
+                    total_sales_dwp += amount_paid
+                except ValueError:
+                    pass
+        
+        self.ui.label_49.setText(f"{total_sales_dwp:.2f}")
+
         #======================== RESET FUNCTIONS =================================#
         
     def reset_dailytxn_table(self):
-        self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
-        self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
-
+        self.count_labels_txns()
         for row in range(self.ui.daily_tnx_table.rowCount()):
             self.ui.daily_tnx_table.setRowHidden(row, False)        
             self.ui.daily_tnx_table.show()
             self.ui.no_dailytxn_found.hide()
             
     def reset_txn_table(self):
-        #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
-        #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
-        #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
-        
+        self.count_labels_txns()
         for row in range(self.ui.transaction_record_tbl.rowCount()):
             self.ui.transaction_record_tbl.setRowHidden(row, False)        
             self.ui.transaction_record_tbl.show()
             self.ui.no_transaction_found.hide()            
     
     def reset_datewise_txn_table(self):
-        #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
-        #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
-        #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
-        
+        self.count_labels_txns()
         for row in range(self.ui.datewise_transaction_table.rowCount()):
             self.ui.datewise_transaction_table.setRowHidden(row, False)        
             self.ui.datewise_transaction_table.show()
             self.ui.no_datewiseT_found.hide()
     
     def reset_datewise_payment_table(self):
-        #self.ui.edit_search_daily_tnx.setText("")  # Clear the search text
-        #self.ui.filter_daily_tnx.setCurrentIndex(0)  # Set the filter to the first item (or the default item)
-        #self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  # Set the date to the current date
-        
+        self.ui.edit_search_dwp.setText("")
+        self.count_labels_txns()
         for row in range(self.ui.datewise_payment_table.rowCount()):
             self.ui.datewise_payment_table.setRowHidden(row, False)        
             self.ui.datewise_payment_table.show()
