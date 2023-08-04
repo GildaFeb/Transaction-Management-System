@@ -95,19 +95,19 @@ class BtnFunctions(QMainWindow):
         super(BtnFunctions, self).__init__()
 
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+        self.ui.setupUi(self)        
+        self.ui.icon_only_widget.hide()
+        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.home_btn_2.setChecked(True)
         
+        #========================== INITIALIZATIONS =====================================#
         self.ui.no_category_found.hide()
         self.ui.no_pricelist_found.hide()
         self.ui.no_dailytxn_found.hide()
         self.ui.no_datewiseT_found.hide()
         self.ui.no_datewiseP_found.hide()
-        self.ui.no_transaction_found.hide()            
-
-        
-        self.ui.icon_only_widget.hide()
-        self.ui.stackedWidget.setCurrentIndex(0)
-        self.ui.home_btn_2.setChecked(True)
+        self.ui.no_transaction_found.hide() 
+        self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  
         
         #========================== UPDATE =====================================#
         self.ui.update_transaction.pressed.connect(self.update_transaction_pressed)
@@ -130,17 +130,14 @@ class BtnFunctions(QMainWindow):
         #========================== SEARCH FIELDS =====================================#
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
         self.ui.edit_search_category.textChanged.connect(self.category_table)
-        
+        self.ui.edit_search_daily_tnx.textChanged.connect(self.daily_txn_table)
         self.ui.edit_search_dwt.textChanged.connect(self.datewise_txn_table)
         self.ui.edit_search_dwp.textChanged.connect(self.datewise_payment_table)
         self.ui.edit_search_new_transaction.textChanged.connect(self.transaction_table)
 
         #========================== FILTERING =====================================#
-        #self.ui.filter_daily_tnx.currentIndexChanged.connect(self.filter_dailytxn_table)
-        #self.ui.filter_dwt.currentIndexChanged.connect(self.filter_datewise_txn_table)
-        #self.ui.filter_dwp.currentIndexChanged.connect(self.filter_date_wise_payment_table) 
+        self.ui.dateEdit_daily_tnx.dateChanged.connect(self.filter_dailytxn_table)
         
-        self.ui.dateEdit_daily_tnx.dateChanged.connect(self.filter_bydate_dailytxn_table)
         #========================== EXCEL EXPORT BUTTONS =====================================#
         self.ui.printreport_dwp_btn.clicked.connect(self.datewise_payment_toExcel)
         self.ui.printreport_daily_tnx_btn.clicked.connect(self.daily_transaction_toExcel)
@@ -308,8 +305,22 @@ class BtnFunctions(QMainWindow):
         
         if not row_matches:
             self.ui.transaction_record_tbl.hide()
-            self.ui.no_transaction_found.show()                       
-            
+            self.ui.no_transaction_found.show()
+                                   
+    #Daily transactions search field
+    def daily_txn_table(self):
+        search_daily_txn = self.ui.edit_search_daily_tnx.text().strip()
+
+        # Check if the search field is empty
+        if not search_daily_txn:
+        # If the search field is empty, reset the QTableWidget to show all items
+            for row in range(self.ui.daily_tnx_table.rowCount()):
+                self.ui.daily_tnx_table.setRowHidden(row, False)
+                self.ui.daily_tnx_table.show()
+                self.ui.no_dailytxn_found.hide()
+        else:
+            self.filter_dailytxn_table()
+                        
     #Date-wise transactions search field
     def datewise_txn_table(self):
         search_datewise_txn = self.ui.edit_search_dwt.text().strip()
@@ -375,7 +386,40 @@ class BtnFunctions(QMainWindow):
         #======================== FILTER FUNCTIONS =================================#
               
     #Daily Transaction Filter 
-    
+    def filter_dailytxn_table(self):
+        search_daily_txn = self.ui.edit_search_daily_tnx.text().strip().lower()
+        selected_date = self.ui.dateEdit_daily_tnx.date()
+        new_date = selected_date.toString("yyyy-MM-dd")
+        
+        no_row_matches = True
+                    
+        for row in range(self.ui.daily_tnx_table.rowCount()):
+            date_item = self.ui.daily_tnx_table.item(row, 1)
+            for col in range(self.ui.daily_tnx_table.columnCount()):
+                item = self.ui.daily_tnx_table.item(row, col)
+            
+                if date_item is not None:
+                    date = date_item.text().strip()
+                    if  (search_daily_txn in item.text().lower()) and (date == new_date):
+                        self.ui.daily_tnx_table.setRowHidden(row, False)
+                        self.ui.daily_tnx_table.show()
+                        self.ui.no_dailytxn_found.hide()
+                        no_row_matches = False
+                        break 
+                    else:
+                        self.ui.daily_tnx_table.setRowHidden(row, True)
+
+        if not date == new_date:
+            self.ui.daily_tnx_table.hide()
+            date_in_words = QDate.fromString(new_date, "yyyy-MM-dd").toString("yyyy MMMM d")
+            self.ui.no_dailytxn_found.setText(f"There is no transaction during {date_in_words}.")
+            self.ui.no_dailytxn_found.show()
+            
+        if no_row_matches == True and date == new_date:
+            self.ui.daily_tnx_table.hide()
+            date_in_words = QDate.fromString(new_date, "yyyy-MM-dd").toString("yyyy MMMM d")
+            self.ui.no_dailytxn_found.setText(f"There is no search result during {date_in_words}.")
+            self.ui.no_dailytxn_found.show()    
     
             
     #Date-wise transaction filter button
@@ -386,38 +430,6 @@ class BtnFunctions(QMainWindow):
     def filter_date_wise_payment_clicked(self):
         print("date-wise payment filter")
         
-        #======================== FILTER BY DATE AND STATUS =================================#
-
-    def filter_bydate_dailytxn_table(self):
-        selected_date = self.ui.dateEdit_daily_tnx.date()
-        new_date = selected_date.toString("yyyy-MM-dd") 
-        
-        
-        for row in range(self.ui.daily_tnx_table.rowCount()):
-            date_item = self.ui.daily_tnx_table.item(row, 1)
-            status_item = self.ui.daily_tnx_table.item(row, 3)
-            status = status_item.text().strip()
-            for col in range(self.ui.daily_tnx_table.columnCount()):
-                item = self.ui.daily_tnx_table.item(row, col)  
-                       
-                if (date_item is not None and date_item.text() == new_date):
-                    self.ui.daily_tnx_table.setRowHidden(row, False)
-                    self.ui.edit_search_daily_tnx.setEnabled(False)
-                    
-                elif(date_item is not None and date_item.text() == new_date):
-                    self.ui.daily_tnx_table.setRowHidden(row, False)
-                    self.ui.edit_search_daily_tnx.setEnabled(False)
-                    
-                elif(date_item is not None and date_item.text() == new_date):
-                    self.ui.daily_tnx_table.setRowHidden(row, False)
-                    self.ui.edit_search_daily_tnx.setEnabled(False)
-                    
-                elif(date_item is not None and date_item.text() == new_date):
-                    self.ui.daily_tnx_table.setRowHidden(row, False)
-                    self.ui.edit_search_daily_tnx.setEnabled(False)
-
-                else:
-                    self.ui.daily_tnx_table.setRowHidden(row, True)
                     
         #======================== EXPORT FUNCTIONS =================================#
         
