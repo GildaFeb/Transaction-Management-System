@@ -1217,7 +1217,7 @@ class DBQueries():
 
             conn.commit()
 
-            DBQueries.displayTransactionRecords(self, DBQueries.getAllTransactions(dbFolder))
+            DBQueries.displayTransactionRecords(lambda: DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDailyTransactions(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDatewiseTransactions(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDatewisePayments(self, DBQueries.getAllTransactions(dbFolder))
@@ -1291,37 +1291,98 @@ class DBQueries():
         self.ui.save_update.clicked.connect(lambda: DBQueries.on_save_update(self, dbFolder, txn_code))
 
     def on_save_update(self, dbFolder, txn_code):
-
         conn = DBQueries.create_connection(dbFolder)
         c = conn.cursor()
 
-        prtclr_name = self.ui.customer_name_utd.text()
-        prtclr_cn = self.ui.contact_num_utd.text()
-        serv_name = self.ui.category_name_nt_2.currentText()
-        prod_sz = self.ui.category_size_2.currentText()
-        prod_qty = self.ui.product_quantity_2.currentText()
-        pmt_paid = self.ui.utd_payment.text()
         txn_sts = self.ui.comboBox.currentText()
 
-        update_txn_data_sql = """
-            UPDATE transactions
-            SET PRTCLR_NAME = ?, PRTCLR_CN = ?, SERV_NAME = ?, PROD_SZ = ?, PROD_QTY = ?, PMT_PAID = ?, TXN_STS = ?
-            WHERE TXN_CODE = ?;
-        """
-
         try:
-            c = conn.cursor()
-            c.execute(update_txn_data_sql, (prtclr_name, prtclr_cn, serv_name, prod_sz, prod_qty, pmt_paid, txn_sts, txn_code))
+            if self.ui.utd_payment.isEnabled():
+                try:
+                    this_txn_pmt_paid = float(self.ui.utd_payment.text())
+                except ValueError:
+                    print("Invalid payment amount. Please enter a valid numeric value.")
+                    return
+    
+            get_this_txn_pmt_data_sql = """
+                SELECT t.TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS FROM transactions t
+                INNER JOIN payment p ON t.TXN_CODE = p.TXN_CODE
+                WHERE t.TXN_CODE = ?;
+            """
+            c.execute(get_this_txn_pmt_data_sql, (txn_code,))
+            statuses_data = c.fetchall()
+
+            if not statuses_data:
+                print(f"Transaction with TXN_CODE={txn_code} not found in the database.")
+                conn.close()
+                return
+
+            txn_code, pmt_disc, pmt_tot, pmt_paid, pmt_bal, pmt_date, pmt_sts = statuses_data[0]
+            this_txn_pmt_tot = pmt_bal
+            this_txn_pmt_date = datetime.now().strftime('%Y-%m-%d')
+
+            if pmt_sts == 'Fully Paid':
+                print("Transaction is already Fully Paid. Skipping payment insertion.")
+            else:
+                if this_txn_pmt_paid < 0:
+                    print("Payment amount cannot be negative.")
+                    conn.close()
+                    return
+
+                if this_txn_pmt_paid > this_txn_pmt_tot:
+                    print("Payment exceeds the remaining balance.")
+                    conn.close()
+                    return
+
+                this_txn_pmt_bal = pmt_bal - this_txn_pmt_paid
+                this_txn_pmt_sts = 'Fully Paid' if this_txn_pmt_bal == 0 else 'Partially Paid'
+
+                # Insert new payment data
+                insert_new_payment_sql = """
+                    INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
+                    VALUES (?, ?, ?, ?, ?, ?, ?);
+                """
+                c.execute(insert_new_payment_sql, (txn_code, pmt_disc, this_txn_pmt_tot, this_txn_pmt_paid, this_txn_pmt_bal, this_txn_pmt_date, pmt_sts))
+
+                
+            #================================ UPDATE PARTICULAR =============================#
+            new_prtclr_name = self.ui.customer_name_utd.text()
+            new_prtclr_cn = self.ui.contact_num_utd.text()
+
+            update_particular_sql = """
+                    UPDATE particular
+                    SET PRTCLR_NAME=?, PRTCLR_CN=?
+                    WHERE PRTCLR_ID IN (
+                        SELECT PRTCLR_ID
+                        FROM transactions
+                        WHERE TXN_CODE=?
+                    );
+                """
+            c.execute(update_particular_sql, (new_prtclr_name, new_prtclr_cn, txn_code))
+
+            #================================ UPDATE TXN_STS =============================#
+            update_txn_status_sql = """
+                    UPDATE transactions
+                    SET TXN_STS=?
+                    WHERE TXN_CODE=?
+                """
+            c.execute(update_txn_status_sql, (txn_sts, txn_code))
+
             conn.commit()
 
             self.ui.customer_name_utd.setText("")
-            self.ui.job_details_table.clearContents()
-            self.ui.job_details_table.setRowCount(0)
+            self.ui.order_detail_table_2.clearContents()
+            self.ui.order_detail_table_2.setRowCount(0)
+            self.ui.order_detail_table_3.clearContents()
+            self.ui.order_detail_table_3.setRowCount(0)
 
-            self.displayTransactionRecords(DBQueries.getAllTransactions(dbFolder))
+            self.ui.stackedWidget.setCurrentIndex(4)
+            DBQueries.displayTransactionRecords(lambda: DBQueries.getAllTransactions(dbFolder))
 
+        except ValueError as ve:
+            print("Error updating transaction:", ve)
         except Exception as e:
-            print("Error updating transaction:", e)
+            print("Unexpected error occurred while updating transaction:", e)
 
         finally:
             conn.close()
@@ -1335,8 +1396,6 @@ class DBQueries():
         else:
             update_txn_btn.setVisible(True)
 
-
-    
     #======================================== ON EXIT =================================#
     def drop_job_temp_table(dbFolder):
         try:

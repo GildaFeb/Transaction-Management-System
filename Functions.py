@@ -215,8 +215,9 @@ class BtnFunctions(QMainWindow):
         #=============================== ON EXIT ========================================#
         atexit.register(DBQueries.drop_job_temp_table, dbFolder)
 
-        #========================== UPDATE =====================================#
+        #========================== UPDATE TRANSACTIONS =====================================#
         self.ui.update_transaction.clicked.connect(lambda: self.update_transaction_pressed(dbFolder))
+        self.ui.cancel_update.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(4))
 
         #======================== SEARCH FIELDS FUNCTIONS =================================#
         
