@@ -130,13 +130,13 @@ class BtnFunctions(QMainWindow):
         #========================== SEARCH FIELDS =====================================#
         self.ui.edit_search_pricelist.textChanged.connect(self.pricelist_table)
         self.ui.edit_search_category.textChanged.connect(self.category_table)
-        self.ui.edit_search_daily_tnx.textChanged.connect(self.filter_dailytxn_table)
+        
         self.ui.edit_search_dwt.textChanged.connect(self.datewise_txn_table)
         self.ui.edit_search_dwp.textChanged.connect(self.datewise_payment_table)
         self.ui.edit_search_new_transaction.textChanged.connect(self.transaction_table)
 
         #========================== FILTERING =====================================#
-        self.ui.filter_daily_tnx.currentIndexChanged.connect(self.filter_dailytxn_table)
+        #self.ui.filter_daily_tnx.currentIndexChanged.connect(self.filter_dailytxn_table)
         #self.ui.filter_dwt.currentIndexChanged.connect(self.filter_datewise_txn_table)
         #self.ui.filter_dwp.currentIndexChanged.connect(self.filter_date_wise_payment_table) 
         
@@ -375,57 +375,8 @@ class BtnFunctions(QMainWindow):
         #======================== FILTER FUNCTIONS =================================#
               
     #Daily Transaction Filter 
-    def filter_dailytxn_table(self):
-        selected_item = self.ui.filter_daily_tnx.currentText()
-        search_dailytxn = self.ui.edit_search_daily_tnx.text().strip().lower()
     
-        no_row_matches = True
-        
-        for row in range(self.ui.daily_tnx_table.rowCount()):
-            status_item = self.ui.daily_tnx_table.item(row, 3)
-            for col in range(self.ui.daily_tnx_table.columnCount()):
-                item = self.ui.daily_tnx_table.item(row, col)
-            
-                if status_item is not None and item is not None:
-                    status = status_item.text().strip()
-                    if (selected_item == "All Transactions") and (search_dailytxn in item.text().lower()):
-                        self.ui.daily_tnx_table.setRowHidden(row, False)
-                        self.ui.daily_tnx_table.show()
-                        self.ui.no_dailytxn_found.hide()
-                        self.ui.edit_search_daily_tnx.setEnabled(True)
-                        no_row_matches = False
-                        break
-                    elif (selected_item == "Pending Transactions" and status == "Pending") and (search_dailytxn in item.text().lower()):
-                        self.ui.daily_tnx_table.setRowHidden(row, False)
-                        self.ui.daily_tnx_table.show()
-                        self.ui.no_dailytxn_found.hide()
-                        self.ui.edit_search_daily_tnx.setEnabled(True)
-                        no_row_matches = False
-                        break
-                    elif (selected_item == "Failed Transactions" and status == "Failed") and (search_dailytxn in item.text().lower()):
-                        self.ui.daily_tnx_table.setRowHidden(row, False)
-                        self.ui.daily_tnx_table.show()
-                        self.ui.no_dailytxn_found.hide()
-                        self.ui.edit_search_daily_tnx.setEnabled(True)
-                        no_row_matches = False
-                        break
-                    elif (selected_item == "Successful Transactions" and status == "Successful") and (search_dailytxn in item.text().lower()):
-                        self.ui.daily_tnx_table.setRowHidden(row, False)
-                        self.ui.daily_tnx_table.show()
-                        self.ui.no_dailytxn_found.hide()
-                        self.ui.edit_search_daily_tnx.setEnabled(True)
-                        no_row_matches = False
-                        break 
-                    else:
-                        self.ui.daily_tnx_table.setRowHidden(row, True)
-        
-        if no_row_matches == True:
-            self.ui.daily_tnx_table.hide()
-            self.ui.no_dailytxn_found.setText(f"There is no {selected_item} found.")
-            self.ui.no_dailytxn_found.show()
-        else:
-            self.ui.daily_tnx_table.show()
-            self.ui.no_dailytxn_found.hide()
+    
             
     #Date-wise transaction filter button
     def filter_date_wise_transaction_clicked(self):
@@ -440,8 +391,7 @@ class BtnFunctions(QMainWindow):
     def filter_bydate_dailytxn_table(self):
         selected_date = self.ui.dateEdit_daily_tnx.date()
         new_date = selected_date.toString("yyyy-MM-dd") 
-        selected_item = self.ui.filter_daily_tnx.currentText()
-        search_dailytxn = self.ui.edit_search_daily_tnx.text().strip().lower()
+        
         
         for row in range(self.ui.daily_tnx_table.rowCount()):
             date_item = self.ui.daily_tnx_table.item(row, 1)
@@ -450,19 +400,19 @@ class BtnFunctions(QMainWindow):
             for col in range(self.ui.daily_tnx_table.columnCount()):
                 item = self.ui.daily_tnx_table.item(row, col)  
                        
-                if (date_item is not None and date_item.text() == new_date) and (selected_item == "All Transactions"):
+                if (date_item is not None and date_item.text() == new_date):
                     self.ui.daily_tnx_table.setRowHidden(row, False)
                     self.ui.edit_search_daily_tnx.setEnabled(False)
                     
-                elif(date_item is not None and date_item.text() == new_date) and (selected_item == "Pending Transactions" and status == "Pending"):
+                elif(date_item is not None and date_item.text() == new_date):
                     self.ui.daily_tnx_table.setRowHidden(row, False)
                     self.ui.edit_search_daily_tnx.setEnabled(False)
                     
-                elif(date_item is not None and date_item.text() == new_date) and (selected_item == "Successful Transactions" and status == "Successful"):
+                elif(date_item is not None and date_item.text() == new_date):
                     self.ui.daily_tnx_table.setRowHidden(row, False)
                     self.ui.edit_search_daily_tnx.setEnabled(False)
                     
-                elif(date_item is not None and date_item.text() == new_date) and (selected_item == "Failed Transactions" and status == "Failed"):
+                elif(date_item is not None and date_item.text() == new_date):
                     self.ui.daily_tnx_table.setRowHidden(row, False)
                     self.ui.edit_search_daily_tnx.setEnabled(False)
 

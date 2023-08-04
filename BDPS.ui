@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1618</width>
-    <height>893</height>
+    <height>868</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -5661,6 +5661,12 @@ border-radius: 5px;
               </property>
               <item>
                <widget class="QWidget" name="tr_actions_widget" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">*{
 	background-color: rgb(255, 255, 255);
@@ -5669,17 +5675,20 @@ border-radius: 5px;
 </string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_75">
+                 <property name="spacing">
+                  <number>13</number>
+                 </property>
                  <property name="leftMargin">
-                  <number>20</number>
+                  <number>26</number>
                  </property>
                  <property name="topMargin">
-                  <number>20</number>
+                  <number>26</number>
                  </property>
                  <property name="rightMargin">
-                  <number>20</number>
+                  <number>26</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>20</number>
+                  <number>26</number>
                  </property>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_14">
@@ -6065,7 +6074,7 @@ QDateEdit::down-arrow {
                       <widget class="QLineEdit" name="edit_search_new_transaction">
                        <property name="minimumSize">
                         <size>
-                         <width>0</width>
+                         <width>300</width>
                          <height>35</height>
                         </size>
                        </property>
@@ -6449,7 +6458,7 @@ color: white
          <widget class="QWidget" name="daily_transaction_2">
           <layout class="QVBoxLayout" name="verticalLayout_76">
            <property name="spacing">
-            <number>13</number>
+            <number>20</number>
            </property>
            <property name="leftMargin">
             <number>30</number>
@@ -6464,94 +6473,11 @@ color: white
             <number>30</number>
            </property>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_69">
-             <property name="spacing">
-              <number>15</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="label_42">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>60</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>60</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>13</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>  Daily Transactions</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_4">
-               <property name="minimumSize">
-                <size>
-                 <width>40</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>40</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton{
-	border: 2px solid #e1e2e4;
-	background-color: #fbfcfd;
-	border-radius: 10px;
-}
-
-</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="resource.qrc">
-                 <normaloff>:/icon/icon/01lighticons-04full.png</normaloff>:/icon/icon/01lighticons-04full.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>35</width>
-                 <height>35</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
             <widget class="QWidget" name="action_area" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>150</height>
+               <height>17</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -6561,17 +6487,20 @@ color: white
               </size>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_28">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <property name="leftMargin">
-               <number>20</number>
+               <number>26</number>
               </property>
               <property name="topMargin">
                <number>10</number>
               </property>
               <property name="rightMargin">
-               <number>20</number>
+               <number>26</number>
               </property>
               <property name="bottomMargin">
-               <number>20</number>
+               <number>26</number>
               </property>
               <item>
                <widget class="QWidget" name="widget_32" native="true">
@@ -6606,10 +6535,10 @@ color: white
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_34">
                    <property name="spacing">
-                    <number>13</number>
+                    <number>0</number>
                    </property>
                    <property name="leftMargin">
-                    <number>7</number>
+                    <number>0</number>
                    </property>
                    <property name="topMargin">
                     <number>0</number>
@@ -6621,87 +6550,49 @@ color: white
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QLabel" name="label_46">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Date:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QDateEdit" name="dateEdit_daily_tnx">
+                    <widget class="QLabel" name="label_42">
                      <property name="minimumSize">
                       <size>
-                       <width>150</width>
-                       <height>40</height>
+                       <width>0</width>
+                       <height>60</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>60</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
-                       <pointsize>11</pointsize>
+                       <pointsize>13</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
                       </font>
                      </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QDateEdit{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #c3ccce;
-	padding-left: 10px;
-}
-
-QDateEdit::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
-	padding: 5px 5px;
-}
-
-QDateEdit::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
-                     </property>
-                     <property name="frame">
-                      <bool>true</bool>
-                     </property>
-                     <property name="buttonSymbols">
-                      <enum>QAbstractSpinBox::UpDownArrows</enum>
-                     </property>
-                     <property name="displayFormat">
-                      <string>yyyy-MM-dd</string>
-                     </property>
-                     <property name="calendarPopup">
-                      <bool>true</bool>
+                     <property name="text">
+                      <string>  Daily Transactions</string>
                      </property>
                     </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_12">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
                    </item>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_31">
                      <property name="spacing">
                       <number>0</number>
                      </property>
-                     <item>
-                      <spacer name="horizontalSpacer_12">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
                      <item>
                       <widget class="QPushButton" name="printreport_daily_tnx_btn">
                        <property name="minimumSize">
@@ -6739,6 +6630,12 @@ QDateEdit::down-arrow {
                      </item>
                      <item>
                       <widget class="QLabel" name="label_48">
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>30</height>
+                        </size>
+                       </property>
                        <property name="font">
                         <font>
                          <pointsize>11</pointsize>
@@ -6758,7 +6655,7 @@ QDateEdit::down-arrow {
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>1</height>
+                     <height>2</height>
                     </size>
                    </property>
                    <property name="maximumSize">
@@ -6784,7 +6681,7 @@ QDateEdit::down-arrow {
                     <number>0</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>13</number>
                    </property>
                    <property name="rightMargin">
                     <number>0</number>
@@ -6855,22 +6752,22 @@ QDateEdit::down-arrow {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QComboBox" name="filter_daily_tnx">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
+                    <widget class="QLabel" name="label_46">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
                      </property>
+                     <property name="text">
+                      <string>Date:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDateEdit" name="dateEdit_daily_tnx">
                      <property name="minimumSize">
                       <size>
-                       <width>0</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
+                       <width>150</width>
                        <height>40</height>
                       </size>
                      </property>
@@ -6883,7 +6780,7 @@ QDateEdit::down-arrow {
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QComboBox{
+                      <string notr="true">QDateEdit{
 	background-color:white;
 	color:black;
 	border-radius:7px;
@@ -6891,40 +6788,75 @@ QDateEdit::down-arrow {
 	padding-left: 10px;
 }
 
-QComboBox::drop-down {
+QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
-width: 10px;
 }
 
-QComboBox::down-arrow {
+QDateEdit::down-arrow {
 	image: url(:/icon/icon/down-arrow.png);
 	width: 15px;
 	height: 15px;
 	padding: 10px 10px;
 }</string>
                      </property>
-                     <item>
-                      <property name="text">
-                       <string>All Transactions</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string>Successful Transactions</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string>Pending Transactions</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string>Failed Transactions</string>
-                      </property>
-                     </item>
+                     <property name="frame">
+                      <bool>true</bool>
+                     </property>
+                     <property name="buttonSymbols">
+                      <enum>QAbstractSpinBox::UpDownArrows</enum>
+                     </property>
+                     <property name="displayFormat">
+                      <string>yyyy-MM-dd</string>
+                     </property>
+                     <property name="calendarPopup">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_4">
+                     <property name="minimumSize">
+                      <size>
+                       <width>40</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	border: 2px solid #e1e2e4;
+	background-color: #fbfcfd;
+	border-radius: 10px;
+}
+
+</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resource.qrc">
+                       <normaloff>:/icon/icon/01lighticons-04full.png</normaloff>:/icon/icon/01lighticons-04full.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>35</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -6997,6 +6929,18 @@ color: black;
 }</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_19">
+              <property name="leftMargin">
+               <number>26</number>
+              </property>
+              <property name="topMargin">
+               <number>26</number>
+              </property>
+              <property name="rightMargin">
+               <number>26</number>
+              </property>
+              <property name="bottomMargin">
+               <number>26</number>
+              </property>
               <item>
                <widget class="QLabel" name="blue_border">
                 <property name="minimumSize">
