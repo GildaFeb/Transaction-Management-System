@@ -1166,7 +1166,12 @@ class DBQueries():
         prtclr_cn = self.ui.contact_num_nt.text()
         txn_date = datetime.now().strftime('%Y-%m-%d')
         txn_sts = 'Pending'
-        pmt_disc = float(self.ui.discount_nt.text().strip())
+        pmt_disc = self.ui.discount_nt.text().strip()
+        try:
+            pmt_disc = float(pmt_disc) if pmt_disc else 0.0
+        except ValueError:
+            print("Invalid discount amount.")
+            return False
         pmt_paid = float(self.ui.payment_nt.text())
 
         conn = sqlite3.connect(dbFolder)
@@ -1201,7 +1206,7 @@ class DBQueries():
             """
             cursor.execute(job_transfer_sql, (current_txn_code,))
             #========================== INSERT ON PAYMENT ===========================#
-            pmt_tot = conn.execute("SELECT SUBTOTAL FROM job_temp WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp)").fetchone()[0] - pmt_disc
+            pmt_tot = float(conn.execute("SELECT SUBTOTAL FROM job_temp WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp)").fetchone()[0]) - pmt_disc
             pmt_bal = pmt_tot - pmt_paid
             pmt_sts = 'Fully Paid' if pmt_bal == 0 else 'Partially Paid'
             pmt_date = txn_date
@@ -1222,6 +1227,19 @@ class DBQueries():
             print("Transaction saved successfully.")
         except Exception as e:
             print("Error saving transaction:", e)
+        finally:
+            cursor.close()
+            conn.close()
+
+    def drop_job_temp_table(dbFolder):
+        try:
+            conn = sqlite3.connect(dbFolder)
+            cursor = conn.cursor()
+            cursor.execute("DROP TABLE IF EXISTS job_temp;")
+            conn.commit()
+            print("job_temp table dropped.")
+        except Exception as e:
+            print("Error dropping job_temp table:", e)
         finally:
             cursor.close()
             conn.close()

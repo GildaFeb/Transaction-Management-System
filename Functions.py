@@ -1,4 +1,5 @@
 import os
+import atexit
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox, QComboBox, QFileDialog, QLineEdit
 #from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream, QDate
@@ -212,6 +213,9 @@ class BtnFunctions(QMainWindow):
 
         current_txn_code = DBQueries.get_next_txn_code(self, dbFolder)
         self.ui.tnx_code_nt.setText(str(current_txn_code))
+
+        #=============================== ON EXIT ========================================#
+        atexit.register(DBQueries.drop_job_temp_table, dbFolder)
 
         #======================== SEARCH FIELDS FUNCTIONS =================================#
         
