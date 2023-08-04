@@ -1224,7 +1224,6 @@ class DBQueries():
         finally:
             cursor.close()
             conn.close()
-    
 
     def updateTransactions(self, dbFolder):
         
@@ -1243,7 +1242,7 @@ class DBQueries():
         pmt_sts = self.ui.transaction_record_tbl.item(selected_row, 6).text()
         pmt_bal = float(self.ui.transaction_record_tbl.item(selected_row, 7).text())
 
-        QtCore.QTimer.singleShot(100, lambda: self.ui.stackedWidget.setCurrentIndex(8))
+        self.ui.stackedWidget.setCurrentIndex(8)
 
         get_txn_jobs_data_sql = """
                                 SELECT JOB_ID, SERV_NAME, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT FROM jobs j
@@ -1258,6 +1257,13 @@ class DBQueries():
         for row_index, row_data in enumerate(existing_data):
             for col_index, cell_value in enumerate(row_data):
                 self.ui.order_detail_table_2.setItem(row_index, col_index, QtWidgets.QTableWidgetItem(str(cell_value)))
+
+        self.ui.save_update.clicked.connect(lambda: DBQueries.on_save_update(self, dbFolder, txn_code))
+
+    def on_save_update(self, dbFolder, txn_code):
+
+        conn = DBQueries.create_connection(dbFolder)
+        c = conn.cursor()
 
         prtclr_name = self.ui.customer_name_utd.text()
         prtclr_cn = self.ui.contact_num_utd.text()
