@@ -111,7 +111,7 @@ class BtnFunctions(QMainWindow):
         self.ui.date_month_tnx.setDate(QDate.currentDate())
         self.ui.date_year_tnx.setDate(QDate.currentDate())
         #========================== UPDATE =====================================#
-        self.ui.update_transaction.pressed.connect(self.update_transaction_pressed)
+        self.ui.update_transaction.clicked.connect(self.update_transaction_pressed)
         
         #========================== RESET OF TABLES =====================================#
         self.ui.pushButton_4.clicked.connect(self.reset_dailytxn_table)
@@ -214,7 +214,7 @@ class BtnFunctions(QMainWindow):
 
         self.ui.update_transaction.clicked.connect(lambda: DBQueries.updateTransactions(self, dbFolder))
         self.ui.transaction_record_tbl.itemSelectionChanged.connect(lambda: DBQueries.on_txn_selection_changed(self))
-        
+
         #=============================== ON EXIT ========================================#
         atexit.register(DBQueries.drop_job_temp_table, dbFolder)
 
@@ -720,8 +720,24 @@ class BtnFunctions(QMainWindow):
     def on_daily_payment_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(7)
 
-    def update_transaction_pressed(self):
-        self.ui.stackedWidget.setCurrentIndex(8)
+    def update_transaction_pressed(self, dbFolder):
+        selected_row = self.ui.transaction_record_tbl.currentRow()
+
+        if selected_row < 0:
+            print("No transaction selected.")
+        else:
+            txn_item = self.ui.transaction_record_tbl.item(selected_row, 0)
+            txn_code = int(txn_item.text().split('-')[-1])
+            txn_date = self.ui.transaction_record_tbl.item(selected_row, 1).text()
+            prtclr_name = self.ui.transaction_record_tbl.item(selected_row, 2).text()
+            job_tot = float(self.ui.transaction_record_tbl.item(selected_row, 3).text())
+            pmt_paid = float(self.ui.transaction_record_tbl.item(selected_row, 4).text())
+            txn_sts = self.ui.transaction_record_tbl.item(selected_row, 5).text()
+            pmt_sts = self.ui.transaction_record_tbl.item(selected_row, 6).text()
+            pmt_bal = float(self.ui.transaction_record_tbl.item(selected_row, 7).text())
+            
+            self.ui.stackedWidget.setCurrentIndex(8)
+            DBQueries.updateTransactions(self, dbFolder, txn_code, txn_date, prtclr_name, job_tot, pmt_paid, txn_sts, pmt_sts, pmt_bal)
 
      ## ----------------------- ADD SHADOW --------------------- 
 
