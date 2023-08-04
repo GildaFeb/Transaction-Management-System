@@ -137,7 +137,9 @@ class BtnFunctions(QMainWindow):
 
         #========================== FILTERING =====================================#
         self.ui.dateEdit_daily_tnx.dateChanged.connect(self.filter_dailytxn_table)
-        
+        self.ui.date_year_tnx.dateChanged.connect(self.filter_bydate_dwtxn_table)
+        self.ui.date_month_tnx.dateChanged.connect(self.filter_bydate_dwtxn_table)
+
         #========================== EXCEL EXPORT BUTTONS =====================================#
         self.ui.printreport_dwp_btn.clicked.connect(self.datewise_payment_toExcel)
         self.ui.printreport_daily_tnx_btn.clicked.connect(self.daily_transaction_toExcel)
@@ -332,25 +334,8 @@ class BtnFunctions(QMainWindow):
                 self.ui.datewise_transaction_table.setRowHidden(row, False)
                 self.ui.datewise_transaction_table.show()
                 self.ui.no_datewiseT_found.hide()
-        
-        row_matches = False
-            
-        for row in range(self.ui.datewise_transaction_table.rowCount()):
-            for col in range(self.ui.datewise_transaction_table.columnCount()):
-                item = self.ui.datewise_transaction_table.item(row, col)
-                
-                if item is not None and search_datewise_txn.lower() in item.text().lower():
-                    self.ui.datewise_transaction_table.setRowHidden(row, False)
-                    row_matches = True
-                    self.ui.datewise_transaction_table.show()
-                    self.ui.no_datewiseT_found.hide()
-                    break
-                else:
-                    self.ui.datewise_transaction_table.setRowHidden(row, True)
-        
-        if not row_matches:
-            self.ui.datewise_transaction_table.hide()
-            self.ui.no_datewiseT_found.show() 
+        else:
+            self.filter_bydate_dwtxn_table()
             
     #Date-wise payments search field
     def datewise_payment_table(self):
@@ -412,20 +397,54 @@ class BtnFunctions(QMainWindow):
         if not date == new_date:
             self.ui.daily_tnx_table.hide()
             date_in_words = QDate.fromString(new_date, "yyyy-MM-dd").toString("yyyy MMMM d")
-            self.ui.no_dailytxn_found.setText(f"There is no transaction during {date_in_words}.")
+            self.ui.no_dailytxn_found.setText(f"There is no transaction found during {date_in_words}.")
             self.ui.no_dailytxn_found.show()
             
         if no_row_matches == True and date == new_date:
             self.ui.daily_tnx_table.hide()
             date_in_words = QDate.fromString(new_date, "yyyy-MM-dd").toString("yyyy MMMM d")
-            self.ui.no_dailytxn_found.setText(f"There is no search result during {date_in_words}.")
+            self.ui.no_dailytxn_found.setText(f"There is no {search_daily_txn} found during {date_in_words}.")
             self.ui.no_dailytxn_found.show()    
     
             
     #Date-wise transaction filter button
-    def filter_date_wise_transaction_clicked(self):
-        print("date-wise transactions filter")  
-                    
+    def filter_bydate_dwtxn_table(self):
+        from_month = self.ui.date_month_tnx.date().month()
+        to_year = self.ui.date_year_tnx.date().year()
+        
+        search_datewise_txn = self.ui.edit_search_dwt.text().strip().lower()
+
+        from_date = QDate(to_year, from_month, 1)
+        to_date = QDate(to_year, from_month, from_date.daysInMonth())    
+        
+        no_row_matches = True
+        
+        for row in range(self.ui.datewise_transaction_table.rowCount()):  
+            for col in range(self.ui.datewise_transaction_table.columnCount()):
+                item = self.ui.datewise_transaction_table.item(row, col).text().lower()
+                date_item = self.ui.datewise_transaction_table.item(row, 1)
+                if date_item is not None:
+                    date_str = date_item.text()
+                    date = QDate.fromString(date_str, "yyyy-MM-dd")
+                    if (from_date <= date <= to_date) and (search_datewise_txn in item):
+                        self.ui.datewise_transaction_table.setRowHidden(row, False)
+                        no_row_matches = False
+                        self.ui.datewise_transaction_table.show()
+                        self.ui.no_datewiseT_found.hide()  
+                        break
+                    else:
+                        self.ui.datewise_transaction_table.setRowHidden(row, True)
+                        
+        if not from_date <= date <= to_date:
+            self.ui.datewise_transaction_table.hide()
+            self.ui.no_datewiseT_found.setText(f"There is no transaction found during the month of {from_date.longMonthName(from_date.month())} {to_year}.")
+            self.ui.no_datewiseT_found.show()
+            
+        if no_row_matches == True and from_date <= date <= to_date:
+            self.ui.datewise_transaction_table.hide()
+            self.ui.no_datewiseT_found.setText(f"There is no {search_datewise_txn} found during the month of {from_date.longMonthName(from_date.month())} {to_year}.")
+            self.ui.no_datewiseT_found.show()
+
     #Date-wise payment filter button
     def filter_date_wise_payment_clicked(self):
         print("date-wise payment filter")
