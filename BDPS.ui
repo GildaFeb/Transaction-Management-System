@@ -88,7 +88,7 @@
        <item row="1" column="0">
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <property name="spacing">
-          <number>0</number>
+          <number>13</number>
          </property>
          <property name="leftMargin">
           <number>13</number>
@@ -785,7 +785,7 @@ border-top-left-radius: 30px;
 </string>
          </property>
          <property name="currentIndex">
-          <number>7</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -2238,9 +2238,12 @@ border-radius: 10px;
                         <height>16777215</height>
                        </size>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
                       <layout class="QVBoxLayout" name="verticalLayout_11">
                        <property name="spacing">
-                        <number>13</number>
+                        <number>10</number>
                        </property>
                        <property name="leftMargin">
                         <number>26</number>
@@ -2389,6 +2392,11 @@ border-radius: 10px;
                            <property name="cursor">
                             <cursorShape>ForbiddenCursor</cursorShape>
                            </property>
+                           <property name="styleSheet">
+                            <string notr="true">QLineEdit{
+	padding-left: 10px;
+}</string>
+                           </property>
                            <property name="frame">
                             <bool>false</bool>
                            </property>
@@ -2457,6 +2465,7 @@ border-radius: 10px;
 	border-radius:7px;
     border: 2px solid #c3ccce;
 	padding-left: 10px;
+
 }
 
 QComboBox::drop-down {
@@ -2506,6 +2515,11 @@ QComboBox::down-arrow {
                            <pointsize>10</pointsize>
                           </font>
                          </property>
+                         <property name="styleSheet">
+                          <string notr="true">QDoubleSpinBox{
+	padding-left: 10px;
+}</string>
+                         </property>
                          <property name="frame">
                           <bool>false</bool>
                          </property>
@@ -2524,26 +2538,22 @@ QComboBox::down-arrow {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="price_pricelist">
+                        <widget class="QDoubleSpinBox" name="price_pricelist">
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
                            <height>35</height>
                           </size>
                          </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>35</height>
-                          </size>
-                         </property>
                          <property name="font">
                           <font>
-                           <pointsize>10</pointsize>
+                           <pointsize>12</pointsize>
                           </font>
                          </property>
-                         <property name="frame">
-                          <bool>false</bool>
+                         <property name="styleSheet">
+                          <string notr="true">QDoubleSpinBox{
+	padding-left: 10px;
+}</string>
                          </property>
                         </widget>
                        </item>
@@ -2683,7 +2693,7 @@ QComboBox::down-arrow {
                               <property name="minimumSize">
                                <size>
                                 <width>0</width>
-                                <height>35</height>
+                                <height>20</height>
                                </size>
                               </property>
                               <property name="maximumSize">
@@ -2712,6 +2722,19 @@ QComboBox::down-arrow {
                           </item>
                          </layout>
                         </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_18">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
                        </item>
                       </layout>
                      </widget>
@@ -3377,6 +3400,11 @@ QComboBox::down-arrow {
                        <pointsize>11</pointsize>
                       </font>
                      </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLineEdit{
+	padding-left: 10px;
+}</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -3409,6 +3437,11 @@ QComboBox::down-arrow {
                       <font>
                        <pointsize>11</pointsize>
                       </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLineEdit{
+	padding-left: 10px;
+}</string>
                      </property>
                      <property name="frame">
                       <bool>false</bool>
@@ -4050,6 +4083,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
+width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -4980,41 +5014,6 @@ border-radius: 5px;
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_23">
                  <item>
-                  <widget class="QPushButton" name="new_form_btn">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-	background-color: #012768;
-	color:white;
-	border-radius:5px;
-	border: 2px solid #012157;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>New Form</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
                   <spacer name="verticalSpacer_6">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
@@ -5537,6 +5536,9 @@ border-radius: 5px;
                          <pointsize>11</pointsize>
                         </font>
                        </property>
+                       <property name="text">
+                        <string/>
+                       </property>
                        <property name="frame">
                         <bool>false</bool>
                        </property>
@@ -5547,7 +5549,7 @@ border-radius: 5px;
                         <bool>true</bool>
                        </property>
                        <property name="placeholderText">
-                        <string>0.00</string>
+                        <string>0</string>
                        </property>
                       </widget>
                      </item>
@@ -5598,6 +5600,14 @@ border-radius: 5px;
                    </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+	background-color: #012768;
+	color:white;
+	border-radius:5px;
+	border: 2px solid #012157;
+}</string>
                    </property>
                    <property name="text">
                     <string>Save Transaction</string>
@@ -6792,6 +6802,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
+width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -7191,50 +7202,6 @@ color: black;
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_6">
-                  <property name="minimumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	border: 2px solid #e1e2e4;
-	background-color: #fbfcfd;
-	border-radius: 10px;
-}
-
-</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="resource.qrc">
-                    <normaloff>:/icon/icon/01lighticons-04full.png</normaloff>:/icon/icon/01lighticons-04full.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>35</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
                </layout>
               </item>
               <item>
@@ -7346,6 +7313,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
+width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -7411,6 +7379,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
+width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -7632,6 +7601,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
+width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -7700,6 +7670,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
+width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -7730,6 +7701,50 @@ QDateEdit::down-arrow {
                          <string>yyyy</string>
                         </property>
                         <property name="calendarPopup">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_6">
+                        <property name="minimumSize">
+                         <size>
+                          <width>40</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>40</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QPushButton{
+	border: 2px solid #e1e2e4;
+	background-color: #fbfcfd;
+	border-radius: 10px;
+}
+
+</string>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="resource.qrc">
+                          <normaloff>:/icon/icon/01lighticons-04full.png</normaloff>:/icon/icon/01lighticons-04full.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>35</width>
+                          <height>35</height>
+                         </size>
+                        </property>
+                        <property name="flat">
                          <bool>true</bool>
                         </property>
                        </widget>
@@ -7987,50 +8002,6 @@ QDateEdit::down-arrow {
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_7">
-               <property name="minimumSize">
-                <size>
-                 <width>40</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>40</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton{
-	border: 2px solid #e1e2e4;
-	background-color: #fbfcfd;
-	border-radius: 10px;
-}
-
-</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="resource.qrc">
-                 <normaloff>:/icon/icon/01lighticons-04full.png</normaloff>:/icon/icon/01lighticons-04full.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>35</width>
-                 <height>35</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
             </layout>
            </item>
            <item>
@@ -8118,7 +8089,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
-width: 10px;
+	width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -8184,7 +8155,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
-width: 10px;
+	width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -8414,6 +8385,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
+	width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -8482,6 +8454,7 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
+	width: 15px;
 }
 
 QDateEdit::down-arrow {
@@ -8505,6 +8478,50 @@ QDateEdit::down-arrow {
                    <string>yyyy</string>
                   </property>
                   <property name="calendarPopup">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_7">
+                  <property name="minimumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	border: 2px solid #e1e2e4;
+	background-color: #fbfcfd;
+	border-radius: 10px;
+}
+
+</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resource.qrc">
+                    <normaloff>:/icon/icon/01lighticons-04full.png</normaloff>:/icon/icon/01lighticons-04full.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>35</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="flat">
                    <bool>true</bool>
                   </property>
                  </widget>
@@ -10051,7 +10068,7 @@ QComboBox::down-arrow {
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <property name="spacing">
-          <number>0</number>
+          <number>7</number>
          </property>
          <item>
           <widget class="QPushButton" name="home_btn_1">
