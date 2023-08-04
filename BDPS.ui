@@ -789,7 +789,7 @@ border-top-left-radius: 30px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -1794,6 +1794,9 @@ border-radius: 10px;
                    </sizepolicy>
                   </property>
                  </widget>
+                </item>
+                <item>
+                 <widget class="QDial" name="dial"/>
                 </item>
                 <item>
                  <widget class="QWidget" name="widget_5" native="true">
@@ -5630,13 +5633,13 @@ border-radius: 5px;
                   <number>13</number>
                  </property>
                  <property name="leftMargin">
-                  <number>26</number>
+                  <number>30</number>
                  </property>
                  <property name="topMargin">
                   <number>26</number>
                  </property>
                  <property name="rightMargin">
-                  <number>26</number>
+                  <number>30</number>
                  </property>
                  <property name="bottomMargin">
                   <number>26</number>
@@ -5803,6 +5806,9 @@ QDateEdit::down-arrow {
                        <property name="frame">
                         <bool>false</bool>
                        </property>
+                       <property name="displayFormat">
+                        <string>yyyy-MM-dd</string>
+                       </property>
                        <property name="calendarPopup">
                         <bool>true</bool>
                        </property>
@@ -5865,6 +5871,9 @@ QDateEdit::down-arrow {
                        </property>
                        <property name="frame">
                         <bool>false</bool>
+                       </property>
+                       <property name="displayFormat">
+                        <string>yyyy-MM-dd</string>
                        </property>
                        <property name="calendarPopup">
                         <bool>true</bool>
@@ -6353,13 +6362,13 @@ color: white
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>150</height>
+               <height>160</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>150</height>
+               <height>160</height>
               </size>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -6367,16 +6376,16 @@ color: white
                <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>26</number>
+               <number>30</number>
               </property>
               <property name="topMargin">
-               <number>10</number>
+               <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>26</number>
+               <number>30</number>
               </property>
               <property name="bottomMargin">
-               <number>26</number>
+               <number>0</number>
               </property>
               <item>
                <widget class="QWidget" name="widget_32" native="true">
@@ -7063,13 +7072,13 @@ QDateEdit::down-arrow {
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>150</height>
+                     <height>160</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>150</height>
+                     <height>160</height>
                     </size>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -7077,16 +7086,16 @@ QDateEdit::down-arrow {
                      <number>0</number>
                     </property>
                     <property name="leftMargin">
-                     <number>26</number>
+                     <number>30</number>
                     </property>
                     <property name="topMargin">
-                     <number>10</number>
+                     <number>0</number>
                     </property>
                     <property name="rightMargin">
-                     <number>26</number>
+                     <number>30</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>10</number>
+                     <number>0</number>
                     </property>
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_35">
@@ -7211,13 +7220,13 @@ QDateEdit::down-arrow {
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>1</height>
+                        <height>2</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>1</height>
+                        <height>2</height>
                        </size>
                       </property>
                       <property name="frameShape">
@@ -7237,7 +7246,7 @@ QDateEdit::down-arrow {
                        <number>0</number>
                       </property>
                       <property name="topMargin">
-                       <number>13</number>
+                       <number>0</number>
                       </property>
                       <property name="bottomMargin">
                        <number>0</number>
@@ -7764,13 +7773,13 @@ QDateEdit::down-arrow {
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>150</height>
+               <height>160</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>150</height>
+               <height>160</height>
               </size>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_40">
@@ -7778,16 +7787,16 @@ QDateEdit::down-arrow {
                <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>26</number>
+               <number>30</number>
               </property>
               <property name="topMargin">
-               <number>10</number>
+               <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>26</number>
+               <number>30</number>
               </property>
               <property name="bottomMargin">
-               <number>10</number>
+               <number>0</number>
               </property>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_54">
@@ -7906,13 +7915,13 @@ QDateEdit::down-arrow {
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>1</height>
+                  <height>2</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>1</height>
+                  <height>2</height>
                  </size>
                 </property>
                 <property name="frameShape">
