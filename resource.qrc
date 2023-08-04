@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icon/SIDEBAR ICONS/total.png</file>
+    <file>icon/SIDEBAR ICONS/total_cat copy.png</file>
+    <file>icon/SIDEBAR ICONS/total_product copy.png</file>
+    <file>icon/SIDEBAR ICONS/total_sales copy.png</file>
+    <file>icon/SIDEBAR ICONS/success.png</file>
+    <file>icon/SIDEBAR ICONS/cancelled.png</file>
+    <file>icon/SIDEBAR ICONS/pending.png</file>
     <file>icon/si_newtrans.png</file>
     <file>icon/si_newtrans-INV.png</file>
     <file>icon/si_cat.png</file>
