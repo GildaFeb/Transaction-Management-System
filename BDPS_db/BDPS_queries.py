@@ -929,11 +929,14 @@ class DBQueries():
         self.ui.total_nt.setText(str(payment_total))
 
         payment_paid_text = self.ui.payment_nt.text()
-        try:
-            payment_paid = float(payment_paid_text)
-        except ValueError:
-            print("Invalid payment amount.")
-            return False
+        if not payment_paid_text.strip():
+            payment_paid = 0.0
+        else:
+            try:
+                payment_paid = float(payment_paid_text)
+            except ValueError:
+                print("Invalid payment amount.")
+                return False
 
         if not payment_paid or payment_paid < 0:
             print("Missing payment details or invalid payment amount.")
@@ -1170,7 +1173,16 @@ class DBQueries():
         except ValueError:
             print("Invalid discount amount.")
             return False
-        pmt_paid = float(self.ui.payment_nt.text())
+        pmt_paid_text = self.ui.payment_nt.text().strip()
+        if not pmt_paid_text:
+            print("Payment amount is empty. Please enter a valid payment amount.")
+            return False
+
+        try:
+            pmt_paid = float(pmt_paid_text)
+        except ValueError:
+            print("Invalid payment amount. Please enter a valid numeric value.")
+            return False
 
         conn = sqlite3.connect(dbFolder)
         cursor = conn.cursor()
@@ -1217,7 +1229,7 @@ class DBQueries():
 
             conn.commit()
 
-            DBQueries.displayTransactionRecords(lambda: DBQueries.getAllTransactions(dbFolder))
+            DBQueries.displayTransactionRecords(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDailyTransactions(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDatewiseTransactions(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDatewisePayments(self, DBQueries.getAllTransactions(dbFolder))
