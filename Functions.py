@@ -177,6 +177,7 @@ class BtnFunctions(QMainWindow):
         self.ui.pricelist_table.itemSelectionChanged.connect(lambda: DBQueries.on_price_selection_changed(self))
 
         #======================== FETCH and MOD JOBS =================================#
+        self.ui.tnx_date_nt.setDate(QDate.currentDate())
         self.ui.category_name_nt.addItems(service_names)
         
         sizes = DBQueries.getProductSizes(self, dbFolder)

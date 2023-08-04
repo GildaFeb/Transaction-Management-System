@@ -5,6 +5,7 @@ import sqlite3
 from sqlite3 import Error
 from datetime import datetime
 import uuid
+from PyQt5.QtCore import QDate
 
 #from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
@@ -1165,8 +1166,8 @@ class DBQueries():
     def saveTransaction(self, dbFolder):
         prtclr_name = self.ui.customer_name_nt.text()
         prtclr_cn = self.ui.contact_num_nt.text()
-        txn_date = datetime.now().strftime('%Y-%m-%d')
-        txn_sts = 'Pending'
+        txn_date = self.ui.tnx_date_nt.date().toString('yyyy-MM-dd')
+        txn_sts = self.ui.comboBox_2.currentText()
         pmt_disc = self.ui.discount_nt.text().strip()
         try:
             pmt_disc = float(pmt_disc) if pmt_disc else 0.0
@@ -1235,6 +1236,22 @@ class DBQueries():
             DBQueries.displayDatewisePayments(self, DBQueries.getAllTransactions(dbFolder))
             
             print("Transaction saved successfully.")
+
+            self.ui.customer_name_nt.setText("")
+            self.ui.contact_num_nt.setText("")
+            self.ui.category_name_nt.setCurrentIndex(0)
+            self.ui.category_size.setCurrentIndex(0)
+            self.ui.product_quantity.setCurrentIndex(0)
+            self.ui.order_detail_table.clear()
+            self.ui.order_detail_table.setRowCount(0)
+            self.ui.subtotal_nt.setText("0.00")
+            self.ui.discount_nt.setText("0.00")
+            self.ui.total_nt.setText("0.00")
+            self.ui.discount_input.setValue(0)
+            self.ui.payment_nt.setText("")
+            self.ui.comboBox_2.setCurrentIndex(0)
+            self.ui.balance_nt.setText('0.00')
+
         except Exception as e:
             print("Error saving transaction:", e)
         finally:
