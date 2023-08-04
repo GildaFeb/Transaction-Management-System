@@ -2266,7 +2266,7 @@ class Ui_MainWindow(object):
         self.order_detail_table.setGridStyle(QtCore.Qt.SolidLine)
         self.order_detail_table.setWordWrap(True)
         self.order_detail_table.setObjectName("order_detail_table")
-        self.order_detail_table.setColumnCount(5)
+        self.order_detail_table.setColumnCount(6)
         self.order_detail_table.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.order_detail_table.setHorizontalHeaderItem(0, item)
@@ -2278,6 +2278,8 @@ class Ui_MainWindow(object):
         self.order_detail_table.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.order_detail_table.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.order_detail_table.setHorizontalHeaderItem(5, item)
         self.verticalLayout_16.addWidget(self.order_detail_table)
         self.horizontalLayout_24.addWidget(self.widget_24)
         self.verticalLayout_15.addWidget(self.widget_26)
@@ -3082,7 +3084,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_26.setSpacing(0)
         self.verticalLayout_26.setObjectName("verticalLayout_26")
         self.horizontalLayout_34 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_34.setContentsMargins(7, 0, 7, 0)
+        self.horizontalLayout_34.setContentsMargins(7, 0, 0, 0)
         self.horizontalLayout_34.setSpacing(13)
         self.horizontalLayout_34.setObjectName("horizontalLayout_34")
         self.label_46 = QtWidgets.QLabel(self.widget_32)
@@ -3491,7 +3493,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.setContentsMargins(20, 20, 20, 20)
         self.verticalLayout_25.setObjectName("verticalLayout_25")
         self.horizontalLayout_35 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_35.setContentsMargins(7, 0, 7, 7)
+        self.horizontalLayout_35.setContentsMargins(7, 0, 0, 0)
+        self.horizontalLayout_35.setSpacing(13)
         self.horizontalLayout_35.setObjectName("horizontalLayout_35")
         self.label_50 = QtWidgets.QLabel(self.date_wise)
         font = QtGui.QFont()
@@ -3563,12 +3566,10 @@ class Ui_MainWindow(object):
         self.dateto_dwt.setCalendarPopup(True)
         self.dateto_dwt.setObjectName("dateto_dwt")
         self.horizontalLayout_35.addWidget(self.dateto_dwt)
-        self.horizontalLayout_33 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_33.setObjectName("horizontalLayout_33")
-        self.horizontalLayout_35.addLayout(self.horizontalLayout_33)
         spacerItem33 = QtWidgets.QSpacerItem(318, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_35.addItem(spacerItem33)
         self.horizontalLayout_37 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_37.setSpacing(0)
         self.horizontalLayout_37.setObjectName("horizontalLayout_37")
         self.printreport_dwt_btn = QtWidgets.QPushButton(self.date_wise)
         self.printreport_dwt_btn.setMinimumSize(QtCore.QSize(35, 35))
@@ -3596,6 +3597,7 @@ class Ui_MainWindow(object):
         self.separator2.setObjectName("separator2")
         self.verticalLayout_25.addWidget(self.separator2)
         self.horizontalLayout_57 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_57.setSpacing(13)
         self.horizontalLayout_57.setObjectName("horizontalLayout_57")
         self.horizontalLayout_36 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_36.setObjectName("horizontalLayout_36")
@@ -3618,14 +3620,19 @@ class Ui_MainWindow(object):
         self.edit_search_dwt.setObjectName("edit_search_dwt")
         self.horizontalLayout_36.addWidget(self.edit_search_dwt)
         self.horizontalLayout_57.addLayout(self.horizontalLayout_36)
-        self.date_month_tnx = QtWidgets.QComboBox(self.date_wise)
+        self.label_60 = QtWidgets.QLabel(self.date_wise)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_60.setFont(font)
+        self.label_60.setObjectName("label_60")
+        self.horizontalLayout_57.addWidget(self.label_60)
+        self.date_month_tnx = QtWidgets.QDateEdit(self.date_wise)
         self.date_month_tnx.setMinimumSize(QtCore.QSize(150, 40))
-        self.date_month_tnx.setMaximumSize(QtCore.QSize(150, 16777215))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.date_month_tnx.setFont(font)
         self.date_month_tnx.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.date_month_tnx.setStyleSheet("QComboBox{\n"
+        self.date_month_tnx.setStyleSheet("QDateEdit{\n"
 "    background-color:white;\n"
 "    color:black;\n"
 "    border-radius:7px;\n"
@@ -3633,32 +3640,28 @@ class Ui_MainWindow(object):
 "    padding-left: 10px;\n"
 "}\n"
 "\n"
-"QComboBox::drop-down {\n"
+"QDateEdit::drop-down {\n"
 "    border: 0px;\n"
 "    background-color: #c3ccce;\n"
 "    padding: 5px 5px;\n"
 "}\n"
 "\n"
-"QComboBox::down-arrow {\n"
+"QDateEdit::down-arrow {\n"
 "    image: url(:/icon/icon/down-arrow.png);\n"
 "    width: 15px;\n"
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
+        self.date_month_tnx.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 1, 1), QtCore.QTime(0, 0, 0)))
+        self.date_month_tnx.setCalendarPopup(True)
         self.date_month_tnx.setObjectName("date_month_tnx")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
-        self.date_month_tnx.addItem("")
         self.horizontalLayout_57.addWidget(self.date_month_tnx)
+        self.label_52 = QtWidgets.QLabel(self.date_wise)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_52.setFont(font)
+        self.label_52.setObjectName("label_52")
+        self.horizontalLayout_57.addWidget(self.label_52)
         self.date_year_tnx = QtWidgets.QDateEdit(self.date_wise)
         self.date_year_tnx.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
@@ -3715,7 +3718,6 @@ class Ui_MainWindow(object):
         self.date_wise_table = QtWidgets.QWidget(self.widget_31)
         self.date_wise_table.setObjectName("date_wise_table")
         self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.date_wise_table)
-        self.verticalLayout_30.setSpacing(7)
         self.verticalLayout_30.setObjectName("verticalLayout_30")
         self.blue_border_2 = QtWidgets.QLabel(self.date_wise_table)
         self.blue_border_2.setMinimumSize(QtCore.QSize(0, 40))
@@ -3866,17 +3868,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_40.setContentsMargins(20, 20, 20, 20)
         self.verticalLayout_40.setObjectName("verticalLayout_40")
         self.horizontalLayout_54 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_54.setContentsMargins(7, 0, 7, 0)
+        self.horizontalLayout_54.setContentsMargins(7, 0, 0, 0)
         self.horizontalLayout_54.setSpacing(13)
         self.horizontalLayout_54.setObjectName("horizontalLayout_54")
-        self.label_75 = QtWidgets.QLabel(self.datewise_payment)
+        self.label_74 = QtWidgets.QLabel(self.datewise_payment)
         font = QtGui.QFont()
         font.setPointSize(11)
-        self.label_75.setFont(font)
-        self.label_75.setObjectName("label_75")
-        self.horizontalLayout_54.addWidget(self.label_75)
+        self.label_74.setFont(font)
+        self.label_74.setObjectName("label_74")
+        self.horizontalLayout_54.addWidget(self.label_74)
         self.datefrom_dwt_4 = QtWidgets.QDateEdit(self.datewise_payment)
-        self.datefrom_dwt_4.setMinimumSize(QtCore.QSize(140, 40))
+        self.datefrom_dwt_4.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.datefrom_dwt_4.setFont(font)
@@ -3905,14 +3907,14 @@ class Ui_MainWindow(object):
         self.datefrom_dwt_4.setCalendarPopup(True)
         self.datefrom_dwt_4.setObjectName("datefrom_dwt_4")
         self.horizontalLayout_54.addWidget(self.datefrom_dwt_4)
-        self.label_74 = QtWidgets.QLabel(self.datewise_payment)
+        self.label_75 = QtWidgets.QLabel(self.datewise_payment)
         font = QtGui.QFont()
         font.setPointSize(11)
-        self.label_74.setFont(font)
-        self.label_74.setObjectName("label_74")
-        self.horizontalLayout_54.addWidget(self.label_74)
+        self.label_75.setFont(font)
+        self.label_75.setObjectName("label_75")
+        self.horizontalLayout_54.addWidget(self.label_75)
         self.dateto_dwt_4 = QtWidgets.QDateEdit(self.datewise_payment)
-        self.dateto_dwt_4.setMinimumSize(QtCore.QSize(140, 40))
+        self.dateto_dwt_4.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.dateto_dwt_4.setFont(font)
@@ -3993,14 +3995,19 @@ class Ui_MainWindow(object):
         self.edit_search_dwp.setFrame(False)
         self.edit_search_dwp.setObjectName("edit_search_dwp")
         self.horizontalLayout_56.addWidget(self.edit_search_dwp)
-        self.date_month_pmt = QtWidgets.QComboBox(self.datewise_payment)
+        self.label_62 = QtWidgets.QLabel(self.datewise_payment)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_62.setFont(font)
+        self.label_62.setObjectName("label_62")
+        self.horizontalLayout_56.addWidget(self.label_62)
+        self.date_month_pmt = QtWidgets.QDateEdit(self.datewise_payment)
         self.date_month_pmt.setMinimumSize(QtCore.QSize(150, 40))
-        self.date_month_pmt.setMaximumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.date_month_pmt.setFont(font)
         self.date_month_pmt.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.date_month_pmt.setStyleSheet("QComboBox{\n"
+        self.date_month_pmt.setStyleSheet("QDateEdit{\n"
 "    background-color:white;\n"
 "    color:black;\n"
 "    border-radius:7px;\n"
@@ -4008,36 +4015,30 @@ class Ui_MainWindow(object):
 "    padding-left: 10px;\n"
 "}\n"
 "\n"
-"QComboBox::drop-down {\n"
+"QDateEdit::drop-down {\n"
 "    border: 0px;\n"
 "    background-color: #c3ccce;\n"
 "    padding: 5px 5px;\n"
-"width: 10px;\n"
 "}\n"
 "\n"
-"QComboBox::down-arrow {\n"
+"QDateEdit::down-arrow {\n"
 "    image: url(:/icon/icon/down-arrow.png);\n"
 "    width: 15px;\n"
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
+        self.date_month_pmt.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 1, 1), QtCore.QTime(0, 0, 0)))
+        self.date_month_pmt.setCalendarPopup(True)
         self.date_month_pmt.setObjectName("date_month_pmt")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
-        self.date_month_pmt.addItem("")
         self.horizontalLayout_56.addWidget(self.date_month_pmt)
+        self.label_63 = QtWidgets.QLabel(self.datewise_payment)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_63.setFont(font)
+        self.label_63.setObjectName("label_63")
+        self.horizontalLayout_56.addWidget(self.label_63)
         self.date_year_tnx_pmt = QtWidgets.QDateEdit(self.datewise_payment)
         self.date_year_tnx_pmt.setMinimumSize(QtCore.QSize(150, 40))
-        self.date_year_tnx_pmt.setMaximumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.date_year_tnx_pmt.setFont(font)
@@ -4054,7 +4055,6 @@ class Ui_MainWindow(object):
 "    border: 0px;\n"
 "    background-color: #c3ccce;\n"
 "    padding: 5px 5px;\n"
-"width: 10px;\n"
 "}\n"
 "\n"
 "QDateEdit::down-arrow {\n"
@@ -5047,14 +5047,16 @@ class Ui_MainWindow(object):
         self.reset_job_detail_btn.setText(_translate("MainWindow", "Reset"))
         self.order_detail_table.setSortingEnabled(True)
         item = self.order_detail_table.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "Service Name"))
+        item.setText(_translate("MainWindow", "Job ID"))
         item = self.order_detail_table.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "Size"))
+        item.setText(_translate("MainWindow", "Service Name"))
         item = self.order_detail_table.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "Price"))
+        item.setText(_translate("MainWindow", "Size"))
         item = self.order_detail_table.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "Quantity"))
+        item.setText(_translate("MainWindow", "Price"))
         item = self.order_detail_table.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "Quantity"))
+        item = self.order_detail_table.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "Total"))
         self.new_form_btn.setText(_translate("MainWindow", "New Form"))
         self.label_34.setText(_translate("MainWindow", "Subtotal"))
@@ -5280,18 +5282,9 @@ class Ui_MainWindow(object):
         self.label_51.setText(_translate("MainWindow", "Date To:"))
         self.label_54.setText(_translate("MainWindow", "Export"))
         self.edit_search_dwt.setPlaceholderText(_translate("MainWindow", " Search.."))
-        self.date_month_tnx.setItemText(0, _translate("MainWindow", "January"))
-        self.date_month_tnx.setItemText(1, _translate("MainWindow", "February"))
-        self.date_month_tnx.setItemText(2, _translate("MainWindow", "March"))
-        self.date_month_tnx.setItemText(3, _translate("MainWindow", "April"))
-        self.date_month_tnx.setItemText(4, _translate("MainWindow", "May"))
-        self.date_month_tnx.setItemText(5, _translate("MainWindow", "June"))
-        self.date_month_tnx.setItemText(6, _translate("MainWindow", "July"))
-        self.date_month_tnx.setItemText(7, _translate("MainWindow", "August"))
-        self.date_month_tnx.setItemText(8, _translate("MainWindow", "September"))
-        self.date_month_tnx.setItemText(9, _translate("MainWindow", "October"))
-        self.date_month_tnx.setItemText(10, _translate("MainWindow", "November"))
-        self.date_month_tnx.setItemText(11, _translate("MainWindow", "December"))
+        self.label_60.setText(_translate("MainWindow", "Month:"))
+        self.date_month_tnx.setDisplayFormat(_translate("MainWindow", "MM"))
+        self.label_52.setText(_translate("MainWindow", "Year:"))
         self.date_year_tnx.setDisplayFormat(_translate("MainWindow", "yyyy"))
         self.lineEdit_2.setText(_translate("MainWindow", "0"))
         self.label_53.setText(_translate("MainWindow", "Transaction/s"))
@@ -5340,22 +5333,13 @@ class Ui_MainWindow(object):
         self.datewise_transaction_table.setSortingEnabled(__sortingEnabled)
         self.no_datewiseT_found.setText(_translate("MainWindow", "No search results found"))
         self.label_25.setText(_translate("MainWindow", "  Date-wise Payment"))
-        self.label_75.setText(_translate("MainWindow", "Date To:"))
         self.label_74.setText(_translate("MainWindow", "Date From:"))
+        self.label_75.setText(_translate("MainWindow", "Date To:"))
         self.label_78.setText(_translate("MainWindow", "Export"))
         self.edit_search_dwp.setPlaceholderText(_translate("MainWindow", " Search.."))
-        self.date_month_pmt.setItemText(0, _translate("MainWindow", "January"))
-        self.date_month_pmt.setItemText(1, _translate("MainWindow", "February"))
-        self.date_month_pmt.setItemText(2, _translate("MainWindow", "March"))
-        self.date_month_pmt.setItemText(3, _translate("MainWindow", "April"))
-        self.date_month_pmt.setItemText(4, _translate("MainWindow", "May"))
-        self.date_month_pmt.setItemText(5, _translate("MainWindow", "June"))
-        self.date_month_pmt.setItemText(6, _translate("MainWindow", "July"))
-        self.date_month_pmt.setItemText(7, _translate("MainWindow", "August"))
-        self.date_month_pmt.setItemText(8, _translate("MainWindow", "September"))
-        self.date_month_pmt.setItemText(9, _translate("MainWindow", "October"))
-        self.date_month_pmt.setItemText(10, _translate("MainWindow", "November"))
-        self.date_month_pmt.setItemText(11, _translate("MainWindow", "December"))
+        self.label_62.setText(_translate("MainWindow", "Month:"))
+        self.date_month_pmt.setDisplayFormat(_translate("MainWindow", "MM"))
+        self.label_63.setText(_translate("MainWindow", "Year:"))
         self.date_year_tnx_pmt.setDisplayFormat(_translate("MainWindow", "yyyy"))
         self.label_77.setText(_translate("MainWindow", "Total sales:"))
         self.label_49.setText(_translate("MainWindow", "0"))

@@ -4881,6 +4881,11 @@ QComboBox::down-arrow {
                             </property>
                             <column>
                              <property name="text">
+                              <string>Job ID</string>
+                             </property>
+                            </column>
+                            <column>
+                             <property name="text">
                               <string>Service Name</string>
                              </property>
                             </column>
@@ -6742,7 +6747,7 @@ color: white
                     <number>0</number>
                    </property>
                    <property name="rightMargin">
-                    <number>7</number>
+                    <number>0</number>
                    </property>
                    <property name="bottomMargin">
                     <number>0</number>
@@ -7673,6 +7678,9 @@ color: black;
                     </property>
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_35">
+                      <property name="spacing">
+                       <number>13</number>
+                      </property>
                       <property name="leftMargin">
                        <number>7</number>
                       </property>
@@ -7680,10 +7688,10 @@ color: black;
                        <number>0</number>
                       </property>
                       <property name="rightMargin">
-                       <number>7</number>
+                       <number>0</number>
                       </property>
                       <property name="bottomMargin">
-                       <number>7</number>
+                       <number>0</number>
                       </property>
                       <item>
                        <widget class="QLabel" name="label_50">
@@ -7796,9 +7804,6 @@ QDateEdit::down-arrow {
                        </widget>
                       </item>
                       <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_33"/>
-                      </item>
-                      <item>
                        <spacer name="horizontalSpacer_13">
                         <property name="orientation">
                          <enum>Qt::Horizontal</enum>
@@ -7813,6 +7818,9 @@ QDateEdit::down-arrow {
                       </item>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_37">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
                         <item>
                          <widget class="QPushButton" name="printreport_dwt_btn">
                           <property name="minimumSize">
@@ -7888,6 +7896,9 @@ QDateEdit::down-arrow {
                     </item>
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_57">
+                      <property name="spacing">
+                       <number>13</number>
+                      </property>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_36">
                         <item>
@@ -7949,17 +7960,23 @@ QDateEdit::down-arrow {
                        </layout>
                       </item>
                       <item>
-                       <widget class="QComboBox" name="date_month_tnx">
+                       <widget class="QLabel" name="label_60">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Month:</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QDateEdit" name="date_month_tnx">
                         <property name="minimumSize">
                          <size>
                           <width>150</width>
                           <height>40</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>150</width>
-                          <height>16777215</height>
                          </size>
                         </property>
                         <property name="font">
@@ -7971,7 +7988,7 @@ QDateEdit::down-arrow {
                          <cursorShape>PointingHandCursor</cursorShape>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">QComboBox{
+                         <string notr="true">QDateEdit{
 	background-color:white;
 	color:black;
 	border-radius:7px;
@@ -7979,79 +7996,47 @@ QDateEdit::down-arrow {
 	padding-left: 10px;
 }
 
-QComboBox::drop-down {
+QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
 }
 
-QComboBox::down-arrow {
+QDateEdit::down-arrow {
 	image: url(:/icon/icon/down-arrow.png);
 	width: 15px;
 	height: 15px;
 	padding: 10px 10px;
 }</string>
                         </property>
-                        <item>
-                         <property name="text">
-                          <string>January</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>February</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>March</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>April</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>May</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>June</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>July</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>August</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>September</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>October</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>November</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>December</string>
-                         </property>
-                        </item>
+                        <property name="dateTime">
+                         <datetime>
+                          <hour>0</hour>
+                          <minute>0</minute>
+                          <second>0</second>
+                          <year>2023</year>
+                          <month>1</month>
+                          <day>1</day>
+                         </datetime>
+                        </property>
+                        <property name="displayFormat">
+                         <string>MM</string>
+                        </property>
+                        <property name="calendarPopup">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_52">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Year:</string>
+                        </property>
                        </widget>
                       </item>
                       <item>
@@ -8174,9 +8159,6 @@ QDateEdit::down-arrow {
                  <item>
                   <widget class="QWidget" name="date_wise_table" native="true">
                    <layout class="QVBoxLayout" name="verticalLayout_30">
-                    <property name="spacing">
-                     <number>7</number>
-                    </property>
                     <item>
                      <widget class="QLabel" name="blue_border_2">
                       <property name="minimumSize">
@@ -8526,20 +8508,20 @@ QDateEdit::down-arrow {
                  <number>0</number>
                 </property>
                 <property name="rightMargin">
-                 <number>7</number>
+                 <number>0</number>
                 </property>
                 <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="label_75">
+                 <widget class="QLabel" name="label_74">
                   <property name="font">
                    <font>
                     <pointsize>11</pointsize>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Date To:</string>
+                   <string>Date From:</string>
                   </property>
                  </widget>
                 </item>
@@ -8547,7 +8529,7 @@ QDateEdit::down-arrow {
                  <widget class="QDateEdit" name="datefrom_dwt_4">
                   <property name="minimumSize">
                    <size>
-                    <width>140</width>
+                    <width>150</width>
                     <height>40</height>
                    </size>
                   </property>
@@ -8588,14 +8570,14 @@ QDateEdit::down-arrow {
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_74">
+                 <widget class="QLabel" name="label_75">
                   <property name="font">
                    <font>
                     <pointsize>11</pointsize>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Date From:</string>
+                   <string>Date To:</string>
                   </property>
                  </widget>
                 </item>
@@ -8603,7 +8585,7 @@ QDateEdit::down-arrow {
                  <widget class="QDateEdit" name="dateto_dwt_4">
                   <property name="minimumSize">
                    <size>
-                    <width>140</width>
+                    <width>150</width>
                     <height>40</height>
                    </size>
                   </property>
@@ -8808,124 +8790,23 @@ QDateEdit::down-arrow {
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="date_month_pmt">
-                  <property name="minimumSize">
-                   <size>
-                    <width>150</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>150</width>
-                    <height>35</height>
-                   </size>
-                  </property>
+                 <widget class="QLabel" name="label_62">
                   <property name="font">
                    <font>
                     <pointsize>11</pointsize>
                    </font>
                   </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
+                  <property name="text">
+                   <string>Month:</string>
                   </property>
-                  <property name="styleSheet">
-                   <string notr="true">QComboBox{
-	background-color:white;
-	color:black;
-	border-radius:7px;
-    border: 2px solid #c3ccce;
-	padding-left: 10px;
-}
-
-QComboBox::drop-down {
-	border: 0px;
-	background-color: #c3ccce;
-	padding: 5px 5px;
-width: 10px;
-}
-
-QComboBox::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>January</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>February</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>March</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>April</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>May</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>June</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>July</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>August</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>September</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>October</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>November</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>December</string>
-                   </property>
-                  </item>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QDateEdit" name="date_year_tnx_pmt">
+                 <widget class="QDateEdit" name="date_month_pmt">
                   <property name="minimumSize">
                    <size>
                     <width>150</width>
                     <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>150</width>
-                    <height>35</height>
                    </size>
                   </property>
                   <property name="font">
@@ -8949,7 +8830,74 @@ QDateEdit::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
-width: 10px;
+}
+
+QDateEdit::down-arrow {
+	image: url(:/icon/icon/down-arrow.png);
+	width: 15px;
+	height: 15px;
+	padding: 10px 10px;
+}</string>
+                  </property>
+                  <property name="dateTime">
+                   <datetime>
+                    <hour>0</hour>
+                    <minute>0</minute>
+                    <second>0</second>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </datetime>
+                  </property>
+                  <property name="displayFormat">
+                   <string>MM</string>
+                  </property>
+                  <property name="calendarPopup">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_63">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Year:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDateEdit" name="date_year_tnx_pmt">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QDateEdit{
+	background-color:white;
+	color:black;
+	border-radius:7px;
+    border: 2px solid #c3ccce;
+	padding-left: 10px;
+}
+
+QDateEdit::drop-down {
+	border: 0px;
+	background-color: #c3ccce;
+	padding: 5px 5px;
 }
 
 QDateEdit::down-arrow {
