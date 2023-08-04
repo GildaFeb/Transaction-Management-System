@@ -205,7 +205,11 @@ class BtnFunctions(QMainWindow):
 
         #======================== FETCH and MOD TRANSACTIONS =================================#
         self.ui.save_transaction_nt.clicked.connect(lambda: DBQueries.saveTransaction(self, dbFolder))
-        
+        DBQueries.displayTransactionRecords(self, DBQueries.getAllTransactions(dbFolder))
+        DBQueries.displayDailyTransactions(self, DBQueries.getAllTransactions(dbFolder))
+        DBQueries.displayDatewiseTransactions(self, DBQueries.getAllTransactions(dbFolder))
+        DBQueries.displayDatewisePayments(self, DBQueries.getAllTransactions(dbFolder))
+
         current_txn_code = DBQueries.get_next_txn_code(self, dbFolder)
         self.ui.tnx_code_nt.setText(str(current_txn_code))
 
