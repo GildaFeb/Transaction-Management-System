@@ -1,22 +1,11 @@
-import os
-import sys
-import time
 import sqlite3
 from sqlite3 import Error
 from datetime import datetime
-import uuid
-from PyQt5.QtCore import QDate
 
-#from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5 import QtCore
-from PyQt5 import QtGui
-
-from openpyxl import load_workbook, Workbook
+from openpyxl import load_workbook
 
 from POP_UP.add1 import Add_Categ
 from POP_UP.edit_confirm_categ1 import Edit_Categ
@@ -24,16 +13,14 @@ from POP_UP.NoDetails8 import No_Details
 from POP_UP.delete_confirm_categ1 import Del_Categ
 
 
-
 class DBQueries():
     def __init__(self, arg):
         super(DBQueries, self).__init__()
         self.arg = arg
     
-    # === DRA ===
-    def edit_no_service(self): # to open delete_confirm_categ
+    def edit_no_service(self): 
         self.window = QtWidgets.QMainWindow()
-        self.ui = No_Details() # from other py file
+        self.ui = No_Details()
         self.ui.setupUi(self.window)
         self.window.show()
 
@@ -56,7 +43,9 @@ class DBQueries():
     def main(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-    #============================= SERVICE QUERIES =======================================#
+    #===========================================================================================================#
+    #                                           SERVICE QUERIES                                                 #
+    #===========================================================================================================#
     def getAllServices(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
@@ -107,7 +96,7 @@ class DBQueries():
         service_sts = self.ui.status_category.currentText()
 
         if not service_name or not service_desc:
-# ================ PROMPT ================ #
+
             print("Missing fields.")
             return
 
@@ -122,14 +111,13 @@ class DBQueries():
         existing_service = c.fetchone()
 
         if existing_service:
-# ================ PROMPT ================ #
             print("Service already exists.")
             return
 
         insert_service_data_sql = f""" 
                                         INSERT INTO service (SERV_NAME, SERV_DESC, SERV_STS) VALUES ('{service_name}','{service_desc}', '{service_sts}'); 
                                     """
-
+        
         try:
             c = conn.cursor()
             c.execute(insert_service_data_sql)
@@ -150,10 +138,9 @@ class DBQueries():
         except Error as e:
             print(e)
     
-    # === DRA ===
-    def edit_no_service(self): # to open delete_confirm_categ
+    def edit_no_service(self): 
         self.window = QtWidgets.QMainWindow()
-        self.ui = No_Details() # from other py file
+        self.ui = No_Details()
         self.ui.setupUi(self.window)
         self.window.show()
 
@@ -163,16 +150,9 @@ class DBQueries():
         selected_row = self.ui.category_table.currentRow()
         if selected_row < 0:
 
-            # ========================= PROMPT ========================= #
-
-            # === DRA === #
-            # === Edit Category Btn / No Service === #
             self.ui.edit_category_btn.clicked.connect(lambda: self.edit_no_service())
-            #print("No service selected.")
-
             return
         
-
         service_id = int(self.ui.category_table.item(selected_row, 0).text().split('-')[-1])
         service_name = self.ui.product_name_category.text()
         service_desc = self.ui.category_description.text()
@@ -204,12 +184,10 @@ class DBQueries():
         existing_service = c.fetchone()
 
         if existing_service:
-# ================ PROMPT ================ #
             print("Service with updated values already exists in another row.")
             return
 
         if service_name == existing_data[0] and service_desc == existing_data[1] and service_sts == existing_data[2]:
-# ================ PROMPT ================ #
             print("No changes made to the service details.")
             return
 
@@ -248,9 +226,7 @@ class DBQueries():
         selected_rows = self.ui.category_table.selectionModel().selectedRows()
         if not selected_rows:
             
-# =============== PROMPT ================= # (Same with the no service in edit)
             self.ui.edit_category_btn.clicked.connect(lambda: self.edit_no_service())
-
             print("No service selected.")
             return
 
@@ -325,7 +301,9 @@ class DBQueries():
         else:
             edit_service_btn.setVisible(True)
 
-    #======================= PRICE LIST QUERIES =========================#
+    #===========================================================================================================#
+    #                                        PRICE LIST QUERIES                                                 #
+    #===========================================================================================================#
     def getServiceNames(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
@@ -399,8 +377,6 @@ class DBQueries():
         product_price = self.ui.price_pricelist.value()
 
         if not product_size or not product_price:
-
-# ================ PROMPT ================ #
             print("Missing fields.")
             return
         
@@ -413,7 +389,6 @@ class DBQueries():
         serv_id_result = c.fetchone()
 
         if not serv_id_result:
-# ================ PROMPT ================ #
             print("Service does not exist.")
             return
 
@@ -430,7 +405,6 @@ class DBQueries():
         existing_price = c.fetchone()
 
         if existing_price:
-# ================ PROMPT ================ #
             print("Price for product already exists.")
             return
 
@@ -460,7 +434,6 @@ class DBQueries():
 
         selected_row = self.ui.pricelist_table.currentRow()
         if selected_row < 0:
-# ================ PROMPT ================ #
             print("No product selected.")
             return
 
@@ -493,7 +466,6 @@ class DBQueries():
         serv_id_result = c.fetchone()
 
         if not serv_id_result:
-# ================ PROMPT ================ #
             print("Service does not exist.")
             return
 
@@ -509,12 +481,10 @@ class DBQueries():
         existing_price = c.fetchone()
 
         if existing_price:
-# ================ PROMPT ================ #
             print("Product with updated values already exists in another row.")
             return
 
         if product_service == existing_data[0] and product_size == existing_data[1] and product_price == existing_data[2]:
-# ================ PROMPT ================ #
             print("No changes made to the product details.")
             return
 
@@ -545,7 +515,6 @@ class DBQueries():
 
         selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
         if not selected_rows:
-# ================ PROMPT ================ #
             print("No price for product selected.")
             return
 
@@ -562,7 +531,7 @@ class DBQueries():
                 c.execute(delete_price_sql)
                 conn.commit()
 
-                product_size = DBQueries.getProductSizes(dbFolder)
+                product_size = DBQueries.getProductSizes(self, dbFolder)
                 self.ui.category_size.clear()
                 self.ui.category_size.addItems(product_size)
 
@@ -618,7 +587,9 @@ class DBQueries():
         else:
             update_pricelist_btn.setVisible(True)
 
-    #================================= PARTICULARS QUERIES ====================================#
+    #===========================================================================================================#
+    #                                       PARTICULARS QUERIES                                                 #
+    #===========================================================================================================#
     def getAllParticulars(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
@@ -638,11 +609,6 @@ class DBQueries():
         particular_name = self.ui.customer_name_nt.text()
         particular_cn = self.ui.contact_num_nt.text()
 
-        if not particular_name or not particular_cn:
-# ================ PROMPT ================ #
-            print("Missing fields.")
-            return
-        
         insert_particular_data_sql = f""" 
                                         INSERT INTO particular (PRTCLR_NAME, PRTCLR_CN) VALUES ('{particular_name}','{particular_cn}'); 
                                     """
@@ -658,7 +624,9 @@ class DBQueries():
         except Error as e:
             print(e)
 
-    #=============================== JOB QUERIES ==================================#
+    #===========================================================================================================#
+    #                                             JOB QUERIES                                                   #
+    #===========================================================================================================#
     def getProductSizes(self, dbFolder):
         selected_service = self.ui.category_name_nt.currentText()
         conn = DBQueries.create_connection(dbFolder)
@@ -675,7 +643,8 @@ class DBQueries():
 
             self.ui.category_size.clear()
             if not sizes:
-                self.ui.category_size.setPlaceholderText('No available sizes')
+                self.ui.category_size.setPlaceholderText("No Available sizes.")
+                
             else:
                 if self.ui.category_size.count() > 0:
                     self.ui.category_size.setCurrentText(self.ui.category_size.itemText(0))
@@ -907,7 +876,10 @@ class DBQueries():
             add_order_nt.setVisible(False)
         else:
             add_order_nt.setVisible(True)
-    #============================== PAYMENT QUERIES =================================#
+
+    #===========================================================================================================#
+    #                                          PAYMENT QUERIES                                                  #
+    #===========================================================================================================#
     
     def addPayment(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -1037,7 +1009,9 @@ class DBQueries():
         balance = total_nt_value - payment_nt_value
         self.ui.balance_nt.setText(str(balance))
 
-    #============================= TRANSACTION QUERIES ==============================#
+    #===========================================================================================================#
+    #                                       TRANSACTION QUERIES                                                 #
+    #===========================================================================================================#
     def getAllTransactions(dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
@@ -1110,7 +1084,6 @@ class DBQueries():
             self.ui.transaction_record_tbl.setItem(rowPosition, 6, QTableWidgetItem(str(pmt_sts)))
             self.ui.transaction_record_tbl.setItem(rowPosition, 7, QTableWidgetItem(str(pmt_bal)))
 
-
     def displayDailyTransactions(self, rows):
         self.ui.daily_tnx_table.setRowCount(0)
 
@@ -1159,8 +1132,6 @@ class DBQueries():
             self.ui.datewise_transaction_table.setItem(rowPosition, 2, QTableWidgetItem(str(particular_cn)))
             self.ui.datewise_transaction_table.setItem(rowPosition, 3, QTableWidgetItem(str(pmt_tot)))
             self.ui.datewise_transaction_table.setItem(rowPosition, 4, QTableWidgetItem(str(txn_sts)))
-
-    
 
     def displayDatewisePayments(self, rows):
         self.ui.datewise_payment_table.setRowCount(0)
@@ -1221,7 +1192,7 @@ class DBQueries():
 
         try:
             
-             #========================== INSERT ON PARTICULAR ===========================#
+            #========================== INSERT ON PARTICULAR ===========================#
             prtclr_insert_sql = """
                 INSERT INTO particular (PRTCLR_NAME, PRTCLR_CN)
                 VALUES (?, ?)
@@ -1311,7 +1282,7 @@ class DBQueries():
         get_txn_jobs_data_sql = """
                                 SELECT JOB_ID, SERV_NAME, PROD_SZ, PROD_PRICE, JOB_QTY, JOB_TOT FROM jobs j
                                 INNER JOIN product p ON p.PROD_ID = j.PROD_ID
-                                INNER JOIN service s ON s.SERV_ID = p.PROD_ID
+                                INNER JOIN service s ON s.SERV_ID = p.SERV_ID
                                 WHERE TXN_CODE = ?;
                                 """
         c.execute(get_txn_jobs_data_sql, (txn_code,))
@@ -1347,6 +1318,19 @@ class DBQueries():
 
         self.ui.lineEdit_3.setText(str(txn_sts))
         self.ui.lineEdit_4.setText(str(pmt_sts))
+
+        get_prtclr_data_sql = """
+                                SELECT PRTCLR_NAME, PRTCLR_CN FROM particular p
+                                INNER JOIN transactions t ON t.PRTCLR_ID = p.PRTCLR_ID
+                                WHERE t.TXN_CODE = ?
+                                """
+        c.execute(get_prtclr_data_sql, (txn_code,))
+        statuses_data = c.fetchall()
+
+        prtclr_name, prtclr_cn = statuses_data[0]
+
+        self.ui.customer_name_utd.setText(str(prtclr_name))
+        self.ui.contact_num_utd.setText(str(prtclr_cn))
 
         if pmt_sts == 'Fully Paid':
             self.ui.utd_payment.setEnabled(False)
@@ -1461,7 +1445,9 @@ class DBQueries():
         else:
             update_txn_btn.setVisible(True)
 
-    #======================================== ON EXIT =================================#
+    #===========================================================================================================#
+    #                                              ON EXIT                                                      #
+    #===========================================================================================================#
     def drop_job_temp_table(dbFolder):
         try:
             conn = sqlite3.connect(dbFolder)
