@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/icon/icon/TMS.png</normaloff>:/icon/icon/TMS.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="1">
@@ -118,21 +122,23 @@
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
            <property name="autoFillBackground">
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Home</string>
+            <string>   Home</string>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/1.png</normaloff>
-             <normalon>:/icon/icon/001lighticons-01full.png</normalon>:/icon/icon/1.png</iconset>
+            <iconset>
+             <normaloff>icon/BD-INV.png</normaloff>icon/BD-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -160,17 +166,16 @@
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
-            <string>Service</string>
+            <string>   Service</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/003lighticons-01white.png</normaloff>
-             <normalon>:/icon/icon/003lighticons-01full.png</normalon>:/icon/icon/003lighticons-01white.png</iconset>
+             <normaloff>:/icon/icon/si_cat.png</normaloff>:/icon/icon/si_cat.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -198,17 +203,16 @@
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
-            <string>Price List</string>
+            <string>   Price List</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/10.png</normaloff>
-             <normalon>:/icon/icon/001lighticons-04full-removebg-preview.png</normalon>:/icon/icon/10.png</iconset>
+             <normaloff>:/icon/icon/si_pricelist-INV.png</normaloff>:/icon/icon/si_pricelist-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -246,17 +250,16 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>New Transaction</string>
+            <string>   New Transaction</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/6.png</normaloff>
-             <normalon>:/icon/icon/new-transaction.png</normalon>:/icon/icon/6.png</iconset>
+             <normaloff>:/icon/icon/si_newtrans-INV.png</normaloff>:/icon/icon/si_newtrans-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -287,17 +290,16 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Transaction Records</string>
+            <string>   Transaction Records</string>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/9.png</normaloff>
-             <normalon>:/icon/icon/transaction-record.png</normalon>:/icon/icon/9.png</iconset>
+            <iconset>
+             <normaloff>icon/si_transrecs-INV.png</normaloff>icon/si_transrecs-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -335,17 +337,16 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Daily Transactions</string>
+            <string>   Daily Transactions</string>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/5.png</normaloff>
-             <normalon>:/icon/icon/003lighticons-12full.png</normalon>:/icon/icon/5.png</iconset>
+            <iconset>
+             <normaloff>icon/si_dailytrans-INV2.png</normaloff>icon/si_dailytrans-INV2.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -376,17 +377,16 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Date-wise Transactions</string>
+            <string>   Date-wise Transactions</string>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/4.png</normaloff>
-             <normalon>:/icon/icon/003lighticons-51full.png</normalon>:/icon/icon/4.png</iconset>
+            <iconset>
+             <normaloff>icon/si_dwtrans-INV.png</normaloff>icon/si_dwtrans-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -420,17 +420,16 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Date-wise Payments</string>
+            <string>   Date-wise Payments</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/2.png</normaloff>
-             <normalon>:/icon/icon/001lighticons-29full.png</normalon>:/icon/icon/2.png</iconset>
+             <normaloff>:/icon/icon/si_datewise_payments-INV.png</normaloff>:/icon/icon/si_datewise_payments-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -9531,14 +9530,13 @@ QComboBox::down-arrow {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/1.png</normaloff>
-             <normalon>:/icon/icon/001lighticons-01full.png</normalon>:/icon/icon/1.png</iconset>
+            <iconset>
+             <normaloff>icon/BD-INV.png</normaloff>icon/BD-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>60</width>
-             <height>50</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -9551,6 +9549,12 @@ QComboBox::down-arrow {
          </item>
          <item>
           <widget class="QPushButton" name="price_list_btn_1">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>70</width>
@@ -9564,14 +9568,13 @@ QComboBox::down-arrow {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/7.png</normaloff>
-             <normalon>:/icon/icon/price-tag.png</normalon>:/icon/icon/7.png</iconset>
+            <iconset>
+             <normaloff>icon/si_cat.png</normaloff>icon/si_cat.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>30</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -9584,6 +9587,12 @@ QComboBox::down-arrow {
          </item>
          <item>
           <widget class="QPushButton" name="categories_btn_1">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>70</width>
@@ -9594,14 +9603,13 @@ QComboBox::down-arrow {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/003lighticons-01white.png</normaloff>
-             <normalon>:/icon/icon/003lighticons-01full.png</normalon>:/icon/icon/003lighticons-01white.png</iconset>
+            <iconset>
+             <normaloff>icon/si_pricelist-INV.png</normaloff>icon/si_pricelist-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -9621,6 +9629,12 @@ QComboBox::down-arrow {
          </item>
          <item>
           <widget class="QPushButton" name="new_transaction_btn_1">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>70</width>
@@ -9634,14 +9648,13 @@ QComboBox::down-arrow {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/6.png</normaloff>
-             <normalon>:/icon/icon/new-transaction.png</normalon>:/icon/icon/6.png</iconset>
+            <iconset>
+             <normaloff>icon/si_newtrans-INV.png</normaloff>icon/si_newtrans-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -9654,6 +9667,12 @@ QComboBox::down-arrow {
          </item>
          <item>
           <widget class="QPushButton" name="transaction_record_btn_1">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>70</width>
@@ -9667,14 +9686,13 @@ QComboBox::down-arrow {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/9.png</normaloff>
-             <normalon>:/icon/icon/transaction-record.png</normalon>:/icon/icon/9.png</iconset>
+            <iconset>
+             <normaloff>icon/si_transrecs-INV.png</normaloff>icon/si_transrecs-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -9694,6 +9712,12 @@ QComboBox::down-arrow {
          </item>
          <item>
           <widget class="QPushButton" name="daily_transaction_btn_1">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>70</width>
@@ -9707,14 +9731,13 @@ QComboBox::down-arrow {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/5.png</normaloff>
-             <normalon>:/icon/icon/003lighticons-12full.png</normalon>:/icon/icon/5.png</iconset>
+            <iconset>
+             <normaloff>icon/si_dailytrans-INV2.png</normaloff>icon/si_dailytrans-INV2.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -9727,6 +9750,12 @@ QComboBox::down-arrow {
          </item>
          <item>
           <widget class="QPushButton" name="datewise_transaction_btn_1">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>70</width>
@@ -9740,14 +9769,13 @@ QComboBox::down-arrow {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/4.png</normaloff>
-             <normalon>:/icon/icon/003lighticons-51full.png</normalon>:/icon/icon/4.png</iconset>
+            <iconset>
+             <normaloff>icon/si_dwtrans-INV.png</normaloff>icon/si_dwtrans-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">
@@ -9760,6 +9788,12 @@ QComboBox::down-arrow {
          </item>
          <item>
           <widget class="QPushButton" name="datewise_payment_btn_1">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>70</width>
@@ -9774,13 +9808,12 @@ QComboBox::down-arrow {
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/2.png</normaloff>
-             <normalon>:/icon/icon/001lighticons-29full.png</normalon>:/icon/icon/2.png</iconset>
+             <normaloff>:/icon/icon/si_datewise_payments-INV.png</normaloff>:/icon/icon/si_datewise_payments-INV.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>50</width>
-             <height>60</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
            <property name="checkable">

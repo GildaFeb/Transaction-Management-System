@@ -1,5 +1,38 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icon/si_newtrans.png</file>
+    <file>icon/si_newtrans-INV.png</file>
+    <file>icon/si_cat.png</file>
+    <file>icon/si_dailytrans(2).png</file>
+    <file>icon/si_dailytrans-INV.png</file>
+    <file>icon/si_dailytrans-INV2.png</file>
+    <file>icon/si_datewise_payments.png</file>
+    <file>icon/si_datewise_payments-INV.png</file>
+    <file>icon/si_dwtrans(3).png</file>
+    <file>icon/si_dwtrans-INV.png</file>
+    <file>icon/si_newtrans.png</file>
+    <file>icon/si_newtrans-INV.png</file>
+    <file>icon/si_pricelist(2).png</file>
+    <file>icon/si_pricelist-INV.png</file>
+    <file>icon/si_transrecs.png</file>
+    <file>icon/si_transrecs-INV.png</file>
+    <file>icon/si_datewise_payments.png</file>
+    <file>icon/si_datewise_payments-INV.png</file>
+    <file>icon/si_cat.png</file>
+    <file>icon/si_dailytrans(2).png</file>
+    <file>icon/si_dailytrans-INV.png</file>
+    <file>icon/si_dailytrans-INV2.png</file>
+    <file>icon/si_datewise_payments.png</file>
+    <file>icon/si_datewise_payments-INV.png</file>
+    <file>icon/si_dwtrans(3).png</file>
+    <file>icon/si_dwtrans-INV.png</file>
+    <file>icon/si_newtrans.png</file>
+    <file>icon/si_newtrans-INV.png</file>
+    <file>icon/si_pricelist(2).png</file>
+    <file>icon/si_pricelist-INV.png</file>
+    <file>icon/si_transrecs.png</file>
+    <file>icon/si_transrecs-INV.png</file>
+    <file>icon/TMS.png</file>
     <file>icon/down-arrow.png</file>
     <file>icon/01lighticons-02full.png</file>
     <file>icon/003lighticons-01white.png</file>
