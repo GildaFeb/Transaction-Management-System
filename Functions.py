@@ -187,13 +187,11 @@ class BtnFunctions(QMainWindow):
 
         self.ui.add_order_nt.clicked.connect(lambda: DBQueries.addJob(self, dbFolder))
         self.ui.delete_job_detail_btn.clicked.connect(lambda: DBQueries.deleteJob(self, dbFolder))
-        self.ui.reset_job_detail_btn.clicked.connect(lambda: DBQueries.transfer_data_from_job_temp_to_jobs(self, dbFolder))
+        self.ui.reset_job_detail_btn.clicked.connect(lambda: DBQueries.resetJobDetails(self, dbFolder))
 
         self.ui.order_detail_table.itemSelectionChanged.connect(lambda: DBQueries.on_job_selection_changed(self))
 
         #======================== FETCH and MOD PAYMENTS =================================#
-        self.ui.new_form_btn.clicked.connect(lambda: DBQueries.addPayment(self, dbFolder))
-
         self.ui.discount_input.valueChanged.connect(self.update_discount_label)
         self.ui.discount_input.valueChanged.connect(lambda: DBQueries.checkDiscount(self, dbFolder))
         self.ui.add_discount_nt.clicked.connect(lambda: DBQueries.checkDiscount(self, dbFolder))

@@ -832,18 +832,11 @@ class DBQueries():
 
         return subtotal
     
-    def transfer_data_from_job_temp_to_jobs(self, dbFolder):
+    def resetJobDetails(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
-        transfer_data_sql = """
-            INSERT INTO jobs (PROD_ID, JOB_QTY, JOB_TOT)
-            SELECT PROD_ID, JOB_QTY, JOB_TOT FROM job_temp;
-        """
-            
         try:
             c = conn.cursor()
-            c.execute(transfer_data_sql)
-            conn.commit()
 
             clear_job_temp_sql = "DROP TABLE job_temp;"
             c.execute(clear_job_temp_sql)
@@ -1015,6 +1008,9 @@ class DBQueries():
         if payment_nt_value > total_nt_value:
             warning_message = "Payment amount exceeds the total amount."
             QMessageBox.warning(self, "Invalid Payment Amount", warning_message)
+
+            payment_nt_value -= (payment_nt_value - total_nt_value)
+            self.ui.payment_nt.setText(str(payment_nt_value))
 
     def update_balance_nt(self, dbFolder):
         try:
