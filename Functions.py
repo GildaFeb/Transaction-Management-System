@@ -203,8 +203,11 @@ class BtnFunctions(QMainWindow):
         self.ui.payment_nt.textChanged.connect(lambda: DBQueries.check_payment_amount(self, dbFolder))
         self.ui.payment_nt.textChanged.connect(lambda: DBQueries.update_balance_nt(self, dbFolder))
 
-        #======================== FETCH and MOD PAYMENTS =================================#
+        #======================== FETCH and MOD TRANSACTIONS =================================#
         self.ui.save_transaction_nt.clicked.connect(lambda: DBQueries.saveTransaction(self, dbFolder))
+        
+        current_txn_code = DBQueries.get_next_txn_code(self, dbFolder)
+        self.ui.tnx_code_nt.setText(str(current_txn_code))
 
         #======================== SEARCH FIELDS FUNCTIONS =================================#
         

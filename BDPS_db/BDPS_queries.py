@@ -726,12 +726,14 @@ class DBQueries():
         conn = DBQueries.create_connection(dbFolder)
         create_table_sql =  """
                                 CREATE TABLE IF NOT EXISTS job_temp (
-                                    JOB_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    JOB_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                     PROD_ID INTEGER NOT NULL,
-                                    JOB_QTY INTEGER NOT NULL,
-                                    JOB_TOT REAL NOT NULL,
-                                    SUBTOTAL REAL NOT NULL DEFAULT JOB_TOT,
-                                    FOREIGN KEY (PROD_ID) REFERENCES product (PROD_ID));
+                                    JOB_QTY INTEGER DEFAULT NULL,
+                                    JOB_TOT NUMERIC(10, 2) DEFAULT NULL,
+                                    SUBTOTAL NUMERIC(10, 2) DEFAULT NULL,
+                                    TXN_CODE INTEGER DEFAULT NULL,
+                                    FOREIGN KEY (PROD_ID) REFERENCES product (PROD_ID),
+                                    FOREIGN KEY (TXN_CODE) REFERENCES transactions(TXN_CODE));
                             """
         try:
             c = conn.cursor()
@@ -1038,13 +1040,33 @@ class DBQueries():
             return c
         except Error as e:
             print(e)
+
+    def get_next_txn_code(self, dbFolder):
+        conn = sqlite3.connect(dbFolder)
+        cursor = conn.cursor()
+
+        try:
+            last_txn_code_query = "SELECT MAX(TXN_CODE) FROM transactions;"
+            cursor.execute(last_txn_code_query)
+            last_txn_code = cursor.fetchone()[0]
+
+            current_txn_code = last_txn_code + 1 if last_txn_code else 1
+
+            return current_txn_code
+
+        except Exception as e:
+            print("Error retrieving next transaction code:", e)
+            return None
+        finally:
+            cursor.close()
+            conn.close()
     
     def saveTransaction(self, dbFolder):
         prtclr_name = self.ui.customer_name_nt.text()
         prtclr_cn = self.ui.contact_num_nt.text()
         txn_date = datetime.now().strftime('%Y-%m-%d')
         txn_sts = 'Pending'
-        pmt_disc = self.ui.discount_nt.text()
+        pmt_disc = float(self.ui.discount_nt.text().strip())
         pmt_paid = float(self.ui.payment_nt.text())
 
         conn = sqlite3.connect(dbFolder)
@@ -1063,33 +1085,21 @@ class DBQueries():
 
             #========================== INSERT ON TRANSACTIONS ===========================#
             txn_insert_sql ="""
-                INSERT INTO transactions (PRTCLR_ID, JOB_ID, TXN_DATE, TXN_STS)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO transactions (PRTCLR_ID, TXN_DATE, TXN_STS)
+                VALUES (?, ?, ?)
             """
-            cursor.execute("SELECT MAX(TXN_CODE) FROM transactions")
-            last_txn_code = cursor.fetchone()[0]
-            current_txn_code = last_txn_code + 1 if last_txn_code else 1
 
-            for i in range(num_jobs):
-                current_prtclr_id = prtclr_id
-                current_job_id = job_ids[i]
-                cursor.execute(txn_insert_sql, (current_prtclr_id, current_job_id, txn_date, txn_sts))
+            current_prtclr_id = prtclr_id
+            cursor.execute(txn_insert_sql, (current_prtclr_id, txn_date, txn_sts))
 
             #========================== INSERT ON JOBS ===========================#
+            current_txn_code = DBQueries.get_next_txn_code(self, dbFolder)
+
             job_transfer_sql = """
-                INSERT INTO jobs (PROD_ID, JOB_QTY, JOB_TOT)
-                SELECT PROD_ID, JOB_QTY, JOB_TOT FROM job_temp
+                INSERT INTO jobs (PROD_ID, JOB_QTY, JOB_TOT, TXN_CODE)
+                SELECT PROD_ID, JOB_QTY, JOB_TOT, ? FROM job_temp
             """
-            cursor.execute(job_transfer_sql)
-
-            cursor.execute("SELECT JOB_ID FROM jobs")
-            job_ids = [row[0] for row in cursor.fetchall()]
-
-            num_jobs = len(job_ids)
-
-            clear_job_temp_sql = "DROP TABLE IF EXISTS job_temp"
-            cursor.execute(clear_job_temp_sql)
-
+            cursor.execute(job_transfer_sql, (current_txn_code,))
             #========================== INSERT ON PAYMENT ===========================#
             pmt_tot = conn.execute("SELECT SUBTOTAL FROM job_temp WHERE JOB_ID = (SELECT MAX(JOB_ID) FROM job_temp)").fetchone()[0] - pmt_disc
             pmt_bal = pmt_tot - pmt_paid
