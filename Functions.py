@@ -233,6 +233,7 @@ class BtnFunctions(QMainWindow):
 
         #========================== UPDATE TRANSACTIONS =====================================#
         self.ui.update_transaction.clicked.connect(lambda: self.update_transaction_pressed(dbFolder))
+        self.ui.cancel_update.clicked.connect(self.on_cancel_update)
         self.ui.cancel_update.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(4))
 
         #======================== SEARCH FIELDS FUNCTIONS =================================#
@@ -926,4 +927,10 @@ class BtnFunctions(QMainWindow):
     
     def update_discount_label(self, discount):
         self.ui.discount_nt.setText(str(discount))
+    
+    def on_cancel_update(self):
+        self.ui.order_detail_table_2.clearContents()
+        self.ui.order_detail_table_2.setRowCount(0)
+        self.ui.order_detail_table_3.clearContents()
+        self.ui.order_detail_table_3.setRowCount(0)
     

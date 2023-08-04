@@ -1294,7 +1294,7 @@ class DBQueries():
                 self.ui.order_detail_table_2.setItem(row_index, col_index, QtWidgets.QTableWidgetItem(str(cell_value)))
 
         get_txn_pmts_data_sql = """
-                                SELECT PMT_DATE, PMT_PAID FROM payment p
+                                SELECT PMT_DATE, PMT_PAID, PMT_BAL FROM payment p
                                 INNER JOIN transactions t ON t.TXN_CODE = p.TXN_CODE
                                 WHERE t.TXN_CODE = ?
                                 """
