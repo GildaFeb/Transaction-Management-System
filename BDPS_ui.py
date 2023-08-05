@@ -749,21 +749,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_49.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_49.setSpacing(13)
         self.verticalLayout_49.setObjectName("verticalLayout_49")
-        self.frame_facebook = QtWidgets.QFrame(self.widget_5)
-        self.frame_facebook.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_facebook.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_facebook.setObjectName("frame_facebook")
-        self.verticalLayout_49.addWidget(self.frame_facebook)
-        self.frame_messenger = QtWidgets.QFrame(self.widget_5)
-        self.frame_messenger.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_messenger.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_messenger.setObjectName("frame_messenger")
-        self.verticalLayout_49.addWidget(self.frame_messenger)
-        self.frame_cnumber = QtWidgets.QFrame(self.widget_5)
-        self.frame_cnumber.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_cnumber.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_cnumber.setObjectName("frame_cnumber")
-        self.verticalLayout_49.addWidget(self.frame_cnumber)
+        self.dial = QtWidgets.QDial(self.widget_5)
+        self.dial.setObjectName("dial")
+        self.verticalLayout_49.addWidget(self.dial)
         self.verticalLayout_48.addWidget(self.widget_5)
         self.banner = QtWidgets.QWidget(self.widget_2)
         self.banner.setStyleSheet("#banner{\n"
@@ -1275,6 +1263,7 @@ class Ui_MainWindow(object):
         self.category_label_widget.setMaximumSize(QtCore.QSize(16777215, 100))
         self.category_label_widget.setObjectName("category_label_widget")
         self.verticalLayout_34 = QtWidgets.QVBoxLayout(self.category_label_widget)
+        self.verticalLayout_34.setContentsMargins(26, -1, -1, -1)
         self.verticalLayout_34.setObjectName("verticalLayout_34")
         self.horizontalLayout_39 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_39.setObjectName("horizontalLayout_39")
@@ -1995,19 +1984,13 @@ class Ui_MainWindow(object):
         self.label_33.setFont(font)
         self.label_33.setObjectName("label_33")
         self.verticalLayout_12.addWidget(self.label_33)
-        self.product_quantity = QtWidgets.QComboBox(self.widget_26)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.product_quantity.sizePolicy().hasHeightForWidth())
-        self.product_quantity.setSizePolicy(sizePolicy)
+        self.product_quantity = QtWidgets.QSpinBox(self.widget_26)
         self.product_quantity.setMinimumSize(QtCore.QSize(280, 35))
         self.product_quantity.setMaximumSize(QtCore.QSize(280, 35))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.product_quantity.setFont(font)
-        self.product_quantity.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.product_quantity.setStyleSheet("QComboBox{\n"
+        self.product_quantity.setStyleSheet("QSpinBox{\n"
 "    background-color:white;\n"
 "    color:black;\n"
 "    border-radius:7px;\n"
@@ -2015,27 +1998,20 @@ class Ui_MainWindow(object):
 "    padding-left: 10px;\n"
 "}\n"
 "\n"
-"QComboBox::drop-down {\n"
+"QSpinBox::drop-down {\n"
 "    border: 0px;\n"
 "    background-color: #c3ccce;\n"
 "    padding: 5px 5px;\n"
 "width: 15px;\n"
 "}\n"
 "\n"
-"QComboBox::down-arrow {\n"
+"QSpinBox::down-arrow {\n"
 "    image: url(:/icon/icon/down-arrow.png);\n"
 "    width: 15px;\n"
 "    height: 15px;\n"
 "    padding: 10px 10px;\n"
 "}")
-        self.product_quantity.setEditable(True)
         self.product_quantity.setObjectName("product_quantity")
-        self.product_quantity.addItem("")
-        self.product_quantity.addItem("")
-        self.product_quantity.addItem("")
-        self.product_quantity.addItem("")
-        self.product_quantity.addItem("")
-        self.product_quantity.addItem("")
         self.verticalLayout_12.addWidget(self.product_quantity)
         self.add_order_nt = QtWidgets.QPushButton(self.widget_26)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
@@ -3272,7 +3248,7 @@ class Ui_MainWindow(object):
 "    padding: 10px 10px;\n"
 "}")
         self.date_month_tnx.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 1), QtCore.QTime(0, 0, 0)))
-        self.date_month_tnx.setCalendarPopup(True)
+        self.date_month_tnx.setCalendarPopup(False)
         self.date_month_tnx.setObjectName("date_month_tnx")
         self.horizontalLayout_57.addWidget(self.date_month_tnx)
         self.label_52 = QtWidgets.QLabel(self.date_wise)
@@ -3310,7 +3286,7 @@ class Ui_MainWindow(object):
 "}")
         self.date_year_tnx.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 14), QtCore.QTime(0, 0, 0)))
         self.date_year_tnx.setMinimumDate(QtCore.QDate(2023, 9, 14))
-        self.date_year_tnx.setCalendarPopup(True)
+        self.date_year_tnx.setCalendarPopup(False)
         self.date_year_tnx.setObjectName("date_year_tnx")
         self.horizontalLayout_57.addWidget(self.date_year_tnx)
         self.pushButton_6 = QtWidgets.QPushButton(self.date_wise)
@@ -3553,7 +3529,7 @@ class Ui_MainWindow(object):
 "    padding: 10px 10px;\n"
 "}")
         self.date_month_pmt.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 5), QtCore.QTime(0, 0, 0)))
-        self.date_month_pmt.setCalendarPopup(True)
+        self.date_month_pmt.setCalendarPopup(False)
         self.date_month_pmt.setObjectName("date_month_pmt")
         self.horizontalLayout_56.addWidget(self.date_month_pmt)
         self.label_63 = QtWidgets.QLabel(self.datewise_payment)
@@ -3590,7 +3566,7 @@ class Ui_MainWindow(object):
 "    padding: 10px 10px;\n"
 "}")
         self.date_year_tnx_pmt.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 9, 5), QtCore.QTime(0, 0, 0)))
-        self.date_year_tnx_pmt.setCalendarPopup(True)
+        self.date_year_tnx_pmt.setCalendarPopup(False)
         self.date_year_tnx_pmt.setObjectName("date_year_tnx_pmt")
         self.horizontalLayout_56.addWidget(self.date_year_tnx_pmt)
         self.pushButton_7 = QtWidgets.QPushButton(self.datewise_payment)
@@ -4537,12 +4513,6 @@ class Ui_MainWindow(object):
         self.label_31.setText(_translate("MainWindow", "Service Name"))
         self.label_32.setText(_translate("MainWindow", "Size"))
         self.label_33.setText(_translate("MainWindow", "Quantity"))
-        self.product_quantity.setItemText(0, _translate("MainWindow", "1"))
-        self.product_quantity.setItemText(1, _translate("MainWindow", "5"))
-        self.product_quantity.setItemText(2, _translate("MainWindow", "10"))
-        self.product_quantity.setItemText(3, _translate("MainWindow", "20"))
-        self.product_quantity.setItemText(4, _translate("MainWindow", "50"))
-        self.product_quantity.setItemText(5, _translate("MainWindow", "100"))
         self.add_order_nt.setText(_translate("MainWindow", "ADD JOB"))
         self.delete_job_detail_btn.setText(_translate("MainWindow", "Delete"))
         self.label_41.setText(_translate("MainWindow", "Job Details"))
