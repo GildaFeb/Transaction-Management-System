@@ -1322,7 +1322,7 @@ class DBQueries():
                 self.ui.order_detail_table_2.setItem(row_index, col_index, QtWidgets.QTableWidgetItem(str(cell_value)))
 
         get_txn_pmts_data_sql = """
-                                SELECT PMT_DATE, PMT_PAID, PMT_BAL FROM payment p
+                                SELECT DISTINCT PMT_DATE, PMT_PAID, PMT_BAL FROM payment p
                                 INNER JOIN transactions t ON t.TXN_CODE = p.TXN_CODE
                                 WHERE t.TXN_CODE = ?
                                 """
@@ -1400,22 +1400,24 @@ class DBQueries():
             this_txn_pmt_tot = pmt_bal
             this_txn_pmt_date = datetime.now().strftime('%Y-%m-%d')
 
-            if pmt_sts == 'Fully Paid':
+            this_txn_pmt_bal = float(pmt_bal) - float(this_txn_pmt_paid)
+            this_txn_pmt_sts = 'Fully Paid' if float(this_txn_pmt_bal) == 0 else 'Partially Paid'
+            if this_txn_pmt_sts == 'Fully Paid':
                 QMessageBox.about(self, "Message", "Transaction is already Fully Paid. Skipping payment insertion.")
                 #print("Transaction is already Fully Paid. Skipping payment insertion.")
-            else:
-                if this_txn_pmt_paid < 0:
+            elif this_txn_pmt_sts == 'Partially Paid':
+                if float(this_txn_pmt_paid) < 0:
                     QMessageBox.warning(self, "Message", "Payment ampunt cannot be negative")
                     conn.close()
                     return
 
-                if this_txn_pmt_paid > this_txn_pmt_tot:
+                if float(this_txn_pmt_paid) > this_txn_pmt_tot:
                     QMessageBox.warning(self, "Message", "Payment exceeds the remaining balance.")
                     #print("Payment exceeds the remaining balance.")
                     conn.close()
                     return
 
-                this_txn_pmt_bal = pmt_bal - this_txn_pmt_paid
+                this_txn_pmt_bal = float(pmt_bal) - float(this_txn_pmt_paid)
                 this_txn_pmt_sts = 'Fully Paid' if this_txn_pmt_bal == 0 else 'Partially Paid'
 
                 insert_new_payment_sql = """
@@ -1428,9 +1430,6 @@ class DBQueries():
             #================================ UPDATE PARTICULAR =============================#
             new_prtclr_name = self.ui.customer_name_utd.text()
             new_prtclr_cn = self.ui.contact_num_utd.text()
-
-            print(new_prtclr_cn)
-            print(new_prtclr_name)
 
             update_particular_sql = """
                     UPDATE particular
