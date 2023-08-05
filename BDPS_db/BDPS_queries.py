@@ -18,8 +18,6 @@ class DBQueries():
         super(DBQueries, self).__init__()
         self.arg = arg
     
-    
-
     def create_connection(db_file):
         conn = None
         try:
@@ -43,46 +41,39 @@ class DBQueries():
     #                                           SERVICE QUERIES                                                 #
     #===========================================================================================================#
     def getAllServices(dbFolder):
-        conn = DBQueries.create_connection(dbFolder)
-
-        get_all_service = """ SELECT * FROM service; """
-
+        conn = None
         try:
+            conn = sqlite3.connect(dbFolder)
             c = conn.cursor()
+
+            get_all_service = """ SELECT * FROM service; """
             c.execute(get_all_service)
 
-            return c
-        except Error as e:
-            print(e)
+            return c.fetchall()
+
+        except sqlite3.Error as e:
+            print("Error executing query:", e)
+
+        finally:
+            if c:
+                c.close()
+            if conn:
+                conn.close()
+
+        return []
 
     def displayServices(self, rows):
-        self.ui.category_table.setRowCount(0)
+        self.ui.category_table.setRowCount(len(rows))
 
-        for row in rows:
-            rowPosition = self.ui.category_table.rowCount()
-
-            if rowPosition > row[0]:
-                continue
-
-            itemCount = 0
-
-            self.ui.category_table.setRowCount(rowPosition + 1)
-            service_tablewidgetitem = QTableWidgetItem()
-            self.ui.category_table.setVerticalHeaderItem(rowPosition, service_tablewidgetitem)
+        for rowPosition, row in enumerate(rows):
+            header_item = QTableWidgetItem(f"S-{row[0]}")
+            self.ui.category_table.setVerticalHeaderItem(rowPosition, header_item)
 
             for idx, item in enumerate(row):
-                if idx == 0:
-                    display_item = "S-" + str(item)
-                else:
-                    display_item = str(item)
+                display_item = f"S-{item}" if idx == 0 else str(item)
+                table_item = QTableWidgetItem(display_item)
+                self.ui.category_table.setItem(rowPosition, idx, table_item)
 
-                self.service_tablewidgetitem = QTableWidgetItem()
-                self.ui.category_table.setItem(rowPosition, itemCount, self.service_tablewidgetitem)
-                self.service_tablewidgetitem = self.ui.category_table.item(rowPosition, itemCount)
-                self.service_tablewidgetitem.setText(display_item)
-
-                itemCount = itemCount + 1
-            rowPosition = rowPosition + 1
 
     def addService(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
@@ -93,36 +84,30 @@ class DBQueries():
 
         if not service_name or not service_desc:
             QMessageBox.about(self, "Warning", "Please fill up all the fields with the correct data.")
-            #print("Missing fields.")
             return
 
-        check_service_exists_sql = f"""
-                                    SELECT SERV_ID FROM service
-                                    WHERE SERV_NAME = '{service_name}'
-                                    AND SERV_DESC = '{service_desc}'
-                                    AND SERV_STS = '{service_sts}';
-                                    """
+        check_service_exists_sql = """
+            SELECT SERV_ID FROM service
+            WHERE SERV_NAME = ? AND SERV_DESC = ? AND SERV_STS = ?;
+        """
         c = conn.cursor()
-        c.execute(check_service_exists_sql)
+        c.execute(check_service_exists_sql, (service_name, service_desc, service_sts))
         existing_service = c.fetchone()
 
         if existing_service:
             QMessageBox.about(self, "Warning", "Service already exists.")
-            #print("Service already exists.")
             return
 
-        insert_service_data_sql = f""" 
-                                        INSERT INTO service (SERV_NAME, SERV_DESC, SERV_STS) VALUES ('{service_name}','{service_desc}', '{service_sts}'); 
-                                    """
-        
+        insert_service_data_sql = """
+            INSERT INTO service (SERV_NAME, SERV_DESC, SERV_STS) VALUES (?, ?, ?);
+        """
         try:
-            c = conn.cursor()
-            c.execute(insert_service_data_sql)
+            c.execute(insert_service_data_sql, (service_name, service_desc, service_sts))
             conn.commit()
 
             self.ui.product_name_category.setText("")
             self.ui.category_description.setText("")
-            self.ui.status_category.itemText(0)
+            self.ui.status_category.setCurrentIndex(0)
 
             service_names = DBQueries.getServiceNames(dbFolder)
             self.ui.cat_name_pricelist.clear()
@@ -134,33 +119,27 @@ class DBQueries():
 
         except Error as e:
             print(e)
-    
-    def edit_no_service(self): 
-        self.window = QtWidgets.QMainWindow()
-        self.ui = No_Details()
-        self.ui.setupUi(self.window)
-        self.window.show()
+            QMessageBox.about(self, "Error", "An error occurred while adding the service.")
 
     def editService(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
         selected_row = self.ui.category_table.currentRow()
         if selected_row < 0:
-
-            self.ui.edit_category_btn.clicked.connect(lambda: self.edit_no_service())
+            QMessageBox.about(self, "Message", "Please select a row to edit.")
             return
-        
+
         service_id = int(self.ui.category_table.item(selected_row, 0).text().split('-')[-1])
         service_name = self.ui.product_name_category.text()
         service_desc = self.ui.category_description.text()
         service_sts = self.ui.status_category.currentText()
 
-        get_service_data_sql = f"""
-                                SELECT SERV_NAME, SERV_DESC, SERV_STS FROM service
-                                WHERE SERV_ID = {service_id};
-                                """
+        get_service_data_sql = """
+            SELECT SERV_NAME, SERV_DESC, SERV_STS FROM service
+            WHERE SERV_ID = ?;
+        """
         c = conn.cursor()
-        c.execute(get_service_data_sql)
+        c.execute(get_service_data_sql, (service_id,))
         existing_data = c.fetchone()
 
         if not service_name:
@@ -170,35 +149,26 @@ class DBQueries():
         if not service_sts:
             service_sts = existing_data[2]
 
-        check_service_exists_sql = f"""
-                                    SELECT SERV_ID FROM service
-                                    WHERE SERV_NAME = '{service_name}'
-                                    AND SERV_DESC = '{service_desc}'
-                                    AND SERV_STS = '{service_sts}'
-                                    AND SERV_ID != {service_id};
-                                    """
-        c.execute(check_service_exists_sql)
+        check_service_exists_sql = """
+            SELECT SERV_ID FROM service
+            WHERE SERV_NAME = ? AND SERV_DESC = ? AND SERV_STS = ?
+            AND SERV_ID != ?;
+        """
+        c.execute(check_service_exists_sql, (service_name, service_desc, service_sts, service_id))
         existing_service = c.fetchone()
 
         if existing_service:
             QMessageBox.about(self, "Message", "Service with updated values already exists in another row.")
-            #print("Service with updated values already exists in another row.")
             return
 
-        if service_name == existing_data[0] and service_desc == existing_data[1] and service_sts == existing_data[2]:
-            QMessageBox.about(self, "Message", "No changes made to the service details.")
-            #print("No changes made to the service details.")
-            return
-
-        update_service_data_sql = f""" 
-                                        UPDATE service 
-                                        SET SERV_NAME = '{service_name}', SERV_DESC = '{service_desc}', SERV_STS = '{service_sts}'
-                                        WHERE SERV_ID = {service_id};
-                                    """
+        update_service_data_sql = """
+            UPDATE service
+            SET SERV_NAME = ?, SERV_DESC = ?, SERV_STS = ?
+            WHERE SERV_ID = ?;
+        """
 
         try:
-            c = conn.cursor()
-            c.execute(update_service_data_sql)
+            c.execute(update_service_data_sql, (service_name, service_desc, service_sts, service_id))
             conn.commit()
 
             self.ui.product_name_category.setText("")
@@ -206,7 +176,6 @@ class DBQueries():
             self.ui.product_name_category.setPlaceholderText("")
             self.ui.category_description.setPlaceholderText("")
             self.ui.status_category.setCurrentIndex(0)
-
 
             service_names = DBQueries.getServiceNames(dbFolder)
             self.ui.cat_name_pricelist.clear()
@@ -216,32 +185,41 @@ class DBQueries():
 
             DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
+            QMessageBox.about(self, "Message", "Service details updated successfully.")
         except Error as e:
             print(e)
+            QMessageBox.about(self, "Error", "An error occurred while updating the service details.")
 
     def deleteService(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
         selected_rows = self.ui.category_table.selectionModel().selectedRows()
         if not selected_rows:
-            
-            self.ui.edit_category_btn.clicked.connect(lambda: self.edit_no_service())
-            QMessageBox.about(self, "Message", "Select row to update")
-            #print("No service selected.")
+            QMessageBox.about(self, "Message", "Select row to delete")
             return
+
+        c = conn.cursor()
+        service_names = DBQueries.getServiceNames(dbFolder)
+        self.ui.cat_name_pricelist.clear()
+        self.ui.cat_name_pricelist.addItems(service_names)
 
         if len(selected_rows) == 1:
             service_id = int(self.ui.category_table.item(selected_rows[0].row(), 0).text().split('-')[-1])
 
-            delete_service_sql = f"""
-                                    DELETE FROM service
-                                    WHERE SERV_ID = {service_id};
-                                """
+            delete_service_sql = """
+                DELETE FROM service
+                WHERE SERV_ID = ?;
+            """
 
             try:
-                c = conn.cursor()
-                c.execute(delete_service_sql)
+                c.execute(delete_service_sql, (service_id,))
                 conn.commit()
+
+                self.ui.product_name_category.setText("")
+                self.ui.category_description.setText("")
+                self.ui.product_name_category.setPlaceholderText("")
+                self.ui.category_description.setPlaceholderText("")
+                self.ui.status_category.setCurrentIndex(0)
 
                 service_names = DBQueries.getServiceNames(dbFolder)
                 self.ui.cat_name_pricelist.clear()
@@ -251,6 +229,7 @@ class DBQueries():
 
                 DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
+                QMessageBox.about(self, "Message", "Service deleted successfully.")
             except Error as e:
                 print(e)
 
@@ -267,39 +246,40 @@ class DBQueries():
             if response == QMessageBox.Yes:
                 service_ids = [int(self.ui.category_table.item(row.row(), 0).text().split('-')[-1]) for row in selected_rows]
 
-                delete_selected_service_sql = f"""
-                                                DELETE FROM service
-                                                WHERE SERV_ID IN ({', '.join(str(id) for id in service_ids)});
-                                            """
+                delete_selected_service_sql = """
+                    DELETE FROM service
+                    WHERE SERV_ID IN ({});
+                """.format(', '.join('?' for _ in service_ids))
 
                 try:
-                    c = conn.cursor()
-                    c.execute(delete_selected_service_sql)
+                    c.execute(delete_selected_service_sql, service_ids)
                     conn.commit()
+
+                    self.ui.product_name_category.setText("")
+                    self.ui.category_description.setText("")
+                    self.ui.product_name_category.setPlaceholderText("")
+                    self.ui.category_description.setPlaceholderText("")
+                    self.ui.status_category.setCurrentIndex(0)
 
                     service_names = DBQueries.getServiceNames(dbFolder)
                     self.ui.cat_name_pricelist.clear()
                     self.ui.cat_name_pricelist.addItems(service_names)
+                    self.ui.category_name_nt.clear()
+                    self.ui.category_name_nt.addItems(service_names)
 
                     DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
+                    QMessageBox.about(self, "Message", "Selected services deleted successfully.")
                 except Error as e:
                     print(e)
 
     def on_service_selection_changed(self):
         selected_rows = self.ui.category_table.selectionModel().selectedRows()
-        add_service_btn = self.ui.add_category_btn
-        edit_service_btn = self.ui.edit_category_btn
-        
-        if len(selected_rows) > 0:
-            add_service_btn.setVisible(False)
-        else:
-            add_service_btn.setVisible(True)
-            
-        if len(selected_rows) > 1:
-            edit_service_btn.setVisible(False)
-        else:
-            edit_service_btn.setVisible(True)
+        add_btn = self.ui.add_category_btn
+        edit_btn = self.ui.edit_category_btn
+
+        add_btn.setVisible(len(selected_rows) == 0)
+        edit_btn.setVisible(len(selected_rows) <= 1)
 
     #===========================================================================================================#
     #                                        PRICE LIST QUERIES                                                 #
@@ -378,7 +358,6 @@ class DBQueries():
 
         if not product_size or not product_price:
             QMessageBox.warning(self, "Warning", "Please fill up all the fields with the correct data")
-            #print("Missing fields.")
             return
         
         check_service_exists_sql = f"""
@@ -391,7 +370,6 @@ class DBQueries():
 
         if not serv_id_result:
             QMessageBox.about(self, "Message", "Service not found. Please click atleast one row.")
-            #print("Service does not exist.")
             return
 
         serv_id = serv_id_result[0]
@@ -408,7 +386,6 @@ class DBQueries():
 
         if existing_price:
             QMessageBox.about(self, "Message", "Price for product already exists")
-            #print("Price for product already exists.")
             return
 
 
@@ -438,7 +415,6 @@ class DBQueries():
         selected_row = self.ui.pricelist_table.currentRow()
         if selected_row < 0:
             QMessageBox.about(self, "Message", "No product selected")
-            #print("No product selected.")
             return
 
         product_id = int(self.ui.pricelist_table.item(selected_row, 0).text().split('-')[-1])
@@ -471,7 +447,6 @@ class DBQueries():
 
         if not serv_id_result:
             QMessageBox.about(self, "Message", "Service does not exist")
-            #print("Service does not exist.")
             return
 
         serv_id = serv_id_result[0]
@@ -488,12 +463,10 @@ class DBQueries():
         if existing_price:
 
             QMessageBox.about(self, "Message", "Product with updated values already exists")
-            #print("Product with updated values already exists in another row.")
             return
 
         if product_service == existing_data[0] and product_size == existing_data[1] and product_price == existing_data[2]:
             QMessageBox.about(self, "Message", "No changes made to the product details.")
-            #print("No changes made to the product details.")
             return
 
         update_price_data_sql = f""" 
@@ -524,7 +497,6 @@ class DBQueries():
         selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
         if not selected_rows:
             QMessageBox.about(self, "Message", "No price for selected product")
-            #print("No price for product selected.")
             return
 
         if len(selected_rows) == 1:
@@ -653,7 +625,6 @@ class DBQueries():
             self.ui.category_size.clear()
             if not sizes:
                 QMessageBox.about(self, "Message", "No available sizes.")
-                #self.ui.category_size.setPlaceholderText("No Available sizes.")
                 
             else:
                 if self.ui.category_size.count() > 0:
@@ -679,7 +650,6 @@ class DBQueries():
                             INNER JOIN product ON job_temp.PROD_ID = product.PROD_ID
                             INNER JOIN service ON product.SERV_ID = service.SERV_ID;
                         """
-
         else:
             return []
 
@@ -732,7 +702,6 @@ class DBQueries():
 
         if not job_service or not job_size or not job_quantity:
             QMessageBox.about(self, "Message", "Please fill up all the forms with correct data")
-            #print("Missing fields.")
             return
 
         get_job_price_sql = """ SELECT PROD_ID, PROD_PRICE FROM product p 
@@ -746,7 +715,6 @@ class DBQueries():
 
             if not product_data:
                 QMessageBox.about(self, "Message", "Price not found for the selected service and size")
-                #print("Price not found for the selected service and size.")
                 return
 
             product_id, job_price = product_data
@@ -907,7 +875,6 @@ class DBQueries():
 
         if not job_temp_exists:
             QMessageBox.about(self, "Message", "Job lits is empty. Please add jobs first")
-            #print("Job list is empty. Please add jobs first.")
             return False
 
         pmt_disc_text = self.ui.discount_nt.text()
@@ -915,7 +882,6 @@ class DBQueries():
             payment_discount = float(pmt_disc_text) if pmt_disc_text else 0.0
         except ValueError:
             QMessageBox.about(self, "Message", "Invalid discount amount")
-            #print("Invalid discount amount.")
             return False
 
         subtotal = DBQueries.calculate_subtotal_from_job_temp(self, dbFolder)
@@ -935,12 +901,10 @@ class DBQueries():
                 payment_paid = float(payment_paid_text)
             except ValueError:
                 QMessageBox.about(self, "Message", "Invalid payment amount")
-                #print("Invalid payment amount.")
                 return False
 
         if not payment_paid or payment_paid < 0:
             QMessageBox.about(self, "Message", "Missing payment details or invalid payment amount")
-            #print("Missing payment details or invalid payment amount.")
             return False
 
         payment_bal = payment_total - payment_paid
@@ -957,11 +921,9 @@ class DBQueries():
             c.execute(insert_payment_sql, (payment_discount, payment_total, payment_paid, payment_bal, payment_date, payment_sts))
             conn.commit()
             QMessageBox.about(self, "Message", "Payment added successfully")
-            #print("Payment added successfully.")
             return True
         except Error as e:
             QMessageBox.about(self, "Error", "Error adding payment", e)
-            #print("Error adding payment:", e)
             return False
         
     def update_total_nt(self, dbFolder):
@@ -970,14 +932,12 @@ class DBQueries():
 
         if subtotal is None:
             QMessageBox.about(self, "Message", "Subtotal is not available. Please add jobs first")
-            #print("Subtotal is not available. Please add jobs first.")
             return
 
         try:
             payment_discount = float(pmt_disc_text) if pmt_disc_text else 0.0
         except ValueError:
             QMessageBox.about(self, "Message", "Invalid discount amount.")
-            print("Invalid discount amount.")
             return
 
         payment_total = subtotal - payment_discount
@@ -989,14 +949,12 @@ class DBQueries():
 
         if subtotal is None:
             QMessageBox.about(self, "Message", "Please fill up all the forms with correct data")
-            #print("Subtotal is not available. Please add jobs first.")
             return False
 
         try:
             payment_discount = float(pmt_disc_text) if pmt_disc_text else 0.0
         except ValueError:
             QMessageBox.about(self, "Message", "Invalid discount amount")
-            #print("Invalid discount amount.")
             return False
 
         if payment_discount > subtotal:
@@ -1072,7 +1030,6 @@ class DBQueries():
 
         except Exception as e:
             QMessageBox.warning(self, "Message", "Error retrieving next transaction code:", e)
-            #print("Error retrieving next transaction code:", e)
             return None
         finally:
             cursor.close()
@@ -1201,19 +1158,16 @@ class DBQueries():
             pmt_disc = float(pmt_disc) if pmt_disc else 0.0
         except ValueError:
             QMessageBox.warning(self, "Warning", "Invalid discount amount.")
-            #print("Invalid discount amount.")
             return False
         pmt_paid_text = self.ui.payment_nt.text().strip()
         if not pmt_paid_text:
             QMessageBox.warning(self, "Warning", "Payment amount is empty. Please enter a valid payment amount")
-            #print("Payment amount is empty. Please enter a valid payment amount.")
             return False
 
         try:
             pmt_paid = float(pmt_paid_text)
         except ValueError:
             QMessageBox.warning(self, "Message", "Invalid payment amount. Please enter a valid numeric value")
-            #print("Invalid payment amount. Please enter a valid numeric value.")
             return False
 
         conn = sqlite3.connect(dbFolder)
@@ -1268,7 +1222,6 @@ class DBQueries():
             DBQueries.displayDatewisePayments(self, DBQueries.getAllTransactions(dbFolder))
             
             QMessageBox.about(self, "Message", "Transaction saved successfully.")
-            #print("Transaction saved successfully.")
 
             self.ui.customer_name_nt.setText("")
             self.ui.contact_num_nt.setText("")
@@ -1291,7 +1244,6 @@ class DBQueries():
 
         except Exception as e:
             QMessageBox.warning(self, "Message", "Error saving transaction", e)
-            #print("Error saving transaction:", e)
         finally:
             cursor.close()
             conn.close()
@@ -1471,10 +1423,8 @@ class DBQueries():
 
         except ValueError as ve:
             QMessageBox.warning(self, "Error", "Error updating transaction:", ve)
-            #print("Error updating transaction:", ve)
         except Exception as e:
             QMessageBox.warning(self, "Message", "Unexpected error occurred while updating transaction:", e)
-            #print("Unexpected error occurred while updating transaction:", e)
 
         
 
