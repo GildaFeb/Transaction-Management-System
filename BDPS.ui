@@ -349,7 +349,7 @@ border-top-left-radius: 30px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -1225,12 +1225,22 @@ border-radius: 10px;
                      </attribute>
                      <row>
                       <property name="text">
-                       <string>0</string>
+                       <string/>
                       </property>
                      </row>
                      <row>
                       <property name="text">
-                       <string>1</string>
+                       <string/>
+                      </property>
+                     </row>
+                     <row>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </row>
+                     <row>
+                      <property name="text">
+                       <string/>
                       </property>
                      </row>
                      <row>
@@ -1276,47 +1286,77 @@ border-radius: 10px;
                      </column>
                      <item row="0" column="0">
                       <property name="text">
-                       <string>fvs</string>
+                       <string>T-1</string>
                       </property>
                      </item>
                      <item row="0" column="1">
                       <property name="text">
-                       <string>fs</string>
+                       <string>Grace Nabu-ab</string>
                       </property>
                      </item>
                      <item row="0" column="2">
                       <property name="text">
-                       <string>fs</string>
+                       <string>1275</string>
                       </property>
                      </item>
                      <item row="1" column="0">
                       <property name="text">
-                       <string>dr</string>
+                       <string>T-3</string>
                       </property>
                      </item>
                      <item row="1" column="1">
                       <property name="text">
-                       <string>fs</string>
+                       <string>Jeru Agnas</string>
                       </property>
                      </item>
                      <item row="1" column="2">
                       <property name="text">
-                       <string>fs</string>
+                       <string>3755</string>
                       </property>
                      </item>
                      <item row="2" column="0">
                       <property name="text">
-                       <string>f</string>
+                       <string>T-4</string>
                       </property>
                      </item>
                      <item row="2" column="1">
                       <property name="text">
-                       <string>v</string>
+                       <string>Sean Davis</string>
                       </property>
                      </item>
                      <item row="2" column="2">
                       <property name="text">
-                       <string>vfs</string>
+                       <string>275</string>
+                      </property>
+                     </item>
+                     <item row="3" column="0">
+                      <property name="text">
+                       <string>T-5</string>
+                      </property>
+                     </item>
+                     <item row="3" column="1">
+                      <property name="text">
+                       <string>Donoban Abella</string>
+                      </property>
+                     </item>
+                     <item row="3" column="2">
+                      <property name="text">
+                       <string>1250</string>
+                      </property>
+                     </item>
+                     <item row="4" column="0">
+                      <property name="text">
+                       <string>T-6</string>
+                      </property>
+                     </item>
+                     <item row="4" column="1">
+                      <property name="text">
+                       <string>Donoban Abella</string>
+                      </property>
+                     </item>
+                     <item row="4" column="2">
+                      <property name="text">
+                       <string>750</string>
                       </property>
                      </item>
                     </widget>

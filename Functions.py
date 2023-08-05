@@ -89,7 +89,7 @@ class BtnFunctions(QMainWindow):
         self.ui.setupUi(self.window)
         self.window.show()
     # ============ #
-
+    
 
     def __init__(self):
         super(BtnFunctions, self).__init__()
@@ -100,6 +100,8 @@ class BtnFunctions(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.home_btn_2.setChecked(True)
         
+        self.get_recent_transactions()
+
         #========================== INITIALIZATIONS =====================================#
         self.ui.no_category_found.hide()
         self.ui.no_pricelist_found.hide()
@@ -674,6 +676,8 @@ class BtnFunctions(QMainWindow):
         
     def reset_dailytxn_table(self):
         self.count_labels_txns()
+        self.ui.edit_search_daily_tnx.setText("")
+        self.ui.dateEdit_daily_tnx.setDate(QDate.currentDate())  
         for row in range(self.ui.daily_tnx_table.rowCount()):
             self.ui.daily_tnx_table.setRowHidden(row, False)        
             self.ui.daily_tnx_table.show()
@@ -681,6 +685,10 @@ class BtnFunctions(QMainWindow):
             
     def reset_txn_table(self):
         self.count_labels_txns()
+        self.ui.dateEdit.setDate(QDate.currentDate())
+        self.ui.dateEdit_2.setDate(QDate.currentDate())
+        self.ui.edit_search_new_transaction.setText("")
+        self.ui.transactionR_combobox.setCurrentIndex(0)
         for row in range(self.ui.transaction_record_tbl.rowCount()):
             self.ui.transaction_record_tbl.setRowHidden(row, False)        
             self.ui.transaction_record_tbl.show()
@@ -688,6 +696,9 @@ class BtnFunctions(QMainWindow):
     
     def reset_datewise_txn_table(self):
         self.count_labels_txns()
+        self.ui.date_month_tnx.setDate(QDate.currentDate())
+        self.ui.date_year_tnx.setDate(QDate.currentDate())
+        self.ui.edit_search_dwt.setText("")
         for row in range(self.ui.datewise_transaction_table.rowCount()):
             self.ui.datewise_transaction_table.setRowHidden(row, False)        
             self.ui.datewise_transaction_table.show()
@@ -695,6 +706,8 @@ class BtnFunctions(QMainWindow):
     
     def reset_datewise_payment_table(self):
         self.ui.edit_search_dwp.setText("")
+        self.ui.date_month_pmt.setDate(QDate.currentDate())
+        self.ui.date_year_tnx_pmt.setDate(QDate.currentDate())
         self.count_labels_txns()
         for row in range(self.ui.datewise_payment_table.rowCount()):
             self.ui.datewise_payment_table.setRowHidden(row, False)        
@@ -702,6 +715,30 @@ class BtnFunctions(QMainWindow):
             self.ui.no_datewiseP_found.hide()
                         
         #======================== DASHBOARD FUNCTIONS =================================#
+    def get_recent_transactions(self):
+        current_date = QDate.currentDate()
+        two_days_ago = current_date.addDays(-2)
+
+        # Clear the recent_transaction_table before adding recent transactions
+        self.ui.tnx_summary_table.setRowCount(0)
+
+        for row in range(self.ui.transaction_record_tbl.rowCount()):
+            date_item = self.ui.transaction_record_tbl.item(row, 1)
+            if date_item:
+                date_str = date_item.text()
+                date = QDate.fromString(date_str, "yyyy-MM-dd")
+                
+                if two_days_ago <= date <= current_date:
+                    # Copy the row to the recent_transaction_table
+                    job = self.ui.transaction_record_tbl.item(row, 0)
+                    particular = self.ui.transaction_record_tbl.item(row, 2)
+                    total = self.ui.transaction_record_tbl.item(row, 3)
+
+                    row_position = self.ui.tnx_summary_table.rowCount()
+                    self.ui.tnx_summary_table.insertRow(row_position)
+                    self.ui.tnx_summary_table.setItem(row_position, 0, QTableWidgetItem(job.text()))
+                    self.ui.tnx_summary_table.setItem(row_position, 1, QTableWidgetItem(particular.text()))
+                    self.ui.tnx_summary_table.setItem(row_position, 2, QTableWidgetItem(total.text()))
 
     def count_transaction_record(self):
         
@@ -811,66 +848,80 @@ class BtnFunctions(QMainWindow):
     def on_home_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.count_labels_txns()
-    
+        self.get_recent_transactions()
     def on_home_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.count_labels_txns()
-
+        self.get_recent_transactions()
     def on_price_list_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(1)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_price_list_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(1)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_categories_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(2)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_categories_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(2)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_new_transaction_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(3)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_new_transaction_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(3)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_transaction_record_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(4)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_transaction_record_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(4)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_daily_transaction_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(5)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_daily_transaction_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(5)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_daily_transaction_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(6)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_datewise_transaction_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(6)
         self.count_labels_txns()
+        self.get_recent_transactions()
     
     def on_datewise_payment_btn_1_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(7)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def on_daily_payment_btn_2_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(7)
         self.count_labels_txns()
+        self.get_recent_transactions()
 
     def update_transaction_pressed(self, dbFolder):
         selected_row = self.ui.transaction_record_tbl.currentRow()
