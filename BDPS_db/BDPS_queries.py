@@ -96,7 +96,7 @@ class DBQueries():
         service_sts = self.ui.status_category.currentText()
 
         if not service_name or not service_desc:
-
+            QMessageBox.about(self, "Warning", "Please fill up all the fields with the correct data.")
             print("Missing fields.")
             return
 
@@ -184,10 +184,12 @@ class DBQueries():
         existing_service = c.fetchone()
 
         if existing_service:
-            print("Service with updated values already exists in another row.")
+            QMessageBox.about(self, "Message", "Service with updated values already exists in another row.")
+            #print("Service with updated values already exists in another row.")
             return
 
         if service_name == existing_data[0] and service_desc == existing_data[1] and service_sts == existing_data[2]:
+            QMessageBox.about(self, "Message", "No changes made to the service details.")
             print("No changes made to the service details.")
             return
 
@@ -227,7 +229,8 @@ class DBQueries():
         if not selected_rows:
             
             self.ui.edit_category_btn.clicked.connect(lambda: self.edit_no_service())
-            print("No service selected.")
+            QMessageBox.about(self, "Message", "No service selected")
+            #print("No service selected.")
             return
 
         if len(selected_rows) == 1:
@@ -377,7 +380,8 @@ class DBQueries():
         product_price = self.ui.price_pricelist.value()
 
         if not product_size or not product_price:
-            print("Missing fields.")
+            QMessageBox.warning(self, "Warning", "Please fill up all the fields with the correct data")
+            #print("Missing fields.")
             return
         
         check_service_exists_sql = f"""
@@ -389,6 +393,7 @@ class DBQueries():
         serv_id_result = c.fetchone()
 
         if not serv_id_result:
+            QMessageBox.about(self, "Message", "Service does not exist")
             print("Service does not exist.")
             return
 
@@ -405,7 +410,8 @@ class DBQueries():
         existing_price = c.fetchone()
 
         if existing_price:
-            print("Price for product already exists.")
+            QMessageBox.about(self, "Message", "Price for product already exists")
+            #print("Price for product already exists.")
             return
 
 
@@ -434,6 +440,7 @@ class DBQueries():
 
         selected_row = self.ui.pricelist_table.currentRow()
         if selected_row < 0:
+            QMessageBox.about(self, "Message", "No product selected")
             print("No product selected.")
             return
 
@@ -466,7 +473,8 @@ class DBQueries():
         serv_id_result = c.fetchone()
 
         if not serv_id_result:
-            print("Service does not exist.")
+            QMessageBox.about(self, "Message", "Service does not exist")
+            #print("Service does not exist.")
             return
 
         serv_id = serv_id_result[0]
@@ -481,11 +489,14 @@ class DBQueries():
         existing_price = c.fetchone()
 
         if existing_price:
-            print("Product with updated values already exists in another row.")
+
+            QMessageBox.about(self, "Message", "Product with updated values already exists")
+            #print("Product with updated values already exists in another row.")
             return
 
         if product_service == existing_data[0] and product_size == existing_data[1] and product_price == existing_data[2]:
-            print("No changes made to the product details.")
+            QMessageBox.about(self, "Message", "No changes made to the product details.")
+            #print("No changes made to the product details.")
             return
 
         update_price_data_sql = f""" 
@@ -515,7 +526,8 @@ class DBQueries():
 
         selected_rows = self.ui.pricelist_table.selectionModel().selectedRows()
         if not selected_rows:
-            print("No price for product selected.")
+            QMessageBox.about(self, "Message", "No price for selected product")
+            #print("No price for product selected.")
             return
 
         if len(selected_rows) == 1:
@@ -643,7 +655,8 @@ class DBQueries():
 
             self.ui.category_size.clear()
             if not sizes:
-                self.ui.category_size.setPlaceholderText("No Available sizes.")
+                QMessageBox.about(self, "Message", "No available sizes.")
+                #self.ui.category_size.setPlaceholderText("No Available sizes.")
                 
             else:
                 if self.ui.category_size.count() > 0:
@@ -721,7 +734,8 @@ class DBQueries():
         job_quantity = self.ui.product_quantity.currentText()
 
         if not job_service or not job_size or not job_quantity:
-            print("Missing fields.")
+            QMessageBox.about(self, "Message", "Please fill up all the forms with correct data")
+            #print("Missing fields.")
             return
 
         get_job_price_sql = """ SELECT PROD_ID, PROD_PRICE FROM product p 
@@ -734,7 +748,8 @@ class DBQueries():
             product_data = c.fetchone()
 
             if not product_data:
-                print("Price not found for the selected service and size.")
+                QMessageBox.about(self, "Message", "Price not found for the selected service and size")
+                #print("Price not found for the selected service and size.")
                 return
 
             product_id, job_price = product_data
@@ -748,6 +763,7 @@ class DBQueries():
             existing_job_id = c.fetchone()
 
             if existing_job_id:
+                QMessageBox.about(self, "Message", "Similar job exists")
                 print("Similar job already exists.")
                 return
 
@@ -890,14 +906,16 @@ class DBQueries():
         job_temp_exists = c.fetchone()
 
         if not job_temp_exists:
-            print("Job list is empty. Please add jobs first.")
+            QMessageBox.about(self, "Message", "Job lits is empty. Please add jobs first")
+            #print("Job list is empty. Please add jobs first.")
             return False
 
         pmt_disc_text = self.ui.discount_nt.text()
         try:
             payment_discount = float(pmt_disc_text) if pmt_disc_text else 0.0
         except ValueError:
-            print("Invalid discount amount.")
+            QMessageBox.about(self, "Message", "Invalid discount amount")
+            #print("Invalid discount amount.")
             return False
 
         subtotal = DBQueries.calculate_subtotal_from_job_temp(self, dbFolder)
@@ -916,11 +934,13 @@ class DBQueries():
             try:
                 payment_paid = float(payment_paid_text)
             except ValueError:
-                print("Invalid payment amount.")
+                QMessageBox.about(self, "Message", "Invalid payment amount")
+                #print("Invalid payment amount.")
                 return False
 
         if not payment_paid or payment_paid < 0:
-            print("Missing payment details or invalid payment amount.")
+            QMessageBox.about(self, "Message", "Missing payment details or invalid payment amount")
+            #print("Missing payment details or invalid payment amount.")
             return False
 
         payment_bal = payment_total - payment_paid
@@ -936,11 +956,12 @@ class DBQueries():
             c = conn.cursor()
             c.execute(insert_payment_sql, (payment_discount, payment_total, payment_paid, payment_bal, payment_date, payment_sts))
             conn.commit()
-
-            print("Payment added successfully.")
+            QMessageBox.about(self, "Message", "Payment added successfully")
+            #print("Payment added successfully.")
             return True
         except Error as e:
-            print("Error adding payment:", e)
+            QMessageBox.about(self, "Error", "Error adding payment", e)
+            #print("Error adding payment:", e)
             return False
         
     def update_total_nt(self, dbFolder):
@@ -948,12 +969,14 @@ class DBQueries():
         pmt_disc_text = self.ui.discount_nt.text()
 
         if subtotal is None:
-            print("Subtotal is not available. Please add jobs first.")
+            QMessageBox.about(self, "Message", "Subtotal is not available. Please add jobs first")
+            #print("Subtotal is not available. Please add jobs first.")
             return
 
         try:
             payment_discount = float(pmt_disc_text) if pmt_disc_text else 0.0
         except ValueError:
+            QMessageBox.about(self, "Message", "Invalid discount amount.")
             print("Invalid discount amount.")
             return
 
@@ -965,13 +988,15 @@ class DBQueries():
         pmt_disc_text = self.ui.discount_nt.text()
 
         if subtotal is None:
-            print("Subtotal is not available. Please add jobs first.")
+            QMessageBox.about(self, "Message", "Please fill up all the forms with correct data")
+            #print("Subtotal is not available. Please add jobs first.")
             return False
 
         try:
             payment_discount = float(pmt_disc_text) if pmt_disc_text else 0.0
         except ValueError:
-            print("Invalid discount amount.")
+            QMessageBox.about(self, "Message", "Invalid discount amount")
+            #print("Invalid discount amount.")
             return False
 
         if payment_discount > subtotal:
@@ -1046,7 +1071,8 @@ class DBQueries():
             return current_txn_code
 
         except Exception as e:
-            print("Error retrieving next transaction code:", e)
+            QMessageBox.warning(self, "Message", "Error retrieving next transaction code:", e)
+            #print("Error retrieving next transaction code:", e)
             return None
         finally:
             cursor.close()
@@ -1174,17 +1200,20 @@ class DBQueries():
         try:
             pmt_disc = float(pmt_disc) if pmt_disc else 0.0
         except ValueError:
-            print("Invalid discount amount.")
+            QMessageBox.warning(self, "Warning", "Invalid discount amount.")
+            #print("Invalid discount amount.")
             return False
         pmt_paid_text = self.ui.payment_nt.text().strip()
         if not pmt_paid_text:
-            print("Payment amount is empty. Please enter a valid payment amount.")
+            QMessageBox.warning(self, "Warning", "Payment amount is empty. Please enter a valid payment amount")
+            #print("Payment amount is empty. Please enter a valid payment amount.")
             return False
 
         try:
             pmt_paid = float(pmt_paid_text)
         except ValueError:
-            print("Invalid payment amount. Please enter a valid numeric value.")
+            QMessageBox.warning(self, "Message", "Invalid payment amount. Please enter a valid numeric value")
+            #print("Invalid payment amount. Please enter a valid numeric value.")
             return False
 
         conn = sqlite3.connect(dbFolder)
@@ -1238,7 +1267,8 @@ class DBQueries():
             DBQueries.displayDatewiseTransactions(self, DBQueries.getAllTransactions(dbFolder))
             DBQueries.displayDatewisePayments(self, DBQueries.getAllTransactions(dbFolder))
             
-            print("Transaction saved successfully.")
+            QMessageBox.about(self, "Message", "Transaction saved successfully.")
+            #print("Transaction saved successfully.")
 
             self.ui.customer_name_nt.setText("")
             self.ui.contact_num_nt.setText("")
@@ -1260,7 +1290,8 @@ class DBQueries():
 
 
         except Exception as e:
-            print("Error saving transaction:", e)
+            QMessageBox.warning(self, "Message", "Error saving transaction", e)
+            #print("Error saving transaction:", e)
         finally:
             cursor.close()
             conn.close()
@@ -1350,7 +1381,8 @@ class DBQueries():
                 try:
                     this_txn_pmt_paid = float(self.ui.utd_payment.text())
                 except ValueError:
-                    print("Invalid payment amount. Please enter a valid numeric value.")
+                    QMessageBox.warning(self, "Message", "Invalid payment amount. Please enter a valid numberic value")
+                    #print("Invalid payment amount. Please enter a valid numeric value.")
                     return
     
             get_this_txn_pmt_data_sql = """
@@ -1362,7 +1394,8 @@ class DBQueries():
             statuses_data = c.fetchall()
 
             if not statuses_data:
-                print(f"Transaction with TXN_CODE={txn_code} not found in the database.")
+                QMessageBox.warning(self, "Message", f"Transaction with TXN_CODE={txn_code} not found in the database.")
+                #print(f"Transaction with TXN_CODE={txn_code} not found in the database.")
                 conn.close()
                 return
 
@@ -1371,15 +1404,17 @@ class DBQueries():
             this_txn_pmt_date = datetime.now().strftime('%Y-%m-%d')
 
             if pmt_sts == 'Fully Paid':
-                print("Transaction is already Fully Paid. Skipping payment insertion.")
+                QMessageBox.about(self, "Message", "Transaction is already Fully Paid. Skipping payment insertion.")
+                #print("Transaction is already Fully Paid. Skipping payment insertion.")
             else:
                 if this_txn_pmt_paid < 0:
-                    print("Payment amount cannot be negative.")
+                    QMessageBox.warning(self, "Message", "Payment ampunt cannot be negative")
                     conn.close()
                     return
 
                 if this_txn_pmt_paid > this_txn_pmt_tot:
-                    print("Payment exceeds the remaining balance.")
+                    QMessageBox.warning(self, "Message", "Payment exceeds the remaining balance.")
+                    #print("Payment exceeds the remaining balance.")
                     conn.close()
                     return
 
@@ -1429,9 +1464,11 @@ class DBQueries():
             self.ui.stackedWidget.setCurrentIndex(4)
 
         except ValueError as ve:
-            print("Error updating transaction:", ve)
+            QMessageBox.warning(self, "Error", "Error updating transaction:", ve)
+            #print("Error updating transaction:", ve)
         except Exception as e:
-            print("Unexpected error occurred while updating transaction:", e)
+            QMessageBox.warning(self, "Message", "Unexpected error occurred while updating transaction:", e)
+            #print("Unexpected error occurred while updating transaction:", e)
 
         finally:
             conn.close()
