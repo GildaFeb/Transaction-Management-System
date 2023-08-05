@@ -728,7 +728,7 @@ class DBQueries():
 
         job_service = self.ui.category_name_nt.currentText()
         job_size = self.ui.category_size.currentText()
-        job_quantity = self.ui.product_quantity.currentText()
+        job_quantity = self.ui.product_quantity.value()
 
         if not job_service or not job_size or not job_quantity:
             QMessageBox.about(self, "Message", "Please fill up all the forms with correct data")
@@ -788,7 +788,7 @@ class DBQueries():
 
             self.ui.category_name_nt.setCurrentIndex(0)
             self.ui.category_size.setCurrentIndex(0)
-            self.ui.product_quantity.setCurrentIndex(0)
+            self.ui.product_quantity.setValue(0)
 
             DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
 
@@ -847,6 +847,9 @@ class DBQueries():
                 c = conn.cursor()
                 c.execute(delete_service_sql)
                 conn.commit()
+
+                total_subtotal = DBQueries.calculate_subtotal_from_job_temp(self, dbFolder)
+                self.ui.total_nt.setText(str(total_subtotal))
 
                 DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
 
@@ -1271,7 +1274,7 @@ class DBQueries():
             self.ui.contact_num_nt.setText("")
             self.ui.category_name_nt.setCurrentIndex(0)
             self.ui.category_size.setCurrentIndex(0)
-            self.ui.product_quantity.setCurrentIndex(0)
+            self.ui.product_quantity.setValue(0)
             self.ui.order_detail_table.clear()
             self.ui.order_detail_table.setRowCount(0)
             self.ui.subtotal_nt.setText("0.00")
