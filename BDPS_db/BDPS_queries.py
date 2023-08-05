@@ -18,11 +18,7 @@ class DBQueries():
         super(DBQueries, self).__init__()
         self.arg = arg
     
-    def edit_no_service(self): 
-        self.window = QtWidgets.QMainWindow()
-        self.ui = No_Details()
-        self.ui.setupUi(self.window)
-        self.window.show()
+    
 
     def create_connection(db_file):
         conn = None
@@ -97,7 +93,7 @@ class DBQueries():
 
         if not service_name or not service_desc:
             QMessageBox.about(self, "Warning", "Please fill up all the fields with the correct data.")
-            print("Missing fields.")
+            #print("Missing fields.")
             return
 
         check_service_exists_sql = f"""
@@ -111,7 +107,8 @@ class DBQueries():
         existing_service = c.fetchone()
 
         if existing_service:
-            print("Service already exists.")
+            QMessageBox.about(self, "Warning", "Service already exists.")
+            #print("Service already exists.")
             return
 
         insert_service_data_sql = f""" 
@@ -190,7 +187,7 @@ class DBQueries():
 
         if service_name == existing_data[0] and service_desc == existing_data[1] and service_sts == existing_data[2]:
             QMessageBox.about(self, "Message", "No changes made to the service details.")
-            print("No changes made to the service details.")
+            #print("No changes made to the service details.")
             return
 
         update_service_data_sql = f""" 
@@ -229,7 +226,7 @@ class DBQueries():
         if not selected_rows:
             
             self.ui.edit_category_btn.clicked.connect(lambda: self.edit_no_service())
-            QMessageBox.about(self, "Message", "No service selected")
+            QMessageBox.about(self, "Message", "Select row to update")
             #print("No service selected.")
             return
 
@@ -393,8 +390,8 @@ class DBQueries():
         serv_id_result = c.fetchone()
 
         if not serv_id_result:
-            QMessageBox.about(self, "Message", "Service does not exist")
-            print("Service does not exist.")
+            QMessageBox.about(self, "Message", "Service not found. Please click atleast one row.")
+            #print("Service does not exist.")
             return
 
         serv_id = serv_id_result[0]
@@ -441,7 +438,7 @@ class DBQueries():
         selected_row = self.ui.pricelist_table.currentRow()
         if selected_row < 0:
             QMessageBox.about(self, "Message", "No product selected")
-            print("No product selected.")
+            #print("No product selected.")
             return
 
         product_id = int(self.ui.pricelist_table.item(selected_row, 0).text().split('-')[-1])
