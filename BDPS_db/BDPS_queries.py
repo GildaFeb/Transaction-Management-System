@@ -1379,7 +1379,6 @@ class DBQueries():
                     this_txn_pmt_paid = float(self.ui.utd_payment.text())
                 except ValueError:
                     QMessageBox.warning(self, "Message", "Invalid payment amount. Please enter a valid numberic value")
-                    #print("Invalid payment amount. Please enter a valid numeric value.")
                     return
     
             get_this_txn_pmt_data_sql = """
@@ -1392,32 +1391,36 @@ class DBQueries():
 
             if not statuses_data:
                 QMessageBox.warning(self, "Message", f"Transaction with TXN_CODE={txn_code} not found in the database.")
-                #print(f"Transaction with TXN_CODE={txn_code} not found in the database.")
                 conn.close()
                 return
 
             txn_code, pmt_disc, pmt_tot, pmt_paid, pmt_bal, pmt_date, pmt_sts = statuses_data[0]
-            this_txn_pmt_tot = pmt_bal
+            get_cumulative_payment_sql = """
+                SELECT SUM(PMT_PAID) FROM payment WHERE TXN_CODE = ?;
+            """
+            c.execute(get_cumulative_payment_sql, (txn_code,))
+            cumulative_payment = c.fetchone()[0]
+            if cumulative_payment is None:
+                cumulative_payment = 0.0
+
+            this_txn_pmt_tot = pmt_tot - cumulative_payment
             this_txn_pmt_date = datetime.now().strftime('%Y-%m-%d')
 
-            this_txn_pmt_bal = float(pmt_bal) - float(this_txn_pmt_paid)
-            this_txn_pmt_sts = 'Fully Paid' if float(this_txn_pmt_bal) == 0 else 'Partially Paid'
-            if this_txn_pmt_sts == 'Fully Paid':
-                QMessageBox.about(self, "Message", "Transaction is already Fully Paid. Skipping payment insertion.")
-                #print("Transaction is already Fully Paid. Skipping payment insertion.")
-            elif this_txn_pmt_sts == 'Partially Paid':
-                if float(this_txn_pmt_paid) < 0:
-                    QMessageBox.warning(self, "Message", "Payment ampunt cannot be negative")
+            this_txn_pmt_bal = this_txn_pmt_tot - this_txn_pmt_paid
+
+            if pmt_sts == 'Fully Paid':
+                QMessageBox.about(self, "Message", "Total amount already fulfilled.")
+            elif pmt_sts == 'Partially Paid':
+                if this_txn_pmt_paid < 0:
+                    QMessageBox.warning(self, "Message", "Payment amount cannot be negative.")
                     conn.close()
                     return
 
-                if float(this_txn_pmt_paid) > this_txn_pmt_tot:
+                if this_txn_pmt_paid > this_txn_pmt_tot:
                     QMessageBox.warning(self, "Message", "Payment exceeds the remaining balance.")
-                    #print("Payment exceeds the remaining balance.")
                     conn.close()
                     return
-
-                this_txn_pmt_bal = float(pmt_bal) - float(this_txn_pmt_paid)
+                
                 this_txn_pmt_sts = 'Fully Paid' if this_txn_pmt_bal == 0 else 'Partially Paid'
 
                 insert_new_payment_sql = """
@@ -1425,8 +1428,8 @@ class DBQueries():
                     VALUES (?, ?, ?, ?, ?, ?, ?);
                 """
                 c.execute(insert_new_payment_sql, (txn_code, pmt_disc, this_txn_pmt_tot, this_txn_pmt_paid, this_txn_pmt_bal, this_txn_pmt_date, pmt_sts))
-
-                
+                conn.commit()
+                QMessageBox.about(self, "Message", "Payment updated successfully.")
             #================================ UPDATE PARTICULAR =============================#
             new_prtclr_name = self.ui.customer_name_utd.text()
             new_prtclr_cn = self.ui.contact_num_utd.text()
