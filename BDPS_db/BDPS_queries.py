@@ -1427,7 +1427,7 @@ class DBQueries():
                     INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
                     VALUES (?, ?, ?, ?, ?, ?, ?);
                 """
-                c.execute(insert_new_payment_sql, (txn_code, pmt_disc, this_txn_pmt_tot, this_txn_pmt_paid, this_txn_pmt_bal, this_txn_pmt_date, pmt_sts))
+                c.execute(insert_new_payment_sql, (txn_code, pmt_disc, this_txn_pmt_tot, this_txn_pmt_paid, this_txn_pmt_bal, this_txn_pmt_date, this_txn_pmt_sts))
                 conn.commit()
                 QMessageBox.about(self, "Message", "Payment updated successfully.")
             #================================ UPDATE PARTICULAR =============================#
@@ -1459,6 +1459,10 @@ class DBQueries():
             self.ui.order_detail_table_2.setRowCount(0)
             self.ui.order_detail_table_3.clearContents()
             self.ui.order_detail_table_3.setRowCount(0)
+            DBQueries.displayTransactionRecords(self, DBQueries.getAllTransactions(dbFolder))
+            DBQueries.displayDailyTransactions(self, DBQueries.getAllTransactions(dbFolder))
+            DBQueries.displayDatewisePayments(self, DBQueries.getAllTransactions(dbFolder))
+            DBQueries.displayDailyTransactions(self, DBQueries.getAllTransactions(dbFolder))
 
             self.ui.stackedWidget.setCurrentIndex(4)
 
@@ -1468,6 +1472,8 @@ class DBQueries():
         except Exception as e:
             QMessageBox.warning(self, "Message", "Unexpected error occurred while updating transaction:", e)
             #print("Unexpected error occurred while updating transaction:", e)
+
+        
 
         finally:
             conn.close()
