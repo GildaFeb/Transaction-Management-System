@@ -349,7 +349,7 @@ border-top-left-radius: 30px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>6</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -4136,13 +4136,7 @@ QComboBox::down-arrow {
                           </widget>
                          </item>
                          <item>
-                          <widget class="QComboBox" name="product_quantity">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
+                          <widget class="QSpinBox" name="product_quantity">
                            <property name="minimumSize">
                             <size>
                              <width>280</width>
@@ -4160,11 +4154,8 @@ QComboBox::down-arrow {
                              <pointsize>12</pointsize>
                             </font>
                            </property>
-                           <property name="cursor">
-                            <cursorShape>PointingHandCursor</cursorShape>
-                           </property>
                            <property name="styleSheet">
-                            <string notr="true">QComboBox{
+                            <string notr="true">QSpinBox{
 	background-color:white;
 	color:black;
 	border-radius:7px;
@@ -4172,53 +4163,20 @@ QComboBox::down-arrow {
 	padding-left: 10px;
 }
 
-QComboBox::drop-down {
+QSpinBox::drop-down {
 	border: 0px;
 	background-color: #c3ccce;
 	padding: 5px 5px;
 width: 15px;
 }
 
-QComboBox::down-arrow {
+QSpinBox::down-arrow {
 	image: url(:/icon/icon/down-arrow.png);
 	width: 15px;
 	height: 15px;
 	padding: 10px 10px;
 }</string>
                            </property>
-                           <property name="editable">
-                            <bool>true</bool>
-                           </property>
-                           <item>
-                            <property name="text">
-                             <string>1</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>5</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>10</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>20</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>50</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>100</string>
-                            </property>
-                           </item>
                           </widget>
                          </item>
                          <item>
@@ -7064,7 +7022,7 @@ QDateEdit::down-arrow {
                          <string>MM</string>
                         </property>
                         <property name="calendarPopup">
-                         <bool>true</bool>
+                         <bool>false</bool>
                         </property>
                        </widget>
                       </item>
@@ -7140,7 +7098,7 @@ QDateEdit::down-arrow {
                          <string>yyyy</string>
                         </property>
                         <property name="calendarPopup">
-                         <bool>true</bool>
+                         <bool>false</bool>
                         </property>
                        </widget>
                       </item>
@@ -7758,7 +7716,7 @@ QDateEdit::down-arrow {
                    <string>MM</string>
                   </property>
                   <property name="calendarPopup">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -7827,7 +7785,7 @@ QDateEdit::down-arrow {
                    <string>yyyy</string>
                   </property>
                   <property name="calendarPopup">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
