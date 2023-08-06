@@ -1,9 +1,9 @@
 import os
 import atexit
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox, QComboBox, QFileDialog, QLineEdit
-#from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream, QDate
-#from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5 import QtWidgets, QtGui, QtCore
 from openpyxl import load_workbook, Workbook
 from BDPS_ui import Ui_MainWindow
 from BDPS_db.BDPS_queries import DBQueries

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1723</width>
+    <width>1727</width>
     <height>849</height>
    </rect>
   </property>
@@ -352,7 +352,7 @@ border-top-left-radius: 30px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -1870,18 +1870,6 @@ border-radius: 10px;
                          </property>
                         </spacer>
                        </item>
-                       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                        <widget class="QLabel" name="pl_logo">
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>[Logo]</string>
-                         </property>
-                        </widget>
-                       </item>
                        <item alignment="Qt::AlignHCenter">
                         <widget class="QWidget" name="product_info_widget" native="true">
                          <property name="font">
@@ -2461,6 +2449,9 @@ QComboBox::down-arrow {
                             <attribute name="horizontalHeaderStretchLastSection">
                              <bool>true</bool>
                             </attribute>
+                            <attribute name="verticalHeaderVisible">
+                             <bool>false</bool>
+                            </attribute>
                             <attribute name="verticalHeaderCascadingSectionResizes">
                              <bool>true</bool>
                             </attribute>
@@ -2829,18 +2820,6 @@ QComboBox::down-arrow {
                       </size>
                      </property>
                     </spacer>
-                   </item>
-                   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                    <widget class="QLabel" name="cat_logo">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>[Logo]</string>
-                     </property>
-                    </widget>
                    </item>
                    <item alignment="Qt::AlignHCenter">
                     <widget class="QWidget" name="product_info_widget_2" native="true">
@@ -3425,6 +3404,9 @@ QComboBox::down-arrow {
                            </attribute>
                            <attribute name="horizontalHeaderStretchLastSection">
                             <bool>true</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderVisible">
+                            <bool>false</bool>
                            </attribute>
                            <attribute name="verticalHeaderCascadingSectionResizes">
                             <bool>true</bool>
