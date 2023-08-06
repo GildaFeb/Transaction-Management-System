@@ -4659,7 +4659,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(6)
         self.new_transaction_btn_1.toggled['bool'].connect(self.new_transaction_btn_2.setChecked) # type: ignore
         self.datewise_transaction_btn_1.toggled['bool'].connect(self.datewise_transaction_btn_2.setChecked) # type: ignore
         self.daily_transaction_btn_1.toggled['bool'].connect(self.daily_transaction_btn_2.setChecked) # type: ignore
