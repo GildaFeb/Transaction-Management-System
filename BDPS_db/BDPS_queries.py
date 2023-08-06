@@ -672,7 +672,6 @@ class DBQueries():
 
             if existing_job_id:
                 QMessageBox.about(self, "Message", "Similar job exists")
-                #print("Similar job already exists.")
                 return
 
             insert_job_data_sql = """
@@ -1362,6 +1361,8 @@ class DBQueries():
                     return
                 
                 this_txn_pmt_sts = 'Fully Paid' if this_txn_pmt_bal == 0 else 'Partially Paid'
+
+                cumulative_payment += this_txn_pmt_paid
 
                 insert_new_payment_sql = """
                     INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)

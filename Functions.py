@@ -926,7 +926,7 @@ class BtnFunctions(QMainWindow):
         selected_row = self.ui.transaction_record_tbl.currentRow()
 
         if selected_row < 0:
-            print("No transaction selected.")
+            QMessageBox.about(self, "Message", "No transaction selected.")
         else:
             DBQueries.updateTransactions(self, dbFolder)
     
