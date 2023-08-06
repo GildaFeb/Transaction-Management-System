@@ -66,6 +66,7 @@ class DBQueries():
         self.ui.category_table.setRowCount(len(rows))
 
         for rowPosition, row in enumerate(rows):
+            self.ui.category_table.verticalHeader().setVisible(False)
             header_item = QTableWidgetItem(f"S-{row[0]}")
             self.ui.category_table.setVerticalHeaderItem(rowPosition, header_item)
 
@@ -73,6 +74,20 @@ class DBQueries():
                 display_item = f"S-{item}" if idx == 0 else str(item)
                 table_item = QTableWidgetItem(display_item)
                 self.ui.category_table.setItem(rowPosition, idx, table_item)
+    
+    def resetService(self, dbFolder):
+        self.ui.id_category.clear()
+        self.ui.product_name_category.setText("")
+        self.ui.category_description.setText("")
+        self.ui.product_name_category.setPlaceholderText("")
+        self.ui.category_description.setPlaceholderText("")
+        self.ui.status_category.setCurrentIndex(0)
+
+        service_names = DBQueries.getServiceNames(dbFolder)
+        self.ui.cat_name_pricelist.clear()
+        self.ui.cat_name_pricelist.addItems(service_names)
+        self.ui.category_name_nt.clear()
+        self.ui.category_name_nt.addItems(service_names)
 
 
     def addService(self, dbFolder):
@@ -82,16 +97,16 @@ class DBQueries():
         service_desc = self.ui.category_description.text()
         service_sts = self.ui.status_category.currentText()
 
-        if not service_name or not service_desc:
+        if not service_name or not service_desc or not service_sts:
             QMessageBox.warning(self, "Warning", "Please fill up all the fields with the correct data.")
             return
 
         check_service_exists_sql = """
             SELECT SERV_ID FROM service
-            WHERE SERV_NAME = ? AND SERV_DESC = ? AND SERV_STS = ?;
+            WHERE SERV_NAME = ?;
         """
         c = conn.cursor()
-        c.execute(check_service_exists_sql, (service_name, service_desc, service_sts))
+        c.execute(check_service_exists_sql, (service_name, ))
         existing_service = c.fetchone()
 
         if existing_service:
@@ -107,17 +122,9 @@ class DBQueries():
         try:
             c.execute(insert_service_data_sql, (service_name, service_desc, service_sts))
             conn.commit()
+            conn.close()
 
-            self.ui.product_name_category.setText("")
-            self.ui.category_description.setText("")
-            self.ui.status_category.setCurrentIndex(0)
-
-            service_names = DBQueries.getServiceNames(dbFolder)
-            self.ui.cat_name_pricelist.clear()
-            self.ui.cat_name_pricelist.addItems(service_names)
-            self.ui.category_name_nt.clear()
-            self.ui.category_name_nt.addItems(service_names)
-
+            DBQueries.resetService(self, dbFolder)
             DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
         except Error as e:
@@ -177,19 +184,9 @@ class DBQueries():
         try:
             c.execute(update_service_data_sql, (service_name, service_desc, service_sts, service_id))
             conn.commit()
+            conn.close()
 
-            self.ui.product_name_category.setText("")
-            self.ui.category_description.setText("")
-            self.ui.product_name_category.setPlaceholderText("")
-            self.ui.category_description.setPlaceholderText("")
-            self.ui.status_category.setCurrentIndex(0)
-
-            service_names = DBQueries.getServiceNames(dbFolder)
-            self.ui.cat_name_pricelist.clear()
-            self.ui.cat_name_pricelist.addItems(service_names)
-            self.ui.category_name_nt.clear()
-            self.ui.category_name_nt.addItems(service_names)
-
+            DBQueries.resetService(self, dbFolder)
             DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
             QMessageBox.about(self, "Message", "Service details updated successfully.")
@@ -202,13 +199,11 @@ class DBQueries():
 
         selected_rows = self.ui.category_table.selectionModel().selectedRows()
         if not selected_rows:
-            QMessageBox.about(self, "Message", "Select row to delete")
+            QMessageBox.about(self, "Message", "Please select row/s to delete.")
             return
 
         c = conn.cursor()
-        service_names = DBQueries.getServiceNames(dbFolder)
-        self.ui.cat_name_pricelist.clear()
-        self.ui.cat_name_pricelist.addItems(service_names)
+        DBQueries.resetService(self, dbFolder)
 
         if len(selected_rows) == 1:
             service_id = int(self.ui.category_table.item(selected_rows[0].row(), 0).text().split('-')[-1])
@@ -221,19 +216,9 @@ class DBQueries():
             try:
                 c.execute(delete_service_sql, (service_id,))
                 conn.commit()
+                conn.close()
 
-                self.ui.product_name_category.setText("")
-                self.ui.category_description.setText("")
-                self.ui.product_name_category.setPlaceholderText("")
-                self.ui.category_description.setPlaceholderText("")
-                self.ui.status_category.setCurrentIndex(0)
-
-                service_names = DBQueries.getServiceNames(dbFolder)
-                self.ui.cat_name_pricelist.clear()
-                self.ui.cat_name_pricelist.addItems(service_names)
-                self.ui.category_name_nt.clear()
-                self.ui.category_name_nt.addItems(service_names)
-
+                DBQueries.resetService(self, dbFolder)
                 DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
                 QMessageBox.about(self, "Message", "Service deleted successfully.")
@@ -261,19 +246,9 @@ class DBQueries():
                 try:
                     c.execute(delete_selected_service_sql, service_ids)
                     conn.commit()
+                    conn.close()
 
-                    self.ui.product_name_category.setText("")
-                    self.ui.category_description.setText("")
-                    self.ui.product_name_category.setPlaceholderText("")
-                    self.ui.category_description.setPlaceholderText("")
-                    self.ui.status_category.setCurrentIndex(0)
-
-                    service_names = DBQueries.getServiceNames(dbFolder)
-                    self.ui.cat_name_pricelist.clear()
-                    self.ui.cat_name_pricelist.addItems(service_names)
-                    self.ui.category_name_nt.clear()
-                    self.ui.category_name_nt.addItems(service_names)
-
+                    DBQueries.resetService(self, dbFolder)
                     DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
 
                     QMessageBox.about(self, "Message", "Selected services deleted successfully.")
@@ -292,21 +267,23 @@ class DBQueries():
     #                                        PRICE LIST QUERIES                                                 #
     #===========================================================================================================#
     def getServiceNames(dbFolder):
-        conn = DBQueries.create_connection(dbFolder)
+        try:
+            conn = sqlite3.connect(dbFolder)
+            c = conn.cursor()
 
-        get_service_names_sql = """SELECT SERV_NAME
+            get_service_names_sql = """SELECT SERV_NAME
                                     FROM service
-                                    WHERE SERV_STS = 'Available';
+                                    WHERE SERV_STS = ?;
                                 """
 
-        try:
-            c = conn.cursor()
-            c.execute(get_service_names_sql)
+            c.execute(get_service_names_sql, ('Available',))
             service_names = [row[0] for row in c.fetchall()]
 
+            conn.close()
+
             return service_names
-        except Error as e:
-            print(e)
+        except sqlite3.Error as e:
+            print("Error:", e)
             return []
     
     def getAllPrices(dbFolder):

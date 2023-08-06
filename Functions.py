@@ -945,14 +945,18 @@ class BtnFunctions(QMainWindow):
 
         self.ui.id_category.setReadOnly(True)
         self.ui.id_category.setText(serv_id)
+        self.ui.product_name_category.clear()
         self.ui.product_name_category.setPlaceholderText(serv_name)
+        self.ui.category_description.clear()
         self.ui.category_description.setPlaceholderText(serv_desc)
         self.ui.status_category.setCurrentIndex(self.ui.status_category.findText(serv_sts))
 
         if len(selected_rows) != 1:
             self.ui.id_category.setReadOnly(True)
             self.ui.id_category.setText('')
+            self.ui.product_name_category.clear()
             self.ui.product_name_category.setPlaceholderText('')
+            self.ui.category_description.clear()
             self.ui.category_description.setPlaceholderText('')
             self.ui.status_category.setCurrentIndex(-1)
     
@@ -973,6 +977,7 @@ class BtnFunctions(QMainWindow):
         if len(selected_rows) != 1:
             self.ui.id_pricelist.setText('')
             self.ui.cat_name_pricelist.setCurrentIndex(-1)
+            self.ui.size_pricelist.clear()
             self.ui.size_pricelist.setPlaceholderText('')
             self.ui.price_pricelist.setSpecialValueText('')
     
