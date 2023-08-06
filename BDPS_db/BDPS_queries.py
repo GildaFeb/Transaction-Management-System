@@ -953,7 +953,7 @@ class DBQueries():
             payment_nt_value = float(payment_nt) if payment_nt else 0.0
             total_nt_value = float(total_nt)
         except ValueError:
-            print("Invalid payment amount or total amount.")
+            QMessageBox.warning(self, "Warning", "Invalid payment amount or total amount.")
             return
 
         if payment_nt_value > total_nt_value:
@@ -968,7 +968,7 @@ class DBQueries():
             payment_nt_value = float(self.ui.payment_nt.text()) if self.ui.payment_nt.text() else 0.0
             total_nt_value = float(self.ui.total_nt.text())
         except ValueError:
-            print("Invalid payment amount or total amount.")
+            QMessageBox.warning(self, "Warning", "Invalid payment amount or total amount.")
             return
 
         balance = total_nt_value - payment_nt_value
