@@ -521,27 +521,27 @@ class DBQueries():
             c = conn.cursor()
             c.execute(get_all_particular)
 
-            return c
+            rows = c.fetchall()
+
+            return rows
         except Error as e:
             print(e)
+            return None
     
-    def addParticular(self, dbFolder, particular_name, particular_num):
+    def addParticular(self, dbFolder, particular_name, particular_cn):
         conn = DBQueries.create_connection(dbFolder)
 
-        particular_name = self.ui.customer_name_nt.text()
-        particular_cn = self.ui.contact_num_nt.text()
-
-        insert_particular_data_sql = f""" 
-                                        INSERT INTO particular (PRTCLR_NAME, PRTCLR_CN) VALUES ('{particular_name}','{particular_cn}'); 
-                                    """
+        insert_particular_data_sql = """
+            INSERT INTO particular (PRTCLR_NAME, PRTCLR_CN) VALUES (?, ?);
+        """
 
         try:
             c = conn.cursor()
-            c.execute(insert_particular_data_sql)
+            c.execute(insert_particular_data_sql, (particular_name, particular_cn))
             conn.commit()
 
-            particular_name = self.ui.customer_name_nt.setText("")
-            particular_cn = self.ui.contact_num_nt.setText("")
+            self.ui.customer_name_nt.clear()
+            self.ui.contact_num_nt.clear()
 
         except Error as e:
             print(e)
@@ -553,14 +553,14 @@ class DBQueries():
         selected_service = self.ui.category_name_nt.currentText()
         conn = DBQueries.create_connection(dbFolder)
 
-        get_sizes_sql = f"""SELECT DISTINCT PROD_SZ
-                            FROM product p
-                            INNER JOIN service s ON p.SERV_ID = s.SERV_ID 
-                            WHERE SERV_NAME = '{selected_service}';
-                        """
+        get_sizes_sql = """SELECT DISTINCT PROD_SZ
+                  FROM product p
+                  INNER JOIN service s ON p.SERV_ID = s.SERV_ID 
+                  WHERE SERV_NAME = ?;
+               """
         try:
             c = conn.cursor()
-            c.execute(get_sizes_sql)
+            c.execute(get_sizes_sql, (selected_service,))
             sizes = [row[0] for row in c.fetchall()]
 
             self.ui.category_size.clear()
