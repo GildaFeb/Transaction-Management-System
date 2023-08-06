@@ -1349,29 +1349,26 @@ class DBQueries():
 
             this_txn_pmt_bal = this_txn_pmt_tot - this_txn_pmt_paid
 
-            if pmt_sts == 'Fully Paid':
-                QMessageBox.about(self, "Message", "Total amount already fulfilled.")
-            elif pmt_sts == 'Partially Paid':
-                if this_txn_pmt_paid < 0:
-                    QMessageBox.warning(self, "Message", "Payment amount cannot be negative.")
-                    conn.close()
-                    return
+            if this_txn_pmt_paid < 0:
+                QMessageBox.warning(self, "Message", "Payment amount cannot be negative.")
+                conn.close()
+                return
 
-                if this_txn_pmt_paid > this_txn_pmt_tot:
-                    QMessageBox.warning(self, "Message", "Payment exceeds the remaining balance.")
-                    conn.close()
-                    return
+            if this_txn_pmt_paid > this_txn_pmt_tot:
+                QMessageBox.warning(self, "Message", "Payment exceeds the remaining balance.")
+                conn.close()
+                return
                 
-                this_txn_pmt_sts = 'Fully Paid' if this_txn_pmt_bal == 0 else 'Partially Paid'
+            this_txn_pmt_sts = 'Fully Paid' if this_txn_pmt_bal == 0 else 'Partially Paid'
 
-                cumulative_payment += this_txn_pmt_paid
+            cumulative_payment += this_txn_pmt_paid
 
-                insert_new_payment_sql = """
-                    INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
-                    VALUES (?, ?, ?, ?, ?, ?, ?);
-                """
-                c.execute(insert_new_payment_sql, (txn_code, pmt_disc, this_txn_pmt_tot, this_txn_pmt_paid, this_txn_pmt_bal, this_txn_pmt_date, this_txn_pmt_sts))
-                conn.commit()
+            insert_new_payment_sql = """
+                INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
+                VALUES (?, ?, ?, ?, ?, ?, ?);
+            """
+            c.execute(insert_new_payment_sql, (txn_code, pmt_disc, this_txn_pmt_tot, this_txn_pmt_paid, this_txn_pmt_bal, this_txn_pmt_date, this_txn_pmt_sts))
+            conn.commit()
                 
             #================================ UPDATE PARTICULAR =============================#
             new_prtclr_name = self.ui.customer_name_utd.text()
