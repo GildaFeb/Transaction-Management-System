@@ -6,21 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1767</width>
-    <height>876</height>
+    <width>1788</width>
+    <height>958</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Blue Tracks</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/icon/icon/TMS.png</normaloff>:/icon/icon/TMS.png</iconset>
+   <iconset resource="resource.qrc">
+    <normaloff>:/icon/icon/[PNG_APP]_TMS_ FINAL.png</normaloff>:/icon/icon/[PNG_APP]_TMS_ FINAL.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="2">
-     <widget class="QWidget" name="widget_3" native="true">
+     <widget class="QWidget" name="main_content_container" native="true">
       <property name="styleSheet">
        <string notr="true">#box1{
 background-color: #15191f;
@@ -74,96 +74,112 @@ border-radius: 10px;
         <number>0</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <layout class="QHBoxLayout" name="container_header">
          <property name="spacing">
-          <number>13</number>
+          <number>0</number>
          </property>
          <property name="leftMargin">
-          <number>13</number>
+          <number>0</number>
          </property>
          <property name="topMargin">
-          <number>13</number>
+          <number>0</number>
          </property>
          <property name="rightMargin">
-          <number>13</number>
+          <number>0</number>
          </property>
          <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
-          <widget class="QPushButton" name="change_btn_2">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
+          <widget class="QWidget" name="widget" native="true">
+           <property name="styleSheet">
+            <string notr="true">widget{
+	background-color: #15191f;
+}</string>
            </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icon/icon/01lighticons-01full.png</normaloff>:/icon/icon/01lighticons-01full.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QPushButton" name="change_btn_2">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/icon/icon/01lighticons-01full.png</normaloff>:/icon/icon/01lighticons-01full.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>40</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>1084</width>
+                <height>13</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="font">
+                 <font>
+                  <family>Circular Std</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+	color: white;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Administrator</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="user_btn_2">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icon/icon/user-48.ico</normaloff>:/icon/icon/user-48.ico</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>930</width>
-             <height>13</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QLabel" name="label_4">
-             <property name="font">
-              <font>
-               <family>Circular Std</family>
-               <pointsize>10</pointsize>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Administrator</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="user_btn_2">
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="resource.qrc">
-               <normaloff>:/icon/icon/user-48.ico</normaloff>:/icon/icon/user-48.ico</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>40</width>
-               <height>40</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-          </layout>
          </item>
         </layout>
        </item>
@@ -225,9 +241,9 @@ border-radius: 10px;
 }
 
 #add_category{
-	background-color:#012768;
+	background-color:white;
     border-radius: 10px;
-	color: white;
+	color: black;
 }
 
 #add_item, #pl_label_widget, #pl_label_widget_1, #category_label_widget, #pricelist_table_widget{
@@ -352,7 +368,7 @@ border-top-left-radius: 30px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QVBoxLayout" name="verticalLayout_46">
@@ -367,7 +383,16 @@ border-top-left-radius: 30px;
 }</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_47">
-              <item>
+              <property name="spacing">
+               <number>20</number>
+              </property>
+              <property name="topMargin">
+               <number>11</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item alignment="Qt::AlignLeft">
                <widget class="QLabel" name="dashboard_label">
                 <property name="enabled">
                  <bool>true</bool>
@@ -389,20 +414,26 @@ border-top-left-radius: 30px;
                <layout class="QHBoxLayout" name="horizontalLayout_45">
                 <item>
                  <widget class="QWidget" name="widget_4" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">
 
 #widget_4, #label_summary{
-	background-color: white;
-	color: black;
+	background-color: #2c3035;
+	color: white;
     border-radius: 10px;
 
 }
 
 #total_product_widget, #total_sales_widget, #total_revenue_widget{
-	background-color:#2e3192;
+	background-color:#2c3035;
 	border-radius: 15px;
-    border: 1px solid #2459ae;
+    border: 1px solid #2e3092;
 
 }
 
@@ -441,7 +472,7 @@ border-top-left-radius: 30px;
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QLabel{
-	color: black;
+	color: white;
 
 }</string>
                      </property>
@@ -464,44 +495,53 @@ border-top-left-radius: 30px;
                        <height>0</height>
                       </size>
                      </property>
-                     <layout class="QHBoxLayout" name="horizontalLayout_33">
-                      <property name="spacing">
-                       <number>15</number>
-                      </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_5">
                       <property name="leftMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <property name="topMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <property name="rightMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <property name="bottomMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <item>
                        <layout class="QVBoxLayout" name="verticalLayout_44">
                         <item>
                          <layout class="QHBoxLayout" name="horizontalLayout_7">
+                          <property name="spacing">
+                           <number>7</number>
+                          </property>
                           <property name="leftMargin">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <property name="topMargin">
                            <number>0</number>
                           </property>
                           <property name="rightMargin">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <item>
                            <widget class="QLabel" name="peso_sign">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
                             <property name="font">
                              <font>
-                              <family>Circular Std</family>
-                              <pointsize>24</pointsize>
+                              <family>MS Shell Dlg 2</family>
+                              <pointsize>18</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -513,8 +553,8 @@ border-top-left-radius: 30px;
                            <widget class="QLabel" name="total_sales">
                             <property name="font">
                              <font>
-                              <family>Circular Std</family>
-                              <pointsize>24</pointsize>
+                              <family>MS Shell Dlg 2</family>
+                              <pointsize>18</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -522,33 +562,20 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
-                          <item>
-                           <spacer name="horizontalSpacer_19">
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                             <size>
-                              <width>118</width>
-                              <height>20</height>
-                             </size>
-                            </property>
-                           </spacer>
-                          </item>
                          </layout>
                         </item>
                         <item>
                          <widget class="QLabel" name="label_sales">
                           <property name="font">
                            <font>
-                            <family>Circular Std</family>
-                            <pointsize>16</pointsize>
+                            <family>MS Shell Dlg 2</family>
+                            <pointsize>14</pointsize>
                             <weight>75</weight>
                             <bold>true</bold>
                            </font>
                           </property>
                           <property name="text">
-                           <string>Total Sales</string>
+                           <string>Sales</string>
                           </property>
                          </widget>
                         </item>
@@ -558,8 +585,14 @@ border-top-left-radius: 30px;
                        <widget class="QLabel" name="label_7">
                         <property name="minimumSize">
                          <size>
-                          <width>155</width>
+                          <width>0</width>
                           <height>0</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>16777215</height>
                          </size>
                         </property>
                         <property name="text">
@@ -567,6 +600,12 @@ border-top-left-radius: 30px;
                         </property>
                         <property name="pixmap">
                          <pixmap resource="resource.qrc">:/icon/icon/SIDEBAR ICONS/total_sales copy.png</pixmap>
+                        </property>
+                        <property name="scaledContents">
+                         <bool>false</bool>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
                         </property>
                        </widget>
                       </item>
@@ -583,42 +622,42 @@ border-top-left-radius: 30px;
                      </property>
                      <layout class="QHBoxLayout" name="horizontalLayout_55">
                       <property name="spacing">
-                       <number>7</number>
+                       <number>13</number>
                       </property>
                       <property name="leftMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <property name="topMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <property name="rightMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <property name="bottomMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <item>
                        <layout class="QVBoxLayout" name="verticalLayout_39">
                         <item>
                          <layout class="QHBoxLayout" name="horizontalLayout_8">
                           <property name="leftMargin">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <property name="topMargin">
                            <number>0</number>
                           </property>
                           <property name="rightMargin">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <item>
                            <widget class="QLabel" name="total_category">
                             <property name="font">
                              <font>
-                              <family>Circular Std</family>
-                              <pointsize>24</pointsize>
+                              <family>MS Shell Dlg 2</family>
+                              <pointsize>20</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -626,27 +665,14 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
-                          <item>
-                           <spacer name="horizontalSpacer_16">
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                             <size>
-                              <width>118</width>
-                              <height>20</height>
-                             </size>
-                            </property>
-                           </spacer>
-                          </item>
                          </layout>
                         </item>
                         <item>
                          <widget class="QLabel" name="label_category">
                           <property name="font">
                            <font>
-                            <family>Circular Std</family>
-                            <pointsize>16</pointsize>
+                            <family>MS Shell Dlg 2</family>
+                            <pointsize>14</pointsize>
                             <weight>75</weight>
                             <bold>true</bold>
                            </font>
@@ -681,42 +707,42 @@ border-top-left-radius: 30px;
                      </property>
                      <layout class="QHBoxLayout" name="horizontalLayout_60">
                       <property name="spacing">
-                       <number>7</number>
+                       <number>13</number>
                       </property>
                       <property name="leftMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <property name="topMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <property name="rightMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <property name="bottomMargin">
-                       <number>26</number>
+                       <number>20</number>
                       </property>
                       <item>
                        <layout class="QVBoxLayout" name="verticalLayout_31">
                         <item>
                          <layout class="QHBoxLayout" name="horizontalLayout_44">
                           <property name="leftMargin">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <property name="topMargin">
                            <number>0</number>
                           </property>
                           <property name="rightMargin">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <item>
                            <widget class="QLabel" name="total_product">
                             <property name="font">
                              <font>
-                              <family>Circular Std</family>
-                              <pointsize>24</pointsize>
+                              <family>MS Shell Dlg 2</family>
+                              <pointsize>20</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -724,27 +750,14 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
-                          <item>
-                           <spacer name="horizontalSpacer_15">
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                             <size>
-                              <width>118</width>
-                              <height>20</height>
-                             </size>
-                            </property>
-                           </spacer>
-                          </item>
                          </layout>
                         </item>
                         <item>
                          <widget class="QLabel" name="label_product">
                           <property name="font">
                            <font>
-                            <family>Circular Std</family>
-                            <pointsize>16</pointsize>
+                            <family>MS Shell Dlg 2</family>
+                            <pointsize>14</pointsize>
                             <weight>75</weight>
                             <bold>true</bold>
                            </font>
@@ -851,7 +864,7 @@ border-top-left-radius: 30px;
                         <widget class="QFrame" name="totalT_widget">
                          <property name="minimumSize">
                           <size>
-                           <width>200</width>
+                           <width>230</width>
                            <height>0</height>
                           </size>
                          </property>
@@ -872,48 +885,20 @@ border-top-left-radius: 30px;
                          <property name="midLineWidth">
                           <number>0</number>
                          </property>
-                         <layout class="QGridLayout" name="gridLayout_6">
+                         <layout class="QVBoxLayout" name="verticalLayout_51">
                           <property name="leftMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="topMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="rightMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
-                          <item row="0" column="0">
-                           <widget class="QLabel" name="total_transactions">
-                            <property name="font">
-                             <font>
-                              <family>Circular Std</family>
-                              <pointsize>16</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>0</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="0">
-                           <widget class="QLabel" name="label_13">
-                            <property name="font">
-                             <font>
-                              <family>Circular Std</family>
-                              <pointsize>12</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Total</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="0" column="1">
+                          <item alignment="Qt::AlignHCenter">
                            <widget class="QLabel" name="logo_label_14">
                             <property name="minimumSize">
                              <size>
@@ -938,6 +923,34 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
+                          <item>
+                           <widget class="QLabel" name="total_transactions">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>16</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>0</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_13">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>12</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Total</string>
+                            </property>
+                           </widget>
+                          </item>
                          </layout>
                         </widget>
                        </item>
@@ -945,7 +958,7 @@ border-top-left-radius: 30px;
                         <widget class="QFrame" name="pendingT_widget">
                          <property name="minimumSize">
                           <size>
-                           <width>200</width>
+                           <width>230</width>
                            <height>0</height>
                           </size>
                          </property>
@@ -972,33 +985,20 @@ border-top-left-radius: 30px;
                          <property name="midLineWidth">
                           <number>0</number>
                          </property>
-                         <layout class="QGridLayout" name="gridLayout_7">
+                         <layout class="QVBoxLayout" name="verticalLayout_50">
                           <property name="leftMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="topMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="rightMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
-                          <item row="0" column="0">
-                           <widget class="QLabel" name="PendingTransactions">
-                            <property name="font">
-                             <font>
-                              <family>Circular Std</family>
-                              <pointsize>16</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>0</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="0" column="1">
+                          <item alignment="Qt::AlignHCenter">
                            <widget class="QLabel" name="logo_label_13">
                             <property name="minimumSize">
                              <size>
@@ -1023,7 +1023,20 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
-                          <item row="1" column="0">
+                          <item>
+                           <widget class="QLabel" name="PendingTransactions">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>16</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>0</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
                            <widget class="QLabel" name="label_23">
                             <property name="font">
                              <font>
@@ -1052,7 +1065,7 @@ border-top-left-radius: 30px;
                         <widget class="QFrame" name="successfulT_widget">
                          <property name="minimumSize">
                           <size>
-                           <width>200</width>
+                           <width>230</width>
                            <height>0</height>
                           </size>
                          </property>
@@ -1073,48 +1086,20 @@ border-top-left-radius: 30px;
                          <property name="midLineWidth">
                           <number>0</number>
                          </property>
-                         <layout class="QGridLayout" name="gridLayout_9">
+                         <layout class="QVBoxLayout" name="verticalLayout_52">
                           <property name="leftMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="topMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="rightMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
-                          <item row="1" column="0">
-                           <widget class="QLabel" name="label_22">
-                            <property name="font">
-                             <font>
-                              <family>Circular Std</family>
-                              <pointsize>12</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Successful</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="0" column="0">
-                           <widget class="QLabel" name="sucessful_transactions">
-                            <property name="font">
-                             <font>
-                              <family>Circular Std</family>
-                              <pointsize>16</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>0</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="0" column="1">
+                          <item alignment="Qt::AlignHCenter">
                            <widget class="QLabel" name="logo_label_8">
                             <property name="minimumSize">
                              <size>
@@ -1139,6 +1124,34 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
+                          <item>
+                           <widget class="QLabel" name="sucessful_transactions">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>16</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>0</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_22">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>12</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Successful</string>
+                            </property>
+                           </widget>
+                          </item>
                          </layout>
                         </widget>
                        </item>
@@ -1146,7 +1159,7 @@ border-top-left-radius: 30px;
                         <widget class="QFrame" name="category_widget">
                          <property name="minimumSize">
                           <size>
-                           <width>200</width>
+                           <width>230</width>
                            <height>0</height>
                           </size>
                          </property>
@@ -1173,48 +1186,20 @@ border-top-left-radius: 30px;
                          <property name="midLineWidth">
                           <number>0</number>
                          </property>
-                         <layout class="QGridLayout" name="gridLayout_8">
+                         <layout class="QVBoxLayout" name="verticalLayout_53">
                           <property name="leftMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="topMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="rightMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>15</number>
+                           <number>20</number>
                           </property>
-                          <item row="0" column="0">
-                           <widget class="QLabel" name="cancelled_transactions">
-                            <property name="font">
-                             <font>
-                              <family>Circular Std</family>
-                              <pointsize>16</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>0</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="0">
-                           <widget class="QLabel" name="label_16">
-                            <property name="font">
-                             <font>
-                              <family>Circular Std</family>
-                              <pointsize>12</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Cancelled</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="0" column="1">
+                          <item alignment="Qt::AlignHCenter">
                            <widget class="QLabel" name="logo_label_6">
                             <property name="minimumSize">
                              <size>
@@ -1239,43 +1224,40 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
+                          <item>
+                           <widget class="QLabel" name="cancelled_transactions">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>16</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>0</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_16">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>12</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Cancelled</string>
+                            </property>
+                           </widget>
+                          </item>
                          </layout>
                         </widget>
                        </item>
                       </layout>
                      </item>
                     </layout>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QDial" name="dial"/>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_12">
-                  <property name="spacing">
-                   <number>20</number>
-                  </property>
-                  <property name="leftMargin">
-                   <number>13</number>
-                  </property>
-                  <item>
-                   <widget class="QCalendarWidget" name="calendarWidget">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Circular Std</family>
-                      <pointsize>9</pointsize>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
                    </widget>
                   </item>
                   <item>
@@ -1301,6 +1283,12 @@ border-top-left-radius: 30px;
                   </item>
                   <item>
                    <widget class="QFrame" name="business_name">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="maximumSize">
                      <size>
                       <width>2000</width>
@@ -1327,13 +1315,13 @@ border-top-left-radius: 30px;
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_77">
                      <property name="leftMargin">
-                      <number>7</number>
+                      <number>13</number>
                      </property>
                      <property name="topMargin">
-                      <number>0</number>
+                      <number>13</number>
                      </property>
                      <property name="rightMargin">
-                      <number>7</number>
+                      <number>13</number>
                      </property>
                      <property name="bottomMargin">
                       <number>0</number>
@@ -1396,6 +1384,9 @@ border-top-left-radius: 30px;
                        <attribute name="horizontalHeaderHighlightSections">
                         <bool>false</bool>
                        </attribute>
+                       <attribute name="horizontalHeaderStretchLastSection">
+                        <bool>true</bool>
+                       </attribute>
                        <attribute name="verticalHeaderVisible">
                         <bool>false</bool>
                        </attribute>
@@ -1429,7 +1420,7 @@ border-top-left-radius: 30px;
                        </row>
                        <column>
                         <property name="text">
-                         <string>Job Nos.</string>
+                         <string>Trans. Code</string>
                         </property>
                         <property name="font">
                          <font>
@@ -1543,6 +1534,37 @@ border-top-left-radius: 30px;
                     </layout>
                    </widget>
                   </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_12">
+                  <property name="spacing">
+                   <number>20</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>13</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>26</number>
+                  </property>
+                  <item>
+                   <widget class="QCalendarWidget" name="calendarWidget">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Circular Std</family>
+                      <pointsize>9</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                     </font>
+                    </property>
+                   </widget>
+                  </item>
                   <item>
                    <widget class="QWidget" name="banner" native="true">
                     <property name="sizePolicy">
@@ -1558,7 +1580,7 @@ border-top-left-radius: 30px;
 	 border-radius: 10px;
 }</string>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_46">
+                    <layout class="QVBoxLayout" name="verticalLayout_48">
                      <property name="spacing">
                       <number>10</number>
                      </property>
@@ -1574,6 +1596,31 @@ border-top-left-radius: 30px;
                      <property name="bottomMargin">
                       <number>22</number>
                      </property>
+                     <item alignment="Qt::AlignHCenter">
+                      <widget class="QLabel" name="logo_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>280</width>
+                         <height>280</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>280</width>
+                         <height>280</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="resource.qrc">:/icon/icon/business-logo.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
                      <item>
                       <widget class="QLabel" name="label_5">
                        <property name="font">
@@ -1585,32 +1632,7 @@ border-top-left-radius: 30px;
                         </font>
                        </property>
                        <property name="text">
-                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Blue Dawn&lt;br/&gt;Printing Services&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QLabel" name="logo_label_3">
-                       <property name="minimumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>120</width>
-                         <height>120</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="pixmap">
-                        <pixmap resource="resource.qrc">:/icon/icon/business-logo.png</pixmap>
-                       </property>
-                       <property name="scaledContents">
-                        <bool>true</bool>
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Blue Dawn&lt;br/&gt;Printing Services&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
@@ -1695,19 +1717,19 @@ border-top-left-radius: 30px;
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_58">
               <property name="spacing">
-               <number>13</number>
+               <number>26</number>
               </property>
               <property name="leftMargin">
-               <number>36</number>
+               <number>26</number>
               </property>
               <property name="topMargin">
-               <number>36</number>
+               <number>26</number>
               </property>
               <property name="rightMargin">
-               <number>36</number>
+               <number>26</number>
               </property>
               <property name="bottomMargin">
-               <number>36</number>
+               <number>26</number>
               </property>
               <item>
                <widget class="QWidget" name="pl_label_widget" native="true">
@@ -2227,6 +2249,9 @@ QComboBox::down-arrow {
 	padding-left: 10px;
 }</string>
                          </property>
+                         <property name="maxLength">
+                          <number>50</number>
+                         </property>
                          <property name="frame">
                           <bool>false</bool>
                          </property>
@@ -2469,7 +2494,7 @@ QComboBox::down-arrow {
                         <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>20</number>
+                        <number>26</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -2687,19 +2712,19 @@ QComboBox::down-arrow {
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_37">
               <property name="spacing">
-               <number>13</number>
+               <number>26</number>
               </property>
               <property name="leftMargin">
-               <number>36</number>
+               <number>26</number>
               </property>
               <property name="topMargin">
-               <number>36</number>
+               <number>26</number>
               </property>
               <property name="rightMargin">
-               <number>36</number>
+               <number>26</number>
               </property>
               <property name="bottomMargin">
-               <number>36</number>
+               <number>26</number>
               </property>
               <item>
                <widget class="QWidget" name="category_label_widget" native="true">
@@ -2725,6 +2750,9 @@ QComboBox::down-arrow {
                  <property name="leftMargin">
                   <number>26</number>
                  </property>
+                 <item>
+                  <widget class="QWidget" name="widget_3" native="true"/>
+                 </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_39">
                    <item>
@@ -2898,7 +2926,7 @@ QComboBox::down-arrow {
                   </property>
                   <property name="styleSheet">
                    <string notr="true">#cat_id_label, #cat_name_label, #cat_description_label, #cat_status_label, #cat_info_label, #cat_logo{
-	color: white;
+	color: black;
 }</string>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_36">
@@ -3107,6 +3135,9 @@ QComboBox::down-arrow {
 	padding-left: 10px;
 }</string>
                      </property>
+                     <property name="maxLength">
+                      <number>50</number>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -3146,6 +3177,9 @@ QComboBox::down-arrow {
                       <string notr="true">QLineEdit{
 	padding-left: 10px;
 }</string>
+                     </property>
+                     <property name="maxLength">
+                      <number>1000</number>
                      </property>
                      <property name="frame">
                       <bool>false</bool>
@@ -3207,6 +3241,9 @@ QComboBox::down-arrow {
                      </property>
                      <property name="editable">
                       <bool>false</bool>
+                     </property>
+                     <property name="maxCount">
+                      <number>50</number>
                      </property>
                      <item>
                       <property name="text">
@@ -3395,7 +3432,7 @@ QComboBox::down-arrow {
                     <enum>QLayout::SetMaximumSize</enum>
                    </property>
                    <property name="leftMargin">
-                    <number>20</number>
+                    <number>26</number>
                    </property>
                    <property name="topMargin">
                     <number>0</number>
@@ -4060,7 +4097,7 @@ QDateEdit::down-arrow {
                             <set>Qt::ImhDigitsOnly</set>
                            </property>
                            <property name="maxLength">
-                            <number>15</number>
+                            <number>20</number>
                            </property>
                            <property name="frame">
                             <bool>false</bool>
@@ -5181,40 +5218,6 @@ border-radius: 5px;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="add_discount_nt">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Circular Std</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="text">
-                    <string>Add Discount</string>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>20</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_29"/>
                  </item>
                  <item>
@@ -5248,7 +5251,7 @@ border-radius: 5px;
                     </font>
                    </property>
                    <property name="text">
-                    <string>Payment:</string>
+                    <string>Payment received:</string>
                    </property>
                   </widget>
                  </item>
@@ -5266,6 +5269,9 @@ border-radius: 5px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="maxLength">
+                    <number>99999999</number>
+                   </property>
                    <property name="alignment">
                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                    </property>
@@ -5282,7 +5288,7 @@ border-radius: 5px;
                     </font>
                    </property>
                    <property name="text">
-                    <string>Transaction Status</string>
+                    <string>Transaction status:</string>
                    </property>
                   </widget>
                  </item>
@@ -5524,6 +5530,9 @@ QComboBox::down-arrow {
                <number>13</number>
               </property>
               <item>
+               <widget class="QWidget" name="widget_13" native="true"/>
+              </item>
+              <item>
                <widget class="QWidget" name="tr_actions_widget" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -5587,44 +5596,20 @@ QComboBox::down-arrow {
                      </property>
                     </spacer>
                    </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_5">
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{
-	border: 2px solid #e1e2e4;
-	background-color: #fbfcfd;
-}
-
-</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="resource.qrc">
-                       <normaloff>:/icon/icon/01lighticons-04full.png</normaloff>:/icon/icon/01lighticons-04full.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>35</width>
-                       <height>35</height>
-                      </size>
-                     </property>
-                     <property name="autoDefault">
-                      <bool>false</bool>
-                     </property>
-                     <property name="default">
-                      <bool>false</bool>
-                     </property>
-                     <property name="flat">
-                      <bool>false</bool>
-                     </property>
-                    </widget>
-                   </item>
                   </layout>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_44">
+                   <property name="font">
+                    <font>
+                     <family>Circular Std</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>To edit transaction, please select ONE row from the table</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QFrame" name="tr_separator">
@@ -6012,6 +5997,43 @@ QComboBox::down-arrow {
                     </widget>
                    </item>
                    <item>
+                    <widget class="QPushButton" name="pushButton_5">
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	border: 2px solid #e1e2e4;
+	background-color: #fbfcfd;
+}
+
+</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resource.qrc">
+                       <normaloff>:/icon/icon/01lighticons-04full.png</normaloff>:/icon/icon/01lighticons-04full.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>35</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="autoDefault">
+                      <bool>false</bool>
+                     </property>
+                     <property name="default">
+                      <bool>false</bool>
+                     </property>
+                     <property name="flat">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <spacer name="horizontalSpacer_25">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
@@ -6067,7 +6089,7 @@ QComboBox::down-arrow {
                         </font>
                        </property>
                        <property name="text">
-                        <string>Transactions</string>
+                        <string>Transaction/s</string>
                        </property>
                       </widget>
                      </item>
@@ -6140,7 +6162,7 @@ color: white
                  <bool>true</bool>
                 </attribute>
                 <attribute name="horizontalHeaderDefaultSectionSize">
-                 <number>136</number>
+                 <number>160</number>
                 </attribute>
                 <attribute name="horizontalHeaderMinimumSectionSize">
                  <number>105</number>
@@ -6153,7 +6175,7 @@ color: white
                 </attribute>
                 <column>
                  <property name="text">
-                  <string>Job ID</string>
+                  <string>Trans. Code</string>
                  </property>
                  <property name="font">
                   <font>
@@ -6189,7 +6211,7 @@ color: white
                 </column>
                 <column>
                  <property name="text">
-                  <string>Total Amount</string>
+                  <string>Current Total Amt.</string>
                  </property>
                  <property name="font">
                   <font>
@@ -6201,7 +6223,7 @@ color: white
                 </column>
                 <column>
                  <property name="text">
-                  <string>Paid Amount</string>
+                  <string>Current Paid Amt</string>
                  </property>
                  <property name="font">
                   <font>
@@ -6334,21 +6356,6 @@ color: white
                  </size>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_26">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_34">
                    <property name="spacing">
@@ -6492,22 +6499,7 @@ color: white
                   </widget>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_32">
-                   <property name="spacing">
-                    <number>13</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>13</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_33">
                    <item>
                     <widget class="QPushButton" name="search_daily_tnx_btn">
                      <property name="enabled">
@@ -6696,49 +6688,53 @@ QDateEdit::down-arrow {
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="dt_total">
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Circular Std</family>
-                       <pointsize>14</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                     <property name="frame">
-                      <bool>false</bool>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                     <property name="readOnly">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_45">
-                     <property name="font">
-                      <font>
-                       <family>Circular Std</family>
-                       <pointsize>14</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Transaction/s</string>
-                     </property>
-                    </widget>
+                    <layout class="QHBoxLayout" name="horizontalLayout_32">
+                     <item>
+                      <widget class="QLineEdit" name="dt_total">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>MS Shell Dlg 2</family>
+                         <pointsize>16</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>0</string>
+                       </property>
+                       <property name="frame">
+                        <bool>false</bool>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_45">
+                       <property name="font">
+                        <font>
+                         <family>MS Shell Dlg 2</family>
+                         <pointsize>16</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Transaction/s</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                   </layout>
                  </item>
@@ -7308,13 +7304,7 @@ QDateEdit::drop-down {
 	padding: 5px 5px;
 width: 15px;
 }
-
-QDateEdit::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
+</string>
                         </property>
                         <property name="dateTime">
                          <datetime>
@@ -7379,13 +7369,7 @@ QDateEdit::drop-down {
 	padding: 5px 5px;
 width: 15px;
 }
-
-QDateEdit::down-arrow {
-	image: url(:/icon/icon/down-arrow.png);
-	width: 15px;
-	height: 15px;
-	padding: 10px 10px;
-}</string>
+</string>
                         </property>
                         <property name="dateTime">
                          <datetime>
@@ -7476,13 +7460,13 @@ QDateEdit::down-arrow {
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
-                            <height>40</height>
+                            <height>50</height>
                            </size>
                           </property>
                           <property name="font">
                            <font>
-                            <family>Circular Std</family>
-                            <pointsize>14</pointsize>
+                            <family>MS Shell Dlg 2</family>
+                            <pointsize>16</pointsize>
                             <weight>75</weight>
                             <bold>true</bold>
                            </font>
@@ -9136,7 +9120,7 @@ background-color: #012768;
                               </column>
                               <column>
                                <property name="text">
-                                <string>Amount</string>
+                                <string>Paid Amount</string>
                                </property>
                               </column>
                               <column>
@@ -9432,7 +9416,7 @@ QComboBox::down-arrow {
         <number>0</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <layout class="QHBoxLayout" name="header_top">
          <item>
           <widget class="QLabel" name="logo_label_1">
            <property name="minimumSize">
@@ -9801,53 +9785,21 @@ QComboBox::down-arrow {
     <item row="0" column="1">
      <widget class="QWidget" name="full_menu_widget" native="true">
       <layout class="QGridLayout" name="gridLayout_11">
+       <property name="leftMargin">
+        <number>13</number>
+       </property>
+       <property name="topMargin">
+        <number>13</number>
+       </property>
        <property name="rightMargin">
         <number>0</number>
        </property>
-       <item row="0" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>50</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="logo_label_2">
-           <property name="minimumSize">
-            <size>
-             <width>130</width>
-             <height>130</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="pixmap">
-            <pixmap resource="resource.qrc">:/icon/icon/[PNG_APP]_TMS_ FINAL.png</pixmap>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-           <property name="wordWrap">
-            <bool>false</bool>
-           </property>
-           <property name="margin">
-            <number>10</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
+       <property name="bottomMargin">
+        <number>13</number>
+       </property>
+       <property name="spacing">
+        <number>13</number>
+       </property>
        <item row="2" column="0">
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <property name="spacing">
@@ -9857,7 +9809,7 @@ QComboBox::down-arrow {
           <number>13</number>
          </property>
          <property name="topMargin">
-          <number>13</number>
+          <number>26</number>
          </property>
          <property name="rightMargin">
           <number>13</number>
@@ -10232,7 +10184,7 @@ QComboBox::down-arrow {
          </property>
         </spacer>
        </item>
-       <item row="1" column="0">
+       <item row="1" column="0" alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="label_40">
          <property name="font">
           <font>
@@ -10243,9 +10195,53 @@ QComboBox::down-arrow {
           </font>
          </property>
          <property name="text">
-          <string>Blue Tracks or anything</string>
+          <string>Blue Tracks</string>
          </property>
         </widget>
+       </item>
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>50</number>
+         </property>
+         <property name="bottomMargin">
+          <number>50</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="logo_label_2">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>150</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>150</width>
+             <height>150</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="resource.qrc">:/icon/icon/[PNG_APP]_TMS_ FINAL.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+           <property name="wordWrap">
+            <bool>false</bool>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>

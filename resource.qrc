@@ -1,7 +1,6 @@
 <RCC>
   <qresource prefix="icon">
     <file>icon/[PNG_APP]_TMS_ FINAL.png</file>
-    <file>icon/TMS.png</file>
     <file>icon/SIDEBAR ICONS/total.png</file>
     <file>icon/SIDEBAR ICONS/total_cat copy.png</file>
     <file>icon/SIDEBAR ICONS/total_product copy.png</file>
@@ -41,7 +40,6 @@
     <file>icon/si_pricelist-INV.png</file>
     <file>icon/si_transrecs.png</file>
     <file>icon/si_transrecs-INV.png</file>
-    <file>icon/TMS.png</file>
     <file>icon/down-arrow.png</file>
     <file>icon/01lighticons-02full.png</file>
     <file>icon/003lighticons-01white.png</file>

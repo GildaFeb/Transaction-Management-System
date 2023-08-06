@@ -41,6 +41,10 @@
 		color: black;
 	}
 
+	#widget{
+		background-color: #011f53;
+		color: white;
+	}
 
 	/* style for logo image */
 	#logo_label_1 {
@@ -48,15 +52,16 @@
 	}
 /*==== END ============= */
 
-/*--------- FULL MENU --------------- */
+/*--------- FULL MENU ------------- # 15191f-- */
 
 	/* style for widget */
 	
 	#full_menu_widget {
-		background-color: #15191f;
+		background-color: #011434;
 		color: white;
 	}
 
+	
 	#full_menu_widget QLabel{
 		color: white;
 	}
