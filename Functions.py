@@ -19,15 +19,12 @@ import sys
 import os
 from openpyxl import load_workbook, Workbook
 
-from POP_UP.add1 import Add_Categ
-from POP_UP.edit_confirm_categ1 import Edit_Categ
-from POP_UP.NoDetails8 import No_Details
-from POP_UP.delete_confirm_categ1 import Del_Categ
+
 
 
 class BtnFunctions(QMainWindow):
 
-
+    """
     # METHODS FOR BUTTONS IN CATEGORY/SERVICE - DRA #
     def pressed_add(self): # to open delete_confirm_categ
         self.window = QtWidgets.QMainWindow()
@@ -90,7 +87,7 @@ class BtnFunctions(QMainWindow):
         self.window.show()
     # ============ #
     
-
+    """
     def __init__(self):
         super(BtnFunctions, self).__init__()
 
@@ -739,7 +736,7 @@ class BtnFunctions(QMainWindow):
                     self.ui.tnx_summary_table.setItem(row_position, 0, QTableWidgetItem(job.text()))
                     self.ui.tnx_summary_table.setItem(row_position, 1, QTableWidgetItem(particular.text()))
                     self.ui.tnx_summary_table.setItem(row_position, 2, QTableWidgetItem(total.text()))
-
+  
     def count_transaction_record(self):
         
         total_transaction = self.ui.transaction_record_tbl.rowCount()
@@ -989,4 +986,4 @@ class BtnFunctions(QMainWindow):
         self.ui.order_detail_table_2.setRowCount(0)
         self.ui.order_detail_table_3.clearContents()
         self.ui.order_detail_table_3.setRowCount(0)
-    
+

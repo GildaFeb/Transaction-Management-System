@@ -7,10 +7,7 @@ from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
 from openpyxl import load_workbook
 
-from POP_UP.add1 import Add_Categ
-from POP_UP.edit_confirm_categ1 import Edit_Categ
-from POP_UP.NoDetails8 import No_Details
-from POP_UP.delete_confirm_categ1 import Del_Categ
+
 
 
 class DBQueries():
@@ -611,7 +608,7 @@ class DBQueries():
 
             self.ui.category_size.clear()
             if not sizes:
-                self.ui.service_size_error.setText("No services available")
+                self.ui.service_size_error.setText("No available sizes.")
                 self.ui.service_size_error.setStyleSheet('font-size: 3rem')
                 
             else:

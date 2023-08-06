@@ -19,6 +19,8 @@ if __name__ == "__main__":
     Functions = BtnFunctions()
     Functions.show()
 
+    Functions.get_recent_transactions()
+
     sys.exit(app.exec())
 
 

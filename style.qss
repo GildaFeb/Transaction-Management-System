@@ -15,13 +15,7 @@
 	}
 /*==== END =========== */
 
-/*-----------------[ HEADER ]------------------------ */
-	#widget{
-		background-color: #292929;
-	}
-	#widget QLabel{
-		color: white;
-	}
+
 /*======== END ================ */
 
 /*= Style for menu with icon only START ========= */
@@ -57,13 +51,10 @@
 /*--------- FULL MENU --------------- */
 
 	/* style for widget */
-	#full_menu_widget {
-		background-color: #454545;
-		color: white;
-	}
-
+	
 	#full_menu_widget {
 		background-color: #15191f;
+		color: white;
 	}
 
 	#full_menu_widget QLabel{
