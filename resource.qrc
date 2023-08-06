@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icon/[PNG_APP]_TMS_ FINAL.png</file>
     <file>icon/TMS.png</file>
     <file>icon/SIDEBAR ICONS/total.png</file>
     <file>icon/SIDEBAR ICONS/total_cat copy.png</file>
