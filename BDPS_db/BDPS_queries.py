@@ -7,9 +7,6 @@ from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
 from openpyxl import load_workbook
 
-
-
-
 class DBQueries():
     def __init__(self, arg):
         super(DBQueries, self).__init__()
@@ -166,7 +163,7 @@ class DBQueries():
             QMessageBox.about(self, "Message", "Service with updated values already exists in another row.")
             return
 
-        if service_name == existing_data[0] or service_desc == existing_data[1] or service_sts == existing_data[2]:
+        if service_name == existing_data[0] and service_desc == existing_data[1] and service_sts == existing_data[2]:
             QMessageBox.about(self, "Message", "No changes made to the service details.")
             return
         
