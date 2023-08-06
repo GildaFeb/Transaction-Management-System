@@ -1167,10 +1167,6 @@ class DBQueries():
             prtclr_id = cursor.lastrowid
 
             #========================== INSERT ON TRANSACTIONS ===========================#
-            if pmt_bal != 0:
-                txn_sts = 'Pending Transaction'
-                QMessageBox.warning(self, "Message", "Remaining balance found. Setting to Pending...")
-
             txn_insert_sql ="""
                 INSERT INTO transactions (PRTCLR_ID, TXN_DATE, TXN_STS)
                 VALUES (?, ?, ?)
@@ -1193,6 +1189,9 @@ class DBQueries():
             pmt_bal = pmt_tot - pmt_paid
             pmt_sts = 'Fully Paid' if pmt_bal == 0 else 'Partially Paid'
             pmt_date = txn_date
+            if pmt_bal != 0:
+                txn_sts = 'Pending Transaction'
+                QMessageBox.warning(self, "Message", "Remaining balance found. Setting to Pending...")
 
             pmt_insert_sql = """
                 INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
@@ -1229,7 +1228,7 @@ class DBQueries():
 
 
         except Exception as e:
-            QMessageBox.warning(self, "Message", "Error saving transaction", e)
+            QMessageBox.warning(self, "Message", "An error occured.")
         finally:
             cursor.close()
             conn.close()
