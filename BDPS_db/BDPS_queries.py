@@ -1318,11 +1318,11 @@ class DBQueries():
                 try:
                     this_txn_pmt_paid = float(self.ui.utd_payment.text())
                 except ValueError:
-                    QMessageBox.warning(self, "Message", "Invalid payment amount. Please enter a valid numberic value")
+                    QMessageBox.warning(self, "Message", "Invalid payment amount.")
                     return
     
             get_this_txn_pmt_data_sql = """
-                SELECT t.TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS FROM transactions t
+                SELECT DISTINCT t.TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS FROM transactions t
                 INNER JOIN payment p ON t.TXN_CODE = p.TXN_CODE
                 WHERE t.TXN_CODE = ?;
             """
