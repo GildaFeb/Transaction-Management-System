@@ -352,7 +352,7 @@ border-top-left-radius: 30px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
@@ -444,16 +444,16 @@ border-radius: 10px;
                      <number>15</number>
                     </property>
                     <property name="leftMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <property name="topMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <property name="rightMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <item>
                      <layout class="QVBoxLayout" name="verticalLayout_44">
@@ -561,16 +561,16 @@ border-radius: 10px;
                      <number>7</number>
                     </property>
                     <property name="leftMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <property name="topMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <property name="rightMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <item>
                      <layout class="QVBoxLayout" name="verticalLayout_39">
@@ -659,16 +659,16 @@ border-radius: 10px;
                      <number>7</number>
                     </property>
                     <property name="leftMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <property name="topMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <property name="rightMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>20</number>
+                     <number>26</number>
                     </property>
                     <item>
                      <layout class="QVBoxLayout" name="verticalLayout_31">
@@ -843,6 +843,18 @@ border-radius: 10px;
                         <number>0</number>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_6">
+                        <property name="leftMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>26</number>
+                        </property>
                         <item row="1" column="0">
                          <widget class="QLabel" name="label_13">
                           <property name="font">
@@ -925,6 +937,18 @@ border-radius: 10px;
                         <number>0</number>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_7">
+                        <property name="leftMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>26</number>
+                        </property>
                         <item row="0" column="0">
                          <widget class="QLabel" name="PendingTransactions">
                           <property name="font">
@@ -1008,6 +1032,18 @@ border-radius: 10px;
                         <number>0</number>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_9">
+                        <property name="leftMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>26</number>
+                        </property>
                         <item row="0" column="0">
                          <widget class="QLabel" name="sucessful_transactions">
                           <property name="font">
@@ -1090,6 +1126,18 @@ border-radius: 10px;
                         <number>0</number>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_8">
+                        <property name="leftMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>26</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>26</number>
+                        </property>
                         <item row="0" column="0">
                          <widget class="QLabel" name="cancelled_transactions">
                           <property name="font">
