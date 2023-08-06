@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1766</width>
+    <width>1767</width>
     <height>876</height>
    </rect>
   </property>
@@ -134,8 +134,8 @@ border-radius: 10px;
               <font>
                <family>Circular Std</family>
                <pointsize>10</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <weight>50</weight>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
@@ -352,7 +352,7 @@ border-top-left-radius: 30px;
 }</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QVBoxLayout" name="verticalLayout_46">
@@ -375,7 +375,7 @@ border-top-left-radius: 30px;
                 <property name="font">
                  <font>
                   <family>Circular Std</family>
-                  <pointsize>12</pointsize>
+                  <pointsize>14</pointsize>
                   <weight>75</weight>
                   <bold>true</bold>
                  </font>
@@ -500,8 +500,8 @@ border-top-left-radius: 30px;
                            <widget class="QLabel" name="peso_sign">
                             <property name="font">
                              <font>
-                              <family>MS Shell Dlg 2</family>
-                              <pointsize>22</pointsize>
+                              <family>Circular Std</family>
+                              <pointsize>24</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -513,8 +513,8 @@ border-top-left-radius: 30px;
                            <widget class="QLabel" name="total_sales">
                             <property name="font">
                              <font>
-                              <family>MS Shell Dlg 2</family>
-                              <pointsize>22</pointsize>
+                              <family>Circular Std</family>
+                              <pointsize>24</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -542,7 +542,7 @@ border-top-left-radius: 30px;
                           <property name="font">
                            <font>
                             <family>Circular Std</family>
-                            <pointsize>11</pointsize>
+                            <pointsize>16</pointsize>
                             <weight>75</weight>
                             <bold>true</bold>
                            </font>
@@ -617,8 +617,8 @@ border-top-left-radius: 30px;
                            <widget class="QLabel" name="total_category">
                             <property name="font">
                              <font>
-                              <family>MS Shell Dlg 2</family>
-                              <pointsize>22</pointsize>
+                              <family>Circular Std</family>
+                              <pointsize>24</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -646,7 +646,7 @@ border-top-left-radius: 30px;
                           <property name="font">
                            <font>
                             <family>Circular Std</family>
-                            <pointsize>11</pointsize>
+                            <pointsize>16</pointsize>
                             <weight>75</weight>
                             <bold>true</bold>
                            </font>
@@ -715,8 +715,8 @@ border-top-left-radius: 30px;
                            <widget class="QLabel" name="total_product">
                             <property name="font">
                              <font>
-                              <family>MS Shell Dlg 2</family>
-                              <pointsize>22</pointsize>
+                              <family>Circular Std</family>
+                              <pointsize>24</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -744,7 +744,7 @@ border-top-left-radius: 30px;
                           <property name="font">
                            <font>
                             <family>Circular Std</family>
-                            <pointsize>11</pointsize>
+                            <pointsize>16</pointsize>
                             <weight>75</weight>
                             <bold>true</bold>
                            </font>
@@ -885,11 +885,25 @@ border-top-left-radius: 30px;
                           <property name="bottomMargin">
                            <number>15</number>
                           </property>
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="total_transactions">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>16</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>0</string>
+                            </property>
+                           </widget>
+                          </item>
                           <item row="1" column="0">
                            <widget class="QLabel" name="label_13">
                             <property name="font">
                              <font>
-                              <pointsize>10</pointsize>
+                              <family>Circular Std</family>
+                              <pointsize>12</pointsize>
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
@@ -899,25 +913,12 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
-                          <item row="0" column="0">
-                           <widget class="QLabel" name="total_transactions">
-                            <property name="font">
-                             <font>
-                              <family>Circular Std</family>
-                              <pointsize>14</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>0</string>
-                            </property>
-                           </widget>
-                          </item>
                           <item row="0" column="1">
                            <widget class="QLabel" name="logo_label_14">
                             <property name="minimumSize">
                              <size>
-                              <width>60</width>
-                              <height>60</height>
+                              <width>50</width>
+                              <height>50</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -989,7 +990,7 @@ border-top-left-radius: 30px;
                             <property name="font">
                              <font>
                               <family>Circular Std</family>
-                              <pointsize>14</pointsize>
+                              <pointsize>16</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -997,26 +998,12 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
-                          <item row="1" column="0">
-                           <widget class="QLabel" name="label_23">
-                            <property name="font">
-                             <font>
-                              <pointsize>10</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Pending</string>
-                            </property>
-                           </widget>
-                          </item>
                           <item row="0" column="1">
                            <widget class="QLabel" name="logo_label_13">
                             <property name="minimumSize">
                              <size>
-                              <width>60</width>
-                              <height>60</height>
+                              <width>50</width>
+                              <height>50</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -1033,6 +1020,21 @@ border-top-left-radius: 30px;
                             </property>
                             <property name="scaledContents">
                              <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="1" column="0">
+                           <widget class="QLabel" name="label_23">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>12</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Pending</string>
                             </property>
                            </widget>
                           </item>
@@ -1084,24 +1086,12 @@ border-top-left-radius: 30px;
                           <property name="bottomMargin">
                            <number>15</number>
                           </property>
-                          <item row="0" column="0">
-                           <widget class="QLabel" name="sucessful_transactions">
-                            <property name="font">
-                             <font>
-                              <family>Circular Std</family>
-                              <pointsize>14</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>0</string>
-                            </property>
-                           </widget>
-                          </item>
                           <item row="1" column="0">
                            <widget class="QLabel" name="label_22">
                             <property name="font">
                              <font>
-                              <pointsize>10</pointsize>
+                              <family>Circular Std</family>
+                              <pointsize>12</pointsize>
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
@@ -1111,12 +1101,25 @@ border-top-left-radius: 30px;
                             </property>
                            </widget>
                           </item>
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="sucessful_transactions">
+                            <property name="font">
+                             <font>
+                              <family>Circular Std</family>
+                              <pointsize>16</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>0</string>
+                            </property>
+                           </widget>
+                          </item>
                           <item row="0" column="1">
                            <widget class="QLabel" name="logo_label_8">
                             <property name="minimumSize">
                              <size>
-                              <width>60</width>
-                              <height>60</height>
+                              <width>50</width>
+                              <height>50</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -1188,7 +1191,7 @@ border-top-left-radius: 30px;
                             <property name="font">
                              <font>
                               <family>Circular Std</family>
-                              <pointsize>14</pointsize>
+                              <pointsize>16</pointsize>
                              </font>
                             </property>
                             <property name="text">
@@ -1200,7 +1203,8 @@ border-top-left-radius: 30px;
                            <widget class="QLabel" name="label_16">
                             <property name="font">
                              <font>
-                              <pointsize>10</pointsize>
+                              <family>Circular Std</family>
+                              <pointsize>12</pointsize>
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
@@ -1214,8 +1218,8 @@ border-top-left-radius: 30px;
                            <widget class="QLabel" name="logo_label_6">
                             <property name="minimumSize">
                              <size>
-                              <width>60</width>
-                              <height>60</height>
+                              <width>50</width>
+                              <height>50</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -1263,6 +1267,14 @@ border-top-left-radius: 30px;
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Circular Std</family>
+                      <pointsize>9</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                     </font>
                     </property>
                    </widget>
                   </item>
@@ -1567,11 +1579,13 @@ border-top-left-radius: 30px;
                        <property name="font">
                         <font>
                          <family>Circular Std</family>
-                         <pointsize>12</pointsize>
+                         <pointsize>14</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
                         </font>
                        </property>
                        <property name="text">
-                        <string>Blue Dawn Printing Services</string>
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Blue Dawn&lt;br/&gt;Printing Services&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
@@ -1729,7 +1743,7 @@ border-top-left-radius: 30px;
                      <property name="font">
                       <font>
                        <family>Circular Std</family>
-                       <pointsize>12</pointsize>
+                       <pointsize>14</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -1765,7 +1779,7 @@ border-top-left-radius: 30px;
                       </font>
                      </property>
                      <property name="text">
-                      <string>To update, must select one row from table</string>
+                      <string>To update, please select one row from the table</string>
                      </property>
                     </widget>
                    </item>
@@ -1837,7 +1851,9 @@ border-top-left-radius: 30px;
                      <property name="font">
                       <font>
                        <family>Circular Std</family>
-                       <pointsize>9</pointsize>
+                       <pointsize>10</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
                       </font>
                      </property>
                      <property name="cursor">
@@ -1989,9 +2005,10 @@ border-top-left-radius: 30px;
                            <widget class="QLabel" name="product_info_label">
                             <property name="font">
                              <font>
+                              <family>Circular Std</family>
                               <pointsize>12</pointsize>
-                              <weight>50</weight>
-                              <bold>false</bold>
+                              <weight>75</weight>
+                              <bold>true</bold>
                              </font>
                             </property>
                             <property name="text">
@@ -2404,9 +2421,9 @@ QComboBox::down-arrow {
                               <property name="font">
                                <font>
                                 <family>Circular Std</family>
-                                <pointsize>9</pointsize>
-                                <weight>75</weight>
-                                <bold>true</bold>
+                                <pointsize>10</pointsize>
+                                <weight>50</weight>
+                                <bold>false</bold>
                                 <underline>true</underline>
                                </font>
                               </property>
@@ -2715,7 +2732,7 @@ QComboBox::down-arrow {
                      <property name="font">
                       <font>
                        <family>Circular Std</family>
-                       <pointsize>16</pointsize>
+                       <pointsize>14</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2754,7 +2771,7 @@ QComboBox::down-arrow {
                       </font>
                      </property>
                      <property name="text">
-                      <string>To update, must select one row from table</string>
+                      <string>To update, please select one row from the table</string>
                      </property>
                     </widget>
                    </item>
@@ -2832,7 +2849,7 @@ QComboBox::down-arrow {
                      <property name="font">
                       <font>
                        <family>Circular Std</family>
-                       <pointsize>9</pointsize>
+                       <pointsize>10</pointsize>
                       </font>
                      </property>
                      <property name="cursor">
@@ -3340,9 +3357,9 @@ QComboBox::down-arrow {
                           <property name="font">
                            <font>
                             <family>Circular Std</family>
-                            <pointsize>9</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
+                            <pointsize>10</pointsize>
+                            <weight>50</weight>
+                            <bold>false</bold>
                             <underline>true</underline>
                            </font>
                           </property>
@@ -3681,7 +3698,7 @@ background-color: #f5f7f9;
                    <property name="font">
                     <font>
                      <family>Arial</family>
-                     <pointsize>10</pointsize>
+                     <pointsize>14</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -3861,7 +3878,7 @@ QDateEdit::down-arrow {
                            <property name="font">
                             <font>
                              <family>Circular Std</family>
-                             <pointsize>10</pointsize>
+                             <pointsize>14</pointsize>
                              <weight>75</weight>
                              <bold>true</bold>
                             </font>
@@ -3891,7 +3908,7 @@ QDateEdit::down-arrow {
                            <property name="font">
                             <font>
                              <family>Circular Std</family>
-                             <pointsize>12</pointsize>
+                             <pointsize>14</pointsize>
                              <weight>75</weight>
                              <bold>true</bold>
                             </font>
@@ -4307,6 +4324,7 @@ QComboBox::down-arrow {
                              </property>
                              <property name="font">
                               <font>
+                               <family>Circular Std</family>
                                <pointsize>10</pointsize>
                               </font>
                              </property>
@@ -4436,7 +4454,7 @@ QSpinBox::down-arrow {
 }</string>
                            </property>
                            <property name="text">
-                            <string>ADD JOB</string>
+                            <string>Add Job</string>
                            </property>
                            <property name="iconSize">
                             <size>
@@ -5667,7 +5685,10 @@ QComboBox::down-arrow {
                        </property>
                        <property name="font">
                         <font>
+                         <family>Circular Std</family>
                          <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
                         </font>
                        </property>
                        <property name="cursor">
@@ -5734,7 +5755,10 @@ QDateEdit::down-arrow {
                        </property>
                        <property name="font">
                         <font>
+                         <family>Circular Std</family>
                          <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
                         </font>
                        </property>
                        <property name="cursor">
@@ -5806,7 +5830,9 @@ QDateEdit::down-arrow {
                      <property name="font">
                       <font>
                        <family>Circular Std</family>
-                       <pointsize>10</pointsize>
+                       <pointsize>11</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
                       </font>
                      </property>
                      <property name="cursor">
@@ -6011,7 +6037,9 @@ QComboBox::down-arrow {
                        <property name="font">
                         <font>
                          <family>Circular Std</family>
-                         <pointsize>12</pointsize>
+                         <pointsize>14</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
                         </font>
                        </property>
                        <property name="text">
@@ -6033,7 +6061,9 @@ QComboBox::down-arrow {
                        <property name="font">
                         <font>
                          <family>Circular Std</family>
-                         <pointsize>11</pointsize>
+                         <pointsize>14</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
                         </font>
                        </property>
                        <property name="text">
@@ -6353,7 +6383,7 @@ color: white
                      <property name="font">
                       <font>
                        <family>Circular Std</family>
-                       <pointsize>13</pointsize>
+                       <pointsize>14</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -6426,6 +6456,7 @@ color: white
                        </property>
                        <property name="font">
                         <font>
+                         <family>Circular Std</family>
                          <pointsize>11</pointsize>
                         </font>
                        </property>
@@ -6675,7 +6706,9 @@ QDateEdit::down-arrow {
                      <property name="font">
                       <font>
                        <family>Circular Std</family>
-                       <pointsize>12</pointsize>
+                       <pointsize>14</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
                       </font>
                      </property>
                      <property name="text">
@@ -6697,7 +6730,9 @@ QDateEdit::down-arrow {
                      <property name="font">
                       <font>
                        <family>Circular Std</family>
-                       <pointsize>11</pointsize>
+                       <pointsize>14</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
                       </font>
                      </property>
                      <property name="text">
@@ -7447,7 +7482,9 @@ QDateEdit::down-arrow {
                           <property name="font">
                            <font>
                             <family>Circular Std</family>
-                            <pointsize>12</pointsize>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
                            </font>
                           </property>
                           <property name="text">
@@ -7469,7 +7506,9 @@ QDateEdit::down-arrow {
                           <property name="font">
                            <font>
                             <family>Circular Std</family>
-                            <pointsize>11</pointsize>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
                            </font>
                           </property>
                           <property name="text">
@@ -8156,9 +8195,9 @@ QDateEdit::down-arrow {
                   <property name="font">
                    <font>
                     <family>Circular Std</family>
-                    <pointsize>11</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -8171,9 +8210,9 @@ QDateEdit::down-arrow {
                   <property name="font">
                    <font>
                     <family>Circular Std</family>
-                    <pointsize>11</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -9765,6 +9804,50 @@ QComboBox::down-arrow {
        <property name="rightMargin">
         <number>0</number>
        </property>
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>50</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="logo_label_2">
+           <property name="minimumSize">
+            <size>
+             <width>130</width>
+             <height>130</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="resource.qrc">:/icon/icon/TMS.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+           <property name="wordWrap">
+            <bool>false</bool>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
        <item row="1" column="0">
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <property name="spacing">
@@ -10148,50 +10231,6 @@ QComboBox::down-arrow {
           </size>
          </property>
         </spacer>
-       </item>
-       <item row="0" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>50</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="logo_label_2">
-           <property name="minimumSize">
-            <size>
-             <width>130</width>
-             <height>130</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="pixmap">
-            <pixmap resource="resource.qrc">:/icon/icon/TMS.png</pixmap>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-           <property name="wordWrap">
-            <bool>false</bool>
-           </property>
-           <property name="margin">
-            <number>10</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
       </layout>
      </widget>
