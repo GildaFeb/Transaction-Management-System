@@ -1209,7 +1209,6 @@ class DBQueries():
             self.ui.category_name_nt.setCurrentIndex(0)
             self.ui.category_size.setCurrentIndex(0)
             self.ui.product_quantity.setValue(0)
-            self.ui.order_detail_table.clear()
             self.ui.order_detail_table.setRowCount(0)
             self.ui.subtotal_nt.setText("0.00")
             self.ui.discount_nt.setText("0.00")
