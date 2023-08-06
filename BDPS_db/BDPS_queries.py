@@ -1336,6 +1336,7 @@ class DBQueries():
             """
             c.execute(get_cumulative_payment_sql, (txn_code,))
             cumulative_payment = c.fetchone()[0]
+            print(cumulative_payment)
             if cumulative_payment is None:
                 cumulative_payment = 0.0
 
