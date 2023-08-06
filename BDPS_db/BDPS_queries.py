@@ -1316,18 +1316,9 @@ class DBQueries():
         conn = DBQueries.create_connection(dbFolder)
         c = conn.cursor()
 
-        txn_sts = self.ui.comboBox.currentText()
-
         try:
-            if self.ui.utd_payment.isEnabled():
-                try:
-                    this_txn_pmt_paid = float(self.ui.utd_payment.text())
-                except ValueError:
-                    QMessageBox.warning(self, "Message", "Invalid payment amount.")
-                    return
-    
             get_this_txn_pmt_data_sql = """
-                SELECT DISTINCT t.TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS FROM transactions t
+                SELECT DISTINCT t.TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS, TXN_STS FROM transactions t
                 INNER JOIN payment p ON t.TXN_CODE = p.TXN_CODE
                 WHERE t.TXN_CODE = ?;
             """
@@ -1339,41 +1330,51 @@ class DBQueries():
                 conn.close()
                 return
 
-            txn_code, pmt_disc, pmt_tot, pmt_paid, pmt_bal, pmt_date, pmt_sts = statuses_data[0]
+            txn_code, pmt_disc, pmt_tot, pmt_paid, pmt_bal, pmt_date, pmt_sts, txn_sts = statuses_data[0]
+            print(statuses_data)
             get_cumulative_payment_sql = """
                 SELECT SUM(PMT_PAID) FROM payment WHERE TXN_CODE = ?;
             """
             c.execute(get_cumulative_payment_sql, (txn_code,))
             cumulative_payment = c.fetchone()[0]
-            print(cumulative_payment)
             if cumulative_payment is None:
                 cumulative_payment = 0.0
 
+
+            if self.ui.utd_payment.isEnabled():
+                try:
+                    this_txn_pmt_paid = float(self.ui.utd_payment.text())
+                except ValueError:
+                    QMessageBox.warning(self, "Message", "Invalid payment amount.")
+                    return
+            else:
+                this_txn_pmt_paid = 0.00
+                
             this_txn_pmt_tot = pmt_tot - cumulative_payment
             this_txn_pmt_date = datetime.now().strftime('%Y-%m-%d')
 
             this_txn_pmt_bal = this_txn_pmt_tot - this_txn_pmt_paid
+            if pmt_sts == 'Partially Paid':
+                if this_txn_pmt_paid < 0:
+                    QMessageBox.warning(self, "Message", "Payment amount cannot be negative.")
+                    conn.close()
+                    return
 
-            if this_txn_pmt_paid < 0:
-                QMessageBox.warning(self, "Message", "Payment amount cannot be negative.")
-                conn.close()
-                return
+                if this_txn_pmt_paid > this_txn_pmt_tot:
+                    QMessageBox.warning(self, "Message", "Payment exceeds the remaining balance.")
+                    conn.close()
+                    return
+                    
+                this_txn_pmt_sts = 'Fully Paid' if this_txn_pmt_bal == 0 else 'Partially Paid'
 
-            if this_txn_pmt_paid > this_txn_pmt_tot:
-                QMessageBox.warning(self, "Message", "Payment exceeds the remaining balance.")
-                conn.close()
-                return
-                
-            this_txn_pmt_sts = 'Fully Paid' if this_txn_pmt_bal == 0 else 'Partially Paid'
+                cumulative_payment += this_txn_pmt_paid
 
-            cumulative_payment += this_txn_pmt_paid
-
-            insert_new_payment_sql = """
-                INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
-                VALUES (?, ?, ?, ?, ?, ?, ?);
-            """
-            c.execute(insert_new_payment_sql, (txn_code, pmt_disc, this_txn_pmt_tot, this_txn_pmt_paid, this_txn_pmt_bal, this_txn_pmt_date, this_txn_pmt_sts))
-            conn.commit()
+                insert_new_payment_sql = """
+                    INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
+                    VALUES (?, ?, ?, ?, ?, ?, ?);
+                """
+                c.execute(insert_new_payment_sql, (txn_code, pmt_disc, this_txn_pmt_tot, this_txn_pmt_paid, this_txn_pmt_bal, this_txn_pmt_date, this_txn_pmt_sts))
+                conn.commit()
                 
             #================================ UPDATE PARTICULAR =============================#
             new_prtclr_name = self.ui.customer_name_utd.text()
@@ -1391,6 +1392,8 @@ class DBQueries():
             c.execute(update_particular_sql, (new_prtclr_name, new_prtclr_cn, txn_code))
 
             #================================ UPDATE TXN_STS =============================#
+            txn_sts = self.ui.comboBox.currentText()
+            
             update_txn_status_sql = """
                     UPDATE transactions
                     SET TXN_STS=?
@@ -1414,8 +1417,6 @@ class DBQueries():
             conn.close()
             self.ui.save_update.clicked.disconnect()
 
-        except QtSql.QSqlError as e:
-            QMessageBox.warning(self, "Error", f"An unexpected error occurred while updating transaction: {e.text()}")
         except Exception as e:
             QMessageBox.warning(self, "Error", f"An unexpected error occurred while updating transaction: {str(e)}")
 
