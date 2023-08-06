@@ -83,7 +83,7 @@ class DBQueries():
         service_sts = self.ui.status_category.currentText()
 
         if not service_name or not service_desc:
-            QMessageBox.about(self, "Warning", "Please fill up all the fields with the correct data.")
+            QMessageBox.warning(self, "Warning", "Please fill up all the fields with the correct data.")
             return
 
         check_service_exists_sql = """
@@ -95,12 +95,15 @@ class DBQueries():
         existing_service = c.fetchone()
 
         if existing_service:
-            QMessageBox.about(self, "Warning", "Service already exists.")
+            QMessageBox.warning(self, "Warning", "Service already exists.")
             return
 
-        insert_service_data_sql = """
+        else:
+            insert_service_data_sql = """
             INSERT INTO service (SERV_NAME, SERV_DESC, SERV_STS) VALUES (?, ?, ?);
-        """
+            """
+            QMessageBox.about(self, "Message", "Service successfully added.")
+
         try:
             c.execute(insert_service_data_sql, (service_name, service_desc, service_sts))
             conn.commit()
@@ -161,6 +164,10 @@ class DBQueries():
             QMessageBox.about(self, "Message", "Service with updated values already exists in another row.")
             return
 
+        if service_name == existing_data[0] or service_desc == existing_data[1] or service_sts == existing_data[2]:
+            QMessageBox.about(self, "Message", "No changes made to the service details.")
+            return
+        
         update_service_data_sql = """
             UPDATE service
             SET SERV_NAME = ?, SERV_DESC = ?, SERV_STS = ?
@@ -371,7 +378,7 @@ class DBQueries():
         if not serv_id_result:
             QMessageBox.about(self, "Message", "Service not found. Please click atleast one row.")
             return
-
+        
         serv_id = serv_id_result[0]
 
         check_price_exists_sql = f"""
@@ -388,10 +395,13 @@ class DBQueries():
             QMessageBox.about(self, "Message", "Price for product already exists")
             return
 
+        else:
+            insert_price_data_sql = f""" 
+            INSERT INTO product (SERV_ID, PROD_SZ, PROD_PRICE) VALUES ('{serv_id}','{product_size}', '{product_price}'); 
+            """
+            QMessageBox.about(self, "Message", "Product successfully added.")
 
-        insert_price_data_sql = f""" 
-                                        INSERT INTO product (SERV_ID, PROD_SZ, PROD_PRICE) VALUES ('{serv_id}','{product_size}', '{product_price}'); 
-                                    """
+        
 
         try:
             c = conn.cursor()
@@ -465,7 +475,7 @@ class DBQueries():
             QMessageBox.about(self, "Message", "Product with updated values already exists")
             return
 
-        if product_service == existing_data[0] and product_size == existing_data[1] and product_price == existing_data[2]:
+        if product_service == existing_data[0] or product_size == existing_data[1] or product_price == existing_data[2]:
             QMessageBox.about(self, "Message", "No changes made to the product details.")
             return
 
@@ -624,13 +634,15 @@ class DBQueries():
 
             self.ui.category_size.clear()
             if not sizes:
-                QMessageBox.about(self, "Message", "No available sizes.")
+                self.ui.service_size_error.setText("No services available")
+                self.ui.service_size_error.setStyleSheet('font-size: 3rem')
                 
             else:
                 if self.ui.category_size.count() > 0:
                     self.ui.category_size.setCurrentText(self.ui.category_size.itemText(0))
                 self.ui.category_size.addItems(sizes)
-
+                self.ui.service_size_error.setText("")
+                self.ui.service_size_error.setStyleSheet('font-size: 0rem')
             return sizes
         except Error as e:
             print(e)
@@ -729,7 +741,7 @@ class DBQueries():
 
             if existing_job_id:
                 QMessageBox.about(self, "Message", "Similar job exists")
-                print("Similar job already exists.")
+                #print("Similar job already exists.")
                 return
 
             insert_job_data_sql = """

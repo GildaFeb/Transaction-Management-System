@@ -1683,9 +1683,9 @@ class Ui_MainWindow(object):
         self.category_table.horizontalHeader().setMinimumSectionSize(100)
         self.category_table.horizontalHeader().setStretchLastSection(True)
         self.category_table.verticalHeader().setVisible(False)
-        self.category_table.verticalHeader().setCascadingSectionResizes(True)
-        self.category_table.verticalHeader().setHighlightSections(True)
-        self.category_table.verticalHeader().setSortIndicatorShown(True)
+        self.category_table.verticalHeader().setCascadingSectionResizes(False)
+        self.category_table.verticalHeader().setHighlightSections(False)
+        self.category_table.verticalHeader().setSortIndicatorShown(False)
         self.verticalLayout_33.addWidget(self.category_table)
         self.verticalLayout_62.addWidget(self.category_table_widget)
         self.no_category_found = QtWidgets.QLabel(self.cat_table_widget)
@@ -1738,6 +1738,10 @@ class Ui_MainWindow(object):
 "\n"
 "#total_amount{\n"
 " color: white;\n"
+"}\n"
+"\n"
+"#service_size_error{\n"
+"    color: red;\n"
 "}")
         self.mainbody.setObjectName("mainbody")
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout(self.mainbody)
@@ -2041,6 +2045,15 @@ class Ui_MainWindow(object):
 "}")
         self.category_size.setObjectName("category_size")
         self.verticalLayout_12.addWidget(self.category_size)
+        self.service_size_error = QtWidgets.QLineEdit(self.widget_26)
+        self.service_size_error.setEnabled(True)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.service_size_error.setFont(font)
+        self.service_size_error.setFrame(False)
+        self.service_size_error.setReadOnly(True)
+        self.service_size_error.setObjectName("service_size_error")
+        self.verticalLayout_12.addWidget(self.service_size_error)
         self.label_33 = QtWidgets.QLabel(self.widget_26)
         self.label_33.setMinimumSize(QtCore.QSize(220, 0))
         self.label_33.setMaximumSize(QtCore.QSize(220, 16777215))
@@ -4566,7 +4579,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(3)
         self.new_transaction_btn_1.toggled['bool'].connect(self.new_transaction_btn_2.setChecked) # type: ignore
         self.datewise_transaction_btn_1.toggled['bool'].connect(self.datewise_transaction_btn_2.setChecked) # type: ignore
         self.daily_transaction_btn_1.toggled['bool'].connect(self.daily_transaction_btn_2.setChecked) # type: ignore
@@ -4704,6 +4717,7 @@ class Ui_MainWindow(object):
         self.contact_num_nt.setPlaceholderText(_translate("MainWindow", "Contact No."))
         self.label_31.setText(_translate("MainWindow", "Service Name"))
         self.label_32.setText(_translate("MainWindow", "Size"))
+        self.service_size_error.setText(_translate("MainWindow", "No available sizes."))
         self.label_33.setText(_translate("MainWindow", "Quantity"))
         self.add_order_nt.setText(_translate("MainWindow", "ADD JOB"))
         self.delete_job_detail_btn.setText(_translate("MainWindow", "Delete"))
