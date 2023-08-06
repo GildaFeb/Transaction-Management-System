@@ -1047,27 +1047,32 @@ class DBQueries():
 
     def displayDailyTransactions(self, rows):
         self.ui.daily_tnx_table.setRowCount(0)
+        displayed_job_ids = set()
 
         for row in rows:
-            rowPosition = self.ui.daily_tnx_table.rowCount()
-            self.ui.daily_tnx_table.setRowCount(rowPosition + 1)
-
             job_id = "J-" + str(row[15])
-            txn_date = row[2]
-            prtclr_name = row[5]
-            serv_name = row[2]
-            prod_sz = row[22]
-            job_qty = row[17]
-            job_tot = row[18]
 
-            self.ui.daily_tnx_table.setItem(rowPosition, 0, QTableWidgetItem(str(job_id)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 1, QTableWidgetItem(str(txn_date)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 2, QTableWidgetItem(str(prtclr_name)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 3, QTableWidgetItem(str(serv_name)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 4, QTableWidgetItem(str(prod_sz)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 5, QTableWidgetItem(str(job_qty)))
-            self.ui.daily_tnx_table.setItem(rowPosition, 6, QTableWidgetItem(str(job_tot)))
-    
+            if job_id not in displayed_job_ids:
+                displayed_job_ids.add(job_id)
+
+                rowPosition = self.ui.daily_tnx_table.rowCount()
+                self.ui.daily_tnx_table.setRowCount(rowPosition + 1)
+
+                txn_date = row[2]
+                prtclr_name = row[5]
+                serv_name = row[2]
+                prod_sz = row[22]
+                job_qty = row[17]
+                job_tot = row[18]
+
+                self.ui.daily_tnx_table.setItem(rowPosition, 0, QTableWidgetItem(str(job_id)))
+                self.ui.daily_tnx_table.setItem(rowPosition, 1, QTableWidgetItem(str(txn_date)))
+                self.ui.daily_tnx_table.setItem(rowPosition, 2, QTableWidgetItem(str(prtclr_name)))
+                self.ui.daily_tnx_table.setItem(rowPosition, 3, QTableWidgetItem(str(serv_name)))
+                self.ui.daily_tnx_table.setItem(rowPosition, 4, QTableWidgetItem(str(prod_sz)))
+                self.ui.daily_tnx_table.setItem(rowPosition, 5, QTableWidgetItem(str(job_qty)))
+                self.ui.daily_tnx_table.setItem(rowPosition, 6, QTableWidgetItem(str(job_tot)))
+
     def displayDatewiseTransactions(self, rows):
         self.ui.datewise_transaction_table.setRowCount(0)
         displayed_txn_codes = set()
