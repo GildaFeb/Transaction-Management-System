@@ -1407,6 +1407,7 @@ class DBQueries():
             self.ui.stackedWidget.setCurrentIndex(4)
             QMessageBox.about(self, "Message", "Payment updated successfully.")
             conn.close()
+            self.ui.save_update.clicked.disconnect()
 
         except QtSql.QSqlError as e:
             QMessageBox.warning(self, "Error", f"An unexpected error occurred while updating transaction: {e.text()}")
