@@ -210,7 +210,6 @@ class BtnFunctions(QMainWindow):
         #======================== FETCH and MOD PAYMENTS =================================#
         self.ui.discount_input.valueChanged.connect(self.update_discount_label)
         self.ui.discount_input.valueChanged.connect(lambda: DBQueries.checkDiscount(self, dbFolder))
-        self.ui.add_discount_nt.clicked.connect(lambda: DBQueries.checkDiscount(self, dbFolder))
 
         self.ui.subtotal_nt.textChanged.connect(lambda: DBQueries.update_total_nt(self, dbFolder))
         self.ui.discount_nt.textChanged.connect(lambda: DBQueries.update_total_nt(self, dbFolder))

@@ -741,6 +741,45 @@ class DBQueries():
         except Error as e:
             print(e)
     
+    def resetPayment(self, dbFolder):
+        total_subtotal = DBQueries.calculate_subtotal_from_job_temp(self, dbFolder)
+
+        if total_subtotal is not None:
+            self.ui.subtotal_nt.setText(str(total_subtotal))
+
+            new_subtotal = self.ui.subtotal_nt.text().strip()
+            new_discount = self.ui.discount_nt.text().strip()
+
+            try:
+                subtotal_value = float(new_subtotal)
+            except ValueError:
+                subtotal_value = 0.0
+
+            try:
+                discount_value = float(new_discount)
+            except ValueError:
+                discount_value = 0.0
+
+            total_amount = subtotal_value - discount_value
+            self.ui.total_nt.setText(str(total_amount))
+
+            if self.ui.total_nt.text().strip() and new_discount:
+                try:
+                    total_value = float(self.ui.total_nt.text().strip())
+                    payment_paid_value = float(self.ui.payment_nt.text().strip())
+
+                    if total_value and payment_paid_value:
+                        balance = total_value - payment_paid_value
+                        self.ui.balance_nt.setText(str(balance))
+                    else:
+                        self.ui.balance_nt.clear()
+                except ValueError:
+                    self.ui.balance_nt.clear()
+            else:
+                self.ui.balance_nt.clear()
+        else:
+            self.ui.total_nt.clear()
+
     def deleteJob(self, dbFolder):
         conn = DBQueries.create_connection(dbFolder)
 
@@ -758,10 +797,8 @@ class DBQueries():
                 c = conn.cursor()
                 c.execute(delete_service_sql)
                 conn.commit()
-
-                total_subtotal = DBQueries.calculate_subtotal_from_job_temp(self, dbFolder)
-                self.ui.total_nt.setText(str(total_subtotal))
-
+                
+                DBQueries.resetPayment(self, dbFolder)
                 DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
 
             except Error as e:
@@ -790,6 +827,7 @@ class DBQueries():
                     c.execute(delete_selected_job_sql)
                     conn.commit()
 
+                    DBQueries.resetPayment(self, dbFolder)
                     DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
 
                 except Error as e:
@@ -902,7 +940,8 @@ class DBQueries():
 
         if payment_discount > subtotal:
             QMessageBox.warning(self, "Invalid Discount", "Discount amount cannot be greater than the subtotal.")
-            return False
+            self.ui.discount_nt.setText(str(subtotal))
+            self.ui.discount_input.setValue(subtotal)
 
         return True
     
@@ -1128,6 +1167,10 @@ class DBQueries():
             prtclr_id = cursor.lastrowid
 
             #========================== INSERT ON TRANSACTIONS ===========================#
+            if pmt_bal != 0:
+                txn_sts = 'Pending Transaction'
+                QMessageBox.warning(self, "Message", "Remaining balance found. Setting to Pending...")
+
             txn_insert_sql ="""
                 INSERT INTO transactions (PRTCLR_ID, TXN_DATE, TXN_STS)
                 VALUES (?, ?, ?)
@@ -1166,8 +1209,8 @@ class DBQueries():
             
             QMessageBox.about(self, "Message", "Transaction saved successfully.")
 
-            self.ui.customer_name_nt.setText("")
-            self.ui.contact_num_nt.setText("")
+            self.ui.customer_name_nt.clear()
+            self.ui.contact_num_nt.clear()
             self.ui.category_name_nt.setCurrentIndex(0)
             self.ui.category_size.setCurrentIndex(0)
             self.ui.product_quantity.setValue(0)
@@ -1175,7 +1218,6 @@ class DBQueries():
             self.ui.order_detail_table.setRowCount(0)
             self.ui.subtotal_nt.setText("0.00")
             self.ui.discount_nt.setText("0.00")
-            self.ui.total_nt.setText("0.00")
             self.ui.discount_input.setValue(0)
             self.ui.payment_nt.setText("")
             self.ui.comboBox_2.setCurrentIndex(0)
@@ -1183,6 +1225,7 @@ class DBQueries():
             DBQueries.resetJobDetails(self, dbFolder)
             current_txn_code = DBQueries.get_next_txn_code(self, dbFolder)
             self.ui.tnx_code_nt.setText(str(current_txn_code))
+            self.ui.total_nt.setText("0.00")
 
 
         except Exception as e:
