@@ -1193,6 +1193,10 @@ class DBQueries():
             if pmt_bal != 0:
                 txn_sts = 'Pending Transaction'
                 QMessageBox.warning(self, "Message", "Remaining balance found. Setting to Pending...")
+                update_status_sql = """
+                    UPDATE transactions SET TXN_STS = (?) WHERE TXN_CODE = (SELECT MAX(TXN_CODE) FROM transactions);
+                """
+                cursor.execute(update_status_sql, (txn_sts,))
 
             pmt_insert_sql = """
                 INSERT INTO payment (TXN_CODE, PMT_DISC, PMT_TOT, PMT_PAID, PMT_BAL, PMT_DATE, PMT_STS)
@@ -1229,6 +1233,7 @@ class DBQueries():
 
         except Exception as e:
             QMessageBox.warning(self, "Message", "An error occured.")
+            print (e)
         finally:
             cursor.close()
             conn.close()
