@@ -197,7 +197,7 @@ class BtnFunctions(QMainWindow):
         sizes = DBQueries.getProductSizes(self, dbFolder)
 
         self.ui.category_name_nt.currentIndexChanged.connect(lambda: DBQueries.getProductSizes(self, dbFolder))
-
+        DBQueries.displayJobs(self, DBQueries.getAllJobs(dbFolder))
         self.ui.add_order_nt.clicked.connect(lambda: DBQueries.addJob(self, dbFolder))
         self.ui.delete_job_detail_btn.clicked.connect(lambda: DBQueries.deleteJob(self, dbFolder))
         self.ui.reset_job_detail_btn.clicked.connect(lambda: DBQueries.resetJobDetails(self, dbFolder))

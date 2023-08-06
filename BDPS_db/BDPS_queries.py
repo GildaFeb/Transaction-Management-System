@@ -2,7 +2,7 @@ import sqlite3
 from sqlite3 import Error
 from datetime import datetime
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtSql
 from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
 from openpyxl import load_workbook
@@ -1367,7 +1367,7 @@ class DBQueries():
                 """
                 c.execute(insert_new_payment_sql, (txn_code, pmt_disc, this_txn_pmt_tot, this_txn_pmt_paid, this_txn_pmt_bal, this_txn_pmt_date, this_txn_pmt_sts))
                 conn.commit()
-                QMessageBox.about(self, "Message", "Payment updated successfully.")
+                
             #================================ UPDATE PARTICULAR =============================#
             new_prtclr_name = self.ui.customer_name_utd.text()
             new_prtclr_cn = self.ui.contact_num_utd.text()
@@ -1403,16 +1403,13 @@ class DBQueries():
             DBQueries.displayDailyTransactions(self, DBQueries.getAllTransactions(dbFolder))
 
             self.ui.stackedWidget.setCurrentIndex(4)
-
-        except ValueError as ve:
-            QMessageBox.warning(self, "Error", "Error updating transaction:", ve)
-        except Exception as e:
-            QMessageBox.warning(self, "Message", "Unexpected error occurred while updating transaction:", e)
-
-        
-
-        finally:
+            QMessageBox.about(self, "Message", "Payment updated successfully.")
             conn.close()
+
+        except QtSql.QSqlError as e:
+            QMessageBox.warning(self, "Error", f"An unexpected error occurred while updating transaction: {e.text()}")
+        except Exception as e:
+            QMessageBox.warning(self, "Error", f"An unexpected error occurred while updating transaction: {str(e)}")
 
     def on_txn_selection_changed(self):
         selected_rows = self.ui.transaction_record_tbl.selectionModel().selectedRows()
