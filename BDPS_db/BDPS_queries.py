@@ -122,6 +122,7 @@ class DBQueries():
         try:
             c.execute(insert_service_data_sql, (service_name, service_desc, service_sts))
             conn.commit()
+            conn.close()
 
             DBQueries.resetService(self, dbFolder)
             DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
@@ -183,6 +184,7 @@ class DBQueries():
         try:
             c.execute(update_service_data_sql, (service_name, service_desc, service_sts, service_id))
             conn.commit()
+            conn.close()
 
             DBQueries.resetService(self, dbFolder)
             DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
@@ -214,6 +216,7 @@ class DBQueries():
             try:
                 c.execute(delete_service_sql, (service_id,))
                 conn.commit()
+                conn.close()
 
                 DBQueries.resetService(self, dbFolder)
                 DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
@@ -243,6 +246,7 @@ class DBQueries():
                 try:
                     c.execute(delete_selected_service_sql, service_ids)
                     conn.commit()
+                    conn.close()
 
                     DBQueries.resetService(self, dbFolder)
                     DBQueries.displayServices(self, DBQueries.getAllServices(dbFolder))
@@ -263,21 +267,23 @@ class DBQueries():
     #                                        PRICE LIST QUERIES                                                 #
     #===========================================================================================================#
     def getServiceNames(dbFolder):
-        conn = DBQueries.create_connection(dbFolder)
+        try:
+            conn = sqlite3.connect(dbFolder)
+            c = conn.cursor()
 
-        get_service_names_sql = """SELECT SERV_NAME
+            get_service_names_sql = """SELECT SERV_NAME
                                     FROM service
-                                    WHERE SERV_STS = 'Available';
+                                    WHERE SERV_STS = ?;
                                 """
 
-        try:
-            c = conn.cursor()
-            c.execute(get_service_names_sql)
+            c.execute(get_service_names_sql, ('Available',))
             service_names = [row[0] for row in c.fetchall()]
 
+            conn.close()
+
             return service_names
-        except Error as e:
-            print(e)
+        except sqlite3.Error as e:
+            print("Error:", e)
             return []
     
     def getAllPrices(dbFolder):
