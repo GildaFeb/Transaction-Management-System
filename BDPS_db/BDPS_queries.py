@@ -2,7 +2,7 @@ import sqlite3
 from sqlite3 import Error
 from datetime import datetime
 
-from PyQt5 import QtWidgets, QtSql
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
 from openpyxl import load_workbook
