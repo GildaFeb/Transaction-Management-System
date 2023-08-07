@@ -19,75 +19,8 @@ import sys
 import os
 from openpyxl import load_workbook, Workbook
 
-
-
-
 class BtnFunctions(QMainWindow):
 
-    """
-    # METHODS FOR BUTTONS IN CATEGORY/SERVICE - DRA #
-    def pressed_add(self): # to open delete_confirm_categ
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Add_Categ() # from other py file
-        self.ui.setupUi(self.window)
-        self.window.show()
-
-    #  EDIT BTN  #
-    def pressed_edit(self): # to open delete_confirm_categ
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Edit_Categ() # from other py file
-        self.ui.setupUi(self.window)
-        self.window.show()
-    
-    #  DEL BTN  #
-    def pressed_del(self): # to open delete_confirm_categ
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Del_Categ() # from other py file
-        self.ui.setupUi(self.window)
-        self.window.show()
-
-    #  NO SERVICE SELECTED  #
-    def edit_no_service(self): # to open delete_confirm_categ
-        self.window = QtWidgets.QMainWindow()
-        self.ui = No_Details() # from other py file
-        self.ui.setupUi(self.window)
-        self.window.show()
-    # ============ #
-    
-
-    # METHODS FOR BUTTONS IN CATEGORY/SERVICE - DRA #
-    def pressed_add(self): # to open delete_confirm_categ
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Add_Categ() # from other py file
-        self.ui.setupUi(self.window)
-        self.window.show()
-
-    #  EDIT BTN  #
-    def pressed_edit(self): # to open delete_confirm_categ
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Edit_Categ() # from other py file
-        self.ui.setupUi(self.window)
-        self.window.show()
-    
-    #  DEL BTN  #
-    def pressed_del(self): # to open delete_confirm_categ
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Del_Categ() # from other py file
-        self.ui.setupUi(self.window)
-        self.window.show()
-
-    
-
-    
-    #  NO SERVICE SELECTED  #
-    def edit_no_service(self): # to open delete_confirm_categ
-        self.window = QtWidgets.QMainWindow()
-        self.ui = No_Details() # from other py file
-        self.ui.setupUi(self.window)
-        self.window.show()
-    # ============ #
-    
-    """
     def __init__(self):
         super(BtnFunctions, self).__init__()
 
@@ -164,6 +97,15 @@ class BtnFunctions(QMainWindow):
 
         self.ui.category_table.clicked.connect(self.on_service_row_clicked)
         self.ui.pricelist_table.clicked.connect(self.on_pricelist_row_clicked)
+
+        self.ui.category_table.setColumnWidth(0, 100)
+        self.ui.category_table.setColumnWidth(2, 450)
+        self.ui.category_table.setColumnWidth(3, 150)
+
+        self.ui.pricelist_table.setColumnWidth(0, 150)
+        self.ui.pricelist_table.setColumnWidth(1, 350)
+        self.ui.pricelist_table.setColumnWidth(2, 250)
+        self.ui.pricelist_table.setColumnWidth(3, 150)
 
         #========================== DATABASE PATH =====================================#
         dbFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'BDPS_db/BDPS.db'))
